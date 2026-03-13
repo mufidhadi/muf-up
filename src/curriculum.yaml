@@ -1359,13 +1359,38 @@
         - id: http-streaming-websocket
           title: HTTP Streaming & WebSocket
           content: |-
-            **Tujuan Pembelajaran:** Membedakan berbagai metode pengiriman data secara real-time.
+            ### 1. Hook & Context
+            **Problem Statement:** HTTP biasa bersifat "Tanya-Jawab". Kamu tanya, server jawab, lalu putus. Tapi bagaimana dengan aplikasi Chat atau Dashboard Saham? Kamu tidak ingin terus-menerus bertanya "Ada pesan baru?" setiap detik (Polling). Kamu ingin server "berteriak" saat ada data baru.
+            **Analogi:** 
+            - **HTTP:** Seperti mengirim SMS. Kamu kirim, lalu nunggu balasan.
+            - **WebSocket:** Seperti menelepon. Jalur komunikasi terbuka terus, kedua pihak bisa bicara kapan saja tanpa harus menutup telepon.
 
-            **1. HTTP Streaming:**
-            Koneksi satu arah yang tetap terbuka untuk mengirimkan data secara bertahap (seperti menonton video YouTube atau melihat log server yang berjalan).
+            ### 2. Learning Objectives
+            Kamu akan mampu **membedakan** antara HTTP Polling, Streaming, dan WebSocket untuk kebutuhan aplikasi real-time.
 
-            **2. WebSocket:**
-            Koneksi dua arah (full-duplex) yang terus menyambung. Berbeda dengan HTTP biasa yang "tanya-jawab", di WebSocket, Server bisa mengirimkan data ke Client kapan saja tanpa diminta. Sangat cocok untuk aplikasi chat atau dashboard harga saham real-time.
+            ### 3. Prerequisites
+            - Memahami dasar HTTP Request.
+
+            ### 4. Core Material
+            - **HTTP Streaming:** Server mengirim data secara bertahap dalam satu koneksi yang lama (misal: nonton video).
+            - **WebSocket:** Koneksi dua arah yang tetap terbuka. Server bisa mengirim data ke Client tanpa diminta terlebih dahulu.
+
+            ### 5. Guided Implementation
+            Biasanya menggunakan library seperti `websockets` atau `socket.io` di Python.
+            ```python
+            # Konsep koneksi
+            # ws = connect("wss://stream.binance.com:9443/ws/btcusdt@ticker")
+            # data = ws.recv() # Menunggu data dari server secara real-time
+            ```
+
+            ### 6. Pro-Tips
+            WebSocket sangat boros sumber daya server jika penggunanya jutaan. Gunakan hanya jika kamu benar-benar butuh fitur real-time (seperti Chat atau Game Online).
+
+            ### 7. Interactive Challenge
+            Coba cari tahu apa itu "Long Polling" dan mengapa ia dianggap sebagai "nenek moyang" sebelum adanya WebSocket.
+
+            ### 8. Summary & Next Steps
+            Real-time communication sudah dikuasai. Selanjutnya, kita akan belajar cara mengatur jutaan pesan agar tidak berantakan menggunakan Message Brokers!
           quiz:
             question: Manakah dari berikut ini yang paling cocok menggunakan WebSocket?
             options:
@@ -1377,17 +1402,36 @@
         - id: message-brokers
           title: Message Brokers
           content: |-
-            **Tujuan Pembelajaran:** Memahami cara kerja sistem terdistribusi dalam skala besar.
+            ### 1. Hook & Context
+            **Problem Statement:** Bayangkan kamu punya aplikasi seperti Gojek. Saat pesanan masuk, ribuan hal harus terjadi: kirim notif ke driver, cek promo, update database, dll. Jika satu hal gagal atau lambat, apakah seluruh aplikasi harus ikutan macet?
+            **Analogi:** Seperti "Kantor Pos". Kamu tidak perlu memberikan surat langsung ke tangan temanmu. Kamu cukup taruh di kotak pos (Message Broker), dan temanmu akan mengambilnya saat dia siap.
 
-            Ketika aplikasi kita sangat besar dan memiliki banyak layanan (microservices), kita butuh "perantara" pesan agar antar bagian aplikasi tidak saling menunggu (Asynchronous).
+            ### 2. Learning Objectives
+            Kamu akan mampu **menguraikan** fungsi Message Broker (Redis/RabbitMQ) dalam memisahkan beban kerja aplikasi (Decoupling).
 
-            **Analogi Kantor Pos:**
-            Aplikasi A (Pengirim) mengirim surat ke **Kantor Pos (Message Broker)**. Aplikasi B (Penerima) mengambil surat tersebut kapan pun ia siap. Jika Aplikasi B sedang sibuk atau mati, surat tetap aman di Kantor Pos.
+            ### 3. Prerequisites
+            - Memahami konsep Client-Server.
 
-            **Contoh Teknologi:**
-            - **Redis Pub/Sub**: Sangat cepat, untuk pesan sederhana.
-            - **RabbitMQ**: Handal dan memiliki fitur antrean yang canggih.
-            - **Apache Kafka**: Untuk data raksasa (streaming) tingkat industri.
+            ### 4. Core Material
+            **Message Broker** adalah perantara pesan.
+            - **Publisher**: Si pengirim pesan.
+            - **Subscriber**: Si penerima pesan.
+            - **Queue**: Antrean pesan yang menunggu diproses.
+
+            ### 5. Guided Implementation
+            Teknologi populer:
+            - **Redis**: Paling cepat, cocok untuk pesan ringan.
+            - **RabbitMQ**: Sangat handal untuk antrean kompleks.
+            - **Kafka**: Untuk data raksasa (Big Data).
+
+            ### 6. Pro-Tips
+            Gunakan Message Broker untuk tugas-tugas berat yang tidak harus selesai detik itu juga (seperti kirim email atau generate laporan PDF) agar user tidak menunggu lama di aplikasi.
+
+            ### 7. Interactive Challenge
+            Bayangkan sistem sebuah bank. Tugas apa yang menurutmu harus masuk ke antrean (Message Broker) daripada diproses langsung?
+
+            ### 8. Summary & Next Steps
+            Arsitektur sistemmu sekarang sudah canggih. Selanjutnya, kita akan belajar cara membangun "rumah" bagi API-mu: Web Server Frameworks!
           quiz:
             question: Apa manfaat utama menggunakan Message Broker dalam arsitektur sistem?
             options:
@@ -1399,18 +1443,41 @@
         - id: web-frameworks
           title: Web Server Frameworks
           content: |-
-            **Tujuan Pembelajaran:** Memilih alat yang tepat untuk membangun server API atau website dengan Python.
+            ### 1. Hook & Context
+            **Problem Statement:** Membuat server web dari nol menggunakan socket sangatlah sulit. Kamu harus menangani keamanan, routing URL, dan parsing data secara manual.
+            **Analogi:** Seperti membangun restoran. Kamu tidak perlu membuat kompor, meja, dan kursi sendiri. Kamu bisa membeli paket "Interior Restoran" yang sudah siap pakai (Framework).
 
-            Python memiliki beberapa framework populer untuk membangun backend:
+            ### 2. Learning Objectives
+            Kamu akan mampu **membandingkan** tiga framework web besar di Python (FastAPI, Flask, Django) dan **memilih** yang paling tepat untuk proyekmu.
 
-            **1. FastAPI (Paling Modern):**
-            Sangat cepat, mendukung asinkron (`async/await`), dan otomatis membuat dokumentasi API (Swagger) secara gratis. Sangat direkomendasikan untuk proyek baru.
+            ### 3. Prerequisites
+            - Memahami Dasar Python dan HTTP.
 
-            **2. Flask (Minimalis):**
-            Sangat ringan. Kamu hanya mendapatkan apa yang kamu butuhkan. Cocok untuk aplikasi kecil atau prototype cepat.
+            ### 4. Core Material
+            1. **Flask:** Minimalis, kamu yang atur semuanya. Cocok untuk belajar.
+            2. **Django:** "Batteries Included". Lengkap, aman, tapi berat. Cocok untuk web besar.
+            3. **FastAPI:** Modern, sangat cepat, dan otomatis membuat dokumentasi API.
 
-            **3. Django (Paling Lengkap):**
-            "Batteries included". Sudah punya sistem login, admin panel, dan database ORM di dalamnya. Cocok untuk proyek raksasa yang butuh keamanan tinggi.
+            ### 5. Guided Implementation
+            Contoh kode minimal FastAPI:
+            ```python
+            from fastapi import FastAPI
+
+            app = FastAPI()
+
+            @app.get("/")
+            def home():
+                return {"message": "Halo dari FastAPI!"}
+            ```
+
+            ### 6. Pro-Tips
+            Jika kamu baru belajar, cobalah **FastAPI**. Ia sangat populer saat ini di dunia AI dan Data Science karena kecepatannya.
+
+            ### 7. Interactive Challenge
+            Coba cari tahu apa yang dimaksud dengan "Asynchronous" (async/await) dan mengapa FastAPI sangat mengandalkan fitur tersebut.
+
+            ### 8. Summary & Next Steps
+            Selamat! Kamu sudah siap jadi Backend Developer. Tapi tunggu, di mana kita akan menyimpan data user? Yuk, kita pelajari Database & ORM!
           quiz:
             question: Framework Python mana yang dikenal memiliki fitur 'Batteries Included' (Sangat Lengkap)?
             options:
@@ -1425,21 +1492,34 @@
         - id: db-intro
           title: Apa itu Database?
           content: |-
-            **Tujuan Pembelajaran:** Memilih sistem penyimpanan data yang tepat sesuai kebutuhan aplikasi.
+            ### 1. Hook & Context
+            **Problem Statement:** File teks (`.txt`) atau CSV sulit digunakan untuk menyimpan jutaan data yang saling berhubungan. Mencari satu data di antara jutaan baris teks akan memakan waktu lama.
+            **Analogi:** Seperti "Perpustakaan Raksasa". Database bukan hanya tumpukan buku, tapi buku yang ditata rapi di rak tertentu, lengkap dengan katalog pencarian agar buku bisa ketemu dalam hitungan detik.
 
-            Database adalah sistem terorganisir untuk menyimpan, mengelola, dan mengambil data.
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengategorikan** perbedaan antara Database SQL dan NoSQL serta **menentukan** kapan harus menggunakan masing-masing jenis tersebut.
 
-            **Dua Jenis Utama:**
+            ### 3. Prerequisites
+            - Memahami konsep Variabel dan Struktur Data.
 
-            **1. SQL (Relational):**
-            Data disimpan dalam tabel dengan struktur kaku (baris dan kolom). Hubungan antar tabel sangat kuat.
-            - **Contoh**: PostgreSQL (Sangat populer), MySQL, SQLite (Bawaan Python).
-            - **Cocok untuk**: Transaksi keuangan, sistem inventaris.
+            ### 4. Core Material
+            - **SQL (Relational):** Data rapi dalam tabel (baris & kolom). Sangat aman untuk transaksi uang. Contoh: PostgreSQL, MySQL.
+            - **NoSQL (Non-Relational):** Data fleksibel (seperti JSON). Sangat cepat untuk data raksasa. Contoh: MongoDB, Redis.
 
-            **2. NoSQL (Non-Relational):**
-            Data disimpan dalam format fleksibel seperti Dokumen (JSON), Grafik, atau Key-Value.
-            - **Contoh**: MongoDB (Dokumen), Redis (In-memory), Neo4j (Grafik).
-            - **Cocok untuk**: Media sosial, real-time analytics, caching.
+            ### 5. Guided Implementation
+            Bayangkan tabel `Users`:
+            | id | username | email |
+            |----|----------|-------|
+            | 1  | andi     | a@b.com|
+
+            ### 6. Pro-Tips
+            Gunakan **SQLite** untuk belajar. Ia adalah database asli (built-in) Python yang tidak perlu instalasi server rumit. Datanya disimpan dalam satu file kecil saja.
+
+            ### 7. Interactive Challenge
+            Sebutkan satu aplikasi yang menurutmu wajib pakai SQL, dan satu aplikasi yang lebih cocok pakai NoSQL!
+
+            ### 8. Summary & Next Steps
+            Database adalah gudang datamu. Selanjutnya, kita akan belajar cara "berbicara" dengan gudang tersebut menggunakan bahasa SQL!
           quiz:
             question: Kapan sebaiknya Anda memilih database SQL dibandingkan NoSQL?
             options:
@@ -1451,17 +1531,40 @@
         - id: sql-queries
           title: Query & CRUD
           content: |-
-            **Tujuan Pembelajaran:** Menguasai bahasa SQL dasar untuk berinteraksi dengan database relasional.
+            ### 1. Hook & Context
+            **Problem Statement:** Kamu punya gudang data, tapi bagaimana cara mengambilnya? Kamu butuh "Bahasa Perintah" yang dimengerti oleh database.
+            **Analogi:** Seperti memesan kopi di kafe. Kamu harus bilang "Saya minta Kopi Hitam, satu, tanpa gula". SQL adalah cara kamu memesan data.
 
-            Untuk bicara dengan database SQL, kita menggunakan bahasa standar bernama **SQL (Structured Query Language)**. Operasi paling mendasar disebut **CRUD**.
+            ### 2. Learning Objectives
+            Kamu akan mampu **menyusun** perintah SQL dasar untuk melakukan operasi CRUD (Create, Read, Update, Delete).
 
-            **Contoh Query:**
-            - **C (Create)**: `INSERT INTO users (nama, umur) VALUES ('Andi', 25);`
-            - **R (Read)**: `SELECT * FROM users WHERE umur > 20;`
-            - **U (Update)**: `UPDATE users SET umur = 26 WHERE nama = 'Andi';`
-            - **D (Delete)**: `DELETE FROM users WHERE id = 1;`
+            ### 3. Prerequisites
+            - Memahami konsep tabel database.
 
-            **JOIN**: Menggabungkan data dari dua tabel berbeda (misal: mengambil nama user beserta daftar pesanannya).
+            ### 4. Core Material
+            **CRUD** adalah 4 fungsi dasar manajemen data:
+            1. **C**reate: `INSERT` (Tambah data).
+            2. **R**ead: `SELECT` (Ambil data).
+            3. **U**pdate: `UPDATE` (Ubah data).
+            4. **D**elete: `DELETE` (Hapus data).
+
+            ### 5. Guided Implementation
+            ```sql
+            -- Ambil semua user yang namanya 'Andi'
+            SELECT * FROM users WHERE nama = 'Andi';
+
+            -- Tambah user baru
+            INSERT INTO users (nama, umur) VALUES ('Budi', 20);
+            ```
+
+            ### 6. Pro-Tips
+            Hati-hati dengan perintah `DELETE`. Jika kamu lupa menambahkan `WHERE`, kamu bisa menghapus SELURUH data di tabel tersebut secara tidak sengaja!
+
+            ### 7. Interactive Challenge
+            Tuliskan perintah SQL (di bayanganmu) untuk mengambil data "harga" dari tabel "produk" yang stoknya lebih dari 0.
+
+            ### 8. Summary & Next Steps
+            SQL sangat sakti tapi sulit ditulis di dalam Python. Selanjutnya, kita akan belajar cara mengendalikan database seolah-olah mereka adalah objek Python biasa: ORM!
           quiz:
             question: Apa singkatan dari operasi CRUD dalam database?
             options:
@@ -1473,16 +1576,38 @@
         - id: orm-concept
           title: ORM (Object Relational Mapping)
           content: |-
-            **Tujuan Pembelajaran:** Menghubungkan dunia Objek Python dengan dunia Tabel Database tanpa SQL manual.
+            ### 1. Hook & Context
+            **Problem Statement:** Menulis kode SQL panjang di tengah-tengah kode Python terasa sangat berantakan dan rawan error. Bagaimana jika kita bisa memperlakukan tabel database seperti Class Python biasa?
+            **Analogi:** Seperti "Penerjemah Bahasa". Kamu bicara bahasa Python, dan ORM akan menerjemahkannya menjadi bahasa SQL untuk database secara otomatis.
 
-            **ORM** adalah jembatan. Ia memungkinkan kamu mengelola database seolah-olah kamu sedang memanipulasi objek Python biasa. Kamu tidak perlu menulis SQL panjang di dalam kode Python-mu.
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengintegrasikan** database ke dalam aplikasi Python menggunakan teknik ORM (seperti SQLAlchemy).
 
-            **Keuntungan Utama:**
-            - **Productivity**: Menulis kode lebih cepat.
-            - **Database Agnostic**: Kamu bisa ganti database (misal dari SQLite ke PostgreSQL) tanpa mengubah banyak kode.
-            - **Security**: Melindungi aplikasi dari serangan *SQL Injection*.
+            ### 3. Prerequisites
+            - Memahami OOP (Class & Object) dan SQL.
 
-            **Library Populer**: `SQLAlchemy`, `Django ORM`, `Tortoise ORM`.
+            ### 4. Core Material
+            **ORM** adalah jembatan.
+            - Tabel Database -> Menjadi **Class**.
+            - Baris Data -> Menjadi **Object**.
+            - Kolom Tabel -> Menjadi **Atribut**.
+
+            ### 5. Guided Implementation
+            ```python
+            # Menggunakan ORM (Konsep)
+            # andi = User.query.filter_by(name="Andi").first()
+            # andi.umur = 26
+            # db.session.commit()
+            ```
+
+            ### 6. Pro-Tips
+            ORM melindungimu dari serangan **SQL Injection** (hacker yang mencoba merusak databasemu melalui form input) secara otomatis.
+
+            ### 7. Interactive Challenge
+            Coba bandingkan: Mana yang lebih mudah dibaca, perintah SQL `INSERT INTO...` atau perintah Python `db.add(user_baru)`?
+
+            ### 8. Summary & Next Steps
+            Database sudah beres. Selanjutnya, kita akan belajar cara mengelola perubahan struktur database secara profesional: Migration & Seed!
           codeExample: |-
             # Menggunakan SQLAlchemy (Pseudo-code)
             
@@ -1492,16 +1617,49 @@
             # 2. Mengubah data (UPDATE)
             user.umur = 26
             session.commit() # Simpan ke database
+          quiz:
+            question: Apa keuntungan utama menggunakan ORM dibanding menulis SQL manual?
+            options:
+              - Membuat aplikasi menjadi lebih berat.
+              - Melindungi dari SQL Injection dan membuat kode lebih Pythonic (rapi).
+              - Menghapus kebutuhan akan database.
+              - Membuat internet menjadi lebih cepat.
+            correctAnswerIndex: 1
         - id: migration-seed
           title: Migration & Seed
           content: |-
-            **Tujuan Pembelajaran:** Memahami cara mengelola perubahan struktur database secara tim.
+            ### 1. Hook & Context
+            **Problem Statement:** Bayangkan kamu bekerja dalam tim. Kamu menambah kolom "No HP" di databasemu. Bagaimana cara memastikan teman setimmu mendapatkan perubahan struktur yang sama di komputer mereka?
+            **Analogi:** 
+            - **Migration:** Seperti "Git" untuk database. Ia mencatat setiap perubahan struktur (tambah kolom, hapus tabel) dalam file sejarah.
+            - **Seed:** Seperti "Mengisi Rak Toko". Sebelum toko buka (aplikasi live), kamu harus mengisi barang-barang contoh agar pembeli tidak melihat toko kosong.
 
-            **1. Migration:**
-            Sistem "Git" untuk struktur database. Jika kamu menambah kolom baru ("email") di tabel "users", migration mencatat perubahan ini dalam sebuah file. Teman satu timmu cukup menjalankan perintah migration agar database mereka ikut berubah secara otomatis.
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengelola** perubahan skema database secara terorganisir dan **menyiapkan** data awal (dummy data) untuk keperluan testing.
 
-            **2. Seed (Seeding):**
-            Proses mengisi database dengan data awal yang dibutuhkan aplikasi agar bisa berjalan (misal: daftar kategori produk) atau data dummy untuk keperluan testing.
+            ### 3. Prerequisites
+            - Memahami ORM.
+
+            ### 4. Core Material
+            - **Migration:** Skrip untuk mengubah struktur database secara otomatis.
+            - **Seed:** Skrip untuk memasukkan data awal ke dalam tabel.
+
+            ### 5. Guided Implementation
+            Biasanya menggunakan alat seperti `Alembic` atau fitur bawaan Django/FastAPI.
+            ```bash
+            # Perintah umum
+            migrate upgrade head
+            seed run InitialUsers
+            ```
+
+            ### 6. Pro-Tips
+            Jangan pernah mengisi data awal (seeding) ke database "Production" (asli) jika datanya hanya data bohong/dummy untuk tes!
+
+            ### 7. Interactive Challenge
+            Kenapa kita butuh Seed data? Bayangkan jika kamu login ke aplikasi sosial media tapi tidak ada postingan sama sekali karena databasenya kosong.
+
+            ### 8. Summary & Next Steps
+            Hebat! Kamu sudah paham cara mengelola data skala profesional. Selanjutnya, kita akan masuk ke era Python modern: Type Hints & Pydantic!
           quiz:
             question: Apa fungsi utama dari sistem Migration?
             options:
@@ -2565,7 +2723,7 @@
             plt.bar(["Apel", "Jeruk"], [10, 15])
             # plt.show()
           quiz:
-            question: Jenis grafik mana yang paling cocok untuk melihat 'korelasi' atau hubungan antara dua variabel (misal: Berat Badan vs Tinggi Badan)?
+            question: "Jenis grafik mana yang paling cocok untuk melihat 'korelasi' atau hubungan antara dua variabel (misal: Berat Badan vs Tinggi Badan)?"
             options:
               - Bar Chart
               - Histogram
@@ -2627,14 +2785,35 @@
         - id: de-intro
           title: Apa itu Data Engineering?
           content: |-
-            **Tujuan Pembelajaran:** Membedakan peran Data Engineer dalam ekosistem pengolahan data.
+            ### 1. Hook & Context
+            **Problem Statement:** Di era Big Data, jutaan data masuk setiap detik dari berbagai sumber (HP, sensor, web). Jika data ini langsung diberikan ke bos untuk dianalisis, mereka akan pusing karena datanya berantakan dan tidak terstruktur.
+            **Analogi:** Seperti "Sistem Pengolahan Air Bersih". Kamu butuh orang yang membangun pipa, memasang filter, dan memastikan air (data) yang sampai di keran (dashboard) sudah bersih dan siap diminum (dianalisis).
 
-            Data Engineering adalah seni membangun "pipa saluran" (infrastructure) yang mengalirkan data mentah dari sumbernya menuju tempat penyimpanan yang siap dianalisis.
+            ### 2. Learning Objectives
+            Kamu akan mampu **menguraikan** peran Data Engineer dalam siklus data dan **mengidentifikasi** perbedaan antara ETL dan ELT.
 
-            **Perbedaan Peran:**
-            - **Data Engineer**: Membangun pipa, membersihkan data, memastikan data tersedia 24/7 (Infrastruktur).
-            - **Data Scientist**: Mengambil data dari pipa, membuat model prediksi (Analisis).
-            - **Data Analyst**: Membuat laporan dan visualisasi dari data yang sudah siap (Wawasan Bisnis).
+            ### 3. Prerequisites
+            - Memahami Dasar Database.
+
+            ### 4. Core Material
+            **Data Engineering** adalah fondasi dari AI.
+            - **The "What":** Praktek merancang dan membangun sistem pengumpulan data skala besar.
+            - **The "Why":** Tanpa Data Engineer, Data Scientist tidak punya data bersih untuk dilatih.
+
+            ### 5. Guided Implementation
+            Peran Utama:
+            1. **Ingest**: Ambil data dari sumber.
+            2. **Clean**: Hapus data rusak.
+            3. **Store**: Simpan di gudang data (Data Warehouse).
+
+            ### 6. Pro-Tips
+            Data Engineer lebih banyak berurusan dengan **Infrastruktur** dan **Pipeline** daripada sekadar statistik. Kuasai SQL dan Python secara mendalam!
+
+            ### 7. Interactive Challenge
+            Bayangkan data dari Twitter yang berisi ribuan emoji dan link. Apa satu hal pertama yang harus dilakukan Data Engineer sebelum data itu disimpan?
+
+            ### 8. Summary & Next Steps
+            Pipa data sudah terbayang. Selanjutnya, kita akan belajar alat manipulasi data paling sakti di dunia Python: Pandas Lanjutan!
           quiz:
             question: Apa tanggung jawab utama seorang Data Engineer?
             options:
@@ -2646,14 +2825,40 @@
         - id: pandas-advanced
           title: Pandas Lanjutan
           content: |-
-            **Tujuan Pembelajaran:** Melakukan manipulasi data tingkat lanjut seperti agregasi dan penggabungan tabel yang kompleks.
+            ### 1. Hook & Context
+            **Problem Statement:** Terkadang data pelanggan ada di Tabel A, dan data transaksi ada di Tabel B. Bagaimana cara menyatukan keduanya agar kita tahu siapa pelanggan paling boros?
+            **Analogi:** Seperti "Menyusun Puzzle". Kamu punya dua bagian yang berbeda, dan kamu butuh alat (Pandas) untuk menyambungkannya menjadi satu gambar utuh.
 
-            Dalam data engineering, Pandas sering digunakan untuk pembersihan data (data cleaning) skala menengah.
+            ### 2. Learning Objectives
+            Kamu akan mampu **menggabungkan** dataset kompleks menggunakan fungsi `merge` dan **meringkas** data menggunakan teknik `pivoting`.
 
-            **Teknik Penting:**
-            - **Merging**: Menggabungkan dua tabel berdasarkan kolom kunci (seperti `JOIN` di SQL).
+            ### 3. Prerequisites
+            - Memahami Dasar Pandas (DataFrame).
+
+            ### 4. Core Material
+            - **Merging/Joining**: Menggabungkan tabel berdasarkan kolom kunci.
+            - **Grouping/Aggregation**: Menghitung statistik per grup.
             - **Pivoting**: Mengubah struktur baris menjadi kolom.
-            - **Aggregation**: Menghitung statistik per grup (rata-rata, total, jumlah).
+
+            ### 5. Guided Implementation
+            ```python
+            import pandas as pd
+            df1 = pd.DataFrame({"id": [1, 2], "nama": ["Budi", "Andi"]})
+            df2 = pd.DataFrame({"id": [1, 2], "gaji": [500, 600]})
+
+            # Menggabungkan data
+            df_total = pd.merge(df1, df2, on="id")
+            print(df_total)
+            ```
+
+            ### 6. Pro-Tips
+            Gunakan `.vectorize()` (operasi kolom) sebisa mungkin. Hindari menggunakan loop `for` untuk memproses baris demi baris di Pandas karena akan sangat lambat.
+
+            ### 7. Interactive Challenge
+            Gunakan `df.groupby('kota')['omzet'].sum()` untuk menghitung total penjualan per kota dari data simulasi pilihanmu.
+
+            ### 8. Summary & Next Steps
+            Manipulasi tabel sudah mahir. Selanjutnya, kita akan belajar alur kerja industri untuk memindahkan data: ETL & ELT Pipelines!
           codeExample: |-
             import pandas as pd
 
@@ -2666,21 +2871,45 @@
 
             # Grouping: Menghitung total
             # df.groupby("kategori")["harga"].sum()
+          quiz:
+            question: Fungsi apa dalam Pandas yang digunakan untuk menggabungkan dua DataFrame berdasarkan kolom kunci yang sama?
+            options:
+              - df.combine()
+              - df.merge()
+              - df.add()
+              - df.join_all()
+            correctAnswerIndex: 1
         - id: etl-elt-pipelines
           title: ETL & ELT Pipelines
           content: |-
-            **Tujuan Pembelajaran:** Memahami alur kerja pemrosesan data dari sumber ke gudang data (Data Warehouse).
+            ### 1. Hook & Context
+            **Problem Statement:** Mengirim data mentah langsung ke cloud bisa sangat mahal dan lambat. Kita butuh strategi: apakah dibersihkan dulu baru dikirim, atau dikirim dulu baru dibersihkan di dalam cloud?
+            **Analogi:** 
+            - **ETL:** Seperti mencuci beras di dapur sebelum dimasak di kompor.
+            - **ELT:** Seperti memasukkan bahan ke dalam *slow cooker* canggih yang bisa mencuci dan memasak sekaligus di dalamnya.
 
-            **1. ETL (Extract, Transform, Load):**
-            Data diambil, diubah (dibersihkan), lalu baru dimasukkan ke penyimpanan. (Cara tradisional).
+            ### 2. Learning Objectives
+            Kamu akan mampu **merancang** alur kerja pemrosesan data (Extract, Transform, Load) dan **memilih** antara ETL atau ELT berdasarkan skala data.
 
-            **2. ELT (Extract, Load, Transform):**
-            Data diambil dan langsung dimasukkan ke penyimpanan raksasa, baru kemudian diubah di dalam sana. (Cara modern dengan cloud data warehouse).
+            ### 3. Prerequisites
+            - Memahami Dasar SQL dan Python.
 
-            **Langkah Utama:**
-            - **Extract**: Ambil data dari API, Database SQL, atau File CSV.
-            - **Transform**: Mengubah format tanggal, menghapus duplikat, menghitung kolom baru.
-            - **Load**: Masukkan ke BigQuery, Snowflake, atau PostgreSQL.
+            ### 4. Core Material
+            - **Extract**: Ambil data dari sumber.
+            - **Transform**: Ubah format, bersihkan, hitung.
+            - **Load**: Simpan ke database akhir.
+
+            ### 5. Guided Implementation
+            Zaman sekarang, **ELT** lebih populer untuk Big Data karena server cloud (seperti BigQuery) sangat kuat untuk melakukan transformasi data raksasa dengan cepat.
+
+            ### 6. Pro-Tips
+            Gunakan alat bantu seperti **dbt (data build tool)** jika kamu memilih jalur ELT. Ia akan memudahkanmu menulis transformasi data menggunakan SQL.
+
+            ### 7. Interactive Challenge
+            Bayangkan data sensor suhu masuk setiap detik. Menurutmu, lebih cocok pakai ETL (dibersihkan tiap jam) atau ELT (simpan semua dulu)?
+
+            ### 8. Summary & Next Steps
+            Pipa data sudah mengalir. Selanjutnya, kita akan belajar cara merancang "Gudang" yang efisien untuk menyimpan data tersebut: Data Modeling!
           quiz:
             question: Apa kepanjangan dari ETL?
             options:
@@ -2692,14 +2921,34 @@
         - id: data-modeling
           title: Data Modeling & Databases
           content: |-
-            **Tujuan Pembelajaran:** Merancang struktur database yang efisien untuk kebutuhan analisis data (OLAP).
+            ### 1. Hook & Context
+            **Problem Statement:** Jika kamu hanya menumpuk data di satu tabel raksasa, database akan menjadi sangat lambat saat datanya mencapai miliaran baris. Kita butuh cara memecah data menjadi tabel-tabel kecil yang saling terhubung dengan cerdas.
+            **Analogi:** Seperti "Folder di Komputer". Kamu tidak menaruh semua file di Desktop, tapi kamu buat folder `Musik`, `Gambar`, dan `Dokumen` agar mudah dicari.
 
-            Data Modeling adalah proses merancang skema database agar pengambilan data untuk laporan menjadi sangat cepat.
+            ### 2. Learning Objectives
+            Kamu akan mampu **merancang** skema database Star Schema dan **membedakan** antara OLTP dan OLAP.
 
-            **Konsep Populer:**
-            - **Star Schema**: Tabel fakta di tengah dikelilingi oleh tabel dimensi. Paling sederhana dan populer.
-            - **Snowflake Schema**: Versi Star Schema yang lebih normal (lebih detail).
-            - **OLTP vs OLAP**: Database untuk transaksi cepat (misal: Tokopedia) vs Database untuk analisis jutaan data (misal: BigQuery).
+            ### 3. Prerequisites
+            - Memahami dasar SQL (Primary Key, Foreign Key).
+
+            ### 4. Core Material
+            - **Star Schema**: Tabel "Fakta" (transaksi) di tengah, dikelilingi tabel "Dimensi" (data produk, user).
+            - **OLTP**: Untuk transaksi harian (cepat).
+            - **OLAP**: Untuk analisis data warehouse (besar).
+
+            ### 5. Guided Implementation
+            Contoh Star Schema:
+            - **Fakta**: `Penjualan` (id_produk, id_user, jumlah, tanggal).
+            - **Dimensi**: `Produk`, `User`, `Kalender`.
+
+            ### 6. Pro-Tips
+            Normalisasi data itu bagus untuk menghemat memori, tapi untuk Data Warehouse, terkadang kita melakukan "Denormalisasi" agar proses pencarian (Query) menjadi jauh lebih cepat.
+
+            ### 7. Interactive Challenge
+            Buatlah skema sederhana untuk sebuah Perpustakaan. Sebutkan mana yang jadi tabel Fakta dan mana yang jadi Dimensi.
+
+            ### 8. Summary & Next Steps
+            Data sekarang tersimpan rapi. Bagaimana jika datanya terlalu besar untuk satu komputer? Yuk kita bahas teknologi Big Data!
           quiz:
             question: Skema database mana yang paling sering digunakan untuk Data Warehouse karena kecepatannya?
             options:
@@ -2711,14 +2960,35 @@
         - id: big-data-tech
           title: Big Data & Distributed Computing
           content: |-
-            **Tujuan Pembelajaran:** Mengenal teknologi yang digunakan saat data terlalu besar untuk diproses oleh satu komputer saja.
+            ### 1. Hook & Context
+            **Problem Statement:** Jika satu komputer butuh 10 jam untuk memproses data, apakah kita harus menunggu? Bagaimana jika kita punya 10 komputer yang masing-masing mengerjakan 1/10 bagian? Pekerjaan akan selesai dalam 1 jam!
+            **Analogi:** Seperti "Membangun Jembatan". Bukannya menyuruh 1 orang bekerja sendirian, kamu menyewa 100 kuli bangunan yang bekerja serentak di bagian yang berbeda-beda.
 
-            Ketika data mencapai Terabyte atau Petabyte, kita butuh "keroyokan" banyak komputer (Distributed Computing).
+            ### 2. Learning Objectives
+            Kamu akan mampu **menjelaskan** konsep *Distributed Computing* dan **mengidentifikasi** kegunaan Apache Spark dan Kafka.
 
-            **Teknologi Utama:**
-            - **Apache Spark**: Pemrosesan data super cepat di dalam memori (RAM).
-            - **Hadoop (HDFS)**: Sistem penyimpanan file yang tersebar di banyak komputer.
-            - **Apache Kafka**: Sistem untuk menangani aliran data real-time (misal: log ribuan klik pengguna per detik).
+            ### 3. Prerequisites
+            - Memahami Dasar Python.
+
+            ### 4. Core Material
+            **Hadoop & Spark** adalah raja di dunia Big Data.
+            - **Hadoop (HDFS)**: Sistem penyimpanan yang tersebar di banyak komputer.
+            - **Apache Spark**: Mesin pengolah data raksasa di dalam memori (RAM).
+            - **Apache Kafka**: Menangani aliran data real-time jutaan pesan per detik.
+
+            ### 5. Guided Implementation
+            Konsep utama adalah **MapReduce**:
+            1. **Map**: Pecah tugas ke banyak komputer.
+            2. **Reduce**: Gabungkan kembali hasilnya menjadi satu laporan akhir.
+
+            ### 6. Pro-Tips
+            Gunakan library `PySpark` jika kamu ingin memproses data ukuran Terabyte menggunakan sintaks yang mirip dengan Pandas.
+
+            ### 7. Interactive Challenge
+            Kenapa memproses data di memori (Spark) jauh lebih cepat daripada di hardisk (Hadoop MapReduce lama)?
+
+            ### 8. Summary & Next Steps
+            Teknologi raksasa sudah di genggaman. Selanjutnya, kita akan belajar cara "mengatur jadwal" semua pipa data ini secara otomatis: Data Orchestration!
           quiz:
             question: Teknologi apa yang digunakan untuk memproses data besar secara cepat di dalam memori?
             options:
@@ -2730,30 +3000,78 @@
         - id: data-orchestration
           title: Data Orchestration (Airflow)
           content: |-
-            **Tujuan Pembelajaran:** Mengatur jadwal dan ketergantungan antar pipa data secara otomatis.
+            ### 1. Hook & Context
+            **Problem Statement:** Kamu punya 100 pipa data. Pipa B harus jalan jam 2 pagi, tapi harus nunggu Pipa A selesai dulu. Jika Pipa A gagal, Pipa B jangan jalan. Mengatur ini secara manual adalah mimpi buruk.
+            **Analogi:** Seperti "Konduktor Orkestra". Konduktor tidak memainkan alat musik, tapi ia memberi aba-aba kapan biola harus masuk dan kapan trompet harus berhenti.
 
-            Bayangkan kamu punya 100 tugas pemrosesan data. Tugas B baru bisa jalan kalau Tugas A selesai. Menjalankan ini secara manual mustahil. **Orchestrator** melakukan ini secara otomatis.
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengonstruksi** alur kerja data (DAG) menggunakan Apache Airflow dan **mengelola** penjadwalan otomatis.
 
-            **Apache Airflow:**
-            Menggunakan Python untuk mendefinisikan alur kerja yang disebut **DAG (Directed Acyclic Graph)**. Airflow akan memantau tugas mana yang gagal, mengulang (retry) secara otomatis, dan memberi peringatan.
+            ### 3. Prerequisites
+            - Memahami Konsep Pipeline (ETL).
+
+            ### 4. Core Material
+            **Apache Airflow** adalah standar industri untuk mengatur pipa data.
+            - **DAG (Directed Acyclic Graph)**: Alur kerja yang searah dan tidak berputar-putar.
+            - **Operator**: Tugas spesifik (misal: jalankan skrip Python).
+
+            ### 5. Guided Implementation
+            Di Airflow, kamu menulis kode Python untuk menentukan urutan:
+            ```python
+            task_ambil >> task_bersihkan >> task_simpan
+            ```
+
+            ### 6. Pro-Tips
+            Airflow memiliki fitur **Retry**. Jika pipa datamu gagal karena internet putus sementara, Airflow akan mencoba lagi secara otomatis sesuai jumlah yang kamu tentukan.
+
+            ### 7. Interactive Challenge
+            Coba bayangkan satu alur kerja data untuk aplikasi cuaca. Sebutkan urutan tugas yang harus dilakukan dari pengambilan data sampai muncul di HP user!
+
+            ### 8. Summary & Next Steps
+            Manajemen alur data sudah beres. Selanjutnya, kita akan membahas perbedaan tempat "penyimpanan" data skala besar: Data Warehouse vs Data Lake!
           codeExample: |-
             # Contoh konsep Airflow (DAG)
             # task_a = PythonOperator(task_id='ambil_data')
             # task_b = PythonOperator(task_id='bersihkan_data')
             # task_a >> task_b  # Artinya A harus jalan sebelum B
+          quiz:
+            question: Apa kepanjangan dari DAG dalam konteks alur kerja Apache Airflow?
+            options:
+              - Data Access Group
+              - Directed Acyclic Graph
+              - Daily Automation Goal
+              - Digital Archive Guide
+            correctAnswerIndex: 1
         - id: data-warehouse-lake
           title: Data Warehouse vs Data Lake
           content: |-
-            **Tujuan Pembelajaran:** Memilih tempat penyimpanan yang sesuai dengan jenis dan kegunaan data.
+            ### 1. Hook & Context
+            **Problem Statement:** Tidak semua data itu rapi. Ada foto, suara, log mentah, dan tabel rapi. Haruskah kita merapikan semuanya sebelum disimpan? Merapikan foto menjadi tabel adalah hal yang mustahil. Kita butuh dua jenis gudang berbeda.
+            **Analogi:** 
+            - **Data Warehouse:** Seperti "Apotek". Semuanya tertata rapi, berlabel, dan siap dipakai pelanggan.
+            - **Data Lake:** Seperti "Gudang Penyimpanan Raksasa". Kamu lempar saja semua barang (mentah) ke dalamnya, baru nanti kamu cari dan bersihkan saat butuh.
 
-            **1. Data Warehouse (Gudang Data):**
-            Menyimpan data yang sudah rapi, terstruktur, dan siap dianalisis untuk laporan bisnis. (Contoh: Google BigQuery).
+            ### 2. Learning Objectives
+            Kamu akan mampu **memilih** infrastruktur penyimpanan yang tepat antara Data Warehouse, Data Lake, atau Data Lakehouse.
 
-            **2. Data Lake (Danau Data):**
-            Menyimpan segala jenis data mentah (gambar, teks, log, video) tanpa perlu dirapikan dulu. Sangat murah dan bisa menampung data skala raksasa. (Contoh: AWS S3).
+            ### 3. Prerequisites
+            - Memahami Dasar Database.
 
-            **3. Data Lakehouse:**
-            Teknologi terbaru yang menggabungkan kemampuan Data Lake yang murah dengan Data Warehouse yang cepat.
+            ### 4. Core Material
+            - **Data Warehouse**: Untuk data terstruktur (tabel). Mahal tapi sangat cepat untuk laporan bisnis. Contoh: BigQuery, Redshift.
+            - **Data Lake**: Untuk segala jenis data (foto, teks mentah). Murah dan menampung petabyte data. Contoh: AWS S3, Google Cloud Storage.
+
+            ### 5. Guided Implementation
+            Tren terbaru: **Data Lakehouse** (seperti Databricks). Gabungan keduanya: menyimpan data mentah dengan harga murah, tapi bisa di-query secepat tabel rapi.
+
+            ### 6. Pro-Tips
+            Simpan semua data mentah di Data Lake terlebih dahulu. Jangan pernah buang data mentah, karena siapa tahu 2 tahun lagi kamu butuh data itu untuk melatih model AI baru!
+
+            ### 7. Interactive Challenge
+            Jika kamu ingin menyimpan jutaan rekaman suara telepon pelanggan, mana yang kamu pilih: Data Warehouse atau Data Lake?
+
+            ### 8. Summary & Next Steps
+            Selamat! Kamu sudah paham seluk beluk Data Engineering. Selanjutnya, kita akan belajar tahap krusial sebelum data masuk ke AI: Data Preparation & Feature Engineering!
           quiz:
             question: Di mana Anda sebaiknya menyimpan data mentah (seperti file gambar atau log mentah) dalam skala besar?
             options:
@@ -3889,7 +4207,7 @@
           codeExample: |-
             print("CLIP: Menyatukan dunia teks dan gambar ke dalam satu ruang vektor yang sama.")
           quiz:
-            question: Teknologi apa yang memungkinkan kita mencari foto di smartphone hanya dengan mengetikkan deskripsi teks (misal: 'foto di pantai')?
+            question: "Teknologi apa yang memungkinkan kita mencari foto di smartphone hanya dengan mengetikkan deskripsi teks (misal: 'foto di pantai')?"
             options:
               - Nama file harus diganti manual.
               - Multimodal Embeddings (seperti CLIP).
