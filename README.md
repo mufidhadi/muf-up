@@ -40,10 +40,49 @@ Anda dapat menjalankan proyek ini secara lokal menggunakan Node.js secara langsu
     ```
 5.  Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
+## Manajemen Konten Kurikulum
+
+Konten pembelajaran di Muf-Up dikelola melalui file YAML untuk memudahkan pembaruan materi tanpa harus mengubah logika kode aplikasi.
+
+### Mengupdate Materi (YAML)
+
+Seluruh data kurikulum (Grup, Modul, dan Materi/Lesson) berada di:
+`src/curriculum.yaml`
+
+**Struktur File YAML:**
+```yaml
+- id: nama-grup
+  title: Judul Grup Kurikulum
+  description: Deskripsi singkat grup ini.
+  modules:
+    - id: nama-modul
+      title: Judul Modul
+      lessons:
+        - id: nama-materi
+          title: Judul Materi
+          content: |-
+            Isi materi dalam format Markdown.
+            Gunakan `|-` untuk teks multi-baris.
+          codeExample: |-
+            # Contoh kode Python yang bisa dijalankan
+            print("Halo!")
+          quiz:
+            question: "Pertanyaan kuis?"
+            options:
+              - "Pilihan A"
+              - "Pilihan B"
+            correctAnswerIndex: 0 # Indeks jawaban benar (mulai dari 0)
+```
+
+### Sinkronisasi Perubahan
+
+Setelah Anda mengubah file `src/curriculum.yaml`, aplikasi akan secara otomatis memuat data terbaru melalui `src/constants.ts`. Jika Anda menggunakan mode pengembangan (`npm run dev` atau Docker Compose), perubahan akan langsung terlihat setelah halaman di-refresh (Hot Module Replacement aktif untuk file YAML).
+
 ## Struktur Proyek
 
 - `src/`: Source code aplikasi React.
-- `src/constants.ts`: Berisi data kurikulum dan modul pembelajaran.
+- `src/curriculum.yaml`: Sumber data utama konten pembelajaran.
+- `src/constants.ts`: Mengimpor dan mengekspor data dari YAML ke aplikasi.
 - `Dockerfile` & `docker-compose.yml`: Konfigurasi containerization.
 - `scripts/`: Berbagai script utilitas untuk manajemen konten (seperti `add_quizzes.cjs`).
 
