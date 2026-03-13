@@ -1356,19 +1356,6 @@
               - HEAD
               - OPTIONS
             correctAnswerIndex: 1
-
-            **cURL**: Alat baris perintah (command line) untuk mengirim request ke server secara cepat tanpa browser.
-          codeExample: |-
-            import requests # Library HTTP paling populer di Python
-
-            # Mengambil data (GET)
-            response = requests.get("https://api.github.com")
-            
-            if response.status_code == 200:
-                print(f"Berhasil! Header Server: {response.headers['Server']}")
-                print(f"Isi JSON: {response.json()['current_user_url']}")
-            else:
-                print(f"Gagal dengan status: {response.status_code}")
         - id: http-streaming-websocket
           title: HTTP Streaming & WebSocket
           content: |-
