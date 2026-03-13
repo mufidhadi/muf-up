@@ -8,7 +8,7 @@
         - id: what-is-python
           title: Apa itu Python? (Sebuah Pengantar)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Banyak bahasa pemrograman yang sulit dipelajari karena sintaksnya yang kaku dan penuh simbol rumit. Hal ini membuat pemula sering menyerah sebelum berhasil membuat program pertama mereka.
             **Analogi:** Mempelajari Python itu seperti belajar memasak menggunakan resep yang ditulis dengan bahasa sehari-hari, bukan dengan istilah kimia yang rumit. Kamu fokus pada "apa yang ingin dimasak", bukan "bagaimana cara kerja kompornya".
 
@@ -56,7 +56,7 @@
         - id: setup
           title: Persiapan Lingkungan Kerja (Environment)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Tanpa alat yang tepat, menulis kode akan terasa seperti menulis novel di kalkulator—sangat sulit dan tidak efisien.
             **Analogi:** Menjadi programmer tanpa IDE itu seperti teknisi mesin tanpa bengkel. Kamu butuh tempat yang punya semua peralatan (obeng, kunci inggris) di satu lokasi.
 
@@ -106,7 +106,7 @@
         - id: variables
           title: Variabel & Tipe Data (Menyimpan Informasi)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Komputer punya ingatan yang sangat besar, tapi ia tidak tahu apa arti angka "25" jika kita tidak memberinya label. Apakah itu umur? Harga? Atau jumlah apel?
             **Analogi:** Bayangkan Variabel adalah kotak kardus. Kamu menuliskan label "Buku" di luar kotak, lalu memasukkan buku ke dalamnya. Kapanpun kamu butuh buku, kamu tinggal mencari kotak berlabel tersebut.
 
@@ -161,7 +161,7 @@
         - id: operators
           title: Operator Matematika & Logika
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Data yang hanya disimpan tidak akan berguna. Kita butuh cara untuk menjumlahkan harga belanjaan, membagi rata nilai ujian, atau mengecek apakah seseorang sudah cukup umur.
             **Analogi:** Operator adalah "simbol sakti" layaknya tombol pada kalkulator.
 
@@ -217,7 +217,7 @@
         - id: if-else
           title: Percabangan (If, Elif, Else)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Program yang berjalan lurus dari atas ke bawah sangatlah membosankan dan tidak pintar. Bagaimana jika kita ingin aplikasi kita hanya memberikan diskon jika total belanja di atas Rp 100.000?
             **Analogi:** Bayangkan kamu sedang mengemudi dan bertemu persimpangan jalan. Jika lampu hijau, kamu jalan. Jika merah, kamu berhenti. Percabangan adalah "lampu lalu lintas" bagi kodemu.
 
@@ -280,7 +280,7 @@
         - id: loops
           title: Perulangan (For & While Loops)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara mencetak kalimat "Saya tidak akan telat lagi" sebanyak 1000 kali? Menulisnya manual adalah hukuman, bukan pemrograman.
             **Analogi:** Bayangkan kincir ria di taman bermain. Ia terus berputar selama mesinnya menyala (while) atau berputar sebanyak 10 putaran lalu berhenti (for).
 
@@ -333,7 +333,7 @@
         - id: intro-functions
           title: Mengenal Fungsi
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu punya kode sepanjang 50 baris untuk menghitung pajak. Jika kamu butuh menghitung pajak di 10 tempat berbeda, apakah kamu akan menyalin kode itu 10 kali? Jika ada rumus yang salah, kamu harus memperbaikinya di 10 tempat!
             **Analogi:** Fungsi adalah seperti "Resep Masakan". Kamu menulis cara memasak nasi goreng sekali saja di buku resep. Kapan pun kamu ingin makan, kamu tinggal memanggil resep tersebut tanpa harus menulis ulang langkah-langkahnya.
 
@@ -390,7 +390,7 @@
         - id: return-values
           title: Nilai Balik (Return)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Terkadang kita tidak ingin fungsi hanya mencetak hasil ke layar. Kita ingin fungsi memberikan hasil hitungannya kepada kita untuk disimpan di database atau dihitung kembali.
             **Analogi:** Bayangkan kamu menyuruh asisten untuk membeli kopi. Kamu ingin asisten itu **kembali** membawa kopi, bukan hanya berteriak "Saya sudah beli kopinya!".
 
@@ -442,7 +442,7 @@
         - id: lists
           title: List (Daftar)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu harus menyimpan nama 100 siswa. Apakah kamu akan membuat 100 variabel seperti `siswa1`, `siswa2`, dst? Itu sangat merepotkan!
             **Analogi:** List adalah seperti sebuah "Rak Sepatu". Kamu punya satu tempat besar (Rak), tapi di dalamnya kamu bisa menaruh banyak sepatu secara berurutan.
 
@@ -491,7 +491,7 @@
         - id: dictionaries
           title: Dictionary (Kamus)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Di dalam list, kita mencari data berdasarkan nomor urut (indeks). Tapi bagaimana jika kita ingin mencari harga barang berdasarkan "Nama Barang"? Mencari nomor urut satu per satu akan lambat.
             **Analogi:** Seperti "Buku Kontak" di HP-mu. Kamu tidak mencari nomor temanmu berdasarkan urutan ke berapa dia disimpan, tapi berdasarkan "Nama Teman"-nya.
 
@@ -539,7 +539,7 @@
         - id: tuples-sets
           title: Tuple & Set
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Terkadang kita butuh data yang "tidak boleh berubah sama sekali" (Tuple) atau data yang "tidak boleh ada duplikatnya" (Set).
             **Analogi:** 
             - **Tuple:** Seperti "Akta Kelahiran". Tanggal lahirmu tidak akan pernah berubah.
@@ -591,7 +591,7 @@
         - id: classes-objects
           title: Class & Object
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kita sudah belajar variabel dan fungsi. Tapi bagaimana jika kita ingin membuat sistem "Game Mobil" yang punya ribuan mobil dengan kecepatan dan warna berbeda-beda? Mengelola ribuan variabel dan fungsi akan sangat kacau.
             **Analogi:** Class adalah "Cetakan Kue", sedangkan Object adalah "Kue"-nya. Dengan satu cetakan yang sama, kamu bisa membuat ratusan kue dengan rasa (atribut) yang berbeda.
 
@@ -648,7 +648,7 @@
         - id: inheritance
           title: Pewarisan (Inheritance)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu membuat class `Hewan`. Lalu kamu ingin membuat class `Kucing` dan `Anjing`. Keduanya adalah hewan, jadi mereka punya kemiripan (punya kaki, bisa makan). Haruskah kita menulis ulang kode "makan" di setiap class?
             **Analogi:** Seperti warisan dari orang tua ke anak. Anak mendapatkan sifat orang tuanya (warna mata, tinggi badan) tanpa harus "menciptakan" sifat itu sendiri dari nol.
 
@@ -708,7 +708,7 @@
         - id: error-handling
           title: Penanganan Error (Try Except)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu membuat aplikasi kalkulator. Jika user memasukkan huruf saat diminta angka, programmu akan langsung mati (crash). Ini akan membuat user kesal.
             **Analogi:** Seperti "Jaring Pengaman" di bawah pemain sirkus. Jika pemain itu jatuh (terjadi error), jaring akan menangkapnya sehingga ia tidak terluka dan pertunjukan bisa lanjut.
 
@@ -761,7 +761,7 @@
         - id: file-handling
           title: Bekerja dengan File
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Variabel hanya menyimpan data di RAM. Saat komputer dimatikan, data hilang. Bagaimana jika kita ingin menyimpan skor tertinggi pemain game selamanya?
             **Analogi:** Seperti menulis di buku catatan. Kamu membuka buku (open), menulis (write) atau membaca (read), lalu menutupnya kembali (close).
 
@@ -811,7 +811,7 @@
         - id: decorators
           title: Decorator
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu punya 20 fungsi dan ingin mencatat waktu berapa lama masing-masing fungsi berjalan. Apakah kamu akan menambahkan kode pencatat waktu di setiap fungsi tersebut? Melelahkan!
             **Analogi:** Seperti menambahkan "Casing" pada HP. Kamu tidak mengubah mesin HP-nya, tapi kamu menambah perlindungan atau hiasan di luarnya.
 
@@ -871,7 +871,7 @@
         - id: generators
           title: Generator
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika kamu ingin mengolah 1 miliar angka, menyimpannya di dalam sebuah `List` akan langsung membuat RAM komputermu penuh dan aplikasi mati.
             **Analogi:** Seperti "Prasmanan" vs "Pelayan". List adalah Prasmanan (semua makanan ditaruh di meja sekaligus). Generator adalah Pelayan (makanan diberikan satu per satu hanya saat kamu memintanya).
 
@@ -926,7 +926,7 @@
         - id: pip-modules
           title: PIP & Modul
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kamu ingin membuat aplikasi yang bisa memprediksi cuaca atau mendeteksi wajah. Menulis algoritmanya dari nol akan memakan waktu bertahun-tahun.
             **Analogi:** Seperti membangun rumah. Kamu tidak perlu membuat batu bata dan semen sendiri. Kamu tinggal membelinya di toko bangunan (Ekosistem Python) dan merakitnya.
 
@@ -981,7 +981,7 @@
         - id: api-concept
           title: Apa itu API?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu ingin menampilkan peta di aplikasimu. Apakah kamu harus memotret seluruh dunia dari satelit sendiri? Tentu tidak. Kamu butuh cara untuk "meminjam" data peta dari Google atau Mapbox.
             **Analogi:** Seperti "Pelayan Restoran". Kamu (Client) tidak perlu masuk ke dapur (Server) untuk memasak. Kamu cukup memesan melalui Pelayan (API), dan Pelayan akan membawakan makananmu.
 
@@ -1025,7 +1025,7 @@
         - id: mcp-concept
           title: Apa itu MCP?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** AI zaman sekarang pintar bicara, tapi seringkali mereka "terkurung" di dalam kotak chat. Mereka tidak bisa membaca file rahasiamu atau menjalankan program di komputermu tanpa integrasi yang rumit dan berbeda-beda setiap aplikasi.
             **Analogi:** Seperti "USB Port" untuk AI. Dulu, printer punya kabel sendiri, keyboard punya kabel sendiri. Sekarang, semua menggunakan USB. MCP adalah port standar agar AI bisa terhubung ke alat (tools) apapun dengan satu cara yang sama.
 
@@ -1066,7 +1066,7 @@
         - id: sdk-concept
           title: Apa itu SDK?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Menggunakan API secara mentah (raw) terkadang sulit karena kamu harus mengatur header, autentikasi, dan format data secara manual.
             **Analogi:** Seperti "Paket Siap Rakit" dari IKEA. Kamu tidak hanya mendapatkan kayu (data), tapi kamu juga mendapatkan baut, obeng, dan buku petunjuk dalam satu kotak.
 
@@ -1109,7 +1109,7 @@
         - id: library-framework
           title: Library vs Framework
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Banyak pemula tertukar antara Library dan Framework. Salah memilih bisa berakibat pada struktur kode yang kaku atau justru terlalu bebas hingga berantakan.
             **Analogi:** 
             - **Library:** Seperti pergi ke IKEA untuk beli meja. Kamu yang memutuskan di mana naruh mejanya di rumahmu. (Kamu yang pegang kendali).
@@ -1159,7 +1159,7 @@
         - id: json-format
           title: JSON (JavaScript Object Notation)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara mengirim data dari aplikasi Python ke aplikasi yang dibuat dengan Java atau JavaScript? Mereka punya struktur variabel yang berbeda. Kita butuh bahasa "Universal".
             **Analogi:** Seperti "Bahasa Inggris" di dunia komunikasi. Apapun bahasa ibumu, kita semua bicara bahasa Inggris agar saling mengerti. JSON adalah bahasa Inggris bagi data.
 
@@ -1210,7 +1210,7 @@
         - id: yaml-format
           title: YAML (YAML Ain't Markup Language)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** JSON terkadang sulit ditulis manual karena banyak tanda kurung `{}` dan koma `,`. Salah satu koma saja bisa bikin error.
             **Analogi:** Seperti menulis "Daftar Belanja" di kertas. Tidak perlu kurung-kurung rumit, cukup tulis poin-poinnya saja dengan indentasi yang rapi.
 
@@ -1257,7 +1257,7 @@
         - id: xml-latex
           title: XML & LaTeX
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** 
             - **XML:** Bagaimana sistem perbankan lama bertukar data?
             - **LaTeX:** Bagaimana ilmuwan menulis rumus matematika yang sangat rumit agar terlihat cantik dan rapi di jurnal ilmiah?
@@ -1305,7 +1305,7 @@
         - id: http-requests
           title: HTTP Request & cURL
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu ingin mendownload harga saham atau berita terbaru secara otomatis setiap jam. Kamu tidak mungkin membuka browser dan klik tombol download manual setiap saat. Kamu butuh cara agar kodemu bisa "meminta" data ke server internet.
             **Analogi:** Seperti "Mengirim Surat". Kamu menulis alamat tujuan (URL), memasukkan isi surat (Body), menempelkan perangko (API Key), lalu mengirimnya melalui pak pos (Protokol HTTP).
 
@@ -1359,7 +1359,7 @@
         - id: http-streaming-websocket
           title: HTTP Streaming & WebSocket
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** HTTP biasa bersifat "Tanya-Jawab". Kamu tanya, server jawab, lalu putus. Tapi bagaimana dengan aplikasi Chat atau Dashboard Saham? Kamu tidak ingin terus-menerus bertanya "Ada pesan baru?" setiap detik (Polling). Kamu ingin server "berteriak" saat ada data baru.
             **Analogi:** 
             - **HTTP:** Seperti mengirim SMS. Kamu kirim, lalu nunggu balasan.
@@ -1402,7 +1402,7 @@
         - id: message-brokers
           title: Message Brokers
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu punya aplikasi seperti Gojek. Saat pesanan masuk, ribuan hal harus terjadi: kirim notif ke driver, cek promo, update database, dll. Jika satu hal gagal atau lambat, apakah seluruh aplikasi harus ikutan macet?
             **Analogi:** Seperti "Kantor Pos". Kamu tidak perlu memberikan surat langsung ke tangan temanmu. Kamu cukup taruh di kotak pos (Message Broker), dan temanmu akan mengambilnya saat dia siap.
 
@@ -1443,7 +1443,7 @@
         - id: web-frameworks
           title: Web Server Frameworks
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Membuat server web dari nol menggunakan socket sangatlah sulit. Kamu harus menangani keamanan, routing URL, dan parsing data secara manual.
             **Analogi:** Seperti membangun restoran. Kamu tidak perlu membuat kompor, meja, dan kursi sendiri. Kamu bisa membeli paket "Interior Restoran" yang sudah siap pakai (Framework).
 
@@ -1492,7 +1492,7 @@
         - id: db-intro
           title: Apa itu Database?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** File teks (`.txt`) atau CSV sulit digunakan untuk menyimpan jutaan data yang saling berhubungan. Mencari satu data di antara jutaan baris teks akan memakan waktu lama.
             **Analogi:** Seperti "Perpustakaan Raksasa". Database bukan hanya tumpukan buku, tapi buku yang ditata rapi di rak tertentu, lengkap dengan katalog pencarian agar buku bisa ketemu dalam hitungan detik.
 
@@ -1531,7 +1531,7 @@
         - id: sql-queries
           title: Query & CRUD
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kamu punya gudang data, tapi bagaimana cara mengambilnya? Kamu butuh "Bahasa Perintah" yang dimengerti oleh database.
             **Analogi:** Seperti memesan kopi di kafe. Kamu harus bilang "Saya minta Kopi Hitam, satu, tanpa gula". SQL adalah cara kamu memesan data.
 
@@ -1576,7 +1576,7 @@
         - id: orm-concept
           title: ORM (Object Relational Mapping)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Menulis kode SQL panjang di tengah-tengah kode Python terasa sangat berantakan dan rawan error. Bagaimana jika kita bisa memperlakukan tabel database seperti Class Python biasa?
             **Analogi:** Seperti "Penerjemah Bahasa". Kamu bicara bahasa Python, dan ORM akan menerjemahkannya menjadi bahasa SQL untuk database secara otomatis.
 
@@ -1628,7 +1628,7 @@
         - id: migration-seed
           title: Migration & Seed
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan kamu bekerja dalam tim. Kamu menambah kolom "No HP" di databasemu. Bagaimana cara memastikan teman setimmu mendapatkan perubahan struktur yang sama di komputer mereka?
             **Analogi:** 
             - **Migration:** Seperti "Git" untuk database. Ia mencatat setiap perubahan struktur (tambah kolom, hapus tabel) dalam file sejarah.
@@ -1674,7 +1674,7 @@
         - id: type-hints
           title: Type Hints (Petunjuk Tipe)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Di proyek besar, kamu sering bingung sebuah variabel isinya apa. Apakah `total` itu angka atau teks? Salah memberikan data bisa menyebabkan program error di saat yang paling tidak tepat.
             **Analogi:** Seperti "Label pada Botol Bumbu". Tanpa label, garam dan gula terlihat sama. *Type Hints* adalah label yang memberi tahu kita (dan editor kode) apa isi botol tersebut.
 
@@ -1722,7 +1722,7 @@
         - id: typing-module
           title: Modul Typing
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara memberi tahu bahwa sebuah variabel adalah "List yang isinya hanya Angka" atau "Dictionary yang kuncinya Teks dan nilainya desimal"? Type hints standar tidak cukup detail untuk ini.
             **Analogi:** Seperti "Label Spesifik". Bukan cuma label "Makanan", tapi "Makanan -> Kaleng -> Ikan". Lebih detail, lebih aman.
 
@@ -1776,7 +1776,7 @@
         - id: pydantic-intro
           title: Mengenal Pydantic
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Type hints hanya memberi petunjuk, tapi tidak mencegah data sampah masuk ke aplikasimu. Bagaimana jika ada orang mengirim "Teks" ke sistem perbankan yang mengharuskan "Angka"?
             **Analogi:** Seperti "Petugas Keamanan (Satpam)" di pintu masuk. Satpam tidak hanya melihat label namamu, tapi juga memeriksa isi tasmu dan memastikan kamu membawa barang yang benar sebelum diizinkan masuk.
 
@@ -1833,7 +1833,7 @@
         - id: pydantic-validation
           title: Validasi Otomatis
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kadang tipe data saja tidak cukup. Umur haruslah angka positif, dan harga tidak boleh Rp 0. Bagaimana cara mengecek batasan-batasan ini tanpa menulis ribuan `if-else`?
             **Analogi:** Seperti "Alat Ukur Tinggi Badan" di wahana permainan. Kamu bukan cuma harus manusia (tipe data), tapi tinggimu juga harus minimal 120cm (validasi batasan).
 
@@ -1891,7 +1891,7 @@
         - id: kiss-dry-yagni
           title: KISS, DRY, & YAGNI
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Banyak programmer pemula terjebak membuat kode yang sangat rumit atau menyalin kode yang sama berulang kali. Ini membuat aplikasi sulit diperbaiki dan rawan bug.
             **Analogi:** Seperti "Membawa Tas". Jika kamu hanya pergi ke warung depan rumah, jangan bawa koper raksasa (YAGNI). Jika kamu punya banyak kunci, taruh di gantungan kunci agar tidak tercecer (DRY).
 
@@ -1945,7 +1945,7 @@
         - id: solid-principles
           title: SOLID Principles
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Mengapa aplikasi besar seringkali "rusak di bagian A saat kita memperbaiki bagian B"? Itu karena komponen kodenya saling terikat terlalu erat dan tidak teratur.
             **Analogi:** Seperti "Alat Musik Orkestra". Setiap pemain musik punya tanggung jawab masing-masing. Pemain biola tidak perlu tahu cara kerja terompet untuk bisa bermain dengan bagus.
 
@@ -1997,7 +1997,7 @@
         - id: tdd-concept
           title: TDD (Test Driven Development)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Takut merilis aplikasi karena tidak yakin kodenya benar-benar jalan? Menunggu user lapor bug baru diperbaiki adalah cara yang lambat dan berbahaya.
             **Analogi:** Seperti "Membangun Gedung dengan Arsitek". Kamu membuat denah (test) terlebih dahulu, baru kemudian membangun temboknya. Jika tembok tidak sesuai denah, kamu langsung tahu.
 
@@ -2044,7 +2044,7 @@
         - id: clean-code-python
           title: Clean Code di Python (PEP 8)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** "Saya bisa baca kode saya hari ini, tapi besok bahkan Tuhan pun tidak tahu ini kode apa." - Pengakuan programmer tanpa *Clean Code*. Kode yang berantakan adalah utang (Technical Debt).
             **Analogi:** Seperti "Menulis Buku". Jika spasi berantakan dan huruf kapital ngawur, pembaca akan pusing. PEP 8 adalah panduan tata bahasa untuk Python.
 
@@ -2099,7 +2099,7 @@
         - id: testing-intro
           title: Kenapa Harus Testing?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Pernahkah kamu mengubah satu baris kode, lalu tiba-tiba fitur lain yang tadinya jalan jadi rusak? Tanpa pengujian otomatis, kamu harus mengecek seluruh aplikasi secara manual setiap kali ada perubahan. Melelahkan dan berisiko!
             **Analogi:** Seperti "Pemeriksaan Kesehatan Rutin". Kamu tidak menunggu sakit parah baru ke dokter. Kamu tes darah secara rutin (test) untuk memastikan semua organ (fitur) berfungsi normal.
 
@@ -2144,7 +2144,7 @@
         - id: testing-levels
           title: Level Testing (Unit, Integration, E2E)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Menguji satu sekrup (Unit) tidak menjamin mesin mobil bisa menyala (Integration), dan mesin menyala tidak menjamin mobil bisa dikemudikan dengan nyaman di jalan (E2E). Kita butuh strategi pengujian di berbagai level.
             **Analogi:** Seperti membangun rumah. Kamu tes kualitas batu batanya (Unit), tes apakah semen menempel di bata (Integration), lalu tes apakah rumah layak huni (E2E).
 
@@ -2187,7 +2187,7 @@
         - id: specialized-testing
           title: Smoke, Regression, & Validation
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Setelah memperbaiki bug "Salah Ketik" di halaman profil, tiba-tiba tombol "Posting" jadi tidak bisa diklik. Bagaimana cara memastikan perubahan kecil tidak merusak segalanya?
             **Analogi:** 
             - **Smoke Test:** Seperti menyalakan mesin motor di pagi hari. Jika tidak ada asap aneh, motor siap jalan.
@@ -2231,7 +2231,7 @@
         - id: pytest-intro
           title: Mengenal Pytest
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Library bawaan Python (`unittest`) terkadang terlalu kaku dan sulit ditulis. Kita butuh alat yang membuat penulisan tes semudah menulis kode Python biasa.
             **Analogi:** Seperti "Asisten Pribadi". Kamu cukup bilang "Tolong cek apakah A sama dengan B", dan Pytest akan mengurus laporannya untukmu.
 
@@ -2280,7 +2280,7 @@
         - id: pytest-advanced
           title: Fitur Canggih Pytest
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana jika kamu ingin menguji sebuah fungsi dengan 100 variasi data yang berbeda? Menulis 100 fungsi tes sangatlah konyol. Kita butuh cara yang lebih pintar.
             **Analogi:** Seperti "Mesin Cetak Otomatis". Kamu masukkan satu pola (template tes), lalu masukkan daftar bahan (data), dan mesin akan mencetak hasilnya untukmu.
 
@@ -2331,7 +2331,7 @@
         - id: profiling-intro
           title: Apa itu Profiling?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Aplikasi kamu terasa sangat lambat saat memproses data. Apakah kamu akan menebak-nebak baris mana yang lambat dan mengubahnya sembarangan? Itu seperti mencoba memperbaiki mesin mobil dengan mata tertutup.
             **Analogi:** Seperti "Laporan Keuangan". Kamu ingin tahu pengeluaran terbesarmu ada di mana agar bisa berhemat. Profiling adalah laporan pengeluaran waktu/memori aplikasimu.
 
@@ -2383,7 +2383,7 @@
         - id: optimization-tips
           title: Tips Optimasi Kode
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Menambah RAM komputer bukan solusi utama untuk kode yang buruk. Kamu butuh cara agar kodemu bekerja lebih cerdas, bukan lebih keras.
             **Analogi:** Seperti "Membawa Barang". Daripada bolak-balik bawa satu ember air 100 kali (loop), lebih baik gunakan satu tangki raksasa dan alirkan sekaligus (vectorization).
 
@@ -2434,7 +2434,7 @@
         - id: premature-optimization
           title: Bahaya Premature Optimization
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** "Programmer menghabiskan terlalu banyak waktu untuk memikirkan atau mencemaskan efisiensi bagian kode yang sebenarnya tidak berpengaruh." - Donald Knuth.
             **Analogi:** Seperti "Mengecat Velg Mobil" saat mesin mobilnya sendiri belum bisa menyala. Kamu membuang waktu untuk detil kecil yang tidak penting.
 
@@ -2485,7 +2485,7 @@
         - id: numpy-basics
           title: 'NumPy: Komputasi Numerik'
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Ingin menghitung rata-rata dari 10 juta data? Menggunakan loop `for` biasa di Python akan memakan waktu sangat lama. Komputer butuh cara mengolah angka secara massal (Vektor).
             **Analogi:** Seperti "Memanen Padi". Daripada memotong satu per satu batang padi (loop), kamu menggunakan mesin pemanen raksasa yang langsung mengambil seluruh baris padi dalam sekali jalan (Vectorization).
 
@@ -2535,7 +2535,7 @@
         - id: pandas-basics
           title: 'Pandas: Analisis Data Dasar'
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Data mentah biasanya berantakan, ada di file Excel, dan punya banyak kolom. Bagaimana cara memfilter data pelanggan yang berumur di atas 25 tahun dari 1 juta baris data dengan cepat?
             **Analogi:** Seperti "Excel on Steroids". Pandas memberikanmu tabel (DataFrame) yang bisa kamu manipulasi dengan kode, jauh lebih sakti dan otomatis daripada klik-klik di Excel.
 
@@ -2591,7 +2591,7 @@
         - id: viz-intro
           title: Kenapa Visualisasi Data?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Manusia sangat sulit memahami tren jika hanya melihat tabel berisi jutaan baris angka. Kita butuh cara untuk "melihat" pola tersebut dalam sekejap mata.
             **Analogi:** Seperti "Peta vs Daftar Alamat". Kamu akan lebih cepat sampai tujuan jika melihat peta daripada membaca daftar ribuan alamat tertulis.
 
@@ -2631,7 +2631,7 @@
         - id: matplotlib-basics
           title: Mengenal Matplotlib
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara membuat grafik di Python? Kita butuh library yang memberikan kontrol penuh, mulai dari warna garis hingga label di sumbu X dan Y.
             **Analogi:** Seperti "Kertas Gambar dan Pensil Warna". Matplotlib menyediakan kanvas kosong (Figure) dan alat lukisnya (Plot).
 
@@ -2683,7 +2683,7 @@
         - id: chart-types
           title: Jenis-Jenis Grafik Utama
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Tidak semua data cocok digambar dengan garis. Data perbandingan kategori lebih baik pakai batang, sedangkan data sebaran titik lebih baik pakai scatter. Salah pilih grafik bisa membuat informasi menjadi menyesatkan.
             **Analogi:** Seperti memilih "Sepatu". Kamu tidak pakai sepatu bola untuk pesta formal. Gunakan grafik yang sesuai dengan "acaranya" (datanya).
 
@@ -2733,7 +2733,7 @@
         - id: customizing-plots
           title: Kustomisasi Grafik
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Grafik standar biasanya terlihat pucat dan kurang informatif. Untuk laporan profesional, kamu butuh warna yang menarik, legenda (keterangan), dan garis bantu (grid) agar data mudah dibaca.
             **Analogi:** Seperti "Mendekorasi Ruangan". Kamu sudah punya tembok (grafik), sekarang kamu beri cat (warna), lampu (grid), dan label nama ruangan (legend).
 
@@ -2785,7 +2785,7 @@
         - id: de-intro
           title: Apa itu Data Engineering?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Di era Big Data, jutaan data masuk setiap detik dari berbagai sumber (HP, sensor, web). Jika data ini langsung diberikan ke bos untuk dianalisis, mereka akan pusing karena datanya berantakan dan tidak terstruktur.
             **Analogi:** Seperti "Sistem Pengolahan Air Bersih". Kamu butuh orang yang membangun pipa, memasang filter, dan memastikan air (data) yang sampai di keran (dashboard) sudah bersih dan siap diminum (dianalisis).
 
@@ -2825,7 +2825,7 @@
         - id: pandas-advanced
           title: Pandas Lanjutan
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Terkadang data pelanggan ada di Tabel A, dan data transaksi ada di Tabel B. Bagaimana cara menyatukan keduanya agar kita tahu siapa pelanggan paling boros?
             **Analogi:** Seperti "Menyusun Puzzle". Kamu punya dua bagian yang berbeda, dan kamu butuh alat (Pandas) untuk menyambungkannya menjadi satu gambar utuh.
 
@@ -2882,7 +2882,7 @@
         - id: etl-elt-pipelines
           title: ETL & ELT Pipelines
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Mengirim data mentah langsung ke cloud bisa sangat mahal dan lambat. Kita butuh strategi: apakah dibersihkan dulu baru dikirim, atau dikirim dulu baru dibersihkan di dalam cloud?
             **Analogi:** 
             - **ETL:** Seperti mencuci beras di dapur sebelum dimasak di kompor.
@@ -2921,7 +2921,7 @@
         - id: data-modeling
           title: Data Modeling & Databases
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika kamu hanya menumpuk data di satu tabel raksasa, database akan menjadi sangat lambat saat datanya mencapai miliaran baris. Kita butuh cara memecah data menjadi tabel-tabel kecil yang saling terhubung dengan cerdas.
             **Analogi:** Seperti "Folder di Komputer". Kamu tidak menaruh semua file di Desktop, tapi kamu buat folder `Musik`, `Gambar`, dan `Dokumen` agar mudah dicari.
 
@@ -2960,7 +2960,7 @@
         - id: big-data-tech
           title: Big Data & Distributed Computing
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika satu komputer butuh 10 jam untuk memproses data, apakah kita harus menunggu? Bagaimana jika kita punya 10 komputer yang masing-masing mengerjakan 1/10 bagian? Pekerjaan akan selesai dalam 1 jam!
             **Analogi:** Seperti "Membangun Jembatan". Bukannya menyuruh 1 orang bekerja sendirian, kamu menyewa 100 kuli bangunan yang bekerja serentak di bagian yang berbeda-beda.
 
@@ -3000,7 +3000,7 @@
         - id: data-orchestration
           title: Data Orchestration (Airflow)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kamu punya 100 pipa data. Pipa B harus jalan jam 2 pagi, tapi harus nunggu Pipa A selesai dulu. Jika Pipa A gagal, Pipa B jangan jalan. Mengatur ini secara manual adalah mimpi buruk.
             **Analogi:** Seperti "Konduktor Orkestra". Konduktor tidak memainkan alat musik, tapi ia memberi aba-aba kapan biola harus masuk dan kapan trompet harus berhenti.
 
@@ -3045,7 +3045,7 @@
         - id: data-warehouse-lake
           title: Data Warehouse vs Data Lake
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Tidak semua data itu rapi. Ada foto, suara, log mentah, dan tabel rapi. Haruskah kita merapikan semuanya sebelum disimpan? Merapikan foto menjadi tabel adalah hal yang mustahil. Kita butuh dua jenis gudang berbeda.
             **Analogi:** 
             - **Data Warehouse:** Seperti "Apotek". Semuanya tertata rapi, berlabel, dan siap dipakai pelanggan.
@@ -3086,7 +3086,7 @@
         - id: data-cleaning
           title: Data Cleaning (Pembersihan Data)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** "Garbage In, Garbage Out". Jika kamu memberikan data yang kotor (ada typo, nilai kosong, atau data palsu) ke AI tercanggih sekalipun, hasil prediksinya akan berantakan. AI tidak bisa membedakan mana data yang benar dan mana yang sampah tanpa bantuanmu.
             **Analogi:** Seperti "Mencuci Sayuran". Sebelum dimasak (training AI), sayuran harus dicuci bersih dari tanah (missing values) dan bagian yang busuk harus dibuang (outliers) agar masakan (model) enak dan sehat.
 
@@ -3139,7 +3139,7 @@
         - id: feature-scaling
           title: Feature Scaling (Penyekalaan)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bayangkan AI memproses data "Gaji" (jutaan) dan "Umur" (puluhan). Karena angka Gaji jauh lebih besar, AI akan menganggap Gaji 1000x lebih penting daripada Umur. Padahal, keduanya bisa jadi sama pentingnya.
             **Analogi:** Seperti "Lari Maraton". Jika satu orang mulai dari meter ke-0 dan orang lain mulai dari meter ke-1000, kompetisi jadi tidak adil. Penyekalaan membuat semua orang mulai dari garis start yang sama.
 
@@ -3188,7 +3188,7 @@
         - id: categorical-encoding
           title: Categorical Encoding
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Komputer adalah mesin hitung raksasa. Ia hanya mengerti angka `0` dan `1`. Bagaimana cara memasukkan data "Warna: Merah, Biru, Hijau" ke dalam rumus matematika AI?
             **Analogi:** Seperti "Penerjemah Bahasa Isyarat". Kamu tidak bisa bicara langsung dengan orang tuli, kamu butuh isyarat tangan (angka) yang mewakili kata-katamu.
 
@@ -3235,7 +3235,7 @@
         - id: feature-engineering-detail
           title: Seni Feature Engineering
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Terkadang data yang ada tidak cukup kuat untuk memberikan prediksi yang akurat. Misalnya, kamu punya data "Tanggal". Tapi yang sebenarnya mempengaruhi penjualan adalah "Apakah hari itu Libur?". AI tidak akan tahu itu kecuali kamu memberitahunya.
             **Analogi:** Seperti "Membuat Bumbu Masakan". Kamu punya bahan dasar (data mentah), tapi kamu harus meraciknya (Feature Engineering) agar rasa masakannya (prediksi) jadi luar biasa.
 
@@ -3285,7 +3285,7 @@
         - id: feature-selection
           title: Feature Selection (Pemilihan Fitur)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** "Lebih banyak lebih baik" tidak berlaku dalam AI. Jika kamu memasukkan 1000 fitur tapi 900 di antaranya tidak berguna (seperti 'Warna Kesukaan' untuk memprediksi 'Penyakit Jantung'), AI akan menjadi bingung dan lambat.
             **Analogi:** Seperti "Membawa Bekal Mendaki Gunung". Kamu hanya membawa barang yang benar-benar penting (air, tenda) dan meninggalkan yang tidak perlu (TV, Kasur) agar kamu bisa sampai puncak dengan cepat dan selamat.
 
@@ -3335,7 +3335,7 @@
         - id: ml-intro
           title: Apa itu Machine Learning?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana Spotify bisa tahu lagu apa yang kamu sukai? Atau bagaimana Gmail bisa membedakan email penting dan spam? Menulis ribuan aturan `if-else` manual tidak akan mungkin berhasil.
             **Analogi:** Seperti "Anak Kecil yang Belajar Mengenal Buah". Kamu tidak memberinya rumus kimia, tapi kamu memberinya banyak contoh apel dan jeruk sampai otaknya bisa mengenali polanya sendiri.
 
@@ -3392,7 +3392,7 @@
         - id: classification-deep-dive
           title: Klasifikasi (Classification)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Seorang dokter ingin sistem AI yang bisa mendeteksi apakah sebuah sel tumor bersifat ganas atau jinak hanya dari foto rontgen. Outputnya adalah pilihan "Ya" atau "Tidak". Inilah tugas Klasifikasi.
             **Analogi:** Seperti "Menyortir Sampah". Kamu memiliki beberapa tong (Kategori) dan kamu harus memasukkan setiap barang ke tong yang benar berdasarkan ciri-cirinya.
 
@@ -3445,7 +3445,7 @@
         - id: scikit-learn
           title: Scikit-Learn Dasar
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Dunia Machine Learning sangat luas. Kamu tidak ingin menggunakan satu library untuk memproses data, library lain untuk algoritma A, dan library lain lagi untuk algoritma B dengan cara pakai yang berbeda-beda.
             **Analogi:** Seperti "Pisau Swiss Army". Scikit-Learn menyediakan semua alat ML dalam satu paket dengan cara pakai yang seragam dan konsisten.
 
@@ -3498,7 +3498,7 @@
         - id: neural-networks-theory
           title: Teori Jaringan Saraf
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Machine Learning tradisional sulit menangani data yang sangat kompleks seperti wajah manusia yang punya jutaan kombinasi pixel. Kita butuh struktur yang lebih canggih, yang meniru cara kerja otak kita sendiri.
             **Analogi:** Seperti "Jaringan Kerja di Kantor". Informasi masuk ke resepsionis (Input), diolah oleh berbagai divisi (Hidden Layers), lalu bos mengambil keputusan akhir (Output).
 
@@ -3543,7 +3543,7 @@
         - id: backpropagation
           title: Backpropagation & Gradient Descent
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Saat pertama kali dibuat, AI itu "bodoh". Tebakannya asal-asalan. Bagaimana cara ia sadar bahwa ia salah dan tahu bagian mana yang harus diperbaiki?
             **Analogi:** Seperti "Latihan Memanah". Kamu memanah, meleset ke kanan (Error). Otakmu memberi perintah ke tangan untuk bergeser sedikit ke kiri (Update bobot). Kamu lakukan berulang kali sampai tepat sasaran.
 
@@ -3590,7 +3590,7 @@
         - id: cv-intro
           title: Bagaimana Komputer Melihat?
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Manusia bisa langsung tahu ada seekor kucing di taman. Tapi bagi komputer, gambar hanyalah tumpukan angka pixel yang tidak ada artinya. Bagaimana cara mengubah angka pixel tersebut menjadi pemahaman bahwa itu adalah "Kucing"?
             **Analogi:** Seperti "Melihat Dunia Melalui Sedotan". Komputer melihat pixel satu per satu. Ia harus mengumpulkan ribuan sedotan (pixel) ini untuk menyusun sebuah gambaran besar.
 
@@ -3643,7 +3643,7 @@
         - id: cnn-theory
           title: Convolutional Neural Networks (CNN)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika kamu menggeser posisi kucing di dalam foto sedikit ke kiri, Jaringan Saraf (ANN) biasa akan gagal mengenalinya karena urutan pixelnya berubah total. Kita butuh AI yang "Spatial Invariant" (tahu itu kucing dimanapun posisinya).
             **Analogi:** Seperti "Detektif yang Memakai Kaca Pembesar". Detektif tidak melihat seluruh TKP sekaligus, tapi ia menggeser kaca pembesarnya bagian demi bagian untuk mencari sidik jari atau petunjuk kecil (Fitur).
 
@@ -3687,7 +3687,7 @@
         - id: object-detection
           title: Deteksi Objek & YOLO
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Klasifikasi hanya menebak "Ini foto kucing". Tapi untuk mobil otonom (Tesla), ia harus tahu: "Di mana posisi pejalan kaki? Berapa jumlah mobil di depan? Di mana lampu merahnya?". Kita butuh Deteksi Objek.
             **Analogi:** Seperti "Petugas Keamanan (Satpam) yang memantau CCTV". Ia tidak hanya bilang "Ada maling", tapi ia menunjuk: "Itu malingnya, di pojok kiri bawah, lagi lari".
 
@@ -3729,7 +3729,7 @@
         - id: ai-lifecycle
           title: Siklus Hidup AI (Training - Inference)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Banyak orang berpikir membuat AI itu hanya soal "Training". Padahal, setelah AI itu pintar, bagaimana cara memasangnya di HP user? Bagaimana jika user tidak punya internet? AI yang hebat di laptop dev belum tentu hebat di tangan user.
             **Analogi:** Seperti "Sekolah dan Kerja". Training adalah masa sekolah (belajar dari buku/data). Inference adalah saat bekerja (mempraktekkan ilmu untuk melayani klien).
 
@@ -3770,7 +3770,7 @@
         - id: image-manipulation
           title: Image Manipulation (Pengolahan Gambar)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika kamu hanya punya 100 foto kucing yang semuanya menghadap ke kanan, AI kamu mungkin tidak akan mengenali kucing yang menghadap ke kiri. Kita butuh data yang bervariasi tapi koleksi kita terbatas.
             **Analogi:** Seperti "Latihan Anti-Teror". Pasukan dilatih di berbagai kondisi: hujan, panas, malam, siang. Data Augmentation melakukan hal yang sama: memutar dan mengubah gambar agar AI siap dengan segala kondisi.
 
@@ -3826,7 +3826,7 @@
         - id: llm-intro
           title: Large Language Models (LLM)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Menulis kode atau artikel yang panjang butuh waktu berjam-jam. Bagaimana jika ada mesin yang sudah membaca seluruh isi internet dan bisa membantu kita menulis apa saja hanya dalam hitungan detik?
             **Analogi:** Seperti "Perpustakaan Hidup yang Bisa Diajak Ngobrol". LLM telah membaca miliaran buku. Ia tidak hanya menyimpan data, tapi ia paham hubungan antar kata sehingga bisa menjawab pertanyaanmu.
 
@@ -3875,7 +3875,7 @@
         - id: prompt-engineering
           title: Prompt Engineering
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Memberikan perintah "Buat skrip Python" ke AI mungkin akan menghasilkan kode yang terlalu sederhana. Tapi dengan perintah yang detail, AI bisa membuat aplikasi lengkap. Hasil AI sangat bergantung pada caramu bertanya.
             **Analogi:** Seperti "Memesan Jahitan Baju". Jika kamu hanya bilang "Buat baju", hasilnya mungkin tidak pas. Kamu harus bilang "Buat kemeja, warna biru, bahan sutra, ukuran L".
 
@@ -3916,7 +3916,7 @@
         - id: rag-concept
           title: RAG (Retrieval Augmented Generation)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** LLM tahu banyak hal tentang dunia, tapi ia tidak tahu apa isi dokumen rahasia perusahaanmu atau update berita yang baru terjadi 5 menit yang lalu. Haruskah kita melatih ulang (fine-tune) AI tiap jam? Itu sangat mahal.
             **Analogi:** Seperti "Ujian Open Book". AI tidak perlu menghafal semua datamu. Ia cukup diberikan "Buku" (dokumenmu) saat ujian, lalu ia menjawab berdasarkan buku tersebut.
 
@@ -3957,7 +3957,7 @@
         - id: diffusion-models
           title: Diffusion Models (Image Gen)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Membuat ilustrasi profesional dulu butuh waktu berhari-hari. Sekarang, cukup ketik "Astronot menunggang kuda di bulan", dan gambar muncul. Bagaimana AI bisa "menggambar" dari nol?
             **Analogi:** Seperti "Melihat Bentuk di Awan". Awalnya hanya gumpalan putih tidak jelas (Noise). AI belajar untuk "memahat" gumpalan tersebut sedikit demi sedikit sampai muncul bentuk yang kita inginkan.
 
@@ -3998,7 +3998,7 @@
         - id: fine-tuning-llm
           title: Fine-tuning LLM
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** AI umum seperti GPT mungkin tahu dasar-dasar hukum, tapi ia tidak tahu istilah-istilah sangat spesifik di pengadilan Indonesia atau gaya bicara formal seorang pengacara senior. Kita butuh AI yang menjadi "Pakar".
             **Analogi:** Seperti "Kuliah Spesialis". Setelah lulus kedokteran umum (Pre-trained), dokter harus mengambil spesialis Jantung (Fine-tuning) agar benar-benar ahli di satu bidang.
 
@@ -4038,7 +4038,7 @@
         - id: ai-agents
           title: AI Agents & Tool Use
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** AI yang hanya bisa chat itu membosankan. Kita ingin AI yang bisa kita suruh: "Cari hotel termurah di Bali, pesan satu, dan kabari istriku lewat email". AI harus bisa memakai browser, kartu kredit, dan email secara mandiri.
             **Analogi:** Seperti "Manajer Pribadi". Kamu tidak perlu melakukan operasional, kamu cukup memberi instruksi target, dan Manajer (Agent) yang akan mengeksekusi langkah-langkahnya.
 
@@ -4092,7 +4092,7 @@
         - id: text-embeddings
           title: Text Embeddings
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana komputer tahu bahwa kata "Anjing" dan "Guk-guk" itu berkaitan? Jika kamu hanya mencari kata kunci (keyword search), mereka terlihat berbeda total. Kita butuh cara agar komputer paham "Makna" kata.
             **Analogi:** Seperti "Koordinat GPS". Jakarta dan Depok memiliki koordinat yang berdekatan karena lokasinya dekat di peta. Embeddings memberikan koordinat pada "Makna" kata di peta bahasa.
 
@@ -4138,7 +4138,7 @@
         - id: image-embeddings
           title: Image Embeddings
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana Google Lens bisa tahu sepatu yang kamu foto sama dengan sepatu yang dijual di toko online? Ia tidak membaca merknya, ia melihat "Bentuk" dan "Ciri Khas" visualnya.
             **Analogi:** Seperti "Sidik Jari Gambar". Setiap gambar memiliki pola visual unik yang bisa diubah menjadi kode angka rahasia (Vektor).
 
@@ -4178,7 +4178,7 @@
         - id: multimodal-embeddings
           title: Multimodal Embeddings (CLIP)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Dulu, teks dan gambar adalah dua dunia berbeda bagi komputer. Komputer tidak tahu kalau tulisan "Kucing" merujuk pada foto kucing. Kita butuh "Jembatan" yang menyatukan keduanya.
             **Analogi:** Seperti "Peta Dua Bahasa". Di sisi kiri ada kata-kata, di sisi kanan ada gambar. CLIP memastikan lokasi "Teks Kucing" dan "Foto Kucing" berada di titik koordinat yang sama persis di peta tersebut.
 
@@ -4217,7 +4217,7 @@
         - id: vector-databases
           title: Vector Databases
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jika kamu punya 100 juta foto, mencari satu foto yang paling mirip dengan foto target akan sangat lambat jika menggunakan database SQL biasa. Kamu butuh database yang didesain khusus untuk mencari "Tetangga Terdekat" dalam ruang vektor.
             **Analogi:** Seperti "Gudang dengan Robot Pintar". Di gudang biasa (SQL), robot mencari berdasarkan nomor rak. Di gudang vektor, robot mencari barang yang bentuk/fungsinya paling mirip dengan barang yang kamu bawa.
 
@@ -4264,7 +4264,7 @@
         - id: rl-basics
           title: Belajar dari Hadiah (Rewards)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara melatih robot untuk berjalan atau AI untuk bermain catur? Kamu tidak bisa memberinya jutaan contoh "langkah benar" karena pilihannya tak terbatas. AI harus mencoba sendiri dan belajar dari pengalamannya.
             **Analogi:** Seperti "Melatih Anak Anjing". Jika ia melakukan trik yang benar, kamu beri biskuit (Reward). Jika ia buang air sembarangan, ia tidak dapat apa-apa atau ditegur (Punishment).
 
@@ -4310,7 +4310,7 @@
         - id: mdp-intro
           title: Markov Decision Process (MDP)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana AI menghitung apakah tindakannya sekarang akan berakibat baik di 10 langkah kemudian? Kita butuh rumus matematika untuk memodelkan ketidakpastian dunia.
             **Analogi:** Seperti "Bermain Ular Tangga". Posisi kamu sekarang menentukan peluangmu menang, terlepas dari bagaimana caramu sampai ke posisi tersebut sebelumnya.
 
@@ -4349,7 +4349,7 @@
         - id: q-learning
           title: Q-Learning & Eksplorasi
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara mencatat semua pengalaman AI? AI butuh "Buku Catatan" yang berisi skor untuk setiap tindakan di setiap situasi.
             **Analogi:** Seperti "Buku Panduan Strategi Game". Buku ini memberi tahu: "Kalau musuh di depan, loncat skornya +10, kalau diam skornya -5".
 
@@ -4391,7 +4391,7 @@
         - id: rl-applications
           title: Aplikasi RL
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Apakah RL hanya untuk main game? Tidak. RL digunakan untuk masalah tersulit manusia yang melibatkan urutan keputusan yang presisi.
             **Analogi:** Seperti "Pelatih Atlet". RL melatih sistem untuk memiliki refleks dan strategi yang adaptif terhadap perubahan lawan atau lingkungan.
 
@@ -4432,7 +4432,7 @@
         - id: ppo-theory
           title: PPO (Proximal Policy Optimization)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Algoritma RL lama seringkali "rusak" di tengah jalan. AI belajar terlalu drastis, sehingga strategi yang sudah bagus tiba-tiba hilang dan AI jadi bodoh kembali.
             **Analogi:** Seperti "Belajar Menyetir Mobil". Jika kamu membanting setir terlalu keras (update drastis), mobil akan terbalik. Kamu butuh batasan agar setir hanya bisa digerakkan sedikit demi sedikit.
 
@@ -4471,7 +4471,7 @@
         - id: marl-intro
           title: MARL (Multi-Agent RL)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Dunia nyata tidak berisi satu orang saja. Ada mobil lain di jalan, ada pemain lain di game. AI harus belajar berinteraksi dengan agen lain yang sama-sama pintar dan sama-sama belajar.
             **Analogi:** Seperti "Bermain Sepak Bola". Kamu bukan cuma harus jago nendang, tapi kamu harus paham pergerakan teman setim dan musuhmu yang juga terus berubah strateginya.
 
@@ -4514,7 +4514,7 @@
         - id: time-series-intro
           title: Mengenal Time Series
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Bagaimana cara memprediksi apakah harga saham besok akan naik? Atau berapa banyak stok barang yang harus disiapkan supermarket menjelang lebaran? Data ini spesial karena urutan waktunya sangat menentukan.
             **Analogi:** Seperti "Melihat Jejak Kaki". Kamu bisa tahu ke mana arah lari seseorang dengan melihat urutan jejak kakinya dari yang lama ke yang baru.
 
@@ -4554,7 +4554,7 @@
         - id: forecasting-basics
           title: Forecasting (Peramalan)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Perusahaan listrik harus tahu berapa beban listrik besok pagi agar tidak terjadi mati lampu massal. Peramalan yang salah bisa berakibat kerugian miliaran rupiah atau kekacauan publik.
             **Analogi:** Seperti "Melihat Kaca Spion". Kamu menggunakan apa yang terjadi di belakang (masa lalu) untuk memandu arah kemudi ke depan (masa depan).
 
@@ -4603,7 +4603,7 @@
         - id: quantization
           title: Quantization (Kuantisasi)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Model AI modern ukurannya raksasa (GigaByte). Bagaimana cara memasukkan AI sepintar itu ke dalam Jam Tangan Pintar (Smartwatch) atau kamera CCTV yang memorinya sangat kecil?
             **Analogi:** Seperti "Mengompres File Video". Kamu mengurangi kualitas gambarnya sedikit saja agar ukuran filenya mengecil drastis dan bisa dikirim lewat WhatsApp dengan cepat.
 
@@ -4641,7 +4641,7 @@
         - id: knowledge-distillation
           title: Knowledge Distillation (Distilasi)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Kamu punya model raksasa yang sangat pintar tapi sangat lambat (Teacher). Kamu ingin model yang kecil dan cepat (Student) tapi punya kepintaran yang hampir sama dengan si raksasa.
             **Analogi:** Seperti "Guru dan Murid". Sang Guru (Model Besar) sudah belajar segalanya. Ia merangkum ilmunya dan mengajarkannya ke si Murid (Model Kecil) agar si Murid tidak perlu belajar dari nol lagi.
 
@@ -4680,7 +4680,7 @@
         - id: pruning
           title: Pruning (Pemangkasan)
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Jaringan saraf AI punya jutaan koneksi. Tapi tahukah kamu bahwa banyak koneksi yang sebenarnya "menganggur" atau tidak memberikan kontribusi apa-apa pada hasil akhir?
             **Analogi:** Seperti "Memangkas Pohon Bonsai". Kamu memotong dahan-dahan yang layu atau tidak perlu agar nutrisi (komputasi) fokus ke dahan yang kuat dan menghasilkan buah (prediksi) yang bagus.
 
@@ -4722,7 +4722,7 @@
         - id: peft-lora
           title: PEFT & LoRA
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Melatih ulang (fine-tune) seluruh bagian model LLM (seperti GPT atau Llama) butuh uang miliaran rupiah untuk menyewa ribuan GPU. Bagaimana cara perusahaan kecil bisa punya AI spesialis tanpa bangkrut?
             **Analogi:** Seperti "Menambah Stiker pada Helm". Kamu tidak membuat helm baru dari nol. Kamu hanya menempelkan stiker khusus (lapisan kecil) yang memberikan identitas atau fungsi baru pada helm tersebut.
 
@@ -4765,7 +4765,7 @@
         - id: mlops
           title: MLOps & Deployment
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** Banyak model AI hebat berakhir tragis karena hanya tersimpan di laptop developer dan tidak pernah sampai ke tangan user. Atau lebih parah: AI yang tadinya pintar, tiba-tiba jadi "error" setelah 1 bulan berjalan di server.
             **Analogi:** Seperti "Restoran yang Buka 24 Jam". Kamu bukan cuma harus jago masak (training), tapi kamu harus punya sistem suplai bahan (data), kebersihan dapur (testing), dan pelayan yang sigap (deployment).
 
@@ -4805,7 +4805,7 @@
         - id: ethics-ai
           title: Etika & Keamanan AI
           content: |-
-            ### 1. Hook & Context
+            ### 1. Pendahuluan
             **Problem Statement:** AI bisa sangat berbahaya jika jatuh ke tangan yang salah atau jika dibuat dengan niat buruk. AI bisa menciptakan hoaks yang sangat nyata, mendiskriminasi kelompok tertentu, atau membocorkan rahasia pribadi orang lain.
             **Analogi:** Seperti "Membuat Pisau". Pisau bisa dipakai koki untuk masak enak (AI bermanfaat), tapi bisa juga dipakai untuk melukai orang (AI berbahaya). Kamu adalah pembuat pisaunya, kamu bertanggung jawab!
 
@@ -4842,4 +4842,477 @@
               - Ketidakadilan hasil prediksi yang mendiskriminasi kelompok tertentu akibat data training yang tidak seimbang.
               - Harga server yang mahal.
               - Versi terbaru dari Python.
+            correctAnswerIndex: 1
+
+- id: prof-specialist
+  title: Professional & Advanced Specialist
+  description: Menguasai teknologi mutakhir AI Agents, Local LLM, dan Cloud Native Python.
+  modules:
+    - id: agentic-ai
+      title: 31. Agentic AI (CrewAI & LangGraph)
+      lessons:
+        - id: intro-crewai
+          title: Pengenalan CrewAI
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Chatbot biasa hanya bisa menjawab pertanyaan satu per satu. Namun, untuk mengerjakan proyek besar seperti "Riset Pasar Lengkap", satu AI tidak cukup. Kita butuh banyak AI yang bekerja sama seperti tim di dunia nyata.
+            **Analogi:** Seperti "Kru Film". Ada Sutradara, Penulis Naskah, dan Kameramen. Masing-masing punya tugas spesifik, tapi bekerja untuk satu tujuan: membuat film yang bagus.
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **merancang** sistem multi-agent menggunakan CrewAI dan **mengintegrasikan** peran (Role) serta tugas (Task) yang berbeda antar agen.
+
+            ### 3. Prerequisites
+            - Memahami Dasar Python dan konsep LLM.
+
+            ### 4. Core Material
+            **CrewAI** adalah framework untuk melatih tim AI agar bekerja secara kolaboratif.
+            - **Agent**: Entitas AI dengan peran tertentu (misal: 'Researcher').
+            - **Task**: Tugas spesifik yang harus dikerjakan agen.
+            - **Crew**: Wadah yang menyatukan agen dan tugas dalam alur kerja tertentu.
+
+            ### 5. Guided Implementation
+            ```python
+            # Konsep dasar CrewAI (Simulasi)
+            # researcher = Agent(role='Researcher', goal='Cari berita AI terbaru')
+            # writer = Agent(role='Writer', goal='Tulis artikel berdasarkan riset')
+            
+            # task1 = Task(description='Cari 3 berita...', agent=researcher)
+            # task2 = Task(description='Buat artikel...', agent=writer)
+            
+            # crew = Crew(agents=[researcher, writer], tasks=[task1, task2])
+            # crew.kickoff()
+            ```
+
+            ### 6. Pro-Tips
+            Berikan **Persona** yang sangat spesifik pada setiap agen. Semakin detail deskripsi tugas dan karakternya, semakin minim kemungkinan agen tersebut melakukan kesalahan atau tumpang tindih tugas.
+
+            ### 7. Interactive Challenge
+            Bayangkan kamu ingin membuat tim AI untuk "Perencana Liburan". Sebutkan 2 peran agen apa saja yang kamu butuhkan dan apa tugas masing-masing!
+
+            ### 8. Summary & Next Steps
+            Agentic AI merubah cara kita bekerja dengan model bahasa. Selanjutnya, kita akan belajar cara membuat alur logika yang lebih kompleks dan berputar menggunakan LangGraph!
+          codeExample: |-
+            print("CrewAI: Mengubah AI dari sekadar Chatbot menjadi Tim Kerja yang produktif.")
+          quiz:
+            question: "Dalam framework CrewAI, komponen yang bertindak sebagai wadah untuk menyatukan agen dan tugas disebut?"
+            options:
+              - Manager
+              - Crew
+              - Squadron
+              - Pipeline
+            correctAnswerIndex: 1
+        - id: tool-calling-memory
+          title: Tool Calling & Memory
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** AI pada dasarnya hanya tahu data masa lalu. Bagaimana jika kamu ingin AI mengecek harga saham hari ini atau mengirim email? AI butuh "Tangan" untuk menyentuh dunia luar dan "Ingatan" agar tidak lupa apa yang sudah dibicarakan.
+            **Analogi:** Seperti "Koki dengan Peralatan Dapur". Koki (AI) punya resep di otak, tapi ia butuh pisau, kompor (Tools), dan catatan pesanan (Memory) untuk benar-benar bisa memasak.
+
+            ### 2. Learning Objectives
+            Setelah materi ini, kamu akan mampu **mengimplementasikan** kemampuan pemanggilan alat (Tool Calling) pada AI dan **mengelola** status ingatan (Memory) antar sesi.
+
+            ### 3. Prerequisites
+            - Memahami Dasar API.
+
+            ### 4. Core Material
+            - **Tools**: Fungsi eksternal yang diizinkan untuk dipanggil AI (misal: Search Tool, Calculator).
+            - **Short-term Memory**: Mengingat konteks dalam satu percakapan.
+            - **Long-term Memory**: Menyimpan informasi penting di database untuk digunakan di masa depan.
+
+            ### 5. Guided Implementation
+            AI akan memberikan output berupa nama fungsi dan argumennya, lalu sistem kita yang akan mengeksekusinya:
+            `AI: I need to use 'get_weather' with city='Jakarta'`
+
+            ### 6. Pro-Tips
+            Gunakan **Vector Database** sebagai penyimpanan Long-term Memory bagi agen AI Anda agar mereka bisa melakukan pencarian semantik terhadap ingatan masa lalu.
+
+            ### 7. Interactive Challenge
+            Sebutkan satu Tool (alat) yang paling krusial bagi AI Agent yang bertugas sebagai "Asisten Penjadwalan Rapat".
+
+            ### 8. Summary & Next Steps
+            Agenmu sekarang sudah punya tangan dan ingatan. Selanjutnya, kita akan belajar cara menjalankan AI sakti ini di laptop sendiri tanpa internet: Local LLM!
+          codeExample: |-
+            # Konsep Tool Definition
+            # @tool
+            # def search_google(query: str):
+            #     """Mencari informasi di internet."""
+            print("Tools & Memory membuat AI menjadi agen yang benar-benar fungsional di dunia nyata.")
+          quiz:
+            question: "Teknologi apa yang paling cocok digunakan untuk menyimpan 'Long-term Memory' bagi agen AI?"
+            options:
+              - File Teks biasa
+              - Variabel Global
+              - Vector Database
+              - RAM Komputer
+            correctAnswerIndex: 2
+    - id: local-ai
+      title: 32. Local AI & Edge Deployment
+      lessons:
+        - id: ollama-local-llm
+          title: Ollama & Local LLM
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Mengirim data rahasia perusahaan ke server cloud AI (seperti OpenAI) berisiko membocorkan rahasia negara atau bisnis. Bagaimana cara menikmati kecanggihan AI secara gratis dan 100% rahasia di laptop sendiri?
+            **Analogi:** Seperti "Punya Perpustakaan Sendiri di Rumah". Kamu tidak perlu pergi ke perpustakaan umum (Cloud) dan lapor ke petugas buku apa yang kamu baca. Semuanya ada di rak bukumu sendiri (Laptop).
+
+            ### 2. Learning Objectives
+            Setelah materi ini, kamu akan mampu **mengoperasikan** LLM secara lokal menggunakan Ollama dan **menganalisis** kebutuhan hardware untuk menjalankan model AI.
+
+            ### 3. Prerequisites
+            - Memahami konsep dasar LLM.
+
+            ### 4. Core Material
+            **Ollama** adalah alat paling populer untuk menjalankan model AI (seperti Llama 3 atau Mistral) di laptop tanpa internet.
+            - **The "What":** Runtime ringan untuk LLM lokal.
+            - **The "Why":** Privasi total, tanpa biaya API, dan bisa jalan tanpa internet.
+
+            ### 5. Guided Implementation
+            Perintah Dasar di Terminal:
+            ```bash
+            ollama run llama3
+            ```
+            Lalu kirim prompt seperti biasa di terminal.
+
+            ### 6. Pro-Tips
+            Jika laptopmu tidak punya GPU (kartu grafis) yang kuat, gunakan model versi **"Quantized"** (misal: 4-bit) agar AI berjalan lebih lancar tanpa membuat laptop panas.
+
+            ### 7. Interactive Challenge
+            Coba download Ollama dan jalankan model "Phi-3" (model ringan dari Microsoft). Rasakan perbedaannya dengan model yang berjalan di Cloud!
+
+            ### 8. Summary & Next Steps
+            Privasi data sudah aman di tanganmu. Selanjutnya, kita akan belajar tentang model AI super mungil yang didesain khusus untuk perangkat kecil: SLM!
+          codeExample: |-
+            print("Local AI: Menjalankan model bahasa raksasa di atas hardware pribadi Anda secara aman.")
+          quiz:
+            question: "Apa keuntungan utama menjalankan LLM secara lokal menggunakan Ollama dibandingkan melalui API Cloud?"
+            options:
+              - Lebih lambat responnya.
+              - Membutuhkan internet yang sangat kencang.
+              - Privasi data 100% terjaga dan tidak ada biaya langganan API.
+              - Tampilan aplikasinya lebih bagus.
+            correctAnswerIndex: 2
+        - id: slm-edge
+          title: Small Language Models (SLM)
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Tidak semua orang punya laptop gaming dengan RAM 64GB. Banyak perangkat seperti HP murah atau alat IoT yang butuh kecerdasan AI tapi tenaganya sangat lemah.
+            **Analogi:** Seperti "Sepeda Motor vs Truk Kontainer". Model raksasa (GPT-4) adalah Truk yang kuat tapi boros bensin. SLM adalah Sepeda Motor yang lincah, irit, dan bisa lewat jalan tikus (perangkat kecil).
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **membedakan** karakteristik SLM dengan LLM raksasa dan **mengevaluasi** kasus penggunaan yang tepat untuk model ringan.
+
+            ### 3. Prerequisites
+            - Memahami konsep Parameter dalam model AI.
+
+            ### 4. Core Material
+            **SLM (Small Language Models)** adalah model AI dengan jumlah parameter relatif kecil (dibawah 7 Miliar) tapi tetap sangat pintar untuk tugas spesifik.
+            - **Contoh:** Phi-3 (Microsoft), Gemma (Google), TinyLlama.
+            - **Keunggulan:** Sangat cepat, hemat baterai, bisa jalan di browser.
+
+            ### 5. Guided Implementation
+            SLM biasanya digunakan untuk tugas-tugas terfokus seperti:
+            - Merangkum teks pendek.
+            - Cek tata bahasa (Grammar).
+            - Klasifikasi sentimen.
+
+            ### 6. Pro-Tips
+            Jangan gunakan SLM untuk penalaran matematika yang sangat kompleks atau menulis novel panjang. Gunakan SLM sebagai "asisten spesialis" yang mengerjakan satu tugas berulang secara cepat.
+
+            ### 7. Interactive Challenge
+            Sebutkan satu perangkat elektronik di rumahmu yang menurutmu akan sangat berguna jika ditanami teknologi SLM (misal: Kulkas Pintar).
+
+            ### 8. Summary & Next Steps
+            Selamat! Kamu sudah menguasai cara membawa AI ke perangkat manapun. Selanjutnya, kita akan belajar cara menguji kualitas jawaban AI kita: AI Evaluation!
+          codeExample: |-
+            print("SLM: Membawa kecerdasan buatan ke perangkat terkecil di tangan Anda.")
+          quiz:
+            question: "Manakah di bawah ini yang merupakan contoh dari Small Language Model (SLM)?"
+            options:
+              - GPT-4
+              - Llama-3-70B
+              - Microsoft Phi-3
+              - Claude 3 Opus
+            correctAnswerIndex: 2
+
+    - id: ai-evaluation
+      title: 33. AI Evaluation & Quality Assurance
+      lessons:
+        - id: llm-as-a-judge
+          title: LLM-as-a-Judge
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Menilai apakah jawaban AI itu "bagus" atau "salah" secara manual untuk 1000 data sangat membosankan dan tidak konsisten. Manusia bisa lelah, tapi AI tidak.
+            **Analogi:** Seperti "Guru Senior Menilai Guru Muda". Kamu menggunakan AI yang paling pintar dan mahal (GPT-4o atau Claude 3.5 Sonnet) untuk memeriksa hasil kerja AI yang lebih kecil dan murah.
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **merancang** sistem evaluasi otomatis menggunakan teknik LLM-as-a-Judge dan **menyusun** kriteria penilaian (Rubric) yang objektif.
+
+            ### 3. Prerequisites
+            - Memahami konsep Prompt Engineering.
+
+            ### 4. Core Material
+            **LLM-as-a-Judge** adalah metode di mana sebuah model bahasa digunakan sebagai evaluator.
+            - **Rubric**: Daftar kriteria penilaian (misal: Keakuratan, Nada Bicara, Kesantunan).
+            - **Scale**: Memberikan nilai (misal: 1-5) atau perbandingan (A lebih baik dari B).
+
+            ### 5. Guided Implementation
+            Prompt Evaluator:
+            """
+            Tugasmu adalah menilai jawaban AI berdasarkan kriteria berikut:
+            1. Apakah kode Python yang dihasilkan bisa dijalankan?
+            2. Apakah penjelasannya mudah dimengerti?
+            Berikan nilai 1-10.
+            """
+
+            ### 6. Pro-Tips
+            Hati-hati dengan **Positional Bias**. LLM cenderung memilih jawaban pertama sebagai yang terbaik. Selalu tukar posisi jawaban saat melakukan perbandingan (A vs B dan B vs A) untuk hasil yang adil.
+
+            ### 7. Interactive Challenge
+            Jika kamu ingin menilai AI yang bertugas sebagai "Penerjemah Bahasa Gaul", kriteria apa saja yang akan kamu masukkan ke dalam Rubrik penilaianmu?
+
+            ### 8. Summary & Next Steps
+            Evaluasi membuat pengembangan AI jadi terukur. Selanjutnya, kita akan belajar framework khusus untuk menguji sistem pencarian data AI: RAGAS!
+          codeExample: |-
+            print("LLM-as-a-Judge: Mengotomatisasi kendali mutu AI menggunakan AI itu sendiri.")
+          quiz:
+            question: "Apa risiko utama yang harus diwaspadai saat menggunakan LLM sebagai juri (evaluator)?"
+            options:
+              - AI menjadi terlalu cepat.
+              - Positional Bias (kecenderungan memilih urutan tertentu) dan bias terhadap model yang searah dengannya.
+              - Harga listrik yang naik.
+              - AI akan menghapus data aslinya.
+            correctAnswerIndex: 1
+        - id: rag-evaluation
+          title: RAG Evaluation (RAGAS)
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Sistem RAG seringkali memberikan jawaban yang terlihat benar tapi sebenarnya tidak ada di dokumen (Halusinasi) atau gagal menemukan dokumen yang tepat. Bagaimana cara mengukurnya secara angka?
+            **Analogi:** Seperti "Ujian Mencari Informasi". Bukan cuma jawaban akhirnya yang dinilai, tapi juga seberapa pintar siswa tersebut menemukan halaman buku yang tepat (Retrieval) dan seberapa jujur ia menyalin isinya (Faithfulness).
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengukur** performa sistem RAG menggunakan metrik RAGAS (Faithfulness, Answer Relevance, Context Precision).
+
+            ### 3. Prerequisites
+            - Memahami alur kerja RAG.
+
+            ### 4. Core Material
+            **RAGAS** adalah framework evaluasi RAG yang fokus pada 3 pilar:
+            1. **Faithfulness**: Apakah jawaban berasal dari dokumen (bukan ngarang)?
+            2. **Answer Relevance**: Apakah jawaban menjawab pertanyaan user?
+            3. **Context Precision**: Apakah dokumen yang dipanggil memang relevan?
+
+            ### 5. Guided Implementation
+            RAGAS akan memberikan skor antara 0 sampai 1 untuk setiap pilar tersebut, sehingga kamu tahu bagian mana yang harus diperbaiki: apakah database-nya (Retrieval) atau cara AI menjawab-nya (Generation).
+
+            ### 6. Pro-Tips
+            Jika skor *Faithfulness* rendah, berarti AI-mu sering berhalusinasi. Solusinya: Perketat prompt instruksi agar AI dilarang menjawab di luar konteks dokumen.
+
+            ### 7. Interactive Challenge
+            Cari tahu metrik "Context Recall". Apa bedanya dengan "Context Precision" dalam evaluasi RAG?
+
+            ### 8. Summary & Next Steps
+            Sistem AI-mu sekarang sudah teruji secara saintifik. Selanjutnya, kita akan belajar cara mengotomatiskan tugas-tugas dunia nyata: Real-world Automation!
+          codeExample: |-
+            print("RAGAS: Framework standar untuk memberikan nilai rapor pada sistem RAG Anda.")
+          quiz:
+            question: "Metrik dalam RAGAS yang mengukur sejauh mana jawaban AI benar-benar didasarkan pada dokumen yang diberikan disebut?"
+            options:
+              - Answer Relevancy
+              - Context Precision
+              - Faithfulness
+              - System Latency
+            correctAnswerIndex: 2
+
+    - id: automation-specialist
+      title: 34. Real-world Automation Specialist
+      lessons:
+        - id: modern-web-scraping
+          title: Web Scraping dengan Playwright
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Banyak data berharga terkunci di dalam website yang butuh login atau memiliki proteksi tinggi. Library lama seperti BeautifulSoup seringkali gagal mengambil data yang di-generate oleh JavaScript.
+            **Analogi:** Seperti "Membaca Koran". Bukannya cuma memotong artikel yang kamu suka (BeautifulSoup), kamu menyewa robot yang bisa buka pintu kantor redaksi, masuk ke dalam, dan memotret halaman koran yang sedang dicetak (Playwright).
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **mengotomatisasi** interaksi browser dan **mengekstrak** data dari website dinamis menggunakan library Playwright.
+
+            ### 3. Prerequisites
+            - Memahami Dasar HTML dan CSS Selector.
+
+            ### 4. Core Material
+            **Playwright** adalah alat automasi browser modern yang sangat cepat.
+            - **Headless Mode**: Menjalankan browser tanpa jendela yang terlihat (hemat resource).
+            - **Selectors**: Cara menunjuk elemen web (id, class, text).
+            - **Auto-wait**: Menunggu website selesai loading sebelum mengambil data.
+
+            ### 5. Guided Implementation
+            ```python
+            # Konsep Playwright
+            # from playwright.sync_api import sync_playwright
+            # with sync_api() as p:
+            #     browser = p.chromium.launch()
+            #     page = browser.new_page()
+            #     page.goto("https://google.com")
+            #     print(page.title())
+            ```
+
+            ### 6. Pro-Tips
+            Selalu cek file `robots.txt` pada website target. Jangan melakukan scraping pada data pribadi atau website yang secara eksplisit melarang otomasi demi etika dan hukum.
+
+            ### 7. Interactive Challenge
+            Bayangkan kamu ingin memantau harga tiket pesawat setiap hari. Sebutkan urutan klik yang harus dilakukan robotmu di website maskapai!
+
+            ### 8. Summary & Next Steps
+            Web scraping membuka akses ke jutaan data. Selanjutnya, kita akan belajar cara mengolah data tersebut ke dalam format perkantoran secara otomatis: Office Automation!
+          codeExample: |-
+            print("Playwright: Mengendalikan browser secara otomatis untuk pengambilan data skala besar.")
+          quiz:
+            question: "Apa keunggulan utama Playwright dibandingkan library scraping tradisional seperti BeautifulSoup?"
+            options:
+              - Ukurannya lebih kecil.
+              - Tidak membutuhkan Python.
+              - Bisa berinteraksi dengan website yang menggunakan JavaScript dinamis (seperti klik tombol dan mengisi form).
+              - Bisa berjalan tanpa listrik.
+            correctAnswerIndex: 2
+        - id: office-automation
+          title: Otomasi Office (Excel, PDF, Email)
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Menghabiskan waktu 3 jam setiap hari hanya untuk memindahkan data dari 100 file Excel ke satu laporan PDF dan mengirimnya lewat email adalah pemborosan hidup. Biarkan Python melakukannya dalam 3 detik.
+            **Analogi:** Seperti "Asisten Administrasi yang Tidak Pernah Tidur". Kamu memberinya tumpukan dokumen, dan ia akan menyusun, menjilid, serta mengirimkannya ke alamat yang tepat tanpa salah ketik.
+
+            ### 2. Learning Objectives
+            Setelah materi ini, kamu akan mampu **menggabungkan** data dari berbagai file Excel dan **menghasilkan** dokumen laporan otomatis dalam format PDF.
+
+            ### 3. Prerequisites
+            - Memahami Dasar Pandas.
+
+            ### 4. Core Material
+            Library Populer:
+            - **openpyxl**: Membaca dan menulis file Excel (`.xlsx`).
+            - **reportlab / fpdf**: Membuat dokumen PDF dari nol.
+            - **smtplib**: Mengirim email secara otomatis.
+
+            ### 5. Guided Implementation
+            Alur Otomasi:
+            1. Loop semua file di folder.
+            2. Baca data pakai Pandas.
+            3. Gabungkan data.
+            4. Tulis ke file hasil.
+            5. Kirim email notifikasi.
+
+            ### 6. Pro-Tips
+            Gunakan library `yagmail` jika kamu ingin cara mengirim email yang lebih simpel dan modern daripada menggunakan `smtplib` standar.
+
+            ### 7. Interactive Challenge
+            Jika kamu punya 1000 file PDF hasil scan, tantangan apa yang paling sulit dihadapi saat ingin mengambil data teks dari dalamnya? (Hint: OCR).
+
+            ### 8. Summary & Next Steps
+            Sekarang kamu adalah pahlawan produktivitas! Terakhir, kita akan belajar cara meletakkan sistem cerdas ini di server cloud: Cloud Native Python!
+          codeExample: |-
+            print("Office Automation: Menghapus tugas administratif yang membosankan dengan skrip Python.")
+          quiz:
+            question: "Library Python mana yang paling sering digunakan untuk membaca dan memanipulasi file Excel (.xlsx) secara mendalam?"
+            options:
+              - Pillow
+              - Openpyxl
+              - Requests
+              - Pytest
+            correctAnswerIndex: 1
+    - id: cloud-native-python
+      title: 35. Cloud Native & Production AI
+      lessons:
+        - id: serverless-python
+          title: Serverless Python (AWS Lambda)
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** Menyewa server 24 jam hanya untuk menjalankan skrip yang bekerja selama 5 menit setiap hari adalah pemborosan biaya. Bagaimana jika kita hanya bayar saat skrip kita benar-benar berjalan?
+            **Analogi:** Seperti "Lampu Kamar Mandi Otomatis". Lampu hanya menyala (server jalan) saat ada orang masuk (ada request), dan otomatis mati saat tidak ada orang. Kamu hanya bayar listrik yang terpakai.
+
+            ### 2. Learning Objectives
+            Kamu akan mampu **merancang** fungsi serverless sederhana dan **menganalisis** keuntungan arsitektur event-driven di cloud.
+
+            ### 3. Prerequisites
+            - Memahami Dasar API.
+
+            ### 4. Core Material
+            **Serverless** (seperti AWS Lambda atau Google Cloud Functions) memungkinkan kamu menjalankan kode tanpa harus memikirkan maintenance server.
+            - **Cold Start**: Waktu yang dibutuhkan server untuk "bangun" pertama kali.
+            - **Stateless**: Setiap eksekusi bersifat mandiri dan tidak menyimpan status sebelumnya.
+
+            ### 5. Guided Implementation
+            Kamu cukup mengunggah fungsi Python:
+            ```python
+            def lambda_handler(event, context):
+                return {
+                    'statusCode': 200,
+                    'body': 'Halo dari Cloud!'
+                }
+            ```
+
+            ### 6. Pro-Tips
+            Jangan taruh model AI yang ukurannya berukuran giga-byte ke dalam AWS Lambda biasa karena akan terkena limit memori dan waktu eksekusi. Gunakan serverless untuk tugas ringan saja.
+
+            ### 7. Interactive Challenge
+            Bayangkan sebuah sistem yang otomatis meresize foto profil setelah user mengunggahnya. Tugas mana yang cocok dikerjakan oleh fungsi Serverless?
+
+            ### 8. Summary & Next Steps
+            Serverless sangat hemat biaya. Selanjutnya, kita akan belajar cara membungkus model AI yang berat ke dalam kontainer agar siap tayang di internet: Production Containers!
+          codeExample: |-
+            print("Serverless: Menjalankan kode Python di cloud tanpa perlu pusing mengurus server fisik.")
+          quiz:
+            question: "Apa keuntungan utama arsitektur Serverless dalam hal biaya?"
+            options:
+              - Selalu gratis selamanya.
+              - Kamu hanya membayar untuk waktu eksekusi kode yang benar-benar terpakai (Pay-per-use).
+              - Kamu dibayar oleh penyedia cloud.
+              - Biayanya tetap sama setiap bulan apapun yang terjadi.
+            correctAnswerIndex: 1
+        - id: production-containers
+          title: Production Containers for AI
+          content: |-
+            ### 1. Hook & Context
+            **Problem Statement:** "Tapi di laptop saya jalan!". Masalah ini sering muncul saat kamu mengirim model AI ke server produksi namun ternyata versi library-nya berbeda. Kita butuh cara untuk membungkus seluruh lingkungan kerja kita ke dalam satu kotak yang pasti jalan di mana saja.
+            **Analogi:** Seperti "Kargo Kontainer Kapal". Apapun isinya (AI, Database, Web), kontainernya memiliki ukuran standar yang bisa diangkut oleh kapal (Server) manapun di dunia tanpa masalah.
+
+            ### 2. Learning Objectives
+            Setelah materi ini, kamu akan mampu **mengonstruksi** Dockerfile khusus untuk aplikasi AI dan **mengoptimalkan** ukuran image kontainer untuk deployment cepat.
+
+            ### 3. Prerequisites
+            - Memahami Dasar Docker.
+
+            ### 4. Core Material
+            Deployment AI berbeda dengan web biasa karena butuh dependensi berat (PyTorch/TensorFlow).
+            - **Base Image**: Gunakan versi `-slim` atau `-alpine` agar ringan.
+            - **Layering**: Mengatur urutan perintah agar proses build Docker lebih cepat.
+            - **GPU Support**: Menggunakan image khusus dari NVIDIA jika butuh akselerasi grafis.
+
+            ### 5. Guided Implementation
+            Contoh Dockerfile AI:
+            ```dockerfile
+            FROM python:3.9-slim
+            WORKDIR /app
+            COPY requirements.txt .
+            RUN pip install --no-cache-dir -r requirements.txt
+            COPY . .
+            CMD ["python", "app.py"]
+            ```
+
+            ### 6. Pro-Tips
+            Gunakan **Multi-stage Build**. Tahap pertama untuk menginstal semua kebutuhan build, tahap kedua hanya mengambil file hasil akhirnya saja. Hasilnya: Image Docker yang tadinya 2GB bisa menyusut jadi 500MB!
+
+            ### 7. Interactive Challenge
+            Kenapa kita sangat disarankan menggunakan perintah `--no-cache-dir` saat menginstal library Python di dalam Dockerfile?
+
+            ### 8. Summary & Next Steps
+            Selamat! Perjalanan belajarmu di Muf-Up telah mencapai puncak tertinggi. Kamu sekarang memiliki keahlian yang lengkap: mulai dari logika dasar, pengolahan data, pembuatan AI, hingga pengirimannya ke server dunia nyata. Teruslah bereksperimen dan ciptakan inovasi masa depan!
+          codeExample: |-
+            print("Production Containers: Menjamin aplikasi AI Anda berjalan konsisten dari laptop hingga ke server global.")
+          quiz:
+            question: "Mengapa penggunaan base image versi 'slim' atau 'alpine' sangat disarankan untuk deployment di produksi?"
+            options:
+              - Agar warna terminal lebih bagus.
+              - Untuk mengurangi ukuran image Docker sehingga proses download dan deployment menjadi lebih cepat.
+              - Agar AI menjadi lebih pintar secara otomatis.
+              - Karena image yang besar dilarang oleh penyedia cloud.
             correctAnswerIndex: 1
