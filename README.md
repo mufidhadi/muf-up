@@ -1,12 +1,6 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # Muf-Up: Python Learning Platform
 
-Muf-Up adalah platform pembelajaran Python interaktif yang didukung oleh AI (Gemini).
-
-View your app in AI Studio: [https://ai.studio/apps/3e61ab21-1a2b-4a93-a6e6-4f738bdc1fa0](https://ai.studio/apps/3e61ab21-1a2b-4a93-a6e6-4f738bdc1fa0)
+Muf-Up adalah platform pembelajaran Python interaktif yang membantu Anda mempelajari Python secara efektif dan menyenangkan. Platform ini dilengkapi dengan kurikulum lengkap, latihan kode, validasi, dan evaluasi. Dengan menggunakan Muf-Up, Anda dapat mempelajari Python secara mandiri dan memantapkan kemampuan Anda dalam waktu yang singkat.
 
 ## Cara Menjalankan
 
@@ -20,7 +14,7 @@ Anda dapat menjalankan proyek ini secara lokal menggunakan Node.js secara langsu
     ```bash
     cp .env.example .env
     ```
-2.  Edit file `.env` dan masukkan `GEMINI_API_KEY` Anda.
+2.  Edit file `.env` jika diperlukan.
 3.  Jalankan container:
     ```bash
     docker-compose up --build
@@ -39,7 +33,7 @@ Anda dapat menjalankan proyek ini secara lokal menggunakan Node.js secara langsu
     ```bash
     cp .env.example .env
     ```
-3.  Edit file `.env` dan masukkan `GEMINI_API_KEY` Anda.
+3.  Edit file `.env` jika diperlukan.
 4.  Jalankan aplikasi dalam mode pengembangan:
     ```bash
     npm run dev
