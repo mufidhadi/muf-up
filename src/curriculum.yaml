@@ -184,420 +184,762 @@
       lessons:
         - id: intro-functions
           title: Mengenal Fungsi
-          content: Fungsi adalah blok kode yang bisa dipanggil kapan saja. Ini membantu agar kode tidak berantakan.
-          codeExample: |-
-            def sapa(nama):
-                print("Halo " + nama + "!")
+          content: |-
+            **Tujuan Pembelajaran:** Memahami konsep modularitas kode dengan membungkus logika ke dalam fungsi yang dapat digunakan kembali.
 
-            sapa("Andi")
-            sapa("Siti")
+            Fungsi adalah blok kode terorganisir yang digunakan untuk melakukan satu tindakan terkait. Fungsi memberikan modularitas yang lebih baik untuk aplikasi Anda dan tingkat penggunaan kembali kode yang tinggi.
+
+            **Komponen Fungsi:**
+            1. **`def`**: Kata kunci untuk mendefinisikan fungsi.
+            2. **Nama Fungsi**: Harus deskriptif (menggunakan *snake_case*).
+            3. **Parameter/Argumen**: Informasi yang diteruskan ke dalam fungsi (opsional).
+            4. **Docstring**: Dokumentasi singkat tentang fungsi (opsional tapi sangat disarankan).
+            5. **Blok Kode**: Logika yang dijalankan saat fungsi dipanggil.
+          codeExample: |-
+            def sapa_pengguna(nama, salam="Selamat pagi"):
+                """Fungsi ini menyapa pengguna dengan salam tertentu."""
+                print(f"{salam}, {nama}!")
+
+            # Memanggil fungsi
+            sapa_pengguna("Andi") 
+            sapa_pengguna("Siti", "Halo")
         - id: return-values
           title: Nilai Balik (Return)
-          content: Fungsi bisa mengembalikan hasil perhitungan menggunakan kata kunci `return`.
-          codeExample: |-
-            def tambah(a, b):
-                return a + b
+          content: |-
+            **Tujuan Pembelajaran:** Memahami cara mengambil hasil pemrosesan dari sebuah fungsi untuk digunakan di bagian lain program.
 
-            hasil = tambah(5, 3)
-            print(hasil)
+            Kata kunci `return` digunakan untuk keluar dari fungsi dan mengirimkan nilai kembali ke pemanggilnya. Jika fungsi tidak memiliki `return`, ia akan secara otomatis mengembalikan `None`.
+
+            **Kelebihan Return:**
+            - Memungkinkan fungsi menjadi "murni" (mengolah input dan menghasilkan output tanpa efek samping).
+            - Hasil fungsi bisa disimpan dalam variabel atau digunakan langsung sebagai argumen fungsi lain.
+            - Bisa mengembalikan lebih dari satu nilai (dikembalikan sebagai Tuple).
+          codeExample: |-
+            def hitung_luas_persegi(sisi):
+                return sisi * sisi
+
+            def operasi_matematika(a, b):
+                tambah = a + b
+                kali = a * b
+                return tambah, kali  # Mengembalikan dua nilai sekaligus
+
+            luas = hitung_luas_persegi(5)
+            print(f"Luas: {luas}")
+
+            hasil_tambah, hasil_kali = operasi_matematika(10, 2)
+            print(f"Tambah: {hasil_tambah}, Kali: {hasil_kali}")
     - id: data-structures
       title: 5. Struktur Data
       lessons:
         - id: lists
           title: List (Daftar)
-          content: List digunakan untuk menyimpan banyak item dalam satu variabel. Item dalam list bisa diakses menggunakan indeks (mulai dari 0).
+          content: |-
+            **Tujuan Pembelajaran:** Mengelola kumpulan item yang berurutan dan dapat diubah (mutable).
+
+            List adalah tipe data yang paling fleksibel di Python. Ia dapat berisi berbagai tipe data berbeda dalam satu list. Item dalam list dipisahkan oleh koma dan diapit kurung siku `[]`.
+
+            **Karakteristik:**
+            - **Ordered**: Urutan item tetap sama kecuali diubah.
+            - **Mutable**: Bisa ditambah, dihapus, atau diubah isinya.
+            - **Indeks**: Dimulai dari 0 untuk item pertama.
+            - **Negatif Indeks**: `-1` adalah item terakhir.
           codeExample: |-
             buah = ["Apel", "Jeruk", "Mangga"]
-            print(buah[0])
-            buah.append("Pisang")
-            print(buah)
+            
+            # Akses dan Ubah
+            print(f"Buah pertama: {buah[0]}")
+            buah[1] = "Anggur"
+            
+            # Tambah dan Hapus
+            buah.append("Pisang")  # Tambah di akhir
+            buah.insert(1, "Kiwi") # Tambah di indeks tertentu
+            buah.pop()             # Hapus item terakhir
+            
+            # Irisan (Slicing)
+            print(f"Dua buah pertama: {buah[0:2]}")
+            print(f"Seluruh buah: {buah}")
         - id: dictionaries
           title: Dictionary (Kamus)
-          content: Dictionary menyimpan data dalam pasangan "kunci" dan "nilai" (key-value pairs).
+          content: |-
+            **Tujuan Pembelajaran:** Mengelola data dalam bentuk pasangan Kunci (Key) dan Nilai (Value) untuk akses cepat.
+
+            Dictionary (`dict`) adalah kumpulan yang tidak berurutan (mulai Python 3.7+ sudah berurutan), dapat diubah, dan diindeks oleh kunci unik. Ia diapit kurung kurawal `{}`.
+
+            **Karakteristik:**
+            - **Key-Value**: Menggunakan kunci (seperti string) untuk mengambil nilai, bukan angka indeks.
+            - **Kunci Unik**: Tidak boleh ada dua kunci yang sama.
+            - **Efisien**: Sangat cepat dalam pencarian data.
           codeExample: |-
-            kontak = {"nama": "Budi", "telp": "0812"}
-            print(kontak["nama"])
+            user = {
+                "nama": "Budi Setiawan",
+                "umur": 28,
+                "skor": [80, 90, 85]
+            }
+
+            # Akses dan Modifikasi
+            print(f"Nama: {user['nama']}")
+            user["umur"] = 29
+            user["pekerjaan"] = "Programmer"  # Tambah kunci baru
+
+            # Iterasi
+            for kunci, nilai in user.items():
+                print(f"{kunci}: {nilai}")
         - id: tuples-sets
           title: Tuple & Set
           content: |-
-            - **Tuple**: Mirip list tapi tidak bisa diubah (immutable).
-            - **Set**: Kumpulan item unik tanpa urutan.
+            **Tujuan Pembelajaran:** Memahami struktur data alternatif yang tidak dapat diubah (Tuple) atau tidak memperbolehkan duplikasi (Set).
+
+            **1. Tuple (`tuple`):**
+            Mirip list, tapi **Immutable** (tidak bisa diubah setelah dibuat). Menggunakan kurung biasa `()`. Cocok untuk data yang bersifat konstan (koordinat, hari dalam seminggu).
+
+            **2. Set (`set`):**
+            Kumpulan item **Unik** dan **Tidak Berurutan**. Menggunakan kurung kurawal `{}` (tanpa pasangan key-value). Sangat bagus untuk operasi himpunan (irisan, gabungan).
           codeExample: |-
-            titik = (10, 20)
-            angka_unik = {1, 2, 2, 3}
-            print(angka_unik) # Output: {1, 2, 3}
+            # Tuple: Tidak bisa diubah
+            koordinat = (10, 20)
+            print(f"X: {koordinat[0]}")
+
+            # Set: Otomatis membuang duplikat
+            hobi = {"coding", "gaming", "coding", "membaca"}
+            print(f"Hobi unik: {hobi}")
+            
+            # Operasi Himpunan
+            set_a = {1, 2, 3}
+            set_b = {3, 4, 5}
+            print(f"Irisan (A & B): {set_a & set_b}") # {3}
+            print(f"Gabungan (A | B): {set_a | set_b}") # {1, 2, 3, 4, 5}
     - id: oop
       title: 6. Pemrograman Berorientasi Objek (OOP)
       lessons:
         - id: classes-objects
           title: Class & Object
-          content: OOP adalah cara mengatur kode dengan membayangkan semuanya sebagai "Objek". Class adalah cetakannya, Object adalah hasilnya.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami paradigma pemrograman berbasis objek untuk mengorganisir kode yang kompleks.
+
+            OOP adalah cara mengatur kode dengan membayangkan semuanya sebagai "Objek" di dunia nyata.
+
+            **Komponen Utama:**
+            1. **Class**: "Cetak Biru" (blueprint) atau kerangka kerja dari sebuah objek. Ia mendefinisikan sifat dan perilaku.
+            2. **Object**: Wujud nyata (instansiasi) dari sebuah Class.
+            3. **Attributes**: Data atau variabel milik objek.
+            4. **Methods**: Fungsi yang dijalankan oleh objek.
+            5. **`self`**: Parameter khusus yang merujuk pada instance objek itu sendiri.
           codeExample: |-
             class Mobil:
-                def __init__(self, merk):
+                def __init__(self, merk, model, warna):
+                    # Constructor: Inisialisasi atribut objek
                     self.merk = merk
+                    self.model = model
+                    self.warna = warna
+                    self.kecepatan = 0
 
-                def klakson(self):
-                    print("Beep beep!")
+                def gas(self, tambah):
+                    self.kecepatan += tambah
+                    print(f"Mobil {self.merk} ngebut {self.kecepatan} km/jam.")
 
-            mobil_saya = Mobil("Toyota")
-            print(mobil_saya.merk)
-            mobil_saya.klakson()
+            # Membuat objek (instansiasi)
+            mobil_saya = Mobil("Toyota", "GR Supra", "Kuning")
+            mobil_tetangga = Mobil("Tesla", "Model S", "Putih")
+
+            mobil_saya.gas(50)
+            print(f"Warna mobil tetangga: {mobil_tetangga.warna}")
         - id: inheritance
           title: Pewarisan (Inheritance)
-          content: Sebuah class bisa mewarisi sifat dari class lain.
+          content: |-
+            **Tujuan Pembelajaran:** Menggunakan kembali kode dengan mewariskan sifat dari satu kelas (Induk) ke kelas lain (Anak).
+
+            Pewarisan memungkinkan kita mendefinisikan kelas yang mewarisi semua metode dan properti dari kelas lain.
+
+            **Istilah:**
+            - **Parent Class (Superclass)**: Kelas yang diwariskan sifatnya.
+            - **Child Class (Subclass)**: Kelas yang mewarisi sifat. Ia bisa menambah atribut/metode baru atau mengubah (override) metode induk.
           codeExample: |-
-            class Hewan:
-                def suara(self):
-                    pass
+            class Robot:
+                def __init__(self, nama):
+                    self.nama = nama
 
-            class Kucing(Hewan):
-                def suara(self):
-                    print("Meong!")
+                def bersuara(self):
+                    print("Beep boop!")
 
-            mpus = Kucing()
-            mpus.suara()
+            class RobotTempur(Robot):
+                def serang(self):
+                    print(f"{self.nama} meluncurkan roket!")
+                
+                # Menindih (Override) metode induk
+                def bersuara(self):
+                    print("Target terkunci!")
+
+            bot = RobotTempur("Omega-9")
+            bot.bersuara() # Menggunakan versi RobotTempur
+            bot.serang()   # Metode unik RobotTempur
     - id: advanced
       title: 7. Topik Lanjutan
       lessons:
         - id: error-handling
           title: Penanganan Error (Try Except)
-          content: Gunakan `try` dan `except` agar program tidak langsung mati saat terjadi kesalahan.
+          content: |-
+            **Tujuan Pembelajaran:** Membuat program yang tahan banting (robust) terhadap kesalahan tak terduga.
+
+            Error atau "Exception" adalah hal yang lumrah dalam pemrograman. Namun, alih-alih membiarkan program mati mendadak, kita bisa menangani kesalahan tersebut secara elegan menggunakan blok `try...except`.
+
+            **Alur Kerja:**
+            - **`try`**: Bagian kode yang berisiko terjadi error.
+            - **`except`**: Bagian yang dijalankan JIKA error terjadi.
+            - **`else`**: Dijalankan jika TIDAK ADA error di blok `try`.
+            - **`finally`**: Selalu dijalankan, apapun yang terjadi (misal: untuk menutup file).
           codeExample: |-
             try:
-                hasil = 10 / 0
+                angka = int(input("Masukkan angka: "))
+                hasil = 100 / angka
+            except ValueError:
+                print("Error: Kamu harus memasukkan angka!")
             except ZeroDivisionError:
-                print("Tidak bisa membagi dengan nol!")
+                print("Error: Tidak bisa membagi dengan nol!")
+            except Exception as e:
+                print(f"Error tak terduga: {e}")
+            else:
+                print(f"Hasil: {hasil}")
+            finally:
+                print("Proses selesai.")
         - id: file-handling
           title: Bekerja dengan File
-          content: Python bisa membaca dan menulis file di komputer kamu.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami cara menyimpan data secara permanen ke dalam file.
+
+            Python memiliki fungsi bawaan untuk membuka, membaca, dan menulis file.
+
+            **Penting:** Praktik terbaik adalah menggunakan pernyataan `with`. Pernyataan ini memastikan file ditutup secara otomatis meskipun terjadi error, mencegah kebocoran data.
+
+            **Mode Utama:**
+            - `'r'`: Membaca (Read).
+            - `'w'`: Menulis (Write) - menimpa isi lama.
+            - `'a'`: Menambah (Append) - menambah data di akhir.
           codeExample: |-
-            # Contoh menulis file
-            with open("test.txt", "w") as f:
-                f.write("Halo Python!")
+            # Menulis file (Otomatis tertutup dengan 'with')
+            with open("catatan.txt", "w") as f:
+                f.write("Halo Python! \nBelajar Python itu asyik.")
+
+            # Membaca file
+            try:
+                with open("catatan.txt", "r") as f:
+                    isi = f.read()
+                    print(f"Isi file:\n{isi}")
+            except FileNotFoundError:
+                print("File tidak ditemukan!")
         - id: decorators
           title: Decorator
-          content: Decorator adalah fungsi yang mengubah perilaku fungsi lain tanpa mengubah kodenya secara langsung. Ini adalah fitur tingkat lanjut yang sering digunakan di framework web.
+          content: |-
+            **Tujuan Pembelajaran:** Menggunakan fitur meta-programming untuk memodifikasi fungsi secara dinamis.
+
+            Decorator adalah "pembungkus" fungsi. Bayangkan seperti memberi baju pada fungsi: baju itu menambah penampilan atau kegunaan fungsi tanpa mengubah tubuh aslinya.
+
+            **Kegunaan:**
+            - Logging (mencatat waktu fungsi dijalankan).
+            - Autentikasi (memastikan user sudah login).
+            - Caching (menyimpan hasil fungsi berat).
           codeExample: |-
-            def my_decorator(func):
-                def wrapper():
-                    print("Sebelum fungsi dijalankan")
-                    func()
-                    print("Setelah fungsi dijalankan")
+            def hitung_waktu(func):
+                import time
+                def wrapper(*args, **kwargs):
+                    start = time.time()
+                    hasil = func(*args, **kwargs)
+                    end = time.time()
+                    print(f"Fungsi {func.__name__} memakan waktu {end-start:.4f} detik.")
+                    return hasil
                 return wrapper
 
-            @my_decorator
-            def say_hello():
-                print("Hello!")
+            @hitung_waktu
+            def proses_data():
+                import time
+                time.sleep(1)  # Simulasi proses berat
+                print("Proses data selesai.")
 
-            say_hello()
+            proses_data()
         - id: generators
           title: Generator
-          content: Generator memungkinkan kamu membuat urutan data secara efisien tanpa memakan banyak memori.
-          codeExample: |-
-            def hitung_mundur(n):
-                while n > 0:
-                    yield n
-                    n -= 1
+          content: |-
+            **Tujuan Pembelajaran:** Mengolah urutan data dalam jumlah besar tanpa membebani memori RAM komputer.
 
-            for i in hitung_mundur(3):
-                print(i)
+            Generator adalah fungsi yang menggunakan kata kunci `yield` alih-alih `return`. Berbeda dengan fungsi biasa yang mengembalikan semua data sekaligus, generator mengembalikan data **satu per satu** (Lazy Loading).
+
+            **Keuntungan:**
+            - **Efisien**: Sangat hemat memori untuk data jutaan baris.
+            - **Cepat**: Program langsung mulai berjalan tanpa menunggu seluruh data terkumpul.
+          codeExample: |-
+            def penghasil_angka_besar(n):
+                for i in range(n):
+                    yield i * 10
+
+            # Generator tidak menyimpan data di RAM
+            data = penghasil_angka_besar(1000000)
+
+            # Kita ambil satu-satu
+            print(next(data))
+            print(next(data))
+            
+            # Atau gunakan dalam loop
+            for x in range(3):
+                print(next(data))
     - id: ecosystem
       title: 8. Ekosistem & Library
       lessons:
         - id: pip-modules
           title: PIP & Modul
-          content: Kamu bisa menggunakan kode buatan orang lain dengan menginstalnya menggunakan `pip`.
+          content: |-
+            **Tujuan Pembelajaran:** Mengakses dan memanfaatkan jutaan pustaka (library) buatan komunitas global Python.
+
+            Salah satu kekuatan terbesar Python adalah ekosistemnya. Kamu tidak perlu menulis segalanya dari nol. Kamu bisa menggunakan kode buatan orang lain dengan cara menginstalnya.
+
+            **Komponen Utama:**
+            1. **Modul**: File `.py` tunggal berisi kode Python.
+            2. **Package**: Folder berisi beberapa modul.
+            3. **Library**: Kumpulan package yang lebih besar.
+            4. **PIP**: Manajer paket resmi Python (dipasang di Terminal).
+            
+            **Perintah Terminal:**
+            - `pip install nama_library`: Menginstal library.
+            - `pip list`: Melihat daftar library yang terinstal.
           codeExample: |-
+            # Mengimpor modul bawaan Python
             import math
-            print(math.sqrt(16))
+            import datetime
+
+            print(f"Akar dari 16: {math.sqrt(16)}")
+            print(f"Waktu sekarang: {datetime.datetime.now()}")
+
+            # Contoh penggunaan library eksternal (misal: 'requests')
+            # import requests
+            # r = requests.get('https://google.com')
+            # print(r.status_code)
     - id: dev-concepts
       title: 9. Konsep Pengembangan (API, MCP, SDK, dll)
       lessons:
         - id: api-concept
           title: Apa itu API?
           content: |-
-            **API (Application Programming Interface)** adalah "pelayan" yang menghubungkan dua aplikasi berbeda agar bisa saling bicara.
+            **API (Application Programming Interface)** adalah "pelayan" yang menghubungkan dua aplikasi berbeda agar bisa saling bicara dan bertukar data secara aman.
                       
-            Analogi: Kamu (Aplikasi A) memesan makanan ke Pelayan (API), Pelayan membawakan pesananmu ke Dapur (Aplikasi B), lalu Pelayan membawakan makanan kembali kepadamu.
+            **Analogi Pelayan Restoran:**
+            1. Kamu (**Client/Aplikasi A**) memesan makanan (request) ke **Pelayan (API)**.
+            2. Pelayan membawa pesananmu ke **Dapur (Server/Aplikasi B)**.
+            3. Dapur memasak makanan (proses data).
+            4. Pelayan membawakan makanan kembali kepadamu (response).
+
+            **Pentingnya API:**
+            - Memisahkan tampilan (frontend) dari data (backend).
+            - Memungkinkan integrasi antar aplikasi (misal: login dengan Google).
           quiz:
-            question: Apa poin utama dari materi 'Apa itu API?'?
+            question: Manakah pernyataan yang paling tepat menggambarkan fungsi API?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Antarmuka untuk pengguna akhir mengetik perintah.
+              - Perantara yang menghubungkan dua aplikasi untuk bertukar data.
+              - Tempat penyimpanan database utama.
+              - Script untuk mempercepat koneksi internet.
+            correctAnswerIndex: 1
         - id: mcp-concept
           title: Apa itu MCP?
           content: |-
-            **MCP (Model Context Protocol)** adalah standar baru yang memungkinkan model AI (seperti Claude atau Gemini) untuk mengakses data dan alat (tools) dari aplikasi lain secara aman dan terstruktur.
+            **MCP (Model Context Protocol)** adalah standar komunikasi terbuka yang memungkinkan model AI (seperti Claude, GPT, atau Gemini) untuk mengakses data dan alat (tools) dari aplikasi lain secara aman dan terstruktur.
                       
-            Ini membantu AI "melihat" filemu, "membaca" databasemu, atau "menjalankan" perintah di komputermu dengan cara yang seragam.
+            **Mengapa Kita Butuh MCP?**
+            Dulu, setiap aplikasi punya cara berbeda untuk bicara dengan AI. Sekarang, MCP memberikan "bahasa yang sama" sehingga AI bisa langsung:
+            - Membaca file di komputermu.
+            - Menjalankan perintah terminal.
+            - Mengakses database perusahaan.
+            - Mencari informasi di internet.
+                      
+            Semua itu dilakukan melalui kontrol ketat dari pengguna.
           quiz:
-            question: Apa poin utama dari materi 'Apa itu MCP?'?
+            question: Apa manfaat utama dari standarisasi MCP bagi pengembang AI?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membuat AI menjadi lebih murah untuk dijalankan.
+              - Memungkinkan AI mengakses berbagai alat dan data melalui satu protokol standar.
+              - Meningkatkan kecepatan mengetik AI.
+              - Menghapus kebutuhan akan koneksi internet.
+            correctAnswerIndex: 1
         - id: sdk-concept
           title: Apa itu SDK?
           content: |-
-            **SDK (Software Development Kit)** adalah "kotak peralatan" lengkap untuk membangun aplikasi di platform tertentu.
+            **SDK (Software Development Kit)** adalah "kotak peralatan" lengkap untuk membangun aplikasi di platform tertentu. Bayangkan SDK seperti sebuah kotak peralatan pertukangan yang berisi palu, paku, gergaji, dan buku petunjuk.
                       
-            Isinya biasanya:
-            - **Library**: Kode yang sudah jadi.
-            - **Dokumentasi**: Petunjuk penggunaan.
-            - **Debugger/Tools**: Alat bantu pengembangan.
+            **Komponen di dalam SDK:**
+            - **Library/Framework**: Kode siap pakai untuk fungsi tertentu.
+            - **Debugger**: Alat untuk mencari dan memperbaiki kesalahan.
+            - **Dokumentasi**: Petunjuk langkah-demi-langkah penggunaan.
+            - **API Reference**: Daftar fungsi yang tersedia untuk dipanggil.
                       
-            Contoh: Android SDK untuk membuat aplikasi Android.
+            **Contoh:** Android SDK (untuk aplikasi Android), Flutter SDK, AWS SDK.
           quiz:
-            question: Apa poin utama dari materi 'Apa itu SDK?'?
+            question: Apa perbedaan mendasar antara API dan SDK?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
+              - API adalah bagian dari SDK yang berfungsi sebagai antarmuka komunikasi.
+              - SDK hanya bisa digunakan di website, API di mana saja.
+              - API lebih mahal daripada SDK.
+              - SDK hanya berisi dokumentasi, API berisi kode.
             correctAnswerIndex: 0
         - id: library-framework
           title: Library vs Framework
           content: |-
-            - **Library (Pustaka)**: Koleksi fungsi yang bisa kamu panggil kapan saja. **Kamu yang memegang kendali** (misal: NumPy, Pandas).
-            - **Framework (Kerangka Kerja)**: Struktur aplikasi yang sudah jadi, di mana kamu tinggal mengisi bagian-bagian tertentu. **Framework yang memegang kendali** (misal: Django, FastAPI).
-                      
-            Istilah teknisnya adalah **Inversion of Control** (Pembalikan Kendali).
+            Perbedaan utama antara Library dan Framework terletak pada **Siapa yang Memegang Kendali** (Inversion of Control).
+
+            **1. Library (Pustaka):**
+            Koleksi fungsi yang bisa kamu panggil kapan saja. **Kamu yang memegang kendali**. Kamu memutuskan kapan harus memanggil fungsi tersebut.
+            *Analogi: Seperti pergi ke bengkel untuk meminjam kunci inggris.*
+            Contoh: `NumPy`, `Requests`, `Math`.
+
+            **2. Framework (Kerangka Kerja):**
+            Struktur aplikasi yang sudah jadi. Kamu hanya mengisi bagian-bagian kosongnya. **Framework yang memegang kendali**. Ia memanggil kodemu pada waktu yang tepat.
+            *Analogi: Seperti membangun rumah di dalam perumahan yang sudah ditentukan desainnya.*
+            Contoh: `Django`, `FastAPI`, `Flask`.
           quiz:
-            question: Apa poin utama dari materi 'Library vs Framework'?
+            question: Apa yang dimaksud dengan 'Inversion of Control' dalam konteks Framework?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Pengguna mengendalikan komputer secara penuh.
+              - Framework yang menentukan kapan dan bagaimana kode Anda dijalankan.
+              - Database mengendalikan alur logika aplikasi.
+              - Membalikkan urutan penulisan kode.
+            correctAnswerIndex: 1
     - id: data-formats
       title: 10. Format Data (JSON, YAML, XML, LaTeX)
       lessons:
         - id: json-format
           title: JSON (JavaScript Object Notation)
           content: |-
-            JSON adalah format data paling populer untuk pertukaran data antar aplikasi (API). Strukturnya mirip dengan Dictionary di Python.
-                      
-            - **Kelebihan**: Ringan, mudah dibaca manusia dan mesin.
+            **Tujuan Pembelajaran:** Menguasai format pertukaran data standar yang paling banyak digunakan di web.
+
+            JSON adalah format berbasis teks yang ringan dan mudah dibaca oleh manusia maupun mesin. Strukturnya sangat mirip dengan Dictionary di Python (pasangan Key-Value).
+
+            **Aturan Penulisan:**
+            - Key harus diapit tanda kutip ganda `"`.
+            - Nilai bisa berupa: String, Number, Object, Array, Boolean, atau Null.
+            - Tidak boleh ada koma di akhir item terakhir.
           codeExample: |-
             import json
 
-            data = {"nama": "Andi", "umur": 25}
-            # Mengubah ke string JSON
-            json_str = json.dumps(data)
-            # Membaca string JSON
-            data_back = json.loads(json_str)
+            # 1. Mengubah Python Dict ke String JSON (Serialization)
+            data = {"nama": "Andi", "is_admin": True, "skor": [10, 20]}
+            json_str = json.dumps(data, indent=4)
+            print(f"JSON String:\n{json_str}")
+
+            # 2. Membaca String JSON ke Python Dict (Deserialization)
+            data_kembali = json.loads(json_str)
+            print(f"Nama: {data_kembali['nama']}")
         - id: yaml-format
           title: YAML (YAML Ain't Markup Language)
           content: |-
-            YAML sering digunakan untuk file konfigurasi (seperti di Docker atau Kubernetes). Ia sangat bergantung pada indentasi (seperti Python).
-                      
-            - **Kelebihan**: Sangat bersih dan mudah dibaca manusia.
+            **Tujuan Pembelajaran:** Memahami format data yang bersih dan berorientasi pada kemudahan baca manusia.
+
+            YAML sangat populer untuk file konfigurasi (seperti Docker, Kubernetes, dan kurikulum ini!). Ia menghilangkan kebutuhan akan tanda kurung dan menggantinya dengan indentasi spasi.
+
+            **Karakteristik:**
+            - **Indentasi**: Sangat ketat terhadap spasi (mirip Python).
+            - **List**: Menggunakan tanda hubung `-`.
+            - **Dictionary**: Menggunakan titik dua `:`.
           codeExample: |-
-            # Contoh YAML
-            # nama: Andi
-            # umur: 25
-            # hobi:
-            #   - coding
-            #   - gaming
+            # Contoh data YAML (dalam bentuk komentar)
+            # server:
+            #   port: 8080
+            #   debug: true
+            # database:
+            #   - postgres
+            #   - redis
+
+            import yaml # Perlu instalasi: pip install pyyaml
+            # data = yaml.safe_load(file_yaml)
         - id: xml-latex
           title: XML & LaTeX
           content: |-
-            - **XML**: Format lama yang menggunakan tag (seperti HTML). Masih banyak digunakan di sistem perbankan dan dokumen lama.
-            - **LaTeX**: Bahasa markup untuk membuat dokumen ilmiah atau matematika yang rapi. Sangat kuat untuk menulis rumus matematika yang kompleks.
+            **1. XML (eXtensible Markup Language):**
+            Format lama yang menggunakan tag pembuka dan penutup (seperti HTML). Masih sangat banyak digunakan di sistem perbankan, telekomunikasi, dan dokumen perkantoran (seperti file `.docx`).
+
+            **2. LaTeX:**
+            Bahasa markup khusus untuk penulisan dokumen ilmiah dan teknis. Keunggulan utamanya adalah kemampuannya merender rumus matematika yang sangat kompleks dengan sangat rapi dan presisi.
           quiz:
-            question: Apa poin utama dari materi 'XML & LaTeX'?
+            question: Apa keunggulan utama LaTeX dibanding editor teks biasa seperti Word?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Lebih mudah digunakan untuk pemula.
+              - Kemampuan merender rumus matematika kompleks secara profesional.
+              - Ukuran file yang lebih besar.
+              - Bisa digunakan untuk mengedit video.
+            correctAnswerIndex: 1
     - id: web-networking
       title: 11. Web & Networking
       lessons:
         - id: http-requests
           title: HTTP Request & cURL
           content: |-
-            Bagaimana aplikasi berkomunikasi di internet? Menggunakan protokol HTTP.
-                      
-            - **cURL**: Alat baris perintah (command line) untuk mengirim request ke server.
-            - **HTTP Methods**: GET (ambil data), POST (kirim data), PUT (update), DELETE (hapus).
-          codeExample: |-
-            import requests
+            **Tujuan Pembelajaran:** Memahami protokol dasar komunikasi internet dan cara berinteraksi dengan server.
 
+            Bagaimana aplikasi berkomunikasi di internet? Menggunakan protokol **HTTP (Hypertext Transfer Protocol)**.
+
+            **Konsep Utama:**
+            - **URL (Uniform Resource Locator)**: Alamat tujuan (misal: `https://api.github.com`).
+            - **Methods (Metode)**:
+              - `GET`: Mengambil data dari server.
+              - `POST`: Mengirim data baru ke server.
+              - `PUT/PATCH`: Memperbarui data yang ada.
+              - `DELETE`: Menghapus data.
+            - **Status Codes**: 200 (OK), 201 (Created), 404 (Not Found), 500 (Internal Server Error).
+
+            **cURL**: Alat baris perintah (command line) untuk mengirim request ke server secara cepat tanpa browser.
+          codeExample: |-
+            import requests # Library HTTP paling populer di Python
+
+            # Mengambil data (GET)
             response = requests.get("https://api.github.com")
-            print(response.status_code)
-            print(response.json())
+            
+            if response.status_code == 200:
+                print(f"Berhasil! Header Server: {response.headers['Server']}")
+                print(f"Isi JSON: {response.json()['current_user_url']}")
+            else:
+                print(f"Gagal dengan status: {response.status_code}")
         - id: http-streaming-websocket
           title: HTTP Streaming & WebSocket
           content: |-
-            - **HTTP Streaming**: Mengirim data secara terus-menerus tanpa menutup koneksi (cocok untuk log real-time).
-            - **WebSocket**: Koneksi dua arah (duplex). Server bisa mengirim data ke client kapan saja tanpa diminta (cocok untuk Chat atau Dashboard Saham).
+            **Tujuan Pembelajaran:** Membedakan berbagai metode pengiriman data secara real-time.
+
+            **1. HTTP Streaming:**
+            Koneksi satu arah yang tetap terbuka untuk mengirimkan data secara bertahap (seperti menonton video YouTube atau melihat log server yang berjalan).
+
+            **2. WebSocket:**
+            Koneksi dua arah (full-duplex) yang terus menyambung. Berbeda dengan HTTP biasa yang "tanya-jawab", di WebSocket, Server bisa mengirimkan data ke Client kapan saja tanpa diminta. Sangat cocok untuk aplikasi chat atau dashboard harga saham real-time.
           quiz:
-            question: Apa poin utama dari materi 'HTTP Streaming & WebSocket'?
+            question: Manakah dari berikut ini yang paling cocok menggunakan WebSocket?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membaca artikel blog yang statis.
+              - Mengirim email mingguan.
+              - Aplikasi chat real-time yang membutuhkan respon instan.
+              - Mengunduh file gambar ukuran besar.
+            correctAnswerIndex: 2
         - id: message-brokers
           title: Message Brokers
           content: |-
-            Ketika aplikasi kita sangat besar, kita butuh "perantara" pesan agar antar bagian aplikasi tidak saling menunggu.
-                      
-            Contoh: **RabbitMQ**, **Apache Kafka**, **Redis Pub/Sub**.
+            **Tujuan Pembelajaran:** Memahami cara kerja sistem terdistribusi dalam skala besar.
+
+            Ketika aplikasi kita sangat besar dan memiliki banyak layanan (microservices), kita butuh "perantara" pesan agar antar bagian aplikasi tidak saling menunggu (Asynchronous).
+
+            **Analogi Kantor Pos:**
+            Aplikasi A (Pengirim) mengirim surat ke **Kantor Pos (Message Broker)**. Aplikasi B (Penerima) mengambil surat tersebut kapan pun ia siap. Jika Aplikasi B sedang sibuk atau mati, surat tetap aman di Kantor Pos.
+
+            **Contoh Teknologi:**
+            - **Redis Pub/Sub**: Sangat cepat, untuk pesan sederhana.
+            - **RabbitMQ**: Handal dan memiliki fitur antrean yang canggih.
+            - **Apache Kafka**: Untuk data raksasa (streaming) tingkat industri.
           quiz:
-            question: Apa poin utama dari materi 'Message Brokers'?
+            question: Apa manfaat utama menggunakan Message Broker dalam arsitektur sistem?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membuat aplikasi berjalan lebih cepat di satu komputer.
+              - Menghubungkan berbagai layanan secara asinkron (tidak harus menunggu satu sama lain).
+              - Menghapus kebutuhan akan database.
+              - Mengurangi biaya langganan internet.
+            correctAnswerIndex: 1
         - id: web-frameworks
           title: Web Server Frameworks
           content: |-
-            Untuk membuat server di Python, kita menggunakan framework:
-            - **FastAPI**: Modern, sangat cepat, otomatis membuat dokumentasi API.
-            - **Flask**: Ringan dan fleksibel.
-            - **Django**: Lengkap ("Batteries included"), cocok untuk proyek raksasa.
+            **Tujuan Pembelajaran:** Memilih alat yang tepat untuk membangun server API atau website dengan Python.
+
+            Python memiliki beberapa framework populer untuk membangun backend:
+
+            **1. FastAPI (Paling Modern):**
+            Sangat cepat, mendukung asinkron (`async/await`), dan otomatis membuat dokumentasi API (Swagger) secara gratis. Sangat direkomendasikan untuk proyek baru.
+
+            **2. Flask (Minimalis):**
+            Sangat ringan. Kamu hanya mendapatkan apa yang kamu butuhkan. Cocok untuk aplikasi kecil atau prototype cepat.
+
+            **3. Django (Paling Lengkap):**
+            "Batteries included". Sudah punya sistem login, admin panel, dan database ORM di dalamnya. Cocok untuk proyek raksasa yang butuh keamanan tinggi.
           quiz:
-            question: Apa poin utama dari materi 'Web Server Frameworks'?
+            question: Framework Python mana yang dikenal memiliki fitur 'Batteries Included' (Sangat Lengkap)?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Flask
+              - FastAPI
+              - Django
+              - NumPy
+            correctAnswerIndex: 2
     - id: database-orm
       title: 12. Database & ORM
       lessons:
         - id: db-intro
           title: Apa itu Database?
           content: |-
-            **Database** adalah tempat penyimpanan data yang terorganisir agar mudah dicari dan dikelola.
-                      
-            Jenis Utama:
-            - **SQL (Relational)**: Data disimpan dalam tabel yang saling terhubung (seperti Excel yang canggih). Contoh: **PostgreSQL**, **MySQL**, **SQLite**.
-            - **NoSQL (Non-Relational)**: Data disimpan dalam format fleksibel seperti dokumen (JSON). Contoh: **MongoDB**, **Redis**, **Cassandra**.
+            **Tujuan Pembelajaran:** Memilih sistem penyimpanan data yang tepat sesuai kebutuhan aplikasi.
+
+            Database adalah sistem terorganisir untuk menyimpan, mengelola, dan mengambil data.
+
+            **Dua Jenis Utama:**
+
+            **1. SQL (Relational):**
+            Data disimpan dalam tabel dengan struktur kaku (baris dan kolom). Hubungan antar tabel sangat kuat.
+            - **Contoh**: PostgreSQL (Sangat populer), MySQL, SQLite (Bawaan Python).
+            - **Cocok untuk**: Transaksi keuangan, sistem inventaris.
+
+            **2. NoSQL (Non-Relational):**
+            Data disimpan dalam format fleksibel seperti Dokumen (JSON), Grafik, atau Key-Value.
+            - **Contoh**: MongoDB (Dokumen), Redis (In-memory), Neo4j (Grafik).
+            - **Cocok untuk**: Media sosial, real-time analytics, caching.
           quiz:
-            question: Apa poin utama dari materi 'Apa itu Database?'?
+            question: Kapan sebaiknya Anda memilih database SQL dibandingkan NoSQL?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Saat data tidak memiliki struktur yang jelas.
+              - Saat membutuhkan keamanan transaksi yang sangat ketat (ACID compliance).
+              - Saat ingin menyimpan data dalam format gambar saja.
+              - Saat ingin database yang paling murah.
+            correctAnswerIndex: 1
         - id: sql-queries
           title: Query & CRUD
           content: |-
-            Untuk bicara dengan database SQL, kita menggunakan bahasa **SQL (Structured Query Language)**.
-                      
-            Operasi Dasar (**CRUD**):
-            - **C**reate: `INSERT INTO users (nama) VALUES ('Andi');`
-            - **R**ead: `SELECT * FROM users WHERE id = 1;`
-            - **U**pdate: `UPDATE users SET nama = 'Budi' WHERE id = 1;`
-            - **D**elete: `DELETE FROM users WHERE id = 1;`
+            **Tujuan Pembelajaran:** Menguasai bahasa SQL dasar untuk berinteraksi dengan database relasional.
+
+            Untuk bicara dengan database SQL, kita menggunakan bahasa standar bernama **SQL (Structured Query Language)**. Operasi paling mendasar disebut **CRUD**.
+
+            **Contoh Query:**
+            - **C (Create)**: `INSERT INTO users (nama, umur) VALUES ('Andi', 25);`
+            - **R (Read)**: `SELECT * FROM users WHERE umur > 20;`
+            - **U (Update)**: `UPDATE users SET umur = 26 WHERE nama = 'Andi';`
+            - **D (Delete)**: `DELETE FROM users WHERE id = 1;`
+
+            **JOIN**: Menggabungkan data dari dua tabel berbeda (misal: mengambil nama user beserta daftar pesanannya).
           quiz:
-            question: Apa poin utama dari materi 'Query & CRUD'?
+            question: Apa singkatan dari operasi CRUD dalam database?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Clear, Read, Update, Delete.
+              - Create, Read, Update, Delete.
+              - Create, Remove, Under, Data.
+              - Change, Read, Upload, Delete.
+            correctAnswerIndex: 1
         - id: orm-concept
           title: ORM (Object Relational Mapping)
           content: |-
-            **ORM** adalah teknik yang memungkinkan kita mengelola database menggunakan objek Python, tanpa harus menulis SQL manual.
-                      
-            Keuntungan:
-            - Kode lebih bersih dan mudah dibaca.
-            - Lebih aman dari serangan SQL Injection.
-                      
-            Library Populer: **SQLAlchemy**, **Django ORM**, **Peewee**.
+            **Tujuan Pembelajaran:** Menghubungkan dunia Objek Python dengan dunia Tabel Database tanpa SQL manual.
+
+            **ORM** adalah jembatan. Ia memungkinkan kamu mengelola database seolah-olah kamu sedang memanipulasi objek Python biasa. Kamu tidak perlu menulis SQL panjang di dalam kode Python-mu.
+
+            **Keuntungan Utama:**
+            - **Productivity**: Menulis kode lebih cepat.
+            - **Database Agnostic**: Kamu bisa ganti database (misal dari SQLite ke PostgreSQL) tanpa mengubah banyak kode.
+            - **Security**: Melindungi aplikasi dari serangan *SQL Injection*.
+
+            **Library Populer**: `SQLAlchemy`, `Django ORM`, `Tortoise ORM`.
           codeExample: |-
-            # Contoh SQLAlchemy
-            user = session.query(User).filter_by(id=1).first()
-            user.nama = "Budi"
-            session.commit()
+            # Menggunakan SQLAlchemy (Pseudo-code)
+            
+            # 1. Mengambil data (SELECT)
+            user = session.query(User).filter_by(nama="Andi").first()
+            
+            # 2. Mengubah data (UPDATE)
+            user.umur = 26
+            session.commit() # Simpan ke database
         - id: migration-seed
           title: Migration & Seed
           content: |-
-            - **Migration**: Sistem "Version Control" untuk struktur database. Jika kamu menambah kolom baru, migration mencatat perubahan itu agar bisa diterapkan di komputer temanmu atau di server.
-            - **Seed (Seeding)**: Proses mengisi database dengan data awal atau data contoh (dummy data) agar aplikasi bisa langsung dicoba tanpa harus input manual satu per satu.
+            **Tujuan Pembelajaran:** Memahami cara mengelola perubahan struktur database secara tim.
+
+            **1. Migration:**
+            Sistem "Git" untuk struktur database. Jika kamu menambah kolom baru ("email") di tabel "users", migration mencatat perubahan ini dalam sebuah file. Teman satu timmu cukup menjalankan perintah migration agar database mereka ikut berubah secara otomatis.
+
+            **2. Seed (Seeding):**
+            Proses mengisi database dengan data awal yang dibutuhkan aplikasi agar bisa berjalan (misal: daftar kategori produk) atau data dummy untuk keperluan testing.
           quiz:
-            question: Apa poin utama dari materi 'Migration & Seed'?
+            question: Apa fungsi utama dari sistem Migration?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Mempercepat performa pencarian database.
+              - Mencatat dan menerapkan perubahan struktur database secara terorganisir.
+              - Menghapus data yang tidak penting secara otomatis.
+              - Mengubah database SQL menjadi NoSQL.
+            correctAnswerIndex: 1
     - id: modern-python
       title: 13. Modern Python (Type Hints & Pydantic)
       lessons:
         - id: type-hints
           title: Type Hints (Petunjuk Tipe)
           content: |-
-            Python adalah bahasa yang dinamis, namun di proyek besar, kita sering bingung variabel ini isinya apa. Type Hints membantu kita (dan editor) tahu tipe data apa yang diharapkan.
-                      
-            Sintaks Dasar:
-            `variable: type = value`
-                      
-            Contoh:
-            `nama: str = "Andi"`
-            `umur: int = 25`
+            **Tujuan Pembelajaran:** Meningkatkan kualitas kode dengan memberikan informasi tipe data yang jelas.
+
+            Python adalah bahasa "Dynamic Typing", artinya kita tidak harus mendeklarasikan tipe data. Namun di proyek besar, ini sering membingungkan. **Type Hints** diperkenalkan di Python 3.5 untuk memberi petunjuk tentang tipe data yang diharapkan.
+
+            **Manfaat:**
+            - **Autocompletion**: Editor (VS Code/PyCharm) memberikan saran yang lebih akurat.
+            - **Error Detection**: Alat seperti `mypy` bisa mendeteksi kesalahan tipe sebelum program dijalankan.
+            - **Readability**: Orang lain (atau kamu di masa depan) lebih mudah memahami maksud fungsi tersebut.
           codeExample: |-
-            def sapa(nama: str) -> str:
+            # Tanpa Type Hints
+            def sapa(nama):
+                return "Halo " + nama
+
+            # Dengan Type Hints
+            def sapa_modern(nama: str) -> str:
                 return f"Halo {nama}"
 
-            # Editor akan memberi tahu jika kita memasukkan angka ke fungsi ini
+            # Mendeklarasikan variabel
+            umur: int = 25
+            pi: float = 3.14
         - id: typing-module
           title: Modul Typing
           content: |-
-            Untuk tipe data yang lebih kompleks seperti List atau Dictionary, kita menggunakan modul `typing`.
-                      
-            - **List[int]**: Daftar berisi angka bulat.
-            - **Optional[str]**: Bisa berisi teks atau `None`.
-            - **Dict[str, float]**: Kamus dengan kunci teks dan nilai angka desimal.
-          codeExample: |-
-            from typing import List, Optional
+            **Tujuan Pembelajaran:** Menggunakan tipe data tingkat lanjut untuk koleksi dan struktur data kompleks.
 
-            def hitung_rata(nilai: List[int]) -> float:
+            Untuk tipe data yang lebih detail, Python menyediakan modul `typing`.
+
+            **Tipe yang Sering Digunakan:**
+            - `List[int]`: Sebuah daftar yang hanya boleh berisi angka bulat.
+            - `Dict[str, float]`: Kamus dengan kunci teks dan nilai desimal.
+            - `Optional[str]`: Variabel yang bisa berisi teks ATAU bisa saja kosong (`None`).
+            - `Any`: Boleh tipe apa saja (gunakan ini sebagai pilihan terakhir).
+          codeExample: |-
+            from typing import List, Dict, Optional
+
+            def proses_nilai(nama: str, nilai: List[int]) -> Optional[float]:
+                if not nilai:
+                    return None
                 return sum(nilai) / len(nilai)
+
+            data_siswa: Dict[str, List[int]] = {
+                "Andi": [80, 90, 85],
+                "Siti": [95, 100]
+            }
         - id: pydantic-intro
           title: Mengenal Pydantic
           content: |-
-            Pydantic adalah library paling populer untuk validasi data di Python. Ia memastikan data yang masuk ke aplikasi kita sesuai dengan format yang kita inginkan.
-                      
-            Sangat sering digunakan di:
-            - **FastAPI**: Untuk validasi request API.
-            - **LangChain**: Untuk struktur data AI.
+            **Tujuan Pembelajaran:** Menggunakan Pydantic untuk validasi data otomatis dan parsing data JSON ke Objek Python.
+
+            Pydantic adalah pustaka validasi data paling populer. Ia memaksa tipe data pada runtime dan memberikan pesan kesalahan yang sangat jelas jika data tidak sesuai.
+
+            **Kapan Menggunakan Pydantic?**
+            - Saat menerima data dari API (FastAPI sangat bergantung pada ini).
+            - Saat membaca file konfigurasi.
+            - Saat memproses data dari database.
           codeExample: |-
-            from pydantic import BaseModel
+            from pydantic import BaseModel, EmailStr # Perlu instalasi: pip install pydantic[email]
 
             class User(BaseModel):
                 id: int
                 nama: str
-                email: str
+                email: str # Validasi otomatis format email
+                aktif: bool = True # Nilai default
+
+            # Membuat objek dari data mentah (misal dari JSON)
+            data_mentah = {"id": "1", "nama": "Budi", "email": "budi@mail.com"}
+            user = User(**data_mentah)
+            
+            print(f"User ID: {user.id} (Tipe: {type(user.id)})") # Otomatis jadi int!
         - id: pydantic-validation
           title: Validasi Otomatis
-          content: Kehebatan Pydantic adalah ia akan otomatis menolak data yang salah tipe atau tidak lengkap, dan memberikan pesan error yang jelas.
+          content: |-
+            **Tujuan Pembelajaran:** Menangani kesalahan data secara elegan menggunakan mekanisme validasi Pydantic.
+
+            Pydantic tidak hanya mengubah tipe data (coercion), tapi juga memvalidasi batasan nilai. Jika data tidak valid, Pydantic akan melempar `ValidationError`.
           codeExample: |-
-            from pydantic import ValidationError
+            from pydantic import BaseModel, Field, ValidationError
+
+            class Produk(BaseModel):
+                nama: str
+                harga: float = Field(gt=0) # Harga harus lebih besar dari 0
+                stok: int = Field(default=0, ge=0) # Minimal 0
 
             try:
-                user = User(id="bukan_angka", nama="Andi")
+                p = Produk(nama="Laptop", harga=-100) # Pasti Error!
             except ValidationError as e:
+                print("Data Tidak Valid!")
                 print(e.json())
     - id: best-practices
       title: 14. Best Practices & Design Principles
@@ -605,187 +947,261 @@
         - id: kiss-dry-yagni
           title: KISS, DRY, & YAGNI
           content: |-
-            Tiga prinsip dasar untuk menjaga kode tetap bersih dan mudah dikelola:
-                      
-            - **KISS (Keep It Simple, Stupid)**: Jangan membuat solusi yang terlalu rumit jika ada cara yang lebih sederhana. Kode yang simpel lebih mudah diperbaiki dan dipahami orang lain.
-            - **DRY (Don't Repeat Yourself)**: Jangan menulis kode yang sama berulang kali. Jika ada logika yang dipakai di dua tempat, buatlah menjadi fungsi atau kelas yang bisa digunakan kembali.
-            - **YAGNI (You Ain't Gonna Need It)**: Jangan menambahkan fitur atau kode "untuk jaga-jaga di masa depan". Tulis hanya apa yang kamu butuhkan sekarang.
+            **Tujuan Pembelajaran:** Menerapkan filosofi desain perangkat fungsional yang efisien.
+
+            **1. KISS (Keep It Simple, Stupid):**
+            Jangan membuat solusi yang terlalu rumit jika ada cara yang lebih sederhana. Kode yang sederhana jauh lebih mudah diperbaiki, diuji, dan dipahami orang lain.
+
+            **2. DRY (Don't Repeat Yourself):**
+            Hindari duplikasi kode. Jika kamu menulis logika yang sama di dua tempat berbeda, pindahkan logika tersebut ke dalam sebuah fungsi atau kelas yang bisa digunakan kembali.
+
+            **3. YAGNI (You Ain't Gonna Need It):**
+            Jangan menambahkan fitur atau kode hanya karena kamu "berpikir" akan membutuhkannya di masa depan. Fokuslah pada apa yang dibutuhkan aplikasi saat ini.
           quiz:
-            question: Apa poin utama dari materi 'KISS, DRY, & YAGNI'?
+            question: Apa yang dimaksud dengan prinsip YAGNI?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Jangan menulis kode yang sama berulang kali.
+              - Jangan menambahkan fitur 'jaga-jaga' yang belum dibutuhkan sekarang.
+              - Selalu gunakan algoritma yang paling kompleks.
+              - Pastikan semua variabel memiliki nama singkat.
+            correctAnswerIndex: 1
         - id: solid-principles
           title: SOLID Principles
           content: |-
-            Lima prinsip desain untuk membuat kode berorientasi objek (OOP) lebih fleksibel dan mudah dipelihara:
-                      
-            1. **S**ingle Responsibility: Satu kelas hanya boleh punya satu tanggung jawab.
-            2. **O**pen/Closed: Kode harus terbuka untuk ditambah fiturnya, tapi tertutup untuk diubah kode aslinya.
-            3. **L**iskov Substitution: Objek anak harus bisa menggantikan objek induk tanpa merusak program.
-            4. **I**nterface Segregation: Jangan memaksa kelas mengimplementasikan fungsi yang tidak mereka butuhkan.
-            5. **D**ependency Inversion: Bergantunglah pada abstraksi, bukan pada implementasi detail.
+            **Tujuan Pembelajaran:** Membangun sistem OOP yang fleksibel dan mudah dipelihara dalam jangka panjang.
+
+            SOLID adalah akronim dari lima prinsip desain:
+            - **S (Single Responsibility)**: Sebuah kelas hanya boleh melakukan satu hal saja.
+            - **O (Open/Closed)**: Kelas harus terbuka untuk penambahan fitur baru, tapi tertutup untuk perubahan kode aslinya.
+            - **L (Liskov Substitution)**: Subclass harus bisa menggantikan parent class tanpa mengubah kebenaran program.
+            - **I (Interface Segregation)**: Lebih baik punya banyak antarmuka kecil daripada satu antarmuka raksasa.
+            - **D (Dependency Inversion)**: Bergantunglah pada abstraksi (konsep umum), bukan pada implementasi detail.
           quiz:
-            question: Apa poin utama dari materi 'SOLID Principles'?
+            question: Manakah pernyataan yang tepat mengenai Single Responsibility Principle?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Satu file hanya boleh berisi satu fungsi.
+              - Satu kelas hanya boleh memiliki satu alasan untuk berubah (satu tanggung jawab).
+              - Semua kode harus ditulis dalam satu baris.
+              - Hanya satu orang yang boleh mengerjakan proyek tersebut.
+            correctAnswerIndex: 1
         - id: tdd-concept
           title: TDD (Test Driven Development)
           content: |-
-            **TDD** adalah metode pengembangan di mana kamu **menulis tes dulu sebelum menulis kode**.
-                      
-            Siklus TDD (Red-Green-Refactor):
-            1. **Red**: Tulis tes yang pasti gagal (karena kodenya belum ada).
-            2. **Green**: Tulis kode seminimal mungkin agar tes tersebut berhasil.
-            3. **Refactor**: Rapikan kode tanpa merusak hasil tes.
+            **Tujuan Pembelajaran:** Memahami alur kerja pengembangan yang berfokus pada kualitas melalui pengujian.
+
+            **TDD** adalah metodologi di mana tes ditulis **sebelum** kode aslinya dibuat.
+
+            **Siklus Red-Green-Refactor:**
+            1. **RED**: Tulis tes untuk fitur baru. Jalankan tes dan lihat ia gagal (karena fiturnya belum ada).
+            2. **GREEN**: Tulis kode seminimal mungkin hanya agar tes tersebut berhasil (pass).
+            3. **REFACTOR**: Bersihkan dan optimasi kode tersebut tanpa mengubah perilakunya. Pastikan tes tetap pass.
           quiz:
-            question: Apa poin utama dari materi 'TDD (Test Driven Development)'?
+            question: Apa langkah pertama dalam siklus TDD?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menulis kode aplikasi sampai selesai.
+              - Menulis kode tes yang gagal (Red).
+              - Melakukan deployment ke server.
+              - Mencari bug secara manual.
+            correctAnswerIndex: 1
         - id: clean-code-python
           title: Clean Code di Python (PEP 8)
           content: |-
-            Di dunia Python, kita punya standar penulisan kode yang disebut **PEP 8**.
-                      
-            Beberapa aturannya:
-            - Gunakan 4 spasi untuk indentasi.
-            - Nama fungsi/variabel gunakan `snake_case`.
-            - Nama kelas gunakan `PascalCase`.
-            - Maksimal panjang baris adalah 79 karakter.
+            **Tujuan Pembelajaran:** Menulis kode Python yang "Pythonic" (sesuai standar industri).
+
+            Python memiliki panduan gaya resmi bernama **PEP 8**.
+
+            **Beberapa Aturan Emas:**
+            - **Indentasi**: Gunakan 4 spasi (jangan gunakan Tab).
+            - **Naming**: `snake_case` untuk variabel/fungsi, `PascalCase` untuk Kelas.
+            - **Spacing**: Beri spasi di sekitar operator (`a = b + c`).
+            - **Imports**: Selalu letakkan di bagian paling atas file.
           quiz:
-            question: Apa poin utama dari materi 'Clean Code di Python (PEP 8)'?
+            question: Apa standar penamaan variabel yang disarankan oleh PEP 8?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - camelCase
+              - PascalCase
+              - snake_case
+              - UPPERCASE
+            correctAnswerIndex: 2
     - id: software-testing
       title: 15. Software Testing & Pytest
       lessons:
         - id: testing-intro
           title: Kenapa Harus Testing?
           content: |-
-            Testing adalah proses memastikan kode kita berjalan sesuai harapan dan tidak rusak saat kita menambah fitur baru.
-                      
-            **Test Case**: Skenario spesifik untuk menguji satu fungsi (Input -> Proses -> Ekspektasi Output).
+            **Tujuan Pembelajaran:** Memahami pentingnya pengujian otomatis untuk menjaga stabilitas perangkat lunak.
+
+            Testing bukan hanya tentang mencari bug, tapi tentang **membangun kepercayaan** bahwa kodemu bekerja sesuai spesifikasi.
+
+            **Manfaat Utama:**
+            - **Mencegah Regresi**: Memastikan fitur lama tidak rusak saat kamu menambah kode baru.
+            - **Dokumentasi**: Tes berfungsi sebagai contoh nyata bagaimana sebuah fungsi seharusnya digunakan.
+            - **Refactoring Aman**: Kamu bisa merapikan kode dengan tenang karena ada tes yang menjaga perilakunya.
           quiz:
-            question: Apa poin utama dari materi 'Kenapa Harus Testing?'?
+            question: Apa manfaat utama dari 'Mencegah Regresi' dalam testing?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membuat aplikasi berjalan lebih cepat.
+              - Memastikan fitur yang sudah ada tidak rusak setelah perubahan kode.
+              - Mengurangi penggunaan memori.
+              - Menghapus kode yang tidak terpakai.
+            correctAnswerIndex: 1
         - id: testing-levels
           title: Level Testing (Unit, Integration, E2E)
           content: |-
-            - **Unit Test**: Menguji bagian terkecil kode (misal: satu fungsi) secara terisolasi.
-            - **Integration Test**: Menguji bagaimana beberapa bagian kode bekerja sama.
-            - **End-to-End (E2E) Test**: Menguji seluruh aliran aplikasi dari sudut pandang pengguna (misal: dari login sampai checkout).
+            **Tujuan Pembelajaran:** Membedakan berbagai tingkat pengujian berdasarkan cakupan kodenya.
+
+            **1. Unit Test:**
+            Menguji bagian terkecil kode (misal: satu fungsi) secara terisolasi. Sangat cepat dan spesifik.
+            *Contoh: Menguji fungsi `hitung_pajak()`.*
+
+            **2. Integration Test:**
+            Menguji bagaimana beberapa komponen bekerja sama.
+            *Contoh: Menguji apakah fungsi login bisa menyimpan data ke database.*
+
+            **3. End-to-End (E2E) Test:**
+            Menguji seluruh alur aplikasi dari sudut pandang pengguna.
+            *Contoh: Membuka browser, mengetik username, klik login, dan mengecek apakah masuk ke dashboard.*
           quiz:
-            question: Apa poin utama dari materi 'Level Testing (Unit, Integration, E2E)'?
+            question: Level testing mana yang menguji seluruh alur aplikasi dari sudut pandang pengguna?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Unit Test
+              - Integration Test
+              - End-to-End (E2E) Test
+              - Stress Test
+            correctAnswerIndex: 2
         - id: specialized-testing
           title: Smoke, Regression, & Validation
           content: |-
-            - **Smoke Test**: Tes cepat untuk memastikan fungsi paling kritis aplikasi tidak mati total.
-            - **Regression Test**: Memastikan fitur lama tidak rusak setelah ada perubahan kode baru.
-            - **Validation Test**: Memastikan produk akhir memenuhi kebutuhan bisnis/pengguna.
+            **Tujuan Pembelajaran:** Mengenal berbagai strategi pengujian khusus dalam siklus pengembangan.
+
+            - **Smoke Test**: Tes "apakah ada asap?". Tes dasar dan cepat untuk memastikan fungsi paling kritis (misal: login) tidak mati total sebelum tes lain dijalankan.
+            - **Regression Test**: Dijalankan setiap kali ada perubahan kode untuk memastikan tidak ada fitur lama yang rusak.
+            - **Validation Test**: Memastikan produk akhir benar-benar memenuhi kebutuhan bisnis atau keinginan klien.
           quiz:
-            question: Apa poin utama dari materi 'Smoke, Regression, & Validation'?
+            question: Apa tujuan dari Smoke Test?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menguji performa server di bawah beban berat.
+              - Memastikan fungsi paling kritis aplikasi berjalan sebelum pengujian lebih dalam.
+              - Menghapus bug secara otomatis.
+              - Memperbaiki tampilan UI yang rusak.
+            correctAnswerIndex: 1
         - id: pytest-intro
           title: Mengenal Pytest
-          content: '**Pytest** adalah framework testing paling populer di Python. Ia sangat mudah digunakan dan memiliki fitur canggih seperti "Fixtures" dan "Parameterization".'
+          content: |-
+            **Tujuan Pembelajaran:** Menggunakan framework pengujian standar industri untuk menulis tes yang bersih.
+
+            **Pytest** adalah framework testing paling populer di Python. Keunggulannya adalah sintaks yang sangat sederhana dibandingkan library bawaan (`unittest`).
+
+            **Cara Kerja:**
+            - Nama file harus diawali `test_` (misal: `test_logic.py`).
+            - Nama fungsi tes harus diawali `test_`.
+            - Gunakan pernyataan `assert` untuk mengecek kebenaran.
           codeExample: |-
-            # Instalasi: pip install pytest
+            # File: test_math.py
 
             def tambah(a, b):
                 return a + b
 
-            def test_tambah():
-                assert tambah(1, 2) == 3
+            def test_tambah_positif():
+                assert tambah(2, 3) == 5
+
+            def test_tambah_negatif():
+                assert tambah(-1, -1) == -2
         - id: pytest-advanced
           title: Fitur Canggih Pytest
           content: |-
-            - **Fixtures**: Menyiapkan data atau kondisi sebelum tes dijalankan (misal: koneksi database).
-            - **Markers**: Mengelompokkan tes (misal: @pytest.mark.slow).
-            - **Parametrize**: Menjalankan satu tes dengan banyak variasi data input.
+            **Tujuan Pembelajaran:** Meningkatkan efisiensi penulisan tes dengan fitur lanjutan Pytest.
+
+            **1. Fixtures:**
+            Menyiapkan data atau kondisi sebelum tes (misal: membuat koneksi database sementara) dan membersihkannya setelah tes selesai.
+
+            **2. Parametrize:**
+            Menjalankan satu fungsi tes dengan banyak variasi data sekaligus tanpa harus menulis banyak fungsi.
           codeExample: |-
             import pytest
 
-            @pytest.mark.parametrize("a,b,hasil", [(1,2,3), (4,5,9)])
+            # Contoh Parametrize
+            @pytest.mark.parametrize("a, b, hasil", [
+                (1, 2, 3),
+                (10, 20, 30),
+                (-1, 1, 0)
+            ])
             def test_tambah_banyak(a, b, hasil):
                 assert a + b == hasil
+
+            # Contoh Fixture (Pseudo-code)
+            @pytest.fixture
+            def data_user():
+                return {"nama": "Andi", "role": "admin"}
+
+            def test_user_is_admin(data_user):
+                assert data_user["role"] == "admin"
     - id: profiling-optimization
       title: 16. Profiling & Optimasi Kode
       lessons:
         - id: profiling-intro
           title: Apa itu Profiling?
           content: |-
-            **Profiling** adalah proses mengukur performa kodemu untuk mencari bagian mana yang paling lambat atau memakan paling banyak memori.
-                      
-            "Jangan menebak di mana letak kelambatan, ukurlah!"
-                      
-            Tool Profiling:
-            - **cProfile**: Tool bawaan Python untuk mengukur waktu eksekusi fungsi.
-            - **memory_profiler**: Untuk melihat penggunaan RAM per baris kode.
+            **Tujuan Pembelajaran:** Menemukan bagian kode yang memperlambat aplikasi atau memakan banyak memori.
+
+            "Jangan menebak di mana letak kelambatan, ukurlah!" **Profiling** adalah proses statistik untuk mengukur waktu eksekusi fungsi dan penggunaan sumber daya.
+
+            **Alat Profiling:**
+            - **cProfile**: Profiler bawaan Python yang sangat detail.
+            - **timeit**: Untuk mengukur waktu eksekusi potongan kode kecil.
+            - **memory_profiler**: Untuk memantau penggunaan RAM baris demi baris.
           codeExample: |-
             import cProfile
 
             def fungsi_berat():
-                # ... kode ...
+                total = 0
+                for i in range(1000000):
+                    total += i
+                return total
 
+            # Menjalankan profiler
             cProfile.run("fungsi_berat()")
         - id: optimization-tips
           title: Tips Optimasi Kode
           content: |-
-            Setelah tahu bagian yang lambat, kamu bisa melakukan optimasi:
-            - **Vectorization**: Gunakan NumPy/Pandas daripada loop `for` manual (bisa 100x lebih cepat).
-            - **Caching**: Simpan hasil perhitungan berat agar tidak dihitung ulang (`@lru_cache`).
-            - **Generator**: Gunakan generator untuk mengolah data besar tanpa memakan banyak RAM.
+            **Tujuan Pembelajaran:** Menerapkan teknik untuk mempercepat eksekusi kode tanpa merusak logikanya.
+
+            **Teknik Optimasi:**
+            - **Vectorization**: Gunakan NumPy daripada loop `for` manual untuk operasi matematika (bisa 100x lebih cepat).
+            - **Caching**: Gunakan `@lru_cache` untuk menyimpan hasil fungsi yang berat agar tidak dihitung ulang.
+            - **Generators**: Gunakan generator untuk mengolah data besar tanpa memakan banyak RAM.
+            - **Bawaan Python**: Gunakan fungsi bawaan seperti `map()`, `filter()`, dan list comprehension yang dioptimasi di tingkat bahasa C.
           codeExample: |-
             from functools import lru_cache
 
-            @lru_cache(maxsize=None)
-            def hitung_berat(n):
-                # ... hasil disimpan di memori ...
+            @lru_cache(maxsize=128)
+            def hitung_fibonacci(n):
+                if n < 2: return n
+                return hitung_fibonacci(n-1) + hitung_fibonacci(n-2)
+
+            print(hitung_fibonacci(50)) # Sangat cepat karena hasil disimpan!
         - id: premature-optimization
           title: Bahaya Premature Optimization
           content: |-
+            **Tujuan Pembelajaran:** Memahami kapan waktu yang tepat untuk melakukan optimasi kode.
+
             "Premature optimization is the root of all evil." - Donald Knuth.
-                      
-            Artinya: Jangan mengoptimasi kode sebelum kamu yakin kode itu benar-benar lambat dan mengganggu. Fokuslah pada kejelasan kode terlebih dahulu, baru optimasi jika diperlukan.
+
+            Artinya: Jangan menghabiskan waktu berhari-hari untuk mempercepat kode yang sebenarnya hanya berjalan sekali sebulan atau hanya memakan waktu 0.001 detik.
+
+            **Prioritas:**
+            1. Buat kode **Benar**.
+            2. Buat kode **Bersih/Mudah Dibaca**.
+            3. Jika benar-benar lambat, lakukan **Profiling**.
+            4. Lakukan **Optimasi** hanya pada bagian yang terbukti lambat.
           quiz:
-            question: Apa poin utama dari materi 'Bahaya Premature Optimization'?
+            question: Menurut prinsip 'Premature Optimization', apa yang harus diprioritaskan pengembang?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Kecepatan eksekusi yang maksimal sejak awal.
+              - Kebenaran dan kejelasan kode terlebih dahulu.
+              - Penggunaan memori sekecil mungkin.
+              - Penggunaan algoritma yang paling rumit.
+            correctAnswerIndex: 1
 - id: data-engineer
   title: Data Engineer
   description: Pengolahan data, matematika, dan pipeline data.
@@ -795,99 +1211,288 @@
       lessons:
         - id: numpy-basics
           title: 'NumPy: Komputasi Numerik'
-          content: NumPy adalah fondasi dari hampir semua library AI di Python. Ia memungkinkan kita bekerja dengan Array (matriks) secara sangat cepat.
+          content: |-
+            **Tujuan Pembelajaran:** Melakukan operasi matematika pada kumpulan data besar (vektor dan matriks) secara efisien.
+
+            **NumPy (Numerical Python)** adalah fondasi utama AI di Python. Berbeda dengan List Python yang lambat, NumPy menggunakan Array yang dioptimasi di tingkat bahasa C.
+
+            **Karakteristik:**
+            - **Vectorization**: Bisa melakukan operasi matematika ke semua elemen sekaligus tanpa loop `for`.
+            - **Fixed Type**: Semua item dalam satu array harus memiliki tipe data yang sama (misal: semua float).
+            - **Multidimensi**: Sangat mudah mengelola data dalam bentuk baris dan kolom (matriks).
           codeExample: |-
             import numpy as np
+
+            # Membuat array
             arr = np.array([1, 2, 3, 4])
-            print(arr * 2)
+            print(f"Array dikali 2: {arr * 2}")
+
+            # Matriks (2D)
+            matriks = np.array([[1, 2], [3, 4]])
+            print(f"Bentuk (Shape): {matriks.shape}")
+            
+            # Operasi Statistik
+            print(f"Rata-rata: {np.mean(arr)}")
+            print(f"Nilai Maksimal: {np.max(arr)}")
         - id: pandas-basics
           title: 'Pandas: Analisis Data Dasar'
-          content: Pandas digunakan untuk mengolah data dalam bentuk tabel (DataFrame), mirip seperti Excel tapi dalam kode.
+          content: |-
+            **Tujuan Pembelajaran:** Mengolah data dalam bentuk tabel (tabular) seperti Excel menggunakan Python.
+
+            **Pandas** memperkenalkan struktur data **DataFrame**. Jika NumPy adalah mesinnya, Pandas adalah antarmukanya yang sangat ramah pengguna.
+
+            **Fitur Utama:**
+            - Membaca file (CSV, Excel, SQL) dalam satu baris kode.
+            - Menangani data kosong (Missing Data) dengan mudah.
+            - Filter, sorting, dan grouping data secara instan.
+            - Penggabungan (Merge/Join) tabel seperti di database SQL.
           codeExample: |-
             import pandas as pd
-            data = {"Nama": ["AI", "Bot"], "Skor": [95, 80]}
+
+            # Membuat DataFrame sederhana
+            data = {
+                "Nama": ["Budi", "Siti", "Andi"],
+                "Nilai": [85, 95, 78],
+                "Kota": ["Jakarta", "Surabaya", "Jakarta"]
+            }
             df = pd.DataFrame(data)
-            print(df)
+
+            # Filter data yang nilainya di atas 80
+            pintar = df[df["Nilai"] > 80]
+            print(f"Siswa pintar:\n{pintar}")
+
+            # Rata-rata nilai per kota
+            rata_kota = df.groupby("Kota")["Nilai"].mean()
+            print(f"\nRata-rata per kota:\n{rata_kota}")
     - id: data-visualization
       title: 18. Data Visualization & Matplotlib
       lessons:
         - id: viz-intro
           title: Kenapa Visualisasi Data?
           content: |-
-            Visualisasi data adalah seni mengubah angka mentah menjadi grafik yang mudah dimengerti. "Satu gambar bermakna seribu kata."
-                      
-            Manfaat:
-            - **Menemukan Pola**: Melihat tren kenaikan atau penurunan dengan cepat.
-            - **Mendeteksi Outlier**: Menemukan data yang aneh atau salah input.
-            - **Komunikasi**: Membantu orang lain (seperti bos atau klien) memahami hasil analisis kita.
+            **Tujuan Pembelajaran:** Memahami pentingnya menyajikan data secara visual agar pola dan tren mudah terbaca oleh otak manusia.
+
+            Visualisasi data adalah seni mengubah angka mentah menjadi grafik yang informatif.
+
+            **Kekuatan Visualisasi:**
+            - **Mendeteksi Outlier**: Sangat mudah menemukan data yang aneh (misal: umur 500 tahun) pada sebuah grafik daripada pada tabel ribuan baris.
+            - **Mencari Pola**: Melihat tren kenaikan atau penurunan dengan cepat (misal: grafik penjualan bulanan).
+            - **Menceritakan Data**: Membantu orang lain (seperti klien) memahami hasil analisis kita dalam hitungan detik.
           quiz:
-            question: Apa poin utama dari materi 'Kenapa Visualisasi Data?'?
+            question: Manakah dari berikut ini yang merupakan manfaat utama visualisasi data?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Mengurangi ukuran file database.
+              - Mengotomatisasi proses pengambilan data.
+              - Mempermudah manusia dalam mengenali pola dan anomali pada data.
+              - Mengubah kode Python menjadi website secara otomatis.
+            correctAnswerIndex: 2
         - id: matplotlib-basics
           title: Mengenal Matplotlib
           content: |-
-            **Matplotlib** adalah library visualisasi paling dasar dan populer di Python. Ia memberikan kontrol penuh atas setiap elemen grafik.
-                      
-            Komponen Utama:
-            - **Figure**: Kanvas tempat kita menggambar.
-            - **Axes**: Area grafik di dalam kanvas (sumbu X dan Y).
+            **Tujuan Pembelajaran:** Membuat grafik dasar menggunakan library standar industri di Python.
+
+            **Matplotlib** adalah "nenek moyang" dari semua library visualisasi di Python. Hampir semua library lain (seperti Seaborn) dibangun di atas Matplotlib.
+
+            **Komponen Grafik:**
+            - **Figure**: Kanvas utama atau bingkai luar grafik.
+            - **Axes**: Area di mana grafik (plot) digambar (terdiri dari sumbu X dan Y).
           codeExample: |-
             import matplotlib.pyplot as plt
 
-            x = [1, 2, 3, 4]
-            y = [10, 20, 25, 30]
+            # Data sederhana
+            bulan = ["Jan", "Feb", "Mar", "Apr"]
+            omzet = [10, 22, 18, 25]
 
-            plt.plot(x, y)
-            plt.title("Grafik Garis Sederhana")
-            plt.show()
+            # Membuat grafik
+            plt.figure(figsize=(8, 4))
+            plt.plot(bulan, omzet)
+            plt.title("Tren Penjualan Bulanan")
+            plt.show() # Menampilkan grafik
         - id: chart-types
           title: Jenis-Jenis Grafik Utama
           content: |-
-            Setiap data butuh jenis grafik yang berbeda:
-            - **Line Plot**: Untuk tren waktu (misal: harga saham).
-            - **Bar Chart**: Untuk membandingkan kategori (misal: jumlah penjualan per produk).
-            - **Scatter Plot**: Untuk melihat hubungan dua variabel (misal: tinggi badan vs berat badan).
-            - **Histogram**: Untuk melihat distribusi data (misal: sebaran umur penduduk).
+            **Tujuan Pembelajaran:** Memilih grafik yang paling tepat sesuai dengan jenis data yang akan disajikan.
+
+            **Jenis Grafik Populer:**
+            - **Line Plot**: Untuk data deret waktu (Time Series).
+            - **Bar Chart**: Untuk membandingkan kategori (misal: jumlah user per browser).
+            - **Scatter Plot**: Untuk melihat hubungan antara dua variabel (misal: Berat Badan vs Tinggi Badan).
+            - **Histogram**: Untuk melihat distribusi atau sebaran angka (misal: rentang umur pengguna).
           codeExample: |-
-            plt.bar(["A", "B", "C"], [5, 12, 8])
-            plt.scatter([1, 2, 3], [10, 15, 13])
+            import matplotlib.pyplot as plt
+
+            # Bar Chart
+            plt.bar(["Produk A", "Produk B"], [150, 200])
+            plt.title("Perbandingan Stok")
+            plt.show()
+
+            # Scatter Plot
+            x = [1, 2, 3, 4, 5]
+            y = [2, 3, 5, 7, 11]
+            plt.scatter(x, y, color="purple")
+            plt.show()
         - id: customizing-plots
           title: Kustomisasi Grafik
           content: |-
-            Agar grafik lebih profesional, kita bisa menambahkan:
-            - **Labels**: Nama sumbu X dan Y.
-            - **Legend**: Keterangan warna/garis.
-            - **Grid**: Garis bantu.
-            - **Colors & Styles**: Mengubah warna dan jenis garis.
+            **Tujuan Pembelajaran:** Membuat grafik yang lebih profesional dengan label, legenda, dan gaya visual yang menarik.
+
+            Grafik tanpa keterangan adalah grafik yang buruk. Matplotlib memungkinkan kita mengatur setiap detil grafik.
           codeExample: |-
-            plt.plot(x, y, color="red", linestyle="--", marker="o")
-            plt.xlabel("Waktu")
-            plt.ylabel("Nilai")
-            plt.grid(True)
+            import matplotlib.pyplot as plt
+
+            x = range(1, 11)
+            y = [n**2 for n in x]
+
+            plt.plot(x, y, color="red", linestyle="--", marker="o", label="Data Kuadrat")
+            
+            # Keterangan
+            plt.title("Grafik Eksponensial", fontsize=14)
+            plt.xlabel("Input (X)")
+            plt.ylabel("Hasil (Y)")
+            plt.legend() # Menampilkan label 'Data Kuadrat'
+            plt.grid(True, alpha=0.3) # Memberi garis bantu
+            plt.show()
     - id: data-engineering
       title: 19. Data Engineering (ETL & Pipeline)
       lessons:
         - id: de-intro
           title: Apa itu Data Engineering?
           content: |-
-            Data Engineering adalah proses merancang, membangun, dan memelihara sistem yang mengumpulkan, menyimpan, dan memproses data dalam skala besar.
-                      
-            Perbedaan:
-            - **Data Engineer**: Membangun "pipa" data (infrastruktur).
-            - **Data Scientist**: Menganalisis data dari pipa tersebut untuk mencari wawasan.
+            **Tujuan Pembelajaran:** Membedakan peran Data Engineer dalam ekosistem pengolahan data.
+
+            Data Engineering adalah seni membangun "pipa saluran" (infrastructure) yang mengalirkan data mentah dari sumbernya menuju tempat penyimpanan yang siap dianalisis.
+
+            **Perbedaan Peran:**
+            - **Data Engineer**: Membangun pipa, membersihkan data, memastikan data tersedia 24/7 (Infrastruktur).
+            - **Data Scientist**: Mengambil data dari pipa, membuat model prediksi (Analisis).
+            - **Data Analyst**: Membuat laporan dan visualisasi dari data yang sudah siap (Wawasan Bisnis).
           quiz:
-            question: Apa poin utama dari materi 'Apa itu Data Engineering?'?
+            question: Apa tanggung jawab utama seorang Data Engineer?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membuat grafik presentasi untuk bos.
+              - Membangun dan memelihara infrastruktur data (pipeline).
+              - Menemukan tren penjualan masa depan menggunakan statistik.
+              - Melakukan input data manual satu per satu.
+            correctAnswerIndex: 1
+        - id: pandas-advanced
+          title: Pandas Lanjutan
+          content: |-
+            **Tujuan Pembelajaran:** Melakukan manipulasi data tingkat lanjut seperti agregasi dan penggabungan tabel yang kompleks.
+
+            Dalam data engineering, Pandas sering digunakan untuk pembersihan data (data cleaning) skala menengah.
+
+            **Teknik Penting:**
+            - **Merging**: Menggabungkan dua tabel berdasarkan kolom kunci (seperti `JOIN` di SQL).
+            - **Pivoting**: Mengubah struktur baris menjadi kolom.
+            - **Aggregation**: Menghitung statistik per grup (rata-rata, total, jumlah).
+          codeExample: |-
+            import pandas as pd
+
+            df1 = pd.DataFrame({"id": [1, 2], "nama": ["Budi", "Andi"]})
+            df2 = pd.DataFrame({"id": [1, 2], "gaji": [500, 600]})
+
+            # Merge: Menggabungkan data
+            df_gabung = pd.merge(df1, df2, on="id")
+            print(f"Data Gabung:\n{df_gabung}")
+
+            # Grouping: Menghitung total
+            # df.groupby("kategori")["harga"].sum()
+        - id: etl-elt-pipelines
+          title: ETL & ELT Pipelines
+          content: |-
+            **Tujuan Pembelajaran:** Memahami alur kerja pemrosesan data dari sumber ke gudang data (Data Warehouse).
+
+            **1. ETL (Extract, Transform, Load):**
+            Data diambil, diubah (dibersihkan), lalu baru dimasukkan ke penyimpanan. (Cara tradisional).
+
+            **2. ELT (Extract, Load, Transform):**
+            Data diambil dan langsung dimasukkan ke penyimpanan raksasa, baru kemudian diubah di dalam sana. (Cara modern dengan cloud data warehouse).
+
+            **Langkah Utama:**
+            - **Extract**: Ambil data dari API, Database SQL, atau File CSV.
+            - **Transform**: Mengubah format tanggal, menghapus duplikat, menghitung kolom baru.
+            - **Load**: Masukkan ke BigQuery, Snowflake, atau PostgreSQL.
+          quiz:
+            question: Apa kepanjangan dari ETL?
+            options:
+              - Enter, Track, Log.
+              - Extract, Transform, Load.
+              - Export, Transfer, List.
+              - Edit, Treat, Load.
+            correctAnswerIndex: 1
+        - id: data-modeling
+          title: Data Modeling & Databases
+          content: |-
+            **Tujuan Pembelajaran:** Merancang struktur database yang efisien untuk kebutuhan analisis data (OLAP).
+
+            Data Modeling adalah proses merancang skema database agar pengambilan data untuk laporan menjadi sangat cepat.
+
+            **Konsep Populer:**
+            - **Star Schema**: Tabel fakta di tengah dikelilingi oleh tabel dimensi. Paling sederhana dan populer.
+            - **Snowflake Schema**: Versi Star Schema yang lebih normal (lebih detail).
+            - **OLTP vs OLAP**: Database untuk transaksi cepat (misal: Tokopedia) vs Database untuk analisis jutaan data (misal: BigQuery).
+          quiz:
+            question: Skema database mana yang paling sering digunakan untuk Data Warehouse karena kecepatannya?
+            options:
+              - Circle Schema
+              - Star Schema
+              - Square Schema
+              - Line Schema
+            correctAnswerIndex: 1
+        - id: big-data-tech
+          title: Big Data & Distributed Computing
+          content: |-
+            **Tujuan Pembelajaran:** Mengenal teknologi yang digunakan saat data terlalu besar untuk diproses oleh satu komputer saja.
+
+            Ketika data mencapai Terabyte atau Petabyte, kita butuh "keroyokan" banyak komputer (Distributed Computing).
+
+            **Teknologi Utama:**
+            - **Apache Spark**: Pemrosesan data super cepat di dalam memori (RAM).
+            - **Hadoop (HDFS)**: Sistem penyimpanan file yang tersebar di banyak komputer.
+            - **Apache Kafka**: Sistem untuk menangani aliran data real-time (misal: log ribuan klik pengguna per detik).
+          quiz:
+            question: Teknologi apa yang digunakan untuk memproses data besar secara cepat di dalam memori?
+            options:
+              - Microsoft Excel
+              - Apache Spark
+              - Notepad++
+              - Windows Explorer
+            correctAnswerIndex: 1
+        - id: data-orchestration
+          title: Data Orchestration (Airflow)
+          content: |-
+            **Tujuan Pembelajaran:** Mengatur jadwal dan ketergantungan antar pipa data secara otomatis.
+
+            Bayangkan kamu punya 100 tugas pemrosesan data. Tugas B baru bisa jalan kalau Tugas A selesai. Menjalankan ini secara manual mustahil. **Orchestrator** melakukan ini secara otomatis.
+
+            **Apache Airflow:**
+            Menggunakan Python untuk mendefinisikan alur kerja yang disebut **DAG (Directed Acyclic Graph)**. Airflow akan memantau tugas mana yang gagal, mengulang (retry) secara otomatis, dan memberi peringatan.
+          codeExample: |-
+            # Contoh konsep Airflow (DAG)
+            # task_a = PythonOperator(task_id='ambil_data')
+            # task_b = PythonOperator(task_id='bersihkan_data')
+            # task_a >> task_b  # Artinya A harus jalan sebelum B
+        - id: data-warehouse-lake
+          title: Data Warehouse vs Data Lake
+          content: |-
+            **Tujuan Pembelajaran:** Memilih tempat penyimpanan yang sesuai dengan jenis dan kegunaan data.
+
+            **1. Data Warehouse (Gudang Data):**
+            Menyimpan data yang sudah rapi, terstruktur, dan siap dianalisis untuk laporan bisnis. (Contoh: Google BigQuery).
+
+            **2. Data Lake (Danau Data):**
+            Menyimpan segala jenis data mentah (gambar, teks, log, video) tanpa perlu dirapikan dulu. Sangat murah dan bisa menampung data skala raksasa. (Contoh: AWS S3).
+
+            **3. Data Lakehouse:**
+            Teknologi terbaru yang menggabungkan kemampuan Data Lake yang murah dengan Data Warehouse yang cepat.
+          quiz:
+            question: Di mana Anda sebaiknya menyimpan data mentah (seperti file gambar atau log mentah) dalam skala besar?
+            options:
+              - Data Warehouse
+              - Data Lake
+              - File Excel
+              - Database SQL
+            correctAnswerIndex: 1
         - id: pandas-advanced
           title: Pandas Lanjutan
           content: |-
@@ -982,68 +1587,103 @@
         - id: data-cleaning
           title: Data Cleaning (Pembersihan Data)
           content: |-
-            Data mentah seringkali "kotor". Pembersihan data adalah langkah paling memakan waktu namun paling krusial.
-                      
-            Langkah Utama:
-            - **Handling Missing Values**: Menghapus atau mengisi data yang kosong (Imputation).
-            - **Removing Duplicates**: Menghapus data ganda yang bisa merusak model.
-            - **Outlier Detection**: Menangani nilai ekstrem yang tidak masuk akal (misal: umur 500 tahun).
-            - **Data Consistency**: Memastikan format data seragam (misal: "Jakarta" vs "jakarta").
-          codeExample: '# Pandas: df.dropna(), df.fillna(), df.drop_duplicates()'
+            **Tujuan Pembelajaran:** Melakukan pra-pemrosesan data agar model AI tidak belajar dari data yang salah atau bias.
+
+            "Garbage In, Garbage Out". Jika data masukan kotor, maka hasil prediksi AI juga akan buruk. Pembersihan data adalah tahap yang paling memakan waktu (sekitar 80%) bagi seorang praktisi data.
+
+            **Langkah Pembersihan:**
+            - **Handling Missing Values**: Menghapus baris kosong atau mengisinya dengan rata-rata (Mean Imputation).
+            - **Removing Duplicates**: Menghapus data ganda yang tidak sengaja terinput dua kali.
+            - **Outlier Removal**: Membuang data ekstrem yang tidak masuk akal (misal: harga barang Rp 0 atau umur -5 tahun).
+            - **Data Standardization**: Menyeragamkan format (misal: mengubah "Laki-laki" dan "L" menjadi "L").
+          codeExample: |-
+            import pandas as pd
+
+            df = pd.read_csv("data_kotor.csv")
+
+            # 1. Hapus duplikat
+            df = df.drop_duplicates()
+
+            # 2. Isi nilai kosong dengan angka 0
+            df["stok"] = df["stok"].fillna(0)
+
+            # 3. Hapus baris yang nama produknya kosong
+            df = df.dropna(subset=["nama_produk"])
         - id: feature-scaling
           title: Feature Scaling (Penyekalaan)
           content: |-
-            Banyak algoritma AI sensitif terhadap perbedaan skala angka (misal: Gaji jutaan vs Umur puluhan).
-                      
+            **Tujuan Pembelajaran:** Menyeimbangkan rentang angka antar fitur agar algoritma AI dapat belajar dengan lebih stabil.
+
+            Banyak algoritma (seperti KNN atau SVM) sensitif terhadap perbedaan skala. Jika fitur "Gaji" bernilai jutaan dan "Umur" bernilai puluhan, algoritma akan menganggap Gaji jauh lebih penting hanya karena angkanya lebih besar.
+
+            **Teknik Utama:**
             - **Normalization (Min-Max)**: Mengubah angka ke rentang 0 sampai 1.
-            - **Standardization (Z-Score)**: Mengubah angka agar memiliki rata-rata 0 dan standar deviasi 1.
+            - **Standardization (Z-Score)**: Mengubah angka agar memiliki rata-rata 0 dan standar deviasi 1 (lebih tahan terhadap outlier).
           codeExample: |-
             from sklearn.preprocessing import StandardScaler
+
+            data = [[1000000, 25], [2000000, 30], [1500000, 28]]
             scaler = StandardScaler()
-            # scaled_data = scaler.fit_transform(data)
+
+            # Menghitung dan mengubah data
+            data_scaled = scaler.fit_transform(data)
+            print(f"Data setelah di-scale:\n{data_scaled}")
         - id: categorical-encoding
           title: Categorical Encoding
           content: |-
-            Komputer hanya mengerti angka. Kita harus mengubah teks (kategori) menjadi angka.
-                      
-            - **One-Hot Encoding**: Membuat kolom baru untuk setiap kategori (0 atau 1). Cocok untuk data tanpa urutan (misal: Warna).
-            - **Label Encoding**: Memberi angka urut (0, 1, 2). Cocok untuk data berurutan (misal: SD, SMP, SMA).
+            **Tujuan Pembelajaran:** Mengonversi data teks (kategori) menjadi angka agar bisa diproses secara matematis oleh komputer.
+
+            Komputer tidak mengerti kata "Kucing" atau "Anjing". Mereka butuh angka.
+
+            **Teknik Encoding:**
+            - **One-Hot Encoding**: Membuat kolom baru untuk setiap kategori (berisi 0 atau 1). Cocok untuk data tanpa urutan (misal: Warna, Kota).
+            - **Label Encoding**: Memberi angka urut (0, 1, 2...). Cocok untuk data yang memiliki tingkatan (misal: SD, SMP, SMA).
           codeExample: |-
             import pandas as pd
-            # pd.get_dummies(df, columns=["Warna"])
+
+            df = pd.DataFrame({"warna": ["Merah", "Biru", "Hijau"]})
+
+            # One-Hot Encoding menggunakan Pandas
+            encoded = pd.get_dummies(df, columns=["warna"])
+            print(encoded)
         - id: feature-engineering-detail
           title: Seni Feature Engineering
           content: |-
-            Proses menciptakan fitur baru dari data yang ada untuk membantu model belajar lebih baik.
-                      
-            Contoh:
-            - **Date Extraction**: Mengubah tanggal menjadi "Hari dalam seminggu" atau "Apakah hari libur?".
-            - **Binning**: Mengelompokkan umur menjadi "Anak", "Remaja", "Dewasa".
-            - **Interaction Features**: Mengalikan dua fitur (misal: Luas Tanah * Harga per Meter).
+            **Tujuan Pembelajaran:** Menciptakan fitur baru dari data yang sudah ada untuk meningkatkan akurasi model AI.
+
+            Feature Engineering adalah tempat kreativitas seorang Data Scientist diuji. Kita membuat variabel baru yang memberikan "petunjuk" lebih kuat kepada AI.
+
+            **Contoh Kreatif:**
+            - **Datetime**: Dari "2023-12-25", kita buat fitur baru "Hari Libur (Yes/No)".
+            - **Binning**: Dari "Umur 17, 18, 19", kita kelompokkan menjadi kategori "Remaja".
+            - **Kombinasi**: Menggabungkan "Luas Bangunan" dan "Jumlah Kamar" menjadi "Rasio Luas per Kamar".
           quiz:
-            question: Apa poin utama dari materi 'Seni Feature Engineering'?
+            question: Manakah dari berikut ini yang merupakan contoh dari Feature Engineering?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menghapus data yang rusak.
+              - Mengubah format tanggal menjadi kolom baru 'Hari dalam Minggu'.
+              - Membeli server baru yang lebih cepat.
+              - Menambah jumlah data secara manual.
+            correctAnswerIndex: 1
         - id: feature-selection
           title: Feature Selection (Pemilihan Fitur)
           content: |-
-            Tidak semua data itu penting. Memilih fitur yang paling berpengaruh bisa mempercepat model dan mencegah "Overfitting".
-                      
-            Teknik:
-            - **Correlation Matrix**: Melihat hubungan antar variabel.
-            - **Feature Importance**: Menggunakan model (seperti Random Forest) untuk melihat fitur mana yang paling banyak membantu prediksi.
+            **Tujuan Pembelajaran:** Memilih hanya fitur yang paling berpengaruh untuk mempercepat proses training dan mencegah overfitting.
+
+            Tidak semua data berguna. Terlalu banyak fitur yang tidak relevan (noise) justru bisa membingungkan model AI.
+
+            **Teknik Pemilihan:**
+            - **Correlation Heatmap**: Mencari fitur yang hubungannya sangat kuat dengan target.
+            - **Recursive Feature Elimination (RFE)**: Menghapus fitur satu per satu dan melihat dampaknya pada akurasi.
+            - **Feature Importance**: Menggunakan model (seperti Random Forest) untuk melihat skor kontribusi tiap fitur.
           quiz:
-            question: Apa poin utama dari materi 'Feature Selection (Pemilihan Fitur)'?
+            question: Apa tujuan utama dari Feature Selection?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menambah sebanyak mungkin kolom data agar AI makin pintar.
+              - Mengurangi 'noise' dan mempercepat proses training dengan hanya menggunakan fitur relevan.
+              - Mengubah format file data dari CSV ke JSON.
+              - Mencadangkan data ke server awan.
+            correctAnswerIndex: 1
 - id: ai-engineer
   title: AI Engineer
   description: Machine Learning, Deep Learning, dan AI Engineering.
@@ -1054,316 +1694,531 @@
         - id: ml-intro
           title: Apa itu Machine Learning?
           content: |-
-            Machine Learning (ML) adalah teknik di mana komputer belajar dari pola data tanpa diprogram secara eksplisit.
-                      
-            Tipe ML:
-            - **Supervised**: Belajar dari data berlabel (contoh: prediksi harga rumah).
-            - **Unsupervised**: Mencari pola tersembunyi (contoh: pengelompokan pelanggan).
+            **Tujuan Pembelajaran:** Memahami konsep dasar bagaimana komputer "belajar" dari data tanpa instruksi pemrograman yang kaku.
+
+            Machine Learning (ML) adalah cabang AI yang fokus pada penggunaan data dan algoritma untuk meniru cara manusia belajar, secara bertahap meningkatkan akurasinya.
+
+            **Tipe Utama ML:**
+            - **Supervised Learning**: Belajar dari data yang sudah ada labelnya (misal: memprediksi harga rumah berdasarkan data penjualan tahun lalu).
+            - **Unsupervised Learning**: Mencari pola tersembunyi dari data yang tidak berlabel (misal: mengelompokkan pelanggan berdasarkan perilaku belanja).
+            - **Reinforcement Learning**: Belajar melalui sistem hadiah dan hukuman (misal: AI yang belajar bermain catur).
           codeExample: |-
-            # Contoh sederhana Linear Regression dengan Scikit-Learn
-            # (Simulasi konsep)
+            # Menggunakan Scikit-Learn untuk Linear Regression (Supervised)
             from sklearn.linear_model import LinearRegression
+            import numpy as np
+
+            # Data: X (Luas Rumah), y (Harga)
+            X = np.array([[50], [80], [100], [120]])
+            y = np.array([500, 800, 1000, 1200])
+
             model = LinearRegression()
+            model.fit(X, y) # Proses Belajar
+
+            prediksi = model.predict([[150]])
+            print(f"Prediksi harga rumah luas 150m2: {prediksi[0]}")
         - id: classification-deep-dive
           title: Klasifikasi (Classification)
           content: |-
-            Klasifikasi adalah tugas memprediksi "Kategori" atau "Label" dari suatu data.
-                      
-            Contoh:
-            - Email: Spam atau Bukan Spam?
-            - Gambar: Kucing atau Anjing?
-            - Penyakit: Positif atau Negatif?
-                      
-            Algoritma Populer: Logistic Regression, Decision Trees, Random Forest, dan SVM.
+            **Tujuan Pembelajaran:** Memahami tugas AI dalam mengelompokkan data ke dalam kategori-kategori tertentu.
+
+            Klasifikasi adalah proses memprediksi label kategori (output diskrit) dari data masukan.
+
+            **Contoh Klasifikasi:**
+            - **Binary Classification**: Hanya dua pilihan (Ya/Tidak, Spam/Bukan).
+            - **Multi-class Classification**: Lebih dari dua pilihan (Warna: Merah, Biru, Hijau).
+
+            **Algoritma Populer:**
+            - **Logistic Regression**: Dasar klasifikasi.
+            - **Random Forest**: Kumpulan "pohon keputusan" yang sangat akurat.
+            - **SVM (Support Vector Machine)**: Mencari garis pemisah terbaik antar kategori.
           codeExample: |-
             from sklearn.ensemble import RandomForestClassifier
+
+            # Fitur: [Berat, Tekstur (0=Halus, 1=Kasar)]
+            X = [[140, 0], [130, 0], [150, 1], [170, 1]]
+            y = ["Apel", "Apel", "Jeruk", "Jeruk"]
+
             clf = RandomForestClassifier()
-            # clf.fit(X_train, y_train)
+            clf.fit(X, y)
+
+            print(f"Hasil tebakan: {clf.predict([[160, 1]])}") # Prediksi Jeruk
         - id: scikit-learn
           title: Scikit-Learn Dasar
-          content: Library paling populer untuk ML tradisional. Kamu bisa melakukan klasifikasi, regresi, dan clustering dengan mudah.
+          content: |-
+            **Tujuan Pembelajaran:** Menguasai "Swiss Army Knife" dari library Machine Learning di Python.
+
+            **Scikit-Learn (sklearn)** adalah library paling populer untuk ML tradisional. Ia menyediakan alat yang seragam untuk pembersihan data, pemilihan model, hingga evaluasi.
+
+            **Alur Kerja Standar Sklearn:**
+            1. **Preprocessing**: Membersihkan data.
+            2. **Train/Test Split**: Membagi data (misal 80% untuk belajar, 20% untuk ujian).
+            3. **Model Selection**: Memilih algoritma.
+            4. **Fit**: Melatih model.
+            5. **Predict & Evaluate**: Mencoba model dan melihat akurasinya.
           codeExample: |-
             from sklearn.model_selection import train_test_split
-            # Membagi data menjadi data latih dan data uji
+            from sklearn.metrics import accuracy_score
+
+            # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+            # model.fit(X_train, y_train)
+            # prediksi = model.predict(X_test)
+            # print(f"Akurasi: {accuracy_score(y_test, prediksi)}")
     - id: deep-learning
       title: 22. Deep Learning & Neural Networks
       lessons:
         - id: neural-networks-theory
           title: Teori Jaringan Saraf
           content: |-
-            Jaringan Saraf Tiruan (ANN) meniru cara otak bekerja dengan lapisan input, tersembunyi, dan output.
-                      
-            Komponen Utama:
-            - **Neuron**: Unit pemrosesan dasar.
-            - **Weights & Biases**: Parameter yang dipelajari model.
-            - **Activation Functions**: Menentukan apakah neuron harus "aktif" (contoh: ReLU, Sigmoid).
-          codeExample: '# Konsep dasar neuron: output = activation(dot(input, weight) + bias)'
+            **Tujuan Pembelajaran:** Memahami arsitektur dasar Jaringan Saraf Tiruan (Artificial Neural Networks) yang terinspirasi dari otak manusia.
+
+            Deep Learning adalah bagian dari Machine Learning yang menggunakan jaringan saraf berlapis-lapis untuk memproses data yang sangat kompleks (seperti gambar, suara, dan teks).
+
+            **Komponen Utama:**
+            - **Input Layer**: Tempat masuknya data mentah.
+            - **Hidden Layers**: Lapisan-lapisan di tengah tempat AI mencari pola hubungan antar data.
+            - **Output Layer**: Hasil akhir prediksi.
+            - **Neuron/Node**: Unit pemroses terkecil yang melakukan perhitungan matematika sederhana.
+          codeExample: |-
+            # Konsep dasar perhitungan satu neuron
+            # output = activation_function((input * weight) + bias)
+
+            import numpy as np
+
+            def sigmoid(x):
+                return 1 / (1 + np.exp(-x))
+
+            inputs = np.array([0.5, 0.8])
+            weights = np.array([0.4, 0.7])
+            bias = 0.1
+
+            output = sigmoid(np.dot(inputs, weights) + bias)
+            print(f"Output Neuron: {output:.4f}")
         - id: backpropagation
           title: Backpropagation & Gradient Descent
           content: |-
-            Ini adalah "mesin" di balik pembelajaran AI. 
-            - **Loss Function**: Mengukur seberapa salah prediksi AI.
-            - **Optimizer**: Mengubah weights untuk memperkecil kesalahan (Loss).
-            - **Backpropagation**: Menghitung kontribusi setiap neuron terhadap kesalahan.
+            **Tujuan Pembelajaran:** Memahami bagaimana AI memperbaiki dirinya sendiri saat melakukan kesalahan.
+
+            AI tidak langsung pintar. Ia belajar melalui iterasi (perulangan) menggunakan dua mekanisme utama:
+
+            **1. Forward Propagation:** AI mencoba menebak data.
+            **2. Loss Function:** Menghitung seberapa jauh tebakan AI dari kenyataan (misal: menebak harga rumah 500jt padahal aslinya 800jt).
+            **3. Backpropagation:** Menghitung kontribusi kesalahan ke setiap neuron di belakang.
+            **4. Gradient Descent (Optimizer):** Mengubah nilai *weights* sedikit demi sedikit agar kesalahan di masa depan berkurang.
           quiz:
-            question: Apa poin utama dari materi 'Backpropagation & Gradient Descent'?
+            question: Apa fungsi utama dari 'Optimizer' (seperti Gradient Descent) dalam training AI?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menghapus data yang tidak terpakai.
+              - Mengubah nilai weights/bobot neuron agar tingkat kesalahan (loss) mengecil.
+              - Mengubah gambar menjadi teks.
+              - Mempercepat koneksi internet saat training.
+            correctAnswerIndex: 1
     - id: computer-vision
       title: 23. Computer Vision (Visi Komputer)
       lessons:
         - id: cv-intro
           title: Bagaimana Komputer Melihat?
-          content: Gambar bagi komputer hanyalah kumpulan angka (piksel). Computer Vision bertujuan untuk memahami makna di balik piksel tersebut.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami representasi gambar digital di mata komputer.
+
+            Bagi manusia, gambar adalah warna dan bentuk. Bagi komputer, gambar hanyalah sebuah matriks angka (array multidimensi).
+
+            **Representasi Gambar:**
+            - **Piksel**: Titik terkecil dalam gambar.
+            - **Resolusi**: Jumlah piksel (Tinggi x Lebar).
+            - **Saluran Warna (Channels)**: 
+              - Grayscale: Hanya 1 saluran (0-255).
+              - RGB: 3 saluran (Red, Green, Blue).
           codeExample: |-
+            # Menggunakan library OpenCV untuk membaca gambar
             import cv2
-            # img = cv2.imread("gambar.jpg")
-            # print(img.shape) # (Tinggi, Lebar, Saluran Warna)
+            import numpy as np
+
+            # Membuat "gambar" hitam kosong 100x100 piksel
+            img = np.zeros((100, 100, 3), dtype="uint8")
+            
+            # Memberi warna merah pada satu titik
+            img[50, 50] = [0, 0, 255] # BGR format
+            
+            print(f"Bentuk Gambar (Tinggi, Lebar, Channel): {img.shape}")
         - id: cnn-theory
           title: Convolutional Neural Networks (CNN)
           content: |-
-            CNN adalah jenis arsitektur AI khusus untuk gambar. Ia menggunakan "Filter" untuk mendeteksi fitur seperti garis, bentuk, hingga wajah.
-                      
-            Lapisan CNN:
-            - **Convolution**: Ekstraksi fitur.
-            - **Pooling**: Mengurangi ukuran data agar lebih efisien.
-            - **Fully Connected**: Klasifikasi akhir.
+            **Tujuan Pembelajaran:** Memahami arsitektur standar AI yang digunakan untuk mengenali objek dalam gambar.
+
+            CNN dirancang khusus untuk menangani data spasial (gambar). Ia menggunakan konsep "Filter" untuk mendeteksi fitur secara otomatis.
+
+            **Lapisan Utama CNN:**
+            1. **Convolution Layer**: Menggunakan filter untuk mencari garis, sudut, atau tekstur.
+            2. **Activation (ReLU)**: Menghilangkan nilai negatif agar model lebih stabil.
+            3. **Pooling Layer**: Mengurangi ukuran matriks (downsampling) agar proses lebih cepat tanpa kehilangan informasi penting.
+            4. **Fully Connected Layer**: Lapisan akhir untuk memutuskan gambar itu apa (misal: Anjing atau Kucing).
           quiz:
-            question: Apa poin utama dari materi 'Convolutional Neural Networks (CNN)'?
+            question: Apa fungsi dari lapisan 'Convolution' dalam CNN?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Mengubah gambar menjadi teks deskripsi.
+              - Menggunakan filter untuk mengekstrak fitur penting (seperti garis atau pola).
+              - Menghapus seluruh warna dari gambar.
+              - Mengirim gambar ke database awan.
+            correctAnswerIndex: 1
         - id: object-detection
           title: Deteksi Objek & YOLO
-          content: Bukan hanya mengklasifikasi gambar, tapi juga menemukan di mana objek berada. YOLO (You Only Look Once) adalah algoritma tercepat untuk tugas ini.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami perbedaan antara klasifikasi gambar dan deteksi objek.
+
+            **Deteksi Objek** tidak hanya memberi tahu "Ada apa di gambar ini?" tapi juga "Di mana letaknya?". Ia menghasilkan kotak pembatas (*Bounding Box*).
+
+            **YOLO (You Only Look Once):**
+            Algoritma deteksi objek yang sangat revolusioner karena kecepatannya. YOLO membagi gambar menjadi kotak-kotak grid dan memprediksi objek di seluruh grid secara bersamaan dalam satu kali proses (real-time).
           quiz:
-            question: Apa poin utama dari materi 'Deteksi Objek & YOLO'?
+            question: Apa kelebihan utama algoritma YOLO dibandingkan algoritma deteksi objek lainnya?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Lebih lambat tapi sangat detail.
+              - Sangat cepat sehingga bisa digunakan untuk video real-time.
+              - Hanya bisa mendeteksi warna hitam putih.
+              - Membutuhkan komputer tanpa GPU.
+            correctAnswerIndex: 1
     - id: ai-lifecycle-image
       title: 24. AI Lifecycle & Image Processing
       lessons:
         - id: ai-lifecycle
           title: Siklus Hidup AI (Training - Inference)
           content: |-
-            Membangun AI bukan hanya soal "coding", tapi soal alur data:
-                      
-            1. **Pre-processing**: Membersihkan dan menyiapkan data mentah agar siap dipelajari.
-            2. **Training**: Proses model "belajar" dari data (membutuhkan GPU/Waktu lama).
-            3. **Inference**: Menggunakan model yang sudah jadi untuk menebak data baru (proses cepat).
-            4. **Post-processing**: Mengolah hasil tebakan AI agar lebih berguna bagi manusia (misal: membulatkan angka atau menerjemahkan kode ke teks).
+            **Tujuan Pembelajaran:** Memahami alur kerja lengkap dari pengembangan model AI hingga digunakan oleh pengguna akhir.
+
+            Membangun AI bukan hanya soal menulis algoritma, tapi soal mengelola data dan komputasi.
+
+            **Tahapan Utama:**
+            1. **Pre-processing**: Membersihkan data mentah agar siap "dimakan" AI.
+            2. **Training**: Model AI belajar pola dari data. Tahap ini berat dan memakan waktu lama (membutuhkan GPU/TPU).
+            3. **Evaluation**: Menguji model dengan data baru untuk melihat seberapa pintar dia.
+            4. **Inference**: Menggunakan model yang sudah jadi untuk melayani pengguna (misal: menebak isi foto yang diunggah user). Tahap ini harus sangat cepat.
           quiz:
-            question: Apa poin utama dari materi 'Siklus Hidup AI (Training - Inference)'?
+            question: Tahapan mana yang bertugas menggunakan model AI yang sudah terlatih untuk melayani pengguna secara real-time?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Pre-processing
+              - Training
+              - Inference
+              - Data Collection
+            correctAnswerIndex: 2
         - id: image-manipulation
           title: Image Manipulation (Pengolahan Gambar)
           content: |-
-            Dalam AI visi komputer, kita sering memanipulasi gambar sebelum dimasukkan ke model.
-                      
-            Teknik Dasar:
-            - **Resizing**: Mengubah ukuran gambar.
-            - **Grayscale**: Mengubah ke hitam putih.
-            - **Augmentation**: Memutar, membalik, atau memburamkan gambar agar model lebih pintar.
-                      
-            Library Populer: **OpenCV (cv2)**, **Pillow (PIL)**.
-          codeExample: |-
-            from PIL import Image
+            **Tujuan Pembelajaran:** Memodifikasi gambar agar lebih optimal saat diproses oleh model Computer Vision.
 
-            # img = Image.open("foto.jpg")
-            # img_resized = img.resize((224, 224))
-            # img_gray = img.convert("L")
+            Sebelum gambar masuk ke model AI, kita sering melakukan modifikasi untuk meningkatkan akurasi atau menyamakan format.
+
+            **Teknik Dasar:**
+            - **Resizing**: Menyamakan ukuran gambar (misal: semua jadi 224x224 piksel).
+            - **Normalization**: Mengubah rentang warna 0-255 menjadi 0-1 agar perhitungan matematika lebih stabil.
+            - **Augmentation**: Memutar atau membalik gambar agar model AI belajar bahwa "Kucing terbalik pun tetap Kucing".
+          codeExample: |-
+            from PIL import Image, ImageOps
+
+            # Membuka gambar
+            img = Image.open("foto.jpg")
+
+            # 1. Resize
+            img_small = img.resize((128, 128))
+
+            # 2. Convert ke Grayscale (Hitam Putih)
+            img_bw = img.convert("L")
+
+            # 3. Mirror (Augmentation)
+            img_flip = ImageOps.mirror(img)
+            
+            img_small.save("output.jpg")
     - id: gen-ai
       title: 25. Generative AI & LLM
       lessons:
         - id: llm-intro
           title: Large Language Models (LLM)
-          content: LLM seperti Gemini atau GPT adalah model raksasa yang dilatih dengan hampir seluruh teks di internet. Sebagai AI Engineer, kamu akan sering berinteraksi dengan model ini melalui API.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami cara kerja model AI bahasa berskala raksasa.
+
+            LLM seperti Gemini, GPT-4, atau Claude adalah model yang dilatih menggunakan triliunan kata dari internet untuk memprediksi kata berikutnya dalam sebuah kalimat.
+
+            **Karakteristik LLM:**
+            - **Generatif**: Bisa membuat teks baru, kode program, hingga puisi.
+            - **Multimodal**: Model terbaru bisa memahami gambar, suara, dan video sekaligus.
+            - **Context Window**: Batas jumlah teks yang bisa "diingat" AI dalam satu percakapan.
           codeExample: |-
-            # Contoh integrasi Gemini API
-            # response = ai.models.generateContent("Halo!")
+            # Contoh penggunaan Gemini API (Simulasi)
+            # import google.generativeai as genai
+            # model = genai.GenerativeModel('gemini-pro')
+            # response = model.generate_content("Jelaskan Python dalam 1 kalimat")
+            # print(response.text)
         - id: prompt-engineering
           title: Prompt Engineering
-          content: Seni memberikan instruksi yang tepat kepada AI agar mendapatkan hasil terbaik. Teknik seperti "Few-shot prompting" atau "Chain of Thought" sangat krusial.
+          content: |-
+            **Tujuan Pembelajaran:** Teknik memberikan instruksi yang presisi agar AI memberikan hasil yang akurat.
+
+            Prompt adalah input teks yang kita berikan ke AI. *Prompt Engineering* adalah seni merancang input tersebut.
+
+            **Teknik Populer:**
+            - **Few-Shot Prompting**: Memberikan beberapa contoh sebelum meminta hasil.
+            - **Chain of Thought**: Meminta AI untuk "berpikir selangkah demi selangkah".
+            - **Persona**: Meminta AI berpura-berpura menjadi ahli tertentu (misal: "Bertindaklah sebagai Senior Python Developer").
           quiz:
-            question: Apa poin utama dari materi 'Prompt Engineering'?
+            question: Apa yang dimaksud dengan teknik 'Chain of Thought' dalam prompting?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Memberikan instruksi yang sangat pendek.
+              - Meminta AI menjelaskan langkah-langkah penalarannya secara berurutan.
+              - Menyuruh AI menjawab dengan bahasa asing.
+              - Mengulang-ulang perintah yang sama.
+            correctAnswerIndex: 1
         - id: rag-concept
           title: RAG (Retrieval Augmented Generation)
-          content: Teknik memberikan pengetahuan tambahan kepada AI dari dokumen pribadi kamu tanpa harus melatih ulang modelnya.
+          content: |-
+            **Tujuan Pembelajaran:** Menghubungkan AI dengan data internal perusahaan tanpa harus melatih ulang model.
+
+            LLM punya pengetahuan umum, tapi tidak tahu data pribadi Anda (misal: dokumen SOP kantor). **RAG** memecahkan ini dengan cara:
+            1. AI mencari dokumen relevan di database Anda.
+            2. Dokumen tersebut digabungkan ke dalam prompt.
+            3. AI menjawab berdasarkan dokumen tersebut.
+
+            Ini membuat jawaban AI lebih akurat dan minim halusinasi (mengarang bebas).
           quiz:
-            question: Apa poin utama dari materi 'RAG (Retrieval Augmented Generation)'?
+            question: Apa manfaat utama dari sistem RAG?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Membuat AI menjadi lebih murah.
+              - Memungkinkan AI menjawab berdasarkan data terbaru/pribadi tanpa training ulang.
+              - Mengubah AI teks menjadi AI gambar.
+              - Menghapus kebutuhan akan API key.
+            correctAnswerIndex: 1
         - id: diffusion-models
           title: Diffusion Models (Image Gen)
-          content: Teknik di balik pembuatan gambar seperti Midjourney atau Stable Diffusion. AI belajar dengan cara "membersihkan" gambar yang penuh dengan noise (bintik-bintik) hingga menjadi gambar yang jelas sesuai instruksi teks.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami teknologi di balik AI pembuat gambar (Midjourney, DALL-E, Stable Diffusion).
+
+            Berbeda dengan LLM, *Diffusion Models* bekerja dengan cara:
+            1. Mengambil gambar yang penuh bintik (noise).
+            2. Belajar membersihkan bintik tersebut sedikit demi sedikit hingga menjadi gambar yang jelas sesuai teks deskripsi pengguna.
           quiz:
-            question: Apa poin utama dari materi 'Diffusion Models (Image Gen)'?
+            question: Bagaimana cara kerja dasar Diffusion Models dalam pembuatan gambar?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menyusun potongan foto dari internet.
+              - Membersihkan 'noise' (bintik-bintik) secara bertahap hingga menjadi gambar utuh.
+              - Menggambar garis satu per satu secara manual.
+              - Menggunakan filter kamera biasa.
+            correctAnswerIndex: 1
         - id: fine-tuning-llm
           title: Fine-tuning LLM
-          content: 'Proses melatih ulang LLM yang sudah pintar dengan data spesifik agar ia menjadi ahli di bidang tertentu (misal: menjadi AI khusus hukum atau medis).'
+          content: |-
+            **Tujuan Pembelajaran:** Melatih kembali model AI yang sudah pintar agar menjadi ahli di bidang yang sangat spesifik.
+
+            Jika RAG adalah "memberikan buku referensi ke AI", maka Fine-tuning adalah "menyekolahkan AI" ke jurusan spesifik (misal: Hukum, Kedokteran, atau Logat Daerah tertentu).
+
+            **Kapan Fine-tuning?**
+            - Saat butuh gaya bicara yang sangat khusus.
+            - Saat data sangat banyak dan tidak berubah-ubah.
+            - Saat ingin model yang lebih kecil tapi tetap pintar di satu bidang.
           quiz:
-            question: Apa poin utama dari materi 'Fine-tuning LLM'?
+            question: Apa perbedaan utama antara RAG dan Fine-tuning?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - RAG lebih mahal daripada Fine-tuning.
+              - Fine-tuning mengubah bobot internal model, RAG hanya memberikan konteks tambahan.
+              - RAG hanya untuk gambar, Fine-tuning hanya untuk teks.
+              - Tidak ada perbedaan antara keduanya.
+            correctAnswerIndex: 1
         - id: ai-agents
           title: AI Agents & Tool Use
-          content: Masa depan AI bukan hanya menjawab pertanyaan, tapi melakukan tindakan. AI Agent bisa menggunakan "Tools" (seperti kalkulator, browser, atau database) untuk menyelesaikan tugas yang kompleks secara mandiri.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami masa depan AI yang tidak hanya bicara, tapi juga bisa bertindak (Agentic AI).
+
+            AI Agent adalah AI yang diberikan kemampuan untuk menggunakan alat (*Tools*).
+            
+            **Contoh Skenario:**
+            User: "Cari harga tiket termurah ke Bali besok dan pesan satu."
+            Agent akan:
+            1. Menggunakan **Tool Browser** untuk cari harga.
+            2. Menggunakan **Tool Kalkulator** hitung total.
+            3. Menggunakan **Tool API Pembayaran** untuk transaksi.
           codeExample: |-
-            # Agent: "Tolong pesankan tiket pesawat ke Bali"
-            # Agent akan mencari jadwal, membandingkan harga, dan melakukan booking.
+            # Agent menggunakan Tool (Konsep)
+            # @tool
+            # def cek_stok(barang):
+            #     return database.query(barang)
+            
+            # response = agent.run("Berapa sisa stok laptop?")
     - id: embeddings
       title: 26. Vector Embeddings
       lessons:
         - id: text-embeddings
           title: Text Embeddings
           content: |-
-            Text Embedding adalah proses mengubah teks menjadi deretan angka (vektor) yang mewakili makna kata tersebut. Kata-kata dengan makna mirip akan memiliki posisi vektor yang berdekatan.
-                      
-            Kegunaan:
-            - **Pencarian Semantik**: Mencari berdasarkan makna, bukan hanya kata kunci.
-            - **RAG**: Memberikan konteks dokumen ke LLM.
-            - **Klasifikasi Teks**: Mengelompokkan dokumen secara otomatis.
-          codeExample: '# Contoh: "Kucing" dan "Anak Kucing" akan punya vektor yang sangat mirip'
+            **Tujuan Pembelajaran:** Mengonversi makna kata menjadi koordinat angka (vektor) yang bisa dipahami komputer.
+
+            Text Embedding adalah proses mengubah teks menjadi deretan angka berdimensi tinggi. Kata-kata yang memiliki makna serupa (misal: "Raja" dan "Ratu") akan memiliki nilai vektor yang berdekatan dalam ruang matematis tersebut.
+
+            **Kegunaan:**
+            - **Pencarian Semantik**: Mencari dokumen berdasarkan makna, bukan hanya kecocokan kata kunci.
+            - **RAG**: Mengambil dokumen yang relevan untuk diberikan ke LLM.
+            - **Analisis Sentimen**: Mengelompokkan teks berdasarkan nuansa bahasa.
+          codeExample: |-
+            # Contoh konsep (Menggunakan library simulasi)
+            # model = EmbeddingModel()
+            # vektor1 = model.encode("Kucing")
+            # vektor2 = model.encode("Anak Kucing")
+            # print(similarity(vektor1, vektor2)) # Hasil mendekati 1.0
         - id: image-embeddings
           title: Image Embeddings
-          content: Mirip dengan teks, Image Embedding mengubah gambar menjadi vektor. Ini memungkinkan komputer untuk "membandingkan" kemiripan visual antar gambar.
-          codeExample: '# Digunakan untuk: Pencarian gambar serupa, deteksi duplikat, dll.'
+          content: |-
+            **Tujuan Pembelajaran:** Mengubah fitur visual gambar menjadi representasi numerik.
+
+            Sama seperti teks, Image Embedding mengekstrak ciri khas gambar (bentuk, warna, tekstur) menjadi vektor. Ini memungkinkan komputer untuk membandingkan dua gambar secara matematis.
+
+            **Kegunaan:**
+            - **Reverse Image Search**: Mencari gambar serupa di Google Images.
+            - **Deteksi Duplikat**: Menemukan foto yang sama meski ukurannya berbeda.
+            - **Face Recognition**: Membandingkan wajah pengguna dengan database.
+          codeExample: |-
+            # Menggunakan model ResNet/CLIP untuk ekstraksi (Simulasi)
+            # features = model.extract_features(image)
+            # print(features.shape) # Misal: (512,)
         - id: multimodal-embeddings
           title: Multimodal Embeddings (CLIP)
-          content: Teknik canggih di mana teks dan gambar dipetakan ke dalam ruang vektor yang sama. Ini memungkinkan kita mencari gambar hanya dengan mengetikkan deskripsi teks (Text-to-Image Search).
+          content: |-
+            **Tujuan Pembelajaran:** Menghubungkan teks dan gambar ke dalam satu ruang koordinat yang sama.
+
+            Teknik canggih seperti **CLIP** (oleh OpenAI) memungkinkan kita membandingkan teks dengan gambar secara langsung.
+
+            **Cara Kerja:**
+            AI dilatih dengan jutaan pasangan gambar dan teks deskripsinya. Hasilnya, vektor kata "Gunung Salju" akan sangat dekat dengan vektor foto gunung yang tertutup salju. Ini memungkinkan fitur "Search by Text" pada galeri foto Anda.
           quiz:
-            question: Apa poin utama dari materi 'Multimodal Embeddings (CLIP)'?
+            question: Apa yang memungkinkan kita mencari gambar menggunakan deskripsi teks secara akurat?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Nama file gambar harus benar.
+              - Multimodal Embeddings (seperti CLIP) yang menyatukan teks dan gambar dalam satu ruang vektor.
+              - Gambar harus memiliki watermark teks.
+              - Koneksi internet yang sangat cepat.
+            correctAnswerIndex: 1
         - id: vector-databases
           title: Vector Databases
-          content: 'Tempat khusus untuk menyimpan dan mencari jutaan vektor embedding dengan sangat cepat. Contoh populer: Pinecone, Milvus, Weaviate, dan ChromaDB.'
+          content: |-
+            **Tujuan Pembelajaran:** Memahami tempat penyimpanan khusus untuk data embedding dalam skala jutaan.
+
+            Database tradisional (seperti MySQL) tidak efisien untuk mencari vektor terdekat. Kita butuh **Vector Database**.
+
+            **Fitur Utama:**
+            - **ANN Search (Approximate Nearest Neighbor)**: Mencari vektor paling mirip dalam hitungan milidetik.
+            - **Scalability**: Mampu menyimpan miliaran embedding.
+            
+            **Contoh Populer**: Pinecone, Milvus, Weaviate, ChromaDB.
           quiz:
-            question: Apa poin utama dari materi 'Vector Databases'?
+            question: Mengapa kita membutuhkan Vector Database alih-alih database SQL biasa untuk sistem RAG?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Karena Vector Database lebih murah.
+              - Database SQL tidak bisa menyimpan angka desimal.
+              - Vector Database dioptimasi untuk pencarian kemiripan vektor (similarity search) secara cepat.
+              - Database SQL tidak mendukung bahasa Python.
+            correctAnswerIndex: 2
     - id: reinforcement-learning
       title: 27. Reinforcement Learning (RL)
       lessons:
         - id: rl-basics
           title: Belajar dari Hadiah (Rewards)
           content: |-
-            RL adalah cara melatih AI melalui sistem "Reward" (hadiah) dan "Punishment" (hukuman), mirip seperti melatih hewan peliharaan.
-                      
-            Elemen RL:
-            - **Agent**: Si AI yang belajar.
-            - **Environment**: Dunia tempat AI berada.
-            - **Action**: Apa yang dilakukan AI.
-            - **State**: Kondisi AI saat ini.
+            **Tujuan Pembelajaran:** Memahami paradigma belajar AI melalui interaksi dengan lingkungan.
+
+            Berbeda dengan Supervised Learning yang butuh label, RL belajar melalui sistem "Reward" (hadiah) dan "Punishment" (hukuman). Mirip seperti melatih hewan peliharaan.
+
+            **Elemen RL:**
+            - **Agent**: Si AI yang sedang belajar.
+            - **Environment**: Dunia tempat Agent berada (misal: papan catur).
+            - **State**: Kondisi Agent saat ini (misal: posisi bidak catur).
+            - **Action**: Apa yang dilakukan Agent (misal: melangkah ke kiri).
+            - **Reward**: Hadiah yang didapat jika tindakannya benar.
           quiz:
-            question: Apa poin utama dari materi 'Belajar dari Hadiah (Rewards)'?
+            question: Dalam paradigma Reinforcement Learning, apa yang menjadi panduan utama bagi AI untuk belajar?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Label data dari manusia.
+              - Sistem hadiah (reward) dan hukuman dari lingkungan.
+              - Rumus matematika yang tidak bisa berubah.
+              - Kecepatan internet.
+            correctAnswerIndex: 1
         - id: mdp-intro
           title: Markov Decision Process (MDP)
           content: |-
-            MDP adalah kerangka matematika untuk memodelkan pengambilan keputusan di mana hasilnya sebagian acak dan sebagian di bawah kendali pembuat keputusan (Agent).
-                      
-            Komponen MDP:
-            - **S (States)**: Himpunan semua kondisi yang mungkin.
-            - **A (Actions)**: Himpunan semua tindakan yang bisa diambil.
-            - **P (Transition Probability)**: Peluang berpindah dari satu state ke state lain setelah mengambil tindakan tertentu.
-            - **R (Rewards)**: Hadiah yang diterima setelah transisi.
-            - **γ (Discount Factor)**: Menentukan seberapa penting hadiah di masa depan dibanding hadiah saat ini.
+            **Tujuan Pembelajaran:** Memahami kerangka matematika di balik pengambilan keputusan AI.
+
+            MDP adalah dasar formal dari Reinforcement Learning. Ia mengasumsikan bahwa masa depan hanya bergantung pada kondisi saat ini, bukan masa lalu (Markov Property).
+
+            **Komponen MDP:**
+            - **S (States)**: Semua kemungkinan kondisi.
+            - **A (Actions)**: Semua kemungkinan tindakan.
+            - **P (Transition Probability)**: Peluang pindah ke state baru.
+            - **R (Reward)**: Nilai hadiah yang didapat.
+            - **Gamma (γ)**: Faktor diskon untuk menentukan seberapa penting hadiah di masa depan.
           quiz:
-            question: Apa poin utama dari materi 'Markov Decision Process (MDP)'?
+            question: Apa yang dimaksud dengan 'Markov Property' dalam MDP?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - AI harus mengingat semua kejadian dari awal.
+              - Kondisi masa depan hanya bergantung pada kondisi saat ini.
+              - AI tidak boleh mengambil tindakan yang sama dua kali.
+              - Hadiah selalu bernilai negatif.
+            correctAnswerIndex: 1
         - id: q-learning
           title: Q-Learning & Eksplorasi
-          content: AI mencoba berbagai tindakan untuk menemukan strategi terbaik (Policy) yang memaksimalkan total hadiah dalam jangka panjang.
-          codeExample: '# Q-Table: Menyimpan nilai "kebaikan" setiap tindakan di setiap kondisi'
+          content: |-
+            **Tujuan Pembelajaran:** Memahami algoritma klasik untuk menemukan strategi terbaik.
+
+            **Q-Learning** bertujuan untuk membangun "Q-Table", sebuah tabel petunjuk yang memberi tahu Agent: "Jika kamu di kondisi X, lakukan tindakan Y untuk dapat hadiah maksimal".
+
+            **Eksplorasi vs Eksploitasi:**
+            - **Exploration**: AI mencoba hal baru (mungkin dapat hadiah lebih besar).
+            - **Exploitation**: AI melakukan apa yang sudah dia tahu berhasil.
+          codeExample: |-
+            # Update Nilai Q (Konsep Matematika)
+            # Q(s,a) = Q(s,a) + alpha * (reward + gamma * max(Q(s',a')) - Q(s,a))
         - id: rl-applications
           title: Aplikasi RL
           content: |-
-            RL digunakan untuk:
-            - Melatih AI bermain game (AlphaGo).
-            - Robotika (berjalan, memegang barang).
-            - Sistem rekomendasi yang adaptif.
+            **Tujuan Pembelajaran:** Melihat implementasi nyata RL di industri teknologi.
+
+            RL sangat kuat untuk masalah yang membutuhkan strategi jangka panjang:
+            - **Game**: AlphaGo (mengalahkan juara dunia Go), OpenAI Five (Dota 2).
+            - **Robotika**: Melatih tangan robot mengambil barang yang licin.
+            - **Finansial**: Trading saham otomatis yang adaptif terhadap pasar.
+            - **Sistem Rekomendasi**: Menampilkan konten yang membuat user betah lebih lama.
           quiz:
-            question: Apa poin utama dari materi 'Aplikasi RL'?
+            question: Bidang mana yang sangat cocok menggunakan Reinforcement Learning karena membutuhkan strategi berurutan?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Klasifikasi foto kucing dan anjing.
+              - Robotika dan permainan strategi (game).
+              - Menghitung jumlah kata dalam dokumen.
+              - Mengubah format file musik.
+            correctAnswerIndex: 1
         - id: ppo-theory
           title: PPO (Proximal Policy Optimization)
-          content: PPO adalah algoritma RL yang sangat populer karena stabil dan mudah digunakan. Ia memastikan perubahan pada strategi (policy) tidak terlalu drastis agar proses belajar tetap lancar.
-          codeExample: '# Konsep: Membatasi perubahan policy dengan fungsi "Clipping"'
+          content: |-
+            **Tujuan Pembelajaran:** Memahami algoritma RL modern yang stabil dan efisien.
+
+            PPO adalah standar industri saat ini (digunakan oleh OpenAI). Masalah utama RL lama adalah jika AI belajar terlalu drastis, strateginya bisa rusak total.
+
+            **Kelebihan PPO:**
+            Ia menggunakan mekanisme "Clipping" yang membatasi seberapa banyak strategi (policy) boleh berubah dalam satu langkah belajar. Ini memastikan proses belajar tetap stabil dan tidak "mogok" di tengah jalan.
+          codeExample: |-
+            # PPO membatasi perubahan rasio probabilitas tindakan
+            # Clipped Objective Function (Konsep)
+            # L = min(ratio * advantage, clipped_ratio * advantage)
         - id: marl-intro
           title: MARL (Multi-Agent RL)
           content: |-
-            MARL adalah cabang RL di mana banyak AI belajar bersama dalam satu dunia. Mereka bisa bekerja sama (kooperatif) atau saling bersaing (kompetitif).
-                      
-            Tantangan MARL:
-            - **Non-stationarity**: Dunia berubah karena AI lain juga belajar.
-            - **Scalability**: Semakin banyak AI, semakin sulit koordinasinya.
+            **Tujuan Pembelajaran:** Memahami interaksi antar banyak AI dalam satu lingkungan.
+
+            Dalam **Multi-Agent Reinforcement Learning**, Agent tidak sendirian. Ada Agent lain yang juga sedang belajar dan berubah.
+
+            **Jenis Interaksi:**
+            - **Cooperative**: Semua Agent bekerja sama untuk satu tujuan.
+            - **Competitive**: Agent saling menjatuhkan (seperti bermain catur).
+            - **Mixed**: Campuran keduanya (seperti dalam sepak bola).
           quiz:
-            question: Apa poin utama dari materi 'MARL (Multi-Agent RL)'?
+            question: Apa tantangan terbesar dalam MARL (Multi-Agent RL)?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
+              - Lingkungan menjadi tidak stabil (non-stationary) karena semua agent berubah secara bersamaan.
+              - Harga server menjadi murah.
+              - AI tidak bisa berkomunikasi dengan kabel.
+              - Data menjadi terlalu sedikit.
             correctAnswerIndex: 0
     - id: forecasting
       title: 28. Time Series & Forecasting
@@ -1371,90 +2226,149 @@
         - id: time-series-intro
           title: Mengenal Time Series
           content: |-
-            Time Series adalah data yang dikumpulkan secara berurutan berdasarkan waktu.
-                      
-            Contoh:
-            - Harga saham harian.
-            - Suhu udara setiap jam.
-            - Penjualan bulanan toko.
+            **Tujuan Pembelajaran:** Memahami karakteristik data yang memiliki dimensi waktu.
+
+            Time Series (Deret Waktu) adalah sekumpulan pengamatan yang dicatat secara berurutan berdasarkan waktu (detik, jam, hari, bulan, atau tahun).
+
+            **Komponen Time Series:**
+            - **Trend**: Kenaikan atau penurunan jangka panjang (misal: harga emas).
+            - **Seasonality**: Pola yang berulang pada periode tertentu (misal: penjualan es krim naik di musim panas).
+            - **Cyclical**: Pola naik-turun yang durasinya tidak tetap.
+            - **Noise/Residual**: Variasi acak yang tidak bisa dijelaskan.
           quiz:
-            question: Apa poin utama dari materi 'Mengenal Time Series'?
+            question: Apa yang dimaksud dengan 'Seasonality' dalam data Time Series?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Kenaikan harga secara terus menerus selama 10 tahun.
+              - Pola data yang berulang secara teratur pada interval waktu tertentu (misal harian atau bulanan).
+              - Kesalahan input data oleh manusia.
+              - Data yang tidak memiliki urutan waktu.
+            correctAnswerIndex: 1
         - id: forecasting-basics
           title: Forecasting (Peramalan)
           content: |-
-            Forecasting adalah proses memprediksi nilai di masa depan berdasarkan data masa lalu.
-                      
-            Metode:
-            - **Statistik**: ARIMA, Exponential Smoothing.
-            - **ML**: Prophet (oleh Meta), XGBoost.
-            - **Deep Learning**: LSTM, GRU, Transformer.
-          codeExample: '# Contoh: Memprediksi penjualan bulan depan berdasarkan data 2 tahun terakhir'
+            **Tujuan Pembelajaran:** Menggunakan data masa lalu untuk memprediksi nilai di masa depan.
+
+            Forecasting sangat penting bagi bisnis untuk merencanakan stok, anggaran, atau tenaga kerja.
+
+            **Metode Populer:**
+            - **Statistik Klasik**: ARIMA (AutoRegressive Integrated Moving Average).
+            - **Facebook Prophet**: Sangat handal menangani hari libur dan data yang hilang.
+            - **Deep Learning**: LSTM (Long Short-Term Memory) yang mampu mengingat pola jangka panjang.
+          codeExample: |-
+            # Menggunakan library Prophet (Simulasi)
+            # from prophet import Prophet
+            # model = Prophet()
+            # model.fit(df) # df berisi kolom 'ds' (waktu) dan 'y' (nilai)
+            # future = model.make_future_dataframe(periods=365)
+            # forecast = model.predict(future)
     - id: model-optimization
       title: 29. Model Optimization & Efficiency
       lessons:
         - id: quantization
           title: Quantization (Kuantisasi)
           content: |-
-            Kuantisasi adalah proses mengurangi presisi angka dalam model (misal dari 32-bit ke 8-bit). Ini membuat model jauh lebih kecil dan cepat tanpa banyak mengurangi akurasi.
-                      
-            Tipe Kuantisasi:
-            - **PTQ (Post-Training Quantization)**: Dilakukan setelah model selesai dilatih.
-            - **QAT (Quantization-Aware Training)**: Model dilatih sambil mensimulasikan efek kuantisasi.
-          codeExample: '# Contoh: Mengubah model ke format INT8 untuk dijalankan di HP'
+            **Tujuan Pembelajaran:** Mengecilkan ukuran model AI agar bisa berjalan di perangkat dengan spesifikasi rendah (HP atau IoT).
+
+            Kuantisasi adalah proses mengurangi presisi angka dalam bobot (weights) model AI, misalnya dari Float32 (presisi tinggi) ke Int8 (angka bulat).
+
+            **Manfaat:**
+            - **Ukuran File**: Model bisa mengecil hingga 4x lipat.
+            - **Kecepatan**: Proses tebakan (inference) menjadi jauh lebih cepat.
+            - **Hemat Baterai**: Mengurangi beban kerja prosesor.
+          codeExample: |-
+            # Menggunakan TensorFlow Lite untuk Kuantisasi (Konsep)
+            # converter = tf.lite.TFLiteConverter.from_saved_model(model_dir)
+            # converter.optimizations = [tf.lite.Optimize.DEFAULT]
+            # tflite_model = converter.convert()
         - id: knowledge-distillation
           title: Knowledge Distillation (Distilasi)
-          content: Teknik melatih model kecil (Student) untuk meniru perilaku model besar yang sudah pintar (Teacher). Hasilnya adalah model ringan yang punya kecerdasan mendekati model raksasa.
+          content: |-
+            **Tujuan Pembelajaran:** Mentransfer kecerdasan dari model raksasa ke model yang lebih kecil.
+
+            Teknik ini melibatkan dua model:
+            1. **Teacher Model**: Model besar yang sangat pintar (misal: GPT-4).
+            2. **Student Model**: Model kecil yang ingin kita latih (misal: MobileBERT).
+
+            Model Student belajar bukan hanya dari data asli, tapi juga belajar cara Model Teacher memberikan prediksi. Hasilnya, Model Student menjadi jauh lebih pintar dibanding jika ia belajar sendirian.
           quiz:
-            question: Apa poin utama dari materi 'Knowledge Distillation (Distilasi)'?
+            question: Dalam Knowledge Distillation, apa peran dari 'Teacher Model'?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Model kecil yang sedang belajar.
+              - Model besar yang sudah pintar dan berfungsi sebagai panduan bagi model student.
+              - Manusia yang sedang mengetik kode.
+              - Database tempat menyimpan data.
+            correctAnswerIndex: 1
         - id: pruning
           title: Pruning (Pemangkasan)
-          content: Membuang koneksi antar neuron yang tidak penting atau jarang digunakan. Mirip seperti memangkas dahan pohon yang layu agar pohon tetap sehat dan ringan.
+          content: |-
+            **Tujuan Pembelajaran:** Membuang bagian dari jaringan saraf yang tidak memberikan kontribusi signifikan.
+
+            Jaringan saraf sering kali memiliki jutaan koneksi yang sebenarnya tidak terlalu penting. **Pruning** bekerja seperti memangkas dahan pohon yang layu:
+            1. Identifikasi koneksi dengan bobot mendekati nol.
+            2. Hapus koneksi tersebut.
+            3. Latih ulang model sedikit (fine-tuning) agar akurasi kembali stabil.
           quiz:
-            question: Apa poin utama dari materi 'Pruning (Pemangkasan)'?
+            question: Apa yang dilakukan dalam proses 'Pruning' pada model AI?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Menambah jumlah neuron sebanyak mungkin.
+              - Menghapus koneksi atau neuron yang tidak penting agar model lebih ringan.
+              - Mengubah seluruh kode program ke bahasa lain.
+              - Menghapus data training yang sudah lama.
+            correctAnswerIndex: 1
         - id: peft-lora
           title: PEFT & LoRA
-          content: '**Parameter-Efficient Fine-Tuning (PEFT)** memungkinkan kita melatih ulang model raksasa (seperti LLM) hanya dengan mengubah sedikit sekali parameter. **LoRA** adalah teknik paling populer untuk ini.'
-          codeExample: '# LoRA: Menambahkan matriks kecil di samping lapisan asli model'
+          content: |-
+            **Tujuan Pembelajaran:** Melatih ulang model bahasa raksasa (LLM) dengan biaya murah dan cepat.
+
+            **PEFT (Parameter-Efficient Fine-Tuning)** memungkinkan kita melatih model raksasa tanpa menyentuh jutaan parameter aslinya. 
+
+            **LoRA (Low-Rank Adaptation)**:
+            Teknik paling populer di mana kita menyisipkan "matriks kecil" di samping lapisan asli model. Hanya matriks kecil inilah yang kita latih. Hasilnya, kita bisa membuat AI ahli hukum hanya dengan melatih 1% dari total parameter model aslinya.
+          codeExample: |-
+            # Menggunakan library PEFT dari HuggingFace (Konsep)
+            # from peft import LoraConfig, get_peft_model
+            # config = LoraConfig(r=8, lora_alpha=32, target_modules=["q_proj", "v_proj"])
+            # model = get_peft_model(base_model, config)
     - id: ai-engineering
       title: 30. AI Engineering Workflow (MLOps & Ethics)
       lessons:
         - id: mlops
           title: MLOps & Deployment
-          content: Membuat model hanyalah 20% dari pekerjaan. 80% sisanya adalah bagaimana menjalankan model tersebut di server agar bisa dipakai jutaan orang secara stabil.
+          content: |-
+            **Tujuan Pembelajaran:** Memahami proses menjaga model AI agar tetap hidup dan pintar di lingkungan produksi.
+
+            Membuat model AI hanyalah 20% dari pekerjaan. 80% sisanya adalah **MLOps** (Machine Learning Operations).
+
+            **Siklus MLOps:**
+            1. **CI/CD**: Otomatisasi pengujian dan pengiriman kode model.
+            2. **Monitoring**: Memantau apakah model mulai "bodoh" seiring berjalannya waktu (Model Drift).
+            3. **Retraining**: Melatih ulang model secara otomatis jika data di dunia nyata sudah berubah.
+            4. **Scalability**: Memastikan model bisa melayani jutaan permintaan sekaligus menggunakan Docker atau Kubernetes.
           quiz:
-            question: Apa poin utama dari materi 'MLOps & Deployment'?
+            question: Apa yang dimaksud dengan 'Model Drift' dalam pemantauan MLOps?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Model AI yang hilang dari server.
+              - Penurunan akurasi model seiring waktu karena perubahan tren data di dunia nyata.
+              - Model AI yang menjadi terlalu cepat.
+              - Kabel server yang tercabut.
+            correctAnswerIndex: 1
         - id: ethics-ai
           title: Etika & Keamanan AI
-          content: Sebagai AI Engineer, kamu harus memastikan AI yang kamu buat tidak bias, aman dari serangan (prompt injection), dan menghormati privasi data.
+          content: |-
+            **Tujuan Pembelajaran:** Membangun AI yang bertanggung jawab, aman, dan tidak merugikan manusia.
+
+            Sebagai AI Engineer, Anda memiliki tanggung jawab moral terhadap teknologi yang Anda buat.
+
+            **Aspek Utama:**
+            - **Bias & Fairness**: Memastikan AI tidak mendiskriminasi ras, gender, atau agama tertentu karena data yang tidak seimbang.
+            - **Privacy**: Melindungi data sensitif pengguna agar tidak "terbocorkan" melalui jawaban AI.
+            - **Transparency**: AI harus bisa menjelaskan mengapa ia mengambil keputusan tertentu (Explainable AI).
+            - **Security**: Melindungi model dari serangan *Prompt Injection* (instruksi jahat untuk membajak AI).
           quiz:
-            question: Apa poin utama dari materi 'Etika & Keamanan AI'?
+            question: Apa yang dimaksud dengan 'Bias' dalam model AI?
             options:
-              - Memahami konsep dasar dan penerapannya.
-              - Menghafal semua sintaks tanpa pemahaman.
-              - Melewati materi ini karena tidak penting.
-              - Hanya fokus pada penulisan kode yang rumit.
-            correctAnswerIndex: 0
+              - Kecepatan model dalam memproses data.
+              - Ketidakadilan atau diskriminasi hasil prediksi karena data training yang tidak representatif.
+              - Warna tema dari dashboard AI.
+              - Harga langganan API.
+            correctAnswerIndex: 1
