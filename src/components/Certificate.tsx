@@ -49,7 +49,7 @@ export function Certificate({ userName, type, title, onClose }: CertificateProps
       const image = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = image;
-      link.download = `Sertifikat_muf-up_python_${userName.replace(/\s+/g, '_')}.png`;
+      link.download = `Sertifikat_muf-up_${title.replace(/\s+/g, '_')}_${userName.replace(/\s+/g, '_')}.png`;
       link.click();
     } catch (error) {
       console.error('Error generating certificate:', error);
@@ -74,8 +74,8 @@ export function Certificate({ userName, type, title, onClose }: CertificateProps
         
         if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
-            title: 'Sertifikat muf-up : python',
-            text: `Saya baru saja menyelesaikan ${title} di muf-up : python! 🚀🐍`,
+            title: `Sertifikat muf-up : ${title}`,
+            text: `Saya baru saja menyelesaikan ${title} di muf-up! 🚀`,
             files: [file]
           });
         } else {

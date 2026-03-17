@@ -24,3 +24,11 @@ export interface Curriculum {
   description: string;
   modules: Module[];
 }
+
+export interface Roadmap {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  curriculums: Curriculum[];
+}

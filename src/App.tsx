@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, ChevronRight, ChevronLeft, Play, CheckCircle2, Menu, X, Terminal as TerminalIcon, Sparkles, Trophy, Settings, Map, LogOut, ArrowRight, RefreshCw, Briefcase, Brain, Zap, ArrowUp, HelpCircle, BarChart2, Target, TrendingUp, Award } from 'lucide-react';
+import { BookOpen, ChevronRight, ChevronLeft, Play, CheckCircle2, Menu, X, Terminal as TerminalIcon, Sparkles, Trophy, Settings, Map, LogOut, ArrowRight, RefreshCw, Briefcase, Brain, Zap, ArrowUp, HelpCircle, BarChart2, Target, TrendingUp, Award, Code2, Cpu, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { CURRICULUM_GROUPS } from './constants';
+import { ROADMAPS } from './constants';
 import { Lesson } from './types';
 import { AchievementModal } from './components/AchievementModal';
 import { AchievementType } from './components/Certificate';
 import { Branding } from './components/Branding';
 
-type ViewState = 'roadmap' | 'welcome' | 'learning' | 'thankyou' | 'evaluation';
+const iconMap: Record<string, any> = {
+  python: TerminalIcon,
+  javascript: Globe,
+  golang: Cpu,
+  rust: Code2,
+};
+
+const colorMap: Record<string, { bg: string, text: string, lightBg: string }> = {
+  python: { bg: 'bg-emerald-500', text: 'text-emerald-600', lightBg: 'bg-emerald-100' },
+  javascript: { bg: 'bg-amber-500', text: 'text-amber-600', lightBg: 'bg-amber-100' },
+  golang: { bg: 'bg-blue-500', text: 'text-blue-600', lightBg: 'bg-blue-100' },
+  rust: { bg: 'bg-red-500', text: 'text-red-600', lightBg: 'bg-red-100' },
+};
+
+type ViewState = 'home' | 'roadmap' | 'welcome' | 'learning' | 'thankyou' | 'evaluation';
 
 export default function App() {
-  const allLessons = CURRICULUM_GROUPS.flatMap(g => g.modules.flatMap(m => m.lessons));
-  const [currentView, setCurrentView] = useState<ViewState>('roadmap');
+  const [activeRoadmapId, setActiveRoadmapId] = useState<string>(ROADMAPS?.[0]?.id || '');
+  const activeRoadmap = ROADMAPS.find(r => r.id === activeRoadmapId) || ROADMAPS[0] || { id: '', curriculums: [] };
+  const CURRICULUM_GROUPS = activeRoadmap?.curriculums || [];
+  const allLessons = (CURRICULUM_GROUPS || []).flatMap(g => (g?.modules || []).flatMap(m => m?.lessons || []));
+  
+  const [currentView, setCurrentView] = useState<ViewState>('home');
   const [activeLessonIndex, setActiveLessonIndex] = useState(0);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
@@ -34,6 +52,10 @@ export default function App() {
   }>({ isOpen: false, type: 'lesson', title: '' });
 
   const activeLesson = allLessons[activeLessonIndex];
+  
+  const completedInRoadmap = allLessons.filter(l => l && completedLessons.includes(l.id)).length;
+  const hasStartedRoadmap = completedInRoadmap > 0;
+  const isFinished = completedInRoadmap === allLessons.length && allLessons.length > 0;
 
   useEffect(() => {
     const savedProgress = localStorage.getItem('pylearn_progress');
@@ -44,11 +66,17 @@ export default function App() {
 
     const savedName = localStorage.getItem('pylearn_username');
     if (savedName) setUserName(savedName);
+    
+    const savedRoadmap = localStorage.getItem('pylearn_roadmap');
+    if (savedRoadmap) {
+      setActiveRoadmapId(savedRoadmap);
+      setCurrentView('roadmap');
+    }
   }, []);
 
   useEffect(() => {
     // Sync quiz state when active lesson changes
-    if (activeLesson.quiz) {
+    if (activeLesson && activeLesson.quiz) {
       const savedAnswer = quizAnswers[activeLesson.id];
       if (savedAnswer !== undefined) {
         setSelectedQuizOption(savedAnswer);
@@ -61,7 +89,28 @@ export default function App() {
       setSelectedQuizOption(null);
       setIsQuizSubmitted(false);
     }
-  }, [activeLesson.id, quizAnswers]);
+  }, [activeLesson?.id, quizAnswers]);
+
+  const handleSelectRoadmap = (roadmapId: string) => {
+    setActiveRoadmapId(roadmapId);
+    localStorage.setItem('pylearn_roadmap', roadmapId);
+    
+    const roadmap = ROADMAPS.find(r => r.id === roadmapId) || ROADMAPS[0];
+    const roadmapLessons = roadmap.curriculums.flatMap(g => g.modules.flatMap(m => m.lessons));
+    const firstUncompletedIndex = roadmapLessons.findIndex(l => !completedLessons.includes(l.id));
+    
+    if (firstUncompletedIndex !== -1) {
+      setActiveLessonIndex(firstUncompletedIndex);
+    } else {
+      setActiveLessonIndex(roadmapLessons.length - 1);
+    }
+    
+    if (!userName) {
+      setCurrentView('welcome');
+    } else {
+      setCurrentView('roadmap');
+    }
+  };
 
   const handleStartLearning = () => {
     if (userName.trim()) {
@@ -83,10 +132,15 @@ export default function App() {
   };
 
   const handleResetProgress = () => {
-    setCompletedLessons([]);
-    setQuizAnswers({});
-    localStorage.removeItem('pylearn_progress');
-    localStorage.removeItem('pylearn_quiz_answers');
+    const currentRoadmapLessonIds = allLessons.map(l => l.id);
+    const newCompletedLessons = completedLessons.filter(id => !currentRoadmapLessonIds.includes(id));
+    const newQuizAnswers = { ...quizAnswers };
+    currentRoadmapLessonIds.forEach(id => delete newQuizAnswers[id]);
+    
+    setCompletedLessons(newCompletedLessons);
+    setQuizAnswers(newQuizAnswers);
+    localStorage.setItem('pylearn_progress', JSON.stringify(newCompletedLessons));
+    localStorage.setItem('pylearn_quiz_answers', JSON.stringify(newQuizAnswers));
     setActiveLessonIndex(0);
     setShowResetConfirm(false);
     setShowSettings(false);
@@ -141,7 +195,8 @@ export default function App() {
       }
     }
 
-    const isAllComplete = newCompleted.length === allLessons.length;
+    const completedInRoadmap = allLessons.filter(l => newCompleted.includes(l.id)).length;
+    const isAllComplete = completedInRoadmap === allLessons.length;
     
     if (showPrompt && !achievementUnlocked && (activeLessonIndex < allLessons.length - 1 || isAllComplete)) {
       if (!activeLesson.quiz || (activeLesson.quiz && isQuizSubmitted)) {
@@ -151,15 +206,24 @@ export default function App() {
   };
 
   const runCode = (code: string) => {
-    setOutput(['Menjalankan kode...', '> ' + code.split('\n').pop()]);
+    setOutput(['Menjalankan kode...', '> ' + (code.split('\n').pop() || '')]);
     setTimeout(() => {
-      if (code.includes('print')) {
+      if (code.includes('print(')) {
         const match = code.match(/print\((["'])(.*?)\1\)/);
-        if (match) {
-          setOutput(prev => [...prev, match[2]]);
-        } else {
-          setOutput(prev => [...prev, "Hasil eksekusi simulasi..."]);
-        }
+        if (match) setOutput(prev => [...prev, match[2]]);
+        else setOutput(prev => [...prev, "Hasil eksekusi simulasi..."]);
+      } else if (code.includes('console.log(')) {
+        const match = code.match(/console\.log\((["'])(.*?)\1\)/);
+        if (match) setOutput(prev => [...prev, match[2]]);
+        else setOutput(prev => [...prev, "Hasil eksekusi simulasi..."]);
+      } else if (code.includes('fmt.Println(')) {
+        const match = code.match(/fmt\.Println\((["'])(.*?)\1\)/);
+        if (match) setOutput(prev => [...prev, match[2]]);
+        else setOutput(prev => [...prev, "Hasil eksekusi simulasi..."]);
+      } else if (code.includes('println!(')) {
+        const match = code.match(/println!\((["'])(.*?)\1\)/);
+        if (match) setOutput(prev => [...prev, match[2]]);
+        else setOutput(prev => [...prev, "Hasil eksekusi simulasi..."]);
       } else {
         setOutput(prev => [...prev, "Kode berhasil dijalankan (Simulasi)"]);
       }
@@ -201,10 +265,10 @@ export default function App() {
 
   if (currentView === 'evaluation') {
     const totalLessons = allLessons.length;
-    const completedCount = completedLessons.length;
-    const progressPercent = Math.round((completedCount / totalLessons) * 100);
+    const completedCount = allLessons.filter(l => completedLessons.includes(l.id)).length;
+    const progressPercent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
     
-    const quizzesWithAnswers = Object.entries(quizAnswers);
+    const quizzesWithAnswers = Object.entries(quizAnswers).filter(([id]) => allLessons.some(l => l.id === id));
     const totalQuizzesTaken = quizzesWithAnswers.length;
     const correctAnswers = quizzesWithAnswers.filter(([id, ans]) => {
       const lesson = allLessons.find(l => l.id === id);
@@ -243,8 +307,8 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <h1 className="text-4xl font-extrabold text-slate-900 mb-2">Dashboard Evaluasi</h1>
-            <p className="text-slate-600">Pantau progres belajarmu dan lihat seberapa jauh kamu telah melangkah.</p>
+            <h1 className="text-4xl font-extrabold text-slate-900 mb-2">Dashboard Evaluasi - {activeRoadmap.title}</h1>
+            <p className="text-slate-600">Pantau progres belajarmu dan lihat seberapa jauh kamu telah melangkah di jalur ini.</p>
           </motion.div>
 
           {/* Stats Grid */}
@@ -255,13 +319,13 @@ export default function App() {
               transition={{ delay: 0.1 }}
               className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100"
             >
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-4">
+              <div className={`w-12 h-12 ${colorMap[activeRoadmap.icon]?.lightBg || 'bg-slate-100'} ${colorMap[activeRoadmap.icon]?.text || 'text-slate-600'} rounded-2xl flex items-center justify-center mb-4`}>
                 <TrendingUp size={24} />
               </div>
               <div className="text-3xl font-black text-slate-900 mb-1">{progressPercent}%</div>
               <div className="text-sm font-bold text-slate-500 uppercase tracking-wider">Progres Kurikulum</div>
               <div className="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-500" style={{ width: `${progressPercent}%` }} />
+                <div className={`h-full ${colorMap[activeRoadmap.icon]?.bg || 'bg-slate-500'}`} style={{ width: `${progressPercent}%` }} />
               </div>
               <div className="mt-2 text-xs text-slate-400 font-medium">{completedCount} dari {totalLessons} materi selesai</div>
             </motion.div>
@@ -272,13 +336,13 @@ export default function App() {
               transition={{ delay: 0.2 }}
               className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100"
             >
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+              <div className={`w-12 h-12 ${colorMap[activeRoadmap.icon]?.lightBg || 'bg-slate-100'} ${colorMap[activeRoadmap.icon]?.text || 'text-slate-600'} rounded-2xl flex items-center justify-center mb-4`}>
                 <Target size={24} />
               </div>
               <div className="text-3xl font-black text-slate-900 mb-1">{quizAccuracy}%</div>
               <div className="text-sm font-bold text-slate-500 uppercase tracking-wider">Akurasi Kuis</div>
               <div className="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500" style={{ width: `${quizAccuracy}%` }} />
+                <div className={`h-full ${colorMap[activeRoadmap.icon]?.bg || 'bg-slate-500'}`} style={{ width: `${quizAccuracy}%` }} />
               </div>
               <div className="mt-2 text-xs text-slate-400 font-medium">{correctAnswers} jawaban benar dari {totalQuizzesTaken} kuis</div>
             </motion.div>
@@ -445,7 +509,7 @@ export default function App() {
                   {progressPercent < 30 
                     ? "Kamu baru memulai! Fokuslah pada pemahaman konsep dasar dan jangan ragu untuk mencoba kode berkali-kali." 
                     : progressPercent < 70 
-                      ? "Bagus! Kamu sudah mulai memahami logika Python. Coba kerjakan kuis dengan lebih teliti untuk meningkatkan akurasi."
+                      ? `Bagus! Kamu sudah mulai memahami logika ${activeRoadmap.title.split(' ')[0]}. Coba kerjakan kuis dengan lebih teliti untuk meningkatkan akurasi.`
                       : "Luar biasa! Kamu hampir menyelesaikan seluruh materi. Persiapkan dirimu untuk tantangan yang lebih kompleks."}
                 </p>
                 <button 
@@ -460,7 +524,7 @@ export default function App() {
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                   <Trophy size={120} />
                 </div>
-                <h3 className="text-xl font-bold mb-2 relative z-10">Sertifikat muf-up</h3>
+                <h3 className="text-xl font-bold mb-2 relative z-10">Sertifikat {activeRoadmap.title}</h3>
                 <p className="text-slate-400 text-sm mb-6 relative z-10">
                   Selesaikan seluruh kurikulum untuk membuka sertifikat kelulusan resmi dari muf-up.
                 </p>
@@ -472,7 +536,7 @@ export default function App() {
                 </div>
                 {isFinished && (
                   <button 
-                    onClick={() => setAchievement({ isOpen: true, type: 'curriculum', title: 'Semua Kurikulum muf-up' })}
+                    onClick={() => setAchievement({ isOpen: true, type: 'curriculum', title: activeRoadmap.title })}
                     className="w-full mt-6 py-3 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-100 transition-colors"
                   >
                     Lihat Sertifikat
@@ -496,22 +560,137 @@ export default function App() {
     );
   }
 
-  if (currentView === 'roadmap') {
-    const hasStarted = userName.trim() !== '' || completedLessons.length > 0;
-    const isFinished = completedLessons.length === allLessons.length && allLessons.length > 0;
+  if (currentView === 'home') {
+    return (
+      <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-y-auto">
+        <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
+          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                <TerminalIcon size={18} />
+              </div>
+              <span className="font-black text-lg tracking-tight text-slate-800">DevPath</span>
+            </div>
+            {userName && (
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold text-sm">
+                  {userName.charAt(0).toUpperCase()}
+                </div>
+                <span className="font-bold text-sm text-slate-700 hidden sm:block">{userName}</span>
+              </div>
+            )}
+          </div>
+        </nav>
 
+        <main className="max-w-6xl mx-auto px-6 py-12">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-full text-sm font-bold mb-6"
+            >
+              <Sparkles size={16} />
+              <span>Pilih Jalur Karirmu</span>
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight"
+            >
+              Mulai Perjalanan Belajarmu
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg text-slate-600 max-w-2xl mx-auto"
+            >
+              Pilih roadmap yang ingin kamu pelajari. Kamu bisa mempelajari semuanya secara paralel dan progresmu akan tersimpan secara otomatis.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {ROADMAPS.map((roadmap, index) => {
+              const roadmapLessons = (roadmap?.curriculums || []).flatMap(g => (g?.modules || []).flatMap(m => m?.lessons || []));
+              const completedInRoadmap = roadmapLessons.filter(l => l && completedLessons.includes(l.id)).length;
+              const progress = roadmapLessons.length > 0 ? Math.round((completedInRoadmap / roadmapLessons.length) * 100) : 0;
+              
+              const Icon = iconMap[roadmap.icon] || Code2;
+              const colorStyles = colorMap[roadmap.icon] || { bg: 'bg-slate-500', text: 'text-slate-600', lightBg: 'bg-slate-100' };
+
+              return (
+                <motion.div
+                  key={roadmap.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  onClick={() => handleSelectRoadmap(roadmap.id)}
+                  className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all cursor-pointer group"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div className={`w-16 h-16 ${colorStyles.lightBg} ${colorStyles.text} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <Icon size={32} />
+                    </div>
+                    {progress > 0 && (
+                      <div className="flex flex-col items-end">
+                        <span className="text-2xl font-black text-slate-900">{progress}%</span>
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Selesai</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">{roadmap.title}</h3>
+                  <p className="text-slate-600 mb-8 line-clamp-2">{roadmap.description}</p>
+                  
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="flex items-center gap-2 text-sm font-bold text-slate-500">
+                      <BookOpen size={16} />
+                      <span>{roadmapLessons.length} Materi</span>
+                    </div>
+                    <div className={`flex items-center gap-2 ${colorStyles.text} font-bold group-hover:translate-x-2 transition-transform`}>
+                      <span>Mulai Belajar</span>
+                      <ArrowRight size={18} />
+                    </div>
+                  </div>
+                  
+                  {progress > 0 && (
+                    <div className="mt-6 h-2 bg-slate-100 rounded-full overflow-hidden">
+                      <div className={`h-full ${colorStyles.bg}`} style={{ width: `${progress}%` }} />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </main>
+        <Branding className="py-12 text-center" />
+      </div>
+    );
+  }
+
+  if (currentView === 'roadmap') {
     return (
       <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-y-auto">
         {/* Navigation Bar */}
         <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
-                <ArrowUp size={18} strokeWidth={3} />
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => setCurrentView('home')}
+                className="w-8 h-8 flex items-center justify-center text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                title="Kembali ke Beranda"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-sm">
+                  <ArrowUp size={18} strokeWidth={3} />
+                </div>
+                <span className="font-bold text-lg tracking-tight text-slate-800">muf-up</span>
               </div>
-              <span className="font-bold text-lg tracking-tight text-slate-800">muf-up</span>
             </div>
-            {hasStarted && (
+            {userName && (
               <div className="flex items-center gap-4">
                 <button 
                   onClick={() => setCurrentView('evaluation')}
@@ -543,17 +722,17 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm mb-8 shadow-sm border border-emerald-200">
                 <Sparkles size={16} />
-                Platform Belajar Python Interaktif
+                Platform Belajar {activeRoadmap.title} Interaktif
               </div>
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-                Kuasai Python, Buka Peluang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Karir Masa Depan</span>
+                Kuasai {activeRoadmap.title.split(' ')[0]}, Buka Peluang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Karir Masa Depan</span>
               </h1>
               <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Mulai perjalananmu dari pemula hingga mahir. Kurikulum terstruktur muf-up dirancang untuk membantumu memahami logika pemrograman, memecahkan masalah kompleks, dan membangun portofolio pertamamu.
+                {activeRoadmap.description} Mulai perjalananmu dari pemula hingga mahir. Kurikulum terstruktur muf-up dirancang untuk membantumu memahami logika pemrograman, memecahkan masalah kompleks, dan membangun portofolio pertamamu.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                {!hasStarted ? (
+                {!userName ? (
                   <button 
                     onClick={() => setCurrentView('welcome')}
                     className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto"
@@ -567,7 +746,7 @@ export default function App() {
                       onClick={handleContinueLearning}
                       className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto"
                     >
-                      {isFinished ? 'Lihat Materi Lagi' : 'Lanjutkan Belajar'}
+                      {isFinished ? 'Lihat Materi Lagi' : hasStartedRoadmap ? 'Lanjutkan Belajar' : 'Mulai Belajar'}
                       <ArrowRight size={20} />
                     </button>
                     <button 
@@ -602,7 +781,7 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Karir Menjanjikan</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Python adalah bahasa utama di bidang Data Science, AI, dan Backend Development. Kuasai Python untuk membuka berbagai peluang karir dengan gaji tinggi.
+                  {activeRoadmap.title.split(' ')[0]} adalah bahasa yang sangat dicari di industri teknologi saat ini. Kuasai {activeRoadmap.title.split(' ')[0]} untuk membuka berbagai peluang karir dengan gaji tinggi.
                 </p>
               </div>
               
@@ -624,7 +803,7 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Otomatisasi & Produktivitas</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Gunakan Python untuk mengotomatiskan tugas-tugas membosankan yang berulang. Hemat waktumu dan tingkatkan produktivitas di pekerjaan apa pun.
+                  Gunakan {activeRoadmap.title.split(' ')[0]} untuk mengotomatiskan tugas-tugas membosankan yang berulang. Hemat waktumu dan tingkatkan produktivitas di pekerjaan apa pun.
                 </p>
               </div>
             </div>
@@ -764,10 +943,10 @@ export default function App() {
             <Sparkles size={40} />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
-            Selamat Datang di muf-up : python
+            Selamat Datang di muf-up : {activeRoadmap.title}
           </h1>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Mulai perjalananmu menguasai Python dari dasar hingga mahir. 
+            Mulai perjalananmu menguasai {activeRoadmap.title.split(' ')[0]} dari dasar hingga mahir. 
             Kurikulum ini dirancang khusus untuk membantumu memahami konsep pemrograman dengan mudah, interaktif, dan menyenangkan.
           </p>
           
@@ -815,13 +994,13 @@ export default function App() {
             Luar Biasa! 🎉
           </h1>
           <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-            Kamu telah menyelesaikan seluruh kurikulum muf-up : python. Ini adalah pencapaian yang hebat! 
-            Teruslah berlatih, bangun proyek-proyek keren, dan jadilah programmer Python yang handal.
+            Kamu telah menyelesaikan seluruh kurikulum muf-up : {activeRoadmap.title}. Ini adalah pencapaian yang hebat! 
+            Teruslah berlatih, bangun proyek-proyek keren, dan jadilah programmer {activeRoadmap.title.split(' ')[0]} yang handal.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => {
-                setAchievement({ isOpen: true, type: 'curriculum', title: 'Semua Kurikulum muf-up' });
+                setAchievement({ isOpen: true, type: 'curriculum', title: activeRoadmap.title });
               }}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition-colors shadow-md"
             >
@@ -876,7 +1055,7 @@ export default function App() {
                 <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white">
                   <ArrowUp size={18} strokeWidth={3} />
                 </div>
-                <h1 className="font-bold text-xl tracking-tight">muf-up : python</h1>
+                <h1 className="font-bold text-xl tracking-tight">muf-up : {activeRoadmap.title.split(' ')[0]}</h1>
               </div>
               <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-1 hover:bg-slate-100 rounded">
                 <X size={20} />
@@ -928,14 +1107,14 @@ export default function App() {
               <div className="bg-slate-50 rounded-xl p-4 mb-3">
                 <div className="flex justify-between text-xs font-medium mb-2">
                   <span className="text-slate-500">Progress Belajar</span>
-                  <span className="text-emerald-600">
-                    {Math.round((completedLessons.length / allLessons.length) * 100)}%
+                  <span className={colorMap[activeRoadmap.icon]?.text || 'text-slate-600'}>
+                    {allLessons.length > 0 ? Math.round((completedInRoadmap / allLessons.length) * 100) : 0}%
                   </span>
                 </div>
                 <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-emerald-500 transition-all duration-500" 
-                    style={{ width: `${(completedLessons.length / allLessons.length) * 100}%` }}
+                    className={`h-full ${colorMap[activeRoadmap.icon]?.bg || 'bg-slate-500'} transition-all duration-500`} 
+                    style={{ width: `${allLessons.length > 0 ? (completedInRoadmap / allLessons.length) * 100 : 0}%` }}
                   />
                 </div>
               </div>
@@ -982,7 +1161,7 @@ export default function App() {
             )}
             <div className="flex items-center gap-2 text-sm text-slate-500">
               <BookOpen size={16} />
-              <span className="hidden sm:inline">Kurikulum Python</span>
+              <span className="hidden sm:inline">Kurikulum {activeRoadmap.title.split(' ')[0]}</span>
               <ChevronRight size={14} className="hidden sm:inline" />
               <span className="text-slate-900 font-medium truncate max-w-[200px] sm:max-w-none">{activeLesson.title}</span>
             </div>
@@ -1160,7 +1339,7 @@ export default function App() {
         isOpen={achievement.isOpen} 
         onClose={() => {
           setAchievement(prev => ({ ...prev, isOpen: false }));
-          if (activeLessonIndex < allLessons.length - 1 || completedLessons.length === allLessons.length) {
+          if (activeLessonIndex < allLessons.length - 1 || isFinished) {
             setShowNextPrompt(true);
           }
         }}
@@ -1186,15 +1365,15 @@ export default function App() {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col p-8 text-center"
             >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${completedLessons.length === allLessons.length ? 'bg-amber-100 text-amber-600' : 'bg-emerald-100 text-emerald-600'}`}>
-                {completedLessons.length === allLessons.length ? <Trophy size={32} /> : <CheckCircle2 size={32} />}
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${isFinished ? 'bg-amber-100 text-amber-600' : 'bg-emerald-100 text-emerald-600'}`}>
+                {isFinished ? <Trophy size={32} /> : <CheckCircle2 size={32} />}
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                {completedLessons.length === allLessons.length ? 'Selamat! Kamu Hebat! 🎉' : 'Materi Selesai!'}
+                {isFinished ? 'Selamat! Kamu Hebat! 🎉' : 'Materi Selesai!'}
               </h3>
               <p className="text-slate-600 mb-8 leading-relaxed">
-                {completedLessons.length === allLessons.length 
-                  ? 'Luar biasa! Kamu telah menyelesaikan seluruh materi dalam kurikulum Python ini. Semua progresmu telah tercatat di dashboard.' 
+                {isFinished 
+                  ? `Luar biasa! Kamu telah menyelesaikan seluruh materi dalam kurikulum ${activeRoadmap.title.split(' ')[0]} ini. Semua progresmu telah tercatat di dashboard.` 
                   : 'Kamu telah menyelesaikan materi ini dengan baik. Ingin langsung lanjut ke materi berikutnya?'}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
@@ -1202,24 +1381,24 @@ export default function App() {
                   onClick={() => setShowNextPrompt(false)}
                   className="flex-1 px-4 py-3.5 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors"
                 >
-                  {completedLessons.length === allLessons.length ? 'Tutup' : 'Tetap di Sini'}
+                  {isFinished ? 'Tutup' : 'Tetap di Sini'}
                 </button>
                 <button
                   onClick={() => {
                     setShowNextPrompt(false);
-                    if (completedLessons.length === allLessons.length) {
+                    if (isFinished) {
                       setCurrentView('evaluation');
                     } else {
                       proceedToNext();
                     }
                   }}
                   className={`flex-1 px-4 py-3.5 text-white rounded-xl font-bold transition-colors shadow-lg ${
-                    completedLessons.length === allLessons.length 
+                    isFinished 
                       ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-200' 
                       : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200'
                   }`}
                 >
-                  {completedLessons.length === allLessons.length ? 'Lihat Dashboard' : 'Lanjut Materi'}
+                  {isFinished ? 'Lihat Dashboard' : 'Lanjut Materi'}
                 </button>
               </div>
             </motion.div>

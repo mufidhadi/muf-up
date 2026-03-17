@@ -1,0 +1,112 @@
+  - id: python-path
+    title: Python Developer
+    description: Jalur lengkap dari dasar Python hingga menjadi AI Engineer.
+    icon: python
+    curriculums:
+      - id: python
+        title: Python Dasar
+        description: Dasar-dasar pemrograman Python dari nol hingga mahir.
+        modules:
+          - id: python-intro
+            title: 1. Pengenalan Python
+            lessons:
+              - id: what-is-python
+                title: Apa itu Python?
+                content: |-
+                  Python adalah bahasa pemrograman yang mudah dibaca dan dipelajari.
+                codeExample: print("Halo Python!")
+                quiz:
+                  question: Siapa pencipta Python?
+                  options:
+                    - Guido van Rossum
+                    - Elon Musk
+                    - Mark Zuckerberg
+                    - Bill Gates
+                  correctAnswerIndex: 0
+
+              - id: setup-modern
+                title: 'The Workshop: Setup uv & VS Code'
+                content: "# The Workshop: Lingkungan Kerja Modern 2025\n\nLupakan cara lama menginstal Python. Di tahun 2025, kita menggunakan **uv**, paket manajer yang ditulis dalam Rust dengan kecepatan 10-100x lipat lebih cepat dari `pip`.\n\n### Langkah Instalasi:\n1. **Windows**: `powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"` \n2. **Verifikasi**: `uv --version` \n3. **Editor**: Gunakan VS Code dengan ekstensi **Python** & **Ruff**."
+                codeExample: uv --version
+                quiz:
+                  question: Mengapa uv lebih disukai di tahun 2025?
+                  options:
+                    - Lebih lambat
+                    - Ditulis dalam Rust & sangat cepat
+                    - Hanya untuk Linux
+                    - Wajib bayar
+                  correctAnswerIndex: 1
+              - id: hello-2025
+                title: 'Hello 2025: Magic with uv run'
+                content: "# Hello 2025: Eksekusi Tanpa Ribet\n\nDengan `uv run`, kamu tidak perlu lagi mengaktifkan virtual environment secara manual. `uv` akan mencarikan atau membuatkan environment yang sesuai di balik layar.\n\n### Cara Pakai:\n```bash\nuv run main.py\n```"
+                codeExample: print("Halo Python 2025!")
+                quiz:
+                  question: Apa kelebihan uv run?
+                  options:
+                    - Menghapus file
+                    - Mengelola environment otomatis
+                    - Membuat PC panas
+                    - Hanya untuk game
+                  correctAnswerIndex: 1
+              - id: memory-box
+                title: 'Memory Box: Variabel Dinamis'
+                content: "# Memory Box: Menyimpan Data\n\nVariabel adalah wadah untuk menyimpan informasi. Di Python, kamu tidak perlu menentukan tipe data di awal (Dynamic Typing).\n\n### Contoh:\n```python\npesan = \"Belajar Python\"\nangka = 2025\n```"
+                codeExample: "nama = \"Gopher\"\nprint(f\"Halo {nama}!\")"
+                quiz:
+                  question: Apakah Python mewajibkan deklarasi tipe data variabel?
+                  options:
+                    - Ya, wajib
+                    - Tidak (Dinamis)
+                    - Hanya untuk angka
+                    - Hanya untuk teks
+                  correctAnswerIndex: 1
+  - id: javascript-path
+    title: JavaScript Developer
+    description: Jalur lengkap dari dasar JavaScript hingga menjadi Full-Stack Web Developer.
+    icon: javascript
+    curriculums:
+      - id: js-basics
+        title: JavaScript Dasar
+        description: Mempelajari dasar-dasar JavaScript untuk web.
+        modules:
+          - id: js-intro
+            title: 1. Pengenalan JavaScript
+            lessons:
+              - id: what-is-js
+                title: Apa itu JavaScript?
+                content: JavaScript membuat halaman web menjadi interaktif.
+                codeExample: console.log("Halo JS!");
+
+  - id: golang-path
+    title: Golang Developer
+    description: Jalur lengkap mempelajari Go untuk backend dan sistem terdistribusi.
+    icon: golang
+    curriculums:
+      - id: go-basics
+        title: Go Dasar
+        description: Mempelajari sintaks dasar dan concurrency di Go.
+        modules:
+          - id: go-intro
+            title: 1. Pengenalan Go
+            lessons:
+              - id: what-is-go
+                title: Apa itu Go?
+                content: Go adalah bahasa pemrograman buatan Google yang sangat cepat.
+                codeExample: fmt.Println("Halo Go!")
+
+  - id: rust-path
+    title: Rust Developer
+    description: Jalur lengkap mempelajari Rust untuk sistem berkinerja tinggi dan aman.
+    icon: rust
+    curriculums:
+      - id: rust-basics
+        title: Rust Dasar
+        description: Mempelajari sintaks dasar, ownership, dan memori di Rust.
+        modules:
+          - id: rust-intro
+            title: 1. Pengenalan Rust
+            lessons:
+              - id: what-is-rust
+                title: Apa itu Rust?
+                content: Rust menjamin keamanan memori tanpa garbage collector.
+                codeExample: println!("Halo Rust!");
