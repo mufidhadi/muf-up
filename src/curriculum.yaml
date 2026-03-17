@@ -584,16 +584,157 @@
     curriculums:
       - id: js-basics
         title: JavaScript Dasar
-        description: Mempelajari dasar-dasar JavaScript untuk web.
         modules:
           - id: js-intro
-            title: 1. Pengenalan JavaScript
+            title: 1. Modern JS Foundations
+            lessons: []
+          - id: js-data-logic
+            title: 2. Data & Logic Mastery
             lessons:
-              - id: what-is-js
-                title: Apa itu JavaScript?
-                content: JavaScript membuat halaman web menjadi interaktif.
-                codeExample: console.log("Halo JS!");
-
+              - id: js-classes
+                title: 'Modern Classes: Private Fields (#)'
+                content: JavaScript modern kini mendukung private fields menggunakan simbol `#`. Ini menjamin data di dalam Class tidak bisa diakses sembarangan dari luar.
+                codeExample: "class User {\n  #password = \"123\";\n  getPass() { return this.#password; }\n}"
+                quiz:
+                  question: Simbol apa yang digunakan untuk membuat property private di Class JS?
+                  options:
+                    - _
+                    - $
+                    - '#'
+                    - '@'
+                  correctAnswerIndex: 2
+              - id: js-iterators
+                title: 'Iterator Helpers: Map & Filter pada Iterator'
+                content: ES2024 memperkenalkan helper untuk iterator, memungkinkan kita melakukan manipulasi data pada stream data tanpa mengubahnya menjadi array dulu.
+                codeExample: // const doubled = myIterator.map(x => x * 2);
+                quiz:
+                  question: Iterator helpers membantu kita mengolah data tanpa harus...
+                  options:
+                    - Menyalakan komputer
+                    - Mengubahnya menjadi array terlebih dahulu
+                    - Menulis kode
+                    - Menggunakan CSS
+                  correctAnswerIndex: 1
+      - id: ts-foundations
+        title: TypeScript & Type Safety
+        modules:
+          - id: ts-basics
+            title: 3. TypeScript Foundations
+            lessons:
+              - id: ts-intro
+                title: Why Types? Setup TypeScript 2025
+                content: TypeScript adalah JavaScript dengan sistem tipe data. Ia membantu kita menangkap bug saat kita sedang mengetik kode, bukan saat website sudah online.
+                codeExample: 'let nama: string = "Mufid";'
+                quiz:
+                  question: Apa kelebihan utama TypeScript?
+                  options:
+                    - Mempercepat internet
+                    - Menangkap bug tipe data saat development
+                    - Membuat file jadi lebih kecil
+                    - Hanya bisa jalan di Windows
+                  correctAnswerIndex: 1
+              - id: ts-zod
+                title: 'Runtime Safety: Validasi dengan Zod'
+                content: TypeScript hanya mengecek tipe saat coding. Untuk mengecek data yang masuk dari user saat website jalan, kita butuh Zod.
+                codeExample: "import { z } from 'zod';\nconst UserSchema = z.string().min(3);"
+                quiz:
+                  question: Library apa yang populer untuk validasi schema di ekosistem TS?
+                  options:
+                    - Zod
+                    - Zelda
+                    - Zoom
+                    - Zip
+                  correctAnswerIndex: 0
+      - id: frontend-react
+        title: Frontend Frameworks (React 19)
+        modules:
+          - id: react-mastery
+            title: 4. React 19 Mastery
+            lessons:
+              - id: react-19-intro
+                title: 'React 19: The New Era'
+                content: React 19 memperkenalkan React Compiler yang otomatis mengoptimasi performa tanpa perlu useMemo/useCallback lagi.
+                codeExample: function App() { return <div>React 19 is here!</div> }
+                quiz:
+                  question: Apa fitur utama React 19 yang otomatis mengoptimasi performa?
+                  options:
+                    - React Server
+                    - React Compiler
+                    - React Player
+                    - React Audio
+                  correctAnswerIndex: 1
+              - id: react-action-hooks
+                title: 'Action Hooks: useActionState'
+                content: Mengelola form kini jauh lebih mudah dengan hook useActionState yang menangani loading, error, dan data secara otomatis.
+                codeExample: const [state, action, isPending] = useActionState(myAction, null);
+                quiz:
+                  question: Hook mana yang digunakan untuk mengelola state form di React 19?
+                  options:
+                    - useState
+                    - useEffect
+                    - useActionState
+                    - useRef
+                  correctAnswerIndex: 2
+      - id: backend-apis
+        title: Modern Backend & APIs
+        modules:
+          - id: js-backend
+            title: 5. Backend Runtimes & APIs
+            lessons:
+              - id: js-bun-hono
+                title: 'The Edge Server: API dengan Hono & Bun'
+                content: Hono adalah framework web tercepat untuk runtime modern seperti Bun. Sangat cocok untuk membangun API skala besar.
+                codeExample: "const app = new Hono();\napp.get('/', (c) => c.text('Halo!'));"
+                quiz:
+                  question: Framework apa yang sangat populer untuk Bun karena kecepatannya?
+                  options:
+                    - Express
+                    - Hono
+                    - Django
+                    - Laravel
+                  correctAnswerIndex: 1
+              - id: js-drizzle
+                title: 'The ORM: Drizzle for Type-Safe SQL'
+                content: Drizzle adalah ORM tertipis dan tercepat untuk TypeScript. Ia memberikan pengalaman menulis SQL murni tapi tetap type-safe.
+                codeExample: await db.select().from(users);
+                quiz:
+                  question: Drizzle ORM fokus pada apa?
+                  options:
+                    - Desain grafis
+                    - Type-safety dan performa SQL
+                    - Animasi CSS
+                    - Video editing
+                  correctAnswerIndex: 1
+      - id: ai-architecture
+        title: AI & Advanced Architecture
+        modules:
+          - id: js-ai
+            title: 6. AI & Architecture
+            lessons:
+              - id: js-ai-sdk
+                title: 'AI SDK: Integrasi LLM ke Aplikasi JS'
+                content: Vercel AI SDK memudahkan kita menghubungkan aplikasi React ke model AI seperti Gemini atau GPT hanya dalam beberapa baris kode.
+                codeExample: const { messages, input, handleSubmit } = useChat();
+                quiz:
+                  question: Library apa yang memudahkan integrasi LLM di ekosistem JS?
+                  options:
+                    - React AI
+                    - Vercel AI SDK
+                    - Gemini JS
+                    - Chat-Lib
+                  correctAnswerIndex: 1
+              - id: js-mcp
+                title: 'MCP Protocol: Menghubungkan App ke AI Agent'
+                content: Model Context Protocol (MCP) memungkinkan AI agent untuk mengakses data dan alat dari aplikasimu secara terstruktur.
+                codeExample: // Standardized communication between AI and tools
+                quiz:
+                  question: Apa singkatan dari MCP?
+                  options:
+                    - Model Context Protocol
+                    - Mobile Chat Plus
+                    - Master Code Program
+                    - Modern Cloud Page
+                  correctAnswerIndex: 0
   - id: golang-path
     title: Golang Developer
     description: Jalur lengkap mempelajari Go untuk backend dan sistem terdistribusi.
