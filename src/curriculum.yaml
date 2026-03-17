@@ -1,770 +1,1190 @@
-  - id: python-path
-    title: Python Developer
-    description: Jalur lengkap dari dasar Python hingga menjadi AI Engineer.
-    icon: python
-    curriculums:
-      - id: python
-        title: Python Dasar
-        description: Dasar-dasar pemrograman Python dari nol hingga mahir.
-        modules:
-          - id: python-intro
-            title: 1. Pengenalan Python
-            lessons:
-              - id: what-is-python
-                title: Apa itu Python? (Sebuah Pengantar)
-                content: "**Tujuan Pembelajaran:** Memahami sejarah, filosofi, dan kegunaan bahasa pemrograman Python di era modern 2025.\n\nPython diciptakan oleh **Guido van Rossum** pada tahun 1991 dengan satu filosofi utama: **\"Kode lebih sering dibaca daripada ditulis.\"** Oleh karena itu, sintaks Python dirancang agar sangat mirip dengan bahasa manusia (Bahasa Inggris), membuatnya sangat intuitif bagi pemula maupun profesional.\n\n**Mengapa Python Tetap Menjadi Raja di 2025?**\n1. **Keterbacaan Tinggi (Readability):** Python menggunakan indentasi (spasi) untuk menstrukturkan kode, sehingga memaksa programmer menulis kode yang rapi tanpa tanda kurung kurawal `{}` yang rumit.\n2. **Ekosistem AI Terbesar:** Python adalah standar absolut untuk Artificial Intelligence (AI) dan Machine Learning. Semua library AI populer (seperti PyTorch atau TensorFlow) berpusat di Python.\n3. **Tooling Modern:** Dengan hadirnya tool seperti **uv**, Python kini memiliki manajemen proyek yang sangat cepat dan efisien.\n\n**Analogi Sederhana:**\nMempelajari Python itu seperti belajar memasak menggunakan resep yang ditulis dengan bahasa sehari-hari. Kamu fokus pada \"apa yang ingin dimasak\", bukan \"bagaimana cara kerja kompornya\" secara teknis."
-                codeExample: "# Contoh kode Python yang simpel dan mudah dibaca\nnama = \"Mufid\"\nprint(f\"Halo {nama}, selamat datang di dunia Python!\")"
-                quiz:
-                  question: Berdasarkan teks di atas, apa filosofi utama penciptaan Python?
-                  options:
-                    - Kode harus sulit dibaca agar terlihat canggih.
-                    - Kode lebih sering dibaca daripada ditulis.
-                    - Hanya boleh digunakan untuk membuat game.
-                    - Harus selalu menggunakan tanda titik koma (;).
-                  correctAnswerIndex: 1
-              - id: setup-modern
-                title: 'The Workshop: Setup uv & VS Code'
-                content: "**Tujuan Pembelajaran:** Menyiapkan lingkungan kerja Python modern menggunakan standar industri tahun 2025.\n\nUntuk menjadi programmer Python yang handal, kamu membutuhkan \"bengkel\" yang cepat dan bersih. Di tahun 2025, kita meninggalkan cara lama (pip) dan beralih ke **uv**.\n\n**Komponen Utama Bengkelmu:**\n1. **uv (The Swiss Army Knife):** Paket manajer yang ditulis dalam bahasa **Rust**. Kecepatannya 10-100x lipat lebih cepat dari pip tradisional dan bisa mengelola versi Python secara otomatis.\n2. **VS Code (Visual Studio Code):** Editor kode paling populer. Pastikan kamu menginstal ekstensi **Python** dan **Ruff** untuk auto-completion dan perbaikan kode otomatis.\n3. **Virtual Environment:** \"Laci terpisah\" untuk setiap proyekmu agar library yang kamu instal tidak saling bentrok. Dengan `uv`, membuat laci ini terjadi dalam hitungan milidetik.\n\n**Instruksi Instalasi (Windows):**\nBuka PowerShell dan jalankan perintah:\n`powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"`"
-                codeExample: "# Cara verifikasi instalasi uv di terminal\n# uv --version\n\n# Cara membuat virtual environment kilat\n# uv venv"
-                quiz:
-                  question: Apa keunggulan utama 'uv' dibandingkan 'pip' yang disebutkan dalam teks?
-                  options:
-                    - uv hanya bisa dipakai di Mac.
-                    - uv jauh lebih lambat namun gratis.
-                    - uv sangat cepat karena ditulis dalam bahasa Rust.
-                    - uv mewajibkan kita membayar lisensi.
-                  correctAnswerIndex: 2
-              - id: hello-2025
-                title: 'Hello 2025: Magic with uv run'
-                content: "**Tujuan Pembelajaran:** Menjalankan script Python secara instan tanpa perlu pusing memikirkan aktivasi virtual environment secara manual.\n\nSalah satu fitur paling revolusioner di tahun 2025 adalah kemampuan untuk menjalankan script Python melalui **`uv run`**. Bayangkan kamu memiliki sebuah mesin yang secara otomatis menyiapkan bahan bakar dan oli setiap kali kamu ingin menyalakan mesinnya.\n\n**Kenapa `uv run` Sangat Penting?**\n- **Automatic Context**: Ia tahu persis di mana library-mu berada tanpa perlu perintah `activate`.\n- **Reproducible**: Menjamin script berjalan dengan versi library yang sama di komputer mana pun.\n- **Clean Terminal**: Menghilangkan tulisan `(.venv)` yang sering memenuhi terminalmu.\n\n**Guided Implementation:**\n1. Buat file `main.py` dengan kode: `print(\"Halo dari masa depan!\")`.\n2. Jalankan perintah di terminal: `uv run main.py`.\n3. Perhatikan betapa cepat dan bersih eksekusinya!"
-                codeExample: "# Jalankan tanpa aktivasi manual\n# uv run main.py\n\nprint(\"Halo Python 2025!\")"
-                quiz:
-                  question: Berdasarkan materi, apa kelebihan utama menggunakan 'uv run'?
-                  options:
-                    - Ia menghapus semua folder di komputer.
-                    - Ia secara otomatis mengelola environment tanpa perlu perintah 'activate'.
-                    - Ia membuat internet menjadi lebih lambat.
-                    - Ia hanya bisa digunakan untuk menonton video.
-                  correctAnswerIndex: 1
-              - id: memory-box
-                title: 'Memory Box: Variabel & Dinamis'
-                content: "**Tujuan Pembelajaran:** Memahami cara menyimpan dan mengelola informasi di dalam memori komputer menggunakan variabel.\n\nBayangkan kamu memiliki lemari raksasa dengan jutaan laci kecil. Tanpa label, kamu akan bingung di mana menyimpan harga sepatu atau nama pelanggan. **Variabel** adalah \"label stiker\" yang kamu tempelkan di laci tersebut agar data mudah ditemukan kembali.\n\n**Keunikan Variabel di Python (Dynamic Typing):**\nDi bahasa lain, kamu harus bilang \"Laci ini hanya boleh untuk angka\". Di Python, kamu bebas. Hari ini laci berlabel `data` bisa berisi angka, besok bisa berisi teks. Python akan otomatis menebak tipe datanya untukmu.\n\n**Aturan Emas Penamaan (Snake Case):**\nGunakan huruf kecil dan pisahkan dengan garis bawah.\nContoh: `total_harga`, `nama_pengguna`, `status_aktif`."
-                codeExample: "# Memberi label 'pesan' untuk sebuah teks\npesan = \"Belajar Python itu asik\"\n\n# Memanggil kembali datanya melalui label\nprint(pesan)"
-                quiz:
-                  question: Dalam analogi di atas, variabel diibaratkan sebagai apa?
-                  options:
-                    - Sebuah kompor gas.
-                    - Label stiker pada laci memori.
-                    - Kabel listrik yang rumit.
-                    - Sebuah monitor komputer.
-                  correctAnswerIndex: 1
-              - id: talking-types
-                title: 'Talking Types: Mengenal 4 Tipe Data Dasar'
-                content: "**Tujuan Pembelajaran:** Mampu membedakan dan menggunakan String, Integer, Float, dan Boolean dalam kode Python.\n\nDi dunia nyata, kita membedakan benda berdasarkan fungsinya: air untuk diminum, buku untuk dibaca. Di Python, komputer membedakan informasi berdasarkan **Tipe Data**.\n\n**4 Tipe Data Utama:**\n1. **String (Teks):** Selalu diapit tanda kutip. Contoh: `\"Mufid\"`, `\"Python 2025\"`.\n2. **Integer (Bilangan Bulat):** Angka tanpa desimal. Contoh: `10`, `-5`, `0`.\n3. **Float (Bilangan Desimal):** Angka dengan titik. Contoh: `3.14`, `99.9`.\n4. **Boolean (Logika):** Hanya ada dua nilai: `True` (Benar) atau `False` (Salah). Ini adalah saklar lampu digital.\n\n**Analogi:**\n- **String:** Seperti sebuah surat.\n- **Integer:** Seperti menghitung jumlah kelereng.\n- **Float:** Seperti mengukur berat badan atau suhu.\n- **Boolean:** Seperti saklar lampu (On/Off)."
-                codeExample: "nama = \"Gopher\"      # String\numur = 25            # Integer\ntinggi = 175.5       # Float\nis_happy = True      # Boolean\n\nprint(type(nama))    # Cek tipe datanya"
-                quiz:
-                  question: Manakah di bawah ini yang merupakan contoh tipe data Float?
-                  options:
-                    - '"10"'
-                    - '10'
-                    - '10.5'
-                    - 'True'
-                  correctAnswerIndex: 2
-              - id: smart-labels
-                title: 'Smart Labels: Type Hinting Dasar'
-                content: "**Tujuan Pembelajaran:** Menerapkan Type Hinting untuk menulis kode yang lebih profesional dan minim error.\n\nDi tahun 2025, programmer profesional tidak lagi hanya menulis `nama = \"Mufid\"`. Mereka menggunakan **Type Hinting**. Ini adalah cara kita memberi tahu editor (VS Code) bahwa \"Eh, variabel ini isinya harus teks ya!\".\n\n**Kenapa Pakai Type Hinting?**\n- **Auto-complete Lebih Canggih:** VS Code akan memberikan saran yang lebih tepat.\n- **Minim Bug:** Kamu tidak akan sengaja menjumlahkan nama orang dengan angka.\n- **Self-Documenting:** Kode jadi lebih mudah dibaca orang lain tanpa perlu penjelasan tambahan.\n\n**Cara Penulisan:**\n`nama_variabel: tipe_data = nilai`"
-                codeExample: "# Standar Modern 2025\nnama: str = \"Mufid\"\numur: int = 20\ntinggi: float = 170.5\nis_admin: bool = False\n\nprint(f\"{nama} berumur {umur} tahun\")"
-                quiz:
-                  question: Bagaimana cara penulisan Type Hinting yang benar untuk sebuah teks?
-                  options:
-                    - nama = str("Mufid")
-                    - 'nama: str = "Mufid"'
-                    - str nama = "Mufid"
-                    - nama <str> "Mufid"
-                  correctAnswerIndex: 1
-              - id: decision-point
-                title: 'Decision Point: Logika If, Elif, Else'
-                content: "**Tujuan Pembelajaran:** Membuat program yang bisa mengambil keputusan secara mandiri.\n\nProgram tanpa logika `if` ibarat mobil yang hanya bisa jalan lurus. Dengan **Percabangan (Conditionals)**, programmu bisa memilih jalur berbeda berdasarkan situasi.\n\n**Struktur Logika:**\n- **if (Jika):** Pintu pertama. Jika syarat terpenuhi, masuk ke sini.\n- **elif (Atau Jika):** Pintu alternatif jika pintu pertama tertutup.\n- **else (Selain Itu):** Jalur terakhir jika semua pintu di atas tertutup.\n\n**Penting:** Python menggunakan **Indentasi** (spasi menjorok) untuk menentukan kode mana yang masuk ke dalam blok `if`. Standarnya adalah 4 spasi."
-                codeExample: "nilai: int = 85\n\nif nilai >= 90:\n    print(\"Luar Biasa!\")\nelif nilai >= 75:\n    print(\"Bagus!\")\nelse:\n    print(\"Tetap Semangat!\")"
-                quiz:
-                  question: Kapan blok 'else' akan dijalankan?
-                  options:
-                    - Kapan saja program mau.
-                    - Saat semua kondisi 'if' dan 'elif' bernilai False.
-                    - Hanya saat komputer baru dinyalakan.
-                    - Saat kondisi 'if' bernilai True.
-                  correctAnswerIndex: 1
-              - id: the-switch
-                title: 'The Switch: Match-Case (Modern Style)'
-                content: "**Tujuan Pembelajaran:** Menggunakan fitur 'match-case' (Python 3.10+) untuk menangani banyak kondisi dengan lebih rapi.\n\nDulu, jika kita punya banyak pilihan, kita harus menulis banyak sekali `elif`. Di Python modern (3.10 ke atas), kita punya senjata baru bernama **`match-case`**.\n\n**Kenapa Pakai Match-Case?**\n- **Lebih Rapi:** Menghindari tumpukan `if-elif` yang panjang.\n- **Pattern Matching:** Bukan cuma cek nilai, tapi bisa cek pola data yang kompleks.\n- **Default Case:** Menggunakan tanda `_` (underscore) sebagai pilihan jika tidak ada yang cocok.\n\n**Analogi:** Seperti menu restoran. Jika pelanggan pilih A, beri makanan A. Jika pilih B, beri makanan B. Jika pilih yang tidak ada di menu (`_`), beri tahu \"Maaf tidak ada\"."
-                codeExample: "status_code: int = 404\n\nmatch status_code:\n    case 200:\n        print(\"Berhasil!\")\n    case 404:\n        print(\"Halaman Hilang!\")\n    case 500:\n        print(\"Server Error!\")\n    case _:\n        print(\"Status Tidak Dikenal\")"
-                quiz:
-                  question: Simbol apa yang digunakan di match-case sebagai jalur default (jika tidak ada pilihan yang cocok)?
-                  options:
-                    - '*'
-                    - '?'
-                    - '!'
-                    - _ (Underscore)
-                  correctAnswerIndex: 3
-              - id: looping-1
-                title: 'Looping (Part 1): For Loops'
-                content: "**Tujuan Pembelajaran:** Mengotomatisasi tugas yang berulang menggunakan perulangan 'for'.\n\nPrinsip utama programmer adalah **DRY (Don't Repeat Yourself)**. Jika kamu harus mencetak angka 1 sampai 100, jangan ketik manual! Gunakan perulangan (Looping).\n\n**For Loop** digunakan ketika kita ingin menelusuri isi dari sebuah koleksi (seperti daftar belanja atau urutan angka).\n\n**Range Magic:**\nFungsi `range(5)` akan menghasilkan urutan angka dari 0 sampai 4 (total 5 angka). Ini adalah teman setia `for loop`."
-                codeExample: "# Mencetak angka 0 sampai 4\nfor i in range(5):\n    print(f\"Urutan ke-{i}\")\n\n# Menelusuri list teks\nitems: list[str] = [\"Apel\", \"Jeruk\", \"Mangga\"]\nfor buah in items:\n    print(f\"Saya suka {buah}\")"
-                quiz:
-                  question: Apa singkatan dari prinsip DRY dalam pemrograman?
-                  options:
-                    - Do Repeat Yourself
-                    - Don't Repeat Yourself
-                    - Digital Real Yield
-                    - Do Really Yell
-                  correctAnswerIndex: 1
-              - id: looping-2
-                title: 'Looping (Part 2): While Loops & Control'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan perulangan 'while' dan mengontrol alur loop menggunakan 'break' serta 'continue'.\n\nJika `for loop` digunakan untuk mengulang berdasarkan jumlah yang sudah pasti, **While Loop** digunakan untuk mengulang selama sebuah syarat masih terpenuhi (**True**).\n\n**Kontrol Alur Perulangan:**\n1. **break**: Tombol rem darurat. Gunakan ini untuk langsung keluar dari loop meskipun syaratnya masih terpenuhi.\n2. **continue**: Tombol \"lewati\". Gunakan ini untuk menghentikan putaran saat ini dan langsung loncat ke putaran berikutnya.\n\n**Analogi:**\n`while loop` itu seperti kamu disuruh lari keliling lapangan **selama** belum hujan. Begitu hujan turun (syarat jadi False), kamu berhenti."
-                codeExample: "# Mengulang selama angka kurang dari 3\nangka = 0\nwhile angka < 3:\n    print(f\"Putaran ke-{angka}\")\n    angka += 1\n\n# Contoh penggunaan break\nfor i in range(10):\n    if i == 3:\n        break # Berhenti di angka 3\n    print(i)"
-                quiz:
-                  question: Kata kunci apa yang digunakan untuk menghentikan perulangan secara paksa?
-                  options:
-                    - stop
-                    - finish
-                    - break
-                    - exit
-                  correctAnswerIndex: 2
-          - id: data-logic
-            title: 2. Struktur Data & Logika
-            lessons:
-              - id: the-collection
-                title: 'The Collection: Membuat & Memanipulasi List'
-                content: "**Tujuan Pembelajaran:** Mampu membuat, menambah, dan menghapus item di dalam sebuah List (Daftar).\n\nBayangkan kamu sedang pergi ke pasar. Alih-alih membawa 10 kantong plastik kecil untuk 10 buah yang berbeda, kamu membawa satu **Keranjang Besar**. Di Python, keranjang ini disebut **List**.\n\n**Karakteristik List:**\n1. **Berurutan:** Setiap barang punya nomor urut (indeks), dimulai dari **0**.\n2. **Dinamis:** Kamu bisa menambah atau membuang isi keranjang kapan saja.\n3. **Campuran:** Satu list bisa berisi teks, angka, bahkan boolean sekaligus.\n\n**Operasi Dasar:**\n- `append()`: Menambah item di akhir keranjang.\n- `pop()`: Mengambil item terakhir dari keranjang.\n- `len()`: Menghitung berapa banyak isi keranjang."
-                codeExample: "# Membuat keranjang belanja\nbuah: list[str] = [\"Apel\", \"Jeruk\"]\n\n# Menambah buah baru\nbuah.append(\"Mangga\")\n\n# Mengakses item pertama (Indeks 0)\nprint(f\"Buah pertama: {buah[0]}\")\n\n# Cek jumlah isi\nprint(f\"Total ada {len(buah)} buah\")"
-                quiz:
-                  question: Jika kita punya list 'data = [10, 20, 30]', berapa indeks untuk angka 10?
-                  options:
-                    - '1'
-                    - '0'
-                    - '-1'
-                    - '10'
-                  correctAnswerIndex: 1
-              - id: slicing-mastery
-                title: 'Slicing Mastery: Teknik Memotong List & String'
-                content: "**Tujuan Pembelajaran:** Menguasai teknik 'Slicing' untuk mengambil sebagian data dari List atau String secara efisien.\n\nTerkadang kamu tidak butuh seluruh isi keranjang, kamu hanya butuh \"3 buah pertama\" atau \"semua kecuali yang terakhir\". Di Python, teknik ini disebut **Slicing**.\n\n**Rumus Slicing:**\n`data[start : stop : step]`\n- **start**: Mulai dari indeks mana (inklusif).\n- **stop**: Berhenti sebelum indeks mana (eksklusif).\n- **step**: Langkah loncatan (defaultnya 1).\n\n**Contoh Kasus:**\n- `[:3]`: Ambil 3 item pertama.\n- `[2:]`: Ambil dari indeks ke-2 sampai akhir.\n- `[::-1]`: Trik dewa untuk membalikkan (reverse) urutan data."
-                codeExample: "teks: str = \"PYTHON\"\n\n# Ambil 2 huruf pertama\nprint(teks[:2])   # Output: PY\n\n# Balikkan teks\nprint(teks[::-1]) # Output: NOHTYP\n\n# Ambil sebagian list\nangka = [0, 1, 2, 3, 4, 5]\nprint(angka[1:4]) # Output: [1, 2, 3]"
-                quiz:
-                  question: Apa hasil dari 'PYTHON'[1:3]?
-                  options:
-                    - PY
-                    - YT
-                    - YTH
-                    - TH
-                  correctAnswerIndex: 1
-              - id: the-dictionary
-                title: 'The Dictionary: Menyimpan Data dengan Key-Value'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan Dictionary untuk menyimpan informasi terstruktur menggunakan sistem Kunci (Key) dan Nilai (Value).\n\nJika List menggunakan angka (0, 1, 2) untuk mencari barang, **Dictionary** menggunakan kata kunci unik. Bayangkan sebuah buku telepon: kamu mencari berdasarkan **Nama** (Key) untuk mendapatkan **Nomor HP** (Value).\n\n**Struktur Dictionary:**\n`{ \"kunci\": \"nilai\" }`\n\n**Kelebihan Dictionary:**\n1. **Sangat Cepat:** Mencari data berdasarkan kunci jauh lebih cepat daripada mencari di dalam list panjang.\n2. **Deskriptif:** Kamu tahu persis data apa yang kamu ambil (misal: \"harga\", \"stok\").\n3. **Fleksibel:** Kunci bisa berupa teks atau angka."
-                codeExample: "# Membuat kamus data user\nuser: dict = {\n    \"nama\": \"Mufid\",\n    \"skill\": \"Python\",\n    \"level\": 2025\n}\n\n# Mengakses data berdasarkan kunci\nprint(user[\"nama\"])\n\n# Menambah kunci baru\nuser[\"status\"] = \"Aktif\"\nprint(user)"
-                quiz:
-                  question: Simbol apa yang digunakan untuk mengapit data di dalam Dictionary?
-                  options:
-                    - '[] (Kurung Siku)'
-                    - () (Kurung Biasa)
-                    - '{} (Kurung Kurawal)'
-                    - <> (Kurung Lancip)
-                  correctAnswerIndex: 2
-              - id: unique-fixed
-                title: 'Unique & Fixed: Mengenal Sets & Tuples'
-                content: "**Tujuan Pembelajaran:** Memahami perbedaan fungsional antara Set (penjaga keunikan) dan Tuple (data permanen).\n\nSelain List dan Dictionary, Python memiliki dua \"wadah\" sakti lainnya:\n\n**1. Tuple (Data Permanen):**\nMirip seperti List, tapi isinya **tidak bisa diubah** setelah dibuat.\n- **Analogi:** Seperti koordinat GPS atau tanggal lahir. Sekali dicatat, tidak boleh berubah.\n- **Simbol:** `(item1, item2)`\n\n**2. Set (Penjaga Keunikan):**\nKumpulan item yang **tidak boleh ada duplikat** dan tidak berurutan.\n- **Analogi:** Seperti daftar absen kehadiran. Jika nama \"Budi\" ditulis 5x, Set hanya akan mencatatnya 1x.\n- **Simbol:** `{item1, item2}`"
-                codeExample: "# Tuple (Koordinat)\ntitik = (10, 20)\n# titik[0] = 15  # Ini akan ERROR!\n\n# Set (Hapus Duplikat otomatis)\nangka_unik = {1, 2, 2, 3, 3, 3}\nprint(angka_unik) # Output: {1, 2, 3}"
-                quiz:
-                  question: Manakah struktur data yang secara otomatis menghapus item duplikat?
-                  options:
-                    - List
-                    - Dictionary
-                    - Tuple
-                    - Set
-                  correctAnswerIndex: 3
-              - id: list-comprehension
-                title: 'One-Line Magic: List Comprehensions yang Efisien'
-                content: "**Tujuan Pembelajaran:** Mampu menyederhanakan kode perulangan pembuatan List menjadi satu baris yang efisien.\n\nSeorang programmer Python profesional (Pythonista) tidak suka menulis kode yang panjang jika bisa disingkat dengan elegan. **List Comprehension** adalah cara \"sakti\" membuat list baru dari list yang sudah ada hanya dalam satu baris.\n\n**Perbandingan:**\n*Cara Biasa (4 baris):*\n```python\nbaru = []\nfor x in data:\n    baru.append(x * 2)\n```\n\n*Cara Pythonic (1 baris):*\n`baru = [x * 2 for x in data]`\n\n**Rumus:**\n`[ hasil for item in koleksi if kondisi ]`"
-                codeExample: "angka = [1, 2, 3, 4, 5]\n\n# Buat list angka kuadrat (pangkat 2)\nkuadrat = [x**2 for x in angka]\nprint(kuadrat) # Output: [1, 4, 9, 16, 25]\n\n# Ambil hanya angka genap\ngenap = [x for x in angka if x % 2 == 0]\nprint(genap)   # Output: [2, 4]"
-                quiz:
-                  question: 'Apa output dari: [x for x in [1, 2, 3] if x > 1]?'
-                  options:
-                    - '[1, 2]'
-                    - '[2, 3]'
-                    - '[1, 3]'
-                    - '[3]'
-                  correctAnswerIndex: 1
-              - id: reusable-logic
-                title: 'Reusable Logic: Menulis Fungsi dengan def'
-                content: "**Tujuan Pembelajaran:** Mampu membungkus logika kode ke dalam fungsi agar bisa digunakan berulang kali.\n\nBayangkan kamu memiliki resep nasi goreng. Setiap kali ingin makan, kamu tidak menulis ulang resepnya, kamu tinggal memanggil namanya: \"Buat Nasi Goreng\". Di Python, resep ini disebut **Fungsi**.\n\n**Kenapa Pakai Fungsi?**\n1. **Modular:** Memecah masalah besar jadi bagian-bagian kecil.\n2. **Reusable:** Tulis sekali, panggil berkali-kali.\n3. **Clean:** Membuat kode utama jadi jauh lebih bersih.\n\n**Sintaks:**\n```python\ndef nama_fungsi(parameter):\n    # blok kode\n```"
-                codeExample: "# Membuat fungsi sapaan\ndef sapa(nama: str):\n    print(f\"Halo {nama}, selamat belajar!\")\n\n# Memanggil fungsi\nsapa(\"Mufid\")\nsapa(\"Andi\")"
-                quiz:
-                  question: Kata kunci apa yang digunakan untuk mendefinisikan fungsi di Python?
-                  options:
-                    - function
-                    - func
-                    - def
-                    - define
-                  correctAnswerIndex: 2
-              - id: flexible-args
-                title: 'Flexible Arguments: Menggunakan *args & **kwargs'
-                content: "**Tujuan Pembelajaran:** Mampu membuat fungsi yang fleksibel dan bisa menerima banyak argumen sekaligus.\n\nTerkadang kamu ingin membuat fungsi yang bisa menerima \"berapapun\" jumlah datanya. Misalnya, fungsi untuk menghitung total belanja tanpa tahu berapa banyak barang yang dibeli.\n\n**1. *args (Arguments):**\nMenerima banyak nilai tanpa nama sebagai **Tuple**.\nContoh: `tambah(1, 2, 3, 4)`\n\n**2. **kwargs (Keyword Arguments):**\nMenerima banyak nilai berpasangan (kunci=nilai) sebagai **Dictionary**.\nContoh: `simpan_data(nama=\"Mufid\", umur=25)`"
-                codeExample: "# Fungsi dengan *args\ndef total_nilai(*angka):\n    return sum(angka)\n\nprint(total_nilai(10, 20, 30)) # 60\n\n# Fungsi dengan **kwargs\ndef profil(**data):\n    for kunci, nilai in data.items():\n        print(f\"{kunci}: {nilai}\")\n\nprofil(nama=\"Gopher\", status=\"Online\")"
-                quiz:
-                  question: Apa tipe data yang digunakan Python untuk menampung *args?
-                  options:
-                    - List
-                    - Tuple
-                    - Dictionary
-                    - Set
-                  correctAnswerIndex: 1
-              - id: lambda-functions
-                title: 'Anonymous Power: Mengenal Lambda Functions'
-                content: "**Tujuan Pembelajaran:** Mampu menulis fungsi anonim (tanpa nama) untuk tugas-tugas logika sederhana.\n\nKadang kamu butuh fungsi \"sekali pakai\" yang sangat sederhana, sehingga memberi nama dengan `def` terasa terlalu berlebihan. Di situlah **Lambda** beraksi.\n\n**Karakteristik Lambda:**\n1. **Anonim:** Tidak memiliki nama.\n2. **Satu Baris:** Hanya boleh berisi satu ekspresi logika.\n3. **Cepat:** Biasa digunakan di dalam fungsi lain seperti `map()`, `filter()`, atau `sort()`.\n\n**Sintaks:**\n`lambda parameter : ekspresi`"
-                codeExample: "# Fungsi tambah biasa\ndef tambah(x, y): return x + y\n\n# Versi Lambda\ntambah_lambda = lambda x, y : x + y\nprint(tambah_lambda(5, 3)) # 8\n\n# Contoh penggunaan di sorting\ndata = [(\"Andi\", 20), (\"Budi\", 15)]\ndata.sort(key=lambda x: x[1]) # Sort berdasarkan umur\nprint(data)"
-                quiz:
-                  question: Apa batasan utama dari fungsi Lambda?
-                  options:
-                    - Hanya bisa digunakan oleh admin.
-                    - Tidak bisa menerima parameter.
-                    - Hanya boleh berisi satu baris ekspresi logika.
-                    - Harus ditulis di file terpisah.
-                  correctAnswerIndex: 2
-              - id: self-documenting
-                title: 'Self-Documenting: Menulis Docstrings (PEP 257)'
-                content: "**Tujuan Pembelajaran:** Mampu mendokumentasikan fungsi menggunakan Docstrings agar kode mudah dipahami orang lain.\n\nKode yang bagus adalah kode yang bisa menjelaskan dirinya sendiri. Di Python, kita menggunakan **Docstrings** (Documentation Strings) untuk menjelaskan apa tujuan sebuah fungsi dan apa input yang dibutuhkannya.\n\n**Aturan Penulisan:**\n- Gunakan tanda kutip tiga (`\"\"\"`).\n- Tuliskan tepat di baris pertama setelah definisi fungsi.\n- Berisi penjelasan singkat, parameter, dan hasil kembalian.\n\n**Analogi:** Seperti label instruksi pada kemasan obat. Kamu ingin tahu apa gunanya dan bagaimana cara meminumnya tanpa harus membedah isi obatnya."
-                codeExample: "def hitung_pajak(harga: float) -> float:\n    \"\"\"\n    Menghitung pajak PPN 11% dari harga barang.\n    \n    Args:\n        harga (float): Harga barang sebelum pajak.\n    Returns:\n        float: Total harga setelah ditambah pajak.\n    \"\"\"\n    return harga * 1.11\n\n# Kamu bisa melihat dokumentasi dengan help()\n# help(hitung_pajak)"
-                quiz:
-                  question: Simbol apa yang digunakan untuk menulis Docstrings?
-                  options:
-                    - '# (Hash)'
-                    - "''' (Kutip satu tiga)"
-                    - '""" (Kutip ganda tiga)'
-                    - // (Slash)
-                  correctAnswerIndex: 2
-          - id: oop
-            title: 3. Pemrograman Berorientasi Objek (OOP)
-            lessons:
-              - id: the-blueprint
-                title: 'The Blueprint: Membuat Class & Object Pertama'
-                content: "**Tujuan Pembelajaran:** Memahami perbedaan antara Class (cetakan) dan Object (hasil cetakan) serta mampu mengimplementasikannya dalam kode.\n\nHingga saat ini, kita menulis kode secara \"prosedural\" (urut dari atas ke bawah). Namun, untuk membangun sistem besar (seperti game atau aplikasi bank), kita butuh **OOP (Object-Oriented Programming)**.\n\n**Konsep Dasar:**\n1. **Class (Kelas):** Adalah \"Cetak Biru\" atau \"Resep\". Ia mendefinisikan apa yang dimiliki dan apa yang bisa dilakukan oleh sebuah objek.\n2. **Object (Objek):** Adalah hasil nyata dari cetakan tersebut. Jika Class-nya adalah \"Resep Kue\", maka Object-nya adalah \"Kue Nyata\" yang bisa kamu makan.\n\n**Analogi:**\nClass adalah desain mobil di atas kertas. Object adalah mobil nyata yang terparkir di garasimu."
-                codeExample: "# Membuat Cetakan (Class)\nclass Robot:\n    def sapa(self):\n        print(\"Halo, saya adalah robot pembantu!\")\n\n# Membuat Objek Nyata (Instance)\nbot_saya = Robot()\nbot_saya.sapa()"
-                quiz:
-                  question: Apa perbedaan utama antara Class dan Object?
-                  options:
-                    - Class adalah hasil nyata, Object adalah desain.
-                    - Class adalah desain/cetakan, Object adalah hasil nyatanya.
-                    - Tidak ada perbedaan, keduanya sama saja.
-                    - Object hanya bisa dibuat oleh ahli matematika.
-                  correctAnswerIndex: 1
-              - id: self-reference
-                title: 'Self-Reference: Memahami Constructor & parameter self'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan method `__init__` untuk memberi data awal pada objek dan memahami kegunaan parameter `self`.\n\nKenapa di dalam Class kita sering melihat kata `self`? **`self`** adalah cara objek menunjuk ke dirinya sendiri. Ibaratnya, jika robot berkata \"Namaku adalah Budi\", maka `self` adalah kata \"Namaku\".\n\n**Method Khusus `__init__`:**\nIni adalah **Constructor**. Fungsi ini akan otomatis dijalankan saat kamu membuat objek baru. Gunanya untuk memberikan identitas awal (seperti nama atau warna) pada objek tersebut.\n\n**Penting:** Setiap fungsi (method) di dalam Class **wajib** memiliki `self` sebagai parameter pertama."
-                codeExample: "class Robot:\n    def __init__(self, nama: str):\n        # Menyimpan data ke dalam diri objek\n        self.nama = nama\n    \n    def kenalan(self):\n        print(f\"Halo, namaku {self.nama}\")\n\nbot1 = Robot(\"Budi\")\nbot1.kenalan()"
-                quiz:
-                  question: Apa kegunaan utama dari method __init__ di Python?
-                  options:
-                    - Menghapus objek dari memori.
-                    - Menginisialisasi data awal saat objek dibuat.
-                    - Mengubah Python menjadi Java.
-                    - Hanya untuk mencetak teks ke layar.
-                  correctAnswerIndex: 1
-              - id: modern-data
-                title: 'Modern Data: Menggunakan @dataclass untuk Struktur Bersih'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan fitur `dataclass` untuk membuat objek penyimpan data secara ringkas tanpa menulis banyak kode boilerplate.\n\nDi Python modern, jika kita hanya butuh objek untuk \"menyimpan data\" (seperti info barang atau user), kita tidak lagi menulis `__init__` secara manual. Kita menggunakan **`@dataclass`**.\n\n**Keunggulan Dataclass:**\n1. **Ringkas:** Kamu cukup menulis nama variabel dan tipenya.\n2. **Otomatis:** Python akan membuatkan `__init__`, `__repr__` (tampilan teks), dan fungsi perbandingan otomatis.\n3. **Standar 2025:** Sangat disarankan oleh industri karena membuat kode jauh lebih mudah dibaca dan dirawat.\n\n**Syarat:** Kamu wajib menggunakan **Type Hinting** agar dataclass tahu tipe datanya."
-                codeExample: "from dataclasses import dataclass\n\n@dataclass\nclass Produk:\n    nama: str\n    harga: float\n    stok: int = 0\n\n# Sangat simpel, tidak butuh def __init__\nbarang1 = Produk(\"Kopi\", 15000.0, 10)\nprint(barang1)"
-                quiz:
-                  question: Apa keuntungan utama menggunakan @dataclass dibandingkan class biasa untuk menyimpan data?
-                  options:
-                    - Program jadi bisa berjalan tanpa listrik.
-                    - Tidak perlu menulis def __init__ secara manual ( boilerplate).
-                    - Hanya bisa digunakan untuk menyimpan angka.
-                    - Membuat file YAML jadi otomatis terisi.
-                  correctAnswerIndex: 1
-              - id: inheritance
-                title: 'The Family Tree: Konsep Inheritance (Pewarisan)'
-                content: "**Tujuan Pembelajaran:** Memahami cara kerja pewarisan sifat antar Class untuk menciptakan hierarki kode yang efisien.\n\nDalam dunia nyata, seorang anak mewarisi sifat dari orang tuanya. Begitu juga dalam Python. **Inheritance** memungkinkan sebuah Class baru (Child) mengambil semua sifat dan kemampuan dari Class yang sudah ada (Parent).\n\n**Kegunaan:**\n1. **Reuse Code:** Kamu tidak perlu menulis ulang kemampuan dasar yang sudah ada.\n2. **Organized:** Kode jadi lebih terstruktur seperti silsilah keluarga.\n\n**Analogi:**\nClass Parent adalah \"Ponsel Dasar\" (bisa telepon & SMS). Class Child adalah \"Smartphone\" (mewarisi telepon & SMS, lalu ditambah fitur Kamera & Internet)."
-                codeExample: "class Ponsel:\n    def telepon(self):\n        print(\"Kring kring... tersambung!\")\n\n# Smartphone mewarisi Ponsel\nclass Smartphone(Ponsel):\n    def internet(self):\n        print(\"Membuka browser...\")\n\nhp_saya = Smartphone()\nhp_saya.telepon()  # Bisa telepon (warisan)\nhp_saya.internet() # Bisa internet (fitur baru)"
-                quiz:
-                  question: Apa manfaat utama dari fitur Inheritance?
-                  options:
-                    - Menambah kecepatan internet.
-                    - Menghapus data di database.
-                    - Menggunakan kembali kode yang sudah ada (Reuse Code) tanpa menulis ulang.
-                    - Mengubah warna teks di terminal.
-                  correctAnswerIndex: 2
-              - id: composition
-                title: 'Composition: Menghubungkan Antar Object'
-                content: "**Tujuan Pembelajaran:** Memahami konsep Composition (memiliki) sebagai alternatif yang lebih fleksibel daripada Inheritance (merupakan).\n\nAda pepatah terkenal dalam desain kode: **\"Favor composition over inheritance\"**. Artinya, lebih baik membangun objek besar dengan menggabungkan objek-objek kecil daripada membuat silsilah keturunan yang terlalu panjang.\n\n**Perbedaan:**\n- **Inheritance:** Smartphone **adalah** Ponsel (Hubungan \"is-a\").\n- **Composition:** Mobil **memiliki** Mesin (Hubungan \"has-a\").\n\n**Analogi:**\nMembangun komputer dengan menggabungkan komponen: kamu ambil RAM, CPU, dan Motherboard lalu disatukan. Jika ingin ganti RAM, kamu tinggal ganti komponennya saja tanpa harus membongkar seluruh desain komputernya."
-                codeExample: "class Mesin:\n    def nyalakan(self):\n        print(\"Mesin menderu... Vroom!\")\n\nclass Mobil:\n    def __init__(self):\n        # Mobil MEMILIKI Mesin (Composition)\n        self.mesin = Mesin()\n    \n    def jalan(self):\n        self.mesin.nyalakan()\n        print(\"Mobil meluncur!\")\n\nmobil_saya = Mobil()\nmobil_saya.jalan()"
-                quiz:
-                  question: Hubungan apa yang paling tepat mendeskripsikan konsep Composition?
-                  options:
-                    - Hubungan 'adalah' (is-a).
-                    - Hubungan 'tidak kenal' (no-relation).
-                    - Hubungan 'memiliki' (has-a).
-                    - Hubungan 'permusuhan' (conflict).
-                  correctAnswerIndex: 2
-              - id: error-handling
-                title: 'The Safety Net: Menangani Error dengan Try-Except'
-                content: "**Tujuan Pembelajaran:** Mampu mencegah program terhenti secara tiba-tiba (crash) dengan menangkap kesalahan menggunakan blok `try-except`.\n\nPernahkah kamu menggunakan aplikasi lalu tiba-tiba aplikasinya tertutup sendiri? Itu namanya **Crash**. Sebagai programmer, tugasmu adalah memasang \"Jaring Pengaman\" agar jika ada kesalahan, program tetap bisa berjalan atau memberikan pesan yang sopan.\n\n**Blok Logika:**\n1. **try:** Jalankan kode yang \"berisiko\" (misal: membagi angka dengan nol atau membaca file yang tidak ada).\n2. **except:** Jika terjadi error di dalam blok `try`, jalankan kode pengganti di sini.\n3. **finally:** Kode yang **pasti** dijalankan, baik terjadi error maupun tidak (misal: menutup koneksi database).\n\n**Analogi:**\nSeperti pemain sirkus yang berjalan di atas tali. `try` adalah aksinya, `except` adalah jaring pengaman di bawahnya agar ia tidak jatuh ke lantai."
-                codeExample: "try:\n    angka = int(input(\"Masukkan angka: \"))\n    hasil = 10 / angka\n    print(f\"Hasil: {hasil}\")\nexcept ZeroDivisionError:\n    print(\"Ups! Tidak bisa membagi dengan nol.\")\nexcept ValueError:\n    print(\"Waduh! Yang kamu masukkan bukan angka.\")\nfinally:\n    print(\"Proses selesai.\")"
-                quiz:
-                  question: Apa fungsi dari blok 'finally' dalam penanganan error?
-                  options:
-                    - Hanya dijalankan jika program berhasil.
-                    - Hanya dijalankan jika terjadi error.
-                    - Pasti dijalankan terlepas dari ada error atau tidak.
-                    - Untuk menghapus seluruh kode program.
-                  correctAnswerIndex: 2
-              - id: custom-exceptions
-                title: 'Custom Alerts: Membuat Class Exception Sendiri'
-                content: "**Tujuan Pembelajaran:** Mampu membuat pesan error kustom yang spesifik untuk logika bisnis aplikasi Anda.\n\nTerkadang, error bawaan Python (seperti `ValueError`) kurang spesifik. Misal, kamu membuat aplikasi ATM dan saldo user tidak cukup. Kamu bisa membuat error sendiri bernama **`SaldoTidakCukupError`**.\n\n**Cara Membuat:**\nCukup buat Class baru yang mewarisi (`inheritance`) dari Class **`Exception`**.\n\n**Kenapa Penting?**\nAgar programmer lain yang membaca kodemu tahu persis apa yang salah tanpa harus menebak-nebak."
-                codeExample: "class SaldoTidakCukupError(Exception):\n    \"\"\"Error jika saldo ditarik melebihi sisa\"\"\"\n    pass\n\nsaldo = 1000\ntarik = 5000\n\ntry:\n    if tarik > saldo:\n        raise SaldoTidakCukupError(\"Saldo kamu cuma 1000 bos!\")\nexcept SaldoTidakCukupError as e:\n    print(f\"Gagal Tarik: {e}\")"
-                quiz:
-                  question: Class apa yang wajib diwarisi (inherited) saat ingin membuat error kustom di Python?
-                  options:
-                    - Error
-                    - Problem
-                    - Exception
-                    - Fault
-                  correctAnswerIndex: 2
-          - id: ecosystem-modern
-            title: 4. Ekosistem Modern & Performa
-            lessons:
-              - id: context-masters
-                title: 'Context Masters: Menggunakan with Statement'
-                content: "**Tujuan Pembelajaran:** Mampu membaca dan menulis file secara aman menggunakan Context Manager (`with` statement) untuk mencegah kebocoran data.\n\nDi tahun 2025, cara lama membuka file (`f = open()`) sudah dianggap buruk karena seringkali programmer lupa menutup file (`f.close()`). Ini bisa membuat komputer lelet atau file rusak.\n\n**Solusi Modern: Context Manager**\nDengan menggunakan kata kunci **`with`**, Python akan otomatis menutup file untukmu, bahkan jika terjadi error di tengah proses.\n\n**Analogi:**\nSeperti masuk ke perpustakaan (membuka file). `with` adalah sistem pintu otomatis yang akan terkunci sendiri saat kamu keluar, memastikan buku tetap aman tanpa kamu perlu repot mengunci pintu manual."
-                codeExample: "# Menulis ke file secara aman\nwith open(\"pesan.txt\", \"w\") as f:\n    f.write(\"Halo, Python 2025!\")\n\n# Membaca file secara aman\nwith open(\"pesan.txt\", \"r\") as f:\n    isi = f.read()\n    print(isi)"
-                quiz:
-                  question: Mengapa penggunaan 'with' sangat disarankan saat membuka file?
-                  options:
-                    - Agar file jadi berwarna.
-                    - Agar Python otomatis menutup file saat selesai digunakan.
-                    - Agar file tidak bisa dihapus orang lain.
-                    - Hanya untuk mempercepat internet.
-                  correctAnswerIndex: 1
-              - id: smart-generator
-                title: 'The Smart Generator: Menghemat Memori dengan yield'
-                content: "**Tujuan Pembelajaran:** Memahami konsep Generator untuk mengolah data dalam jumlah besar secara efisien menggunakan kata kunci `yield`.\n\nApa yang terjadi jika kamu ingin memproses 1 miliar baris data? Jika kamu menyimpannya dalam List, komputer kamu akan kehabisan RAM dan mati. **Generator** hadir sebagai solusinya.\n\n**Perbedaan Utama:**\n- **List:** Mengambil semua data dan menyimpannya di memori sekaligus.\n- **Generator:** Hanya mengambil data **satu per satu** saat dibutuhkan.\n\n**Analogi:**\nList itu seperti membeli 100 kaleng soda sekaligus dan menaruhnya di meja (meja penuh). Generator itu seperti mesin dispenser soda: ia hanya mengeluarkan satu gelas saat kamu menekan tombolnya."
-                codeExample: "# Generator sederhana\ndef hitung_mundur(n):\n    while n > 0:\n        yield n\n        n -= 1\n\n# Memanggil generator\nfor angka in hitung_mundur(3):\n    print(angka) # Output: 3, 2, 1"
-                quiz:
-                  question: Apa fungsi utama dari kata kunci 'yield' di Python?
-                  options:
-                    - Menghapus data selamanya.
-                    - Mengembalikan nilai satu per satu dan menjaga posisi fungsi (Generator).
-                    - Mempercepat koneksi WiFi.
-                    - Menutup aplikasi secara paksa.
-                  correctAnswerIndex: 1
-              - id: decorators
-                title: 'Code Enhancers: Membuat Decorator Sederhana'
-                content: "**Tujuan Pembelajaran:** Memahami konsep Decorator untuk membungkus fungsi lain dengan logika tambahan secara bersih.\n\nBayangkan kamu memiliki sebuah fungsi dasar. Sekarang kamu ingin fungsi tersebut mencatat waktu eksekusi setiap kali dijalankan. Alih-alih menulis ulang kodenya, kamu bisa menggunakan **Decorator** (Pembungkus).\n\n**Kenapa Pakai Decorator?**\n1. **DRY (Don't Repeat Yourself):** Logika yang sama (seperti login check atau logging) bisa dipasang di banyak fungsi.\n2. **Clean Code:** Memisahkan logika utama dengan logika pendukung.\n\n**Simbol:** Menggunakan tanda **`@`** di atas definisi fungsi."
-                codeExample: "def salam_decorator(func):\n    def wrapper():\n        print(\"--- Persiapan ---\")\n        func()\n        print(\"--- Selesai ---\")\n    return wrapper\n\n@salam_decorator\ndef sapa():\n    print(\"Halo Pythonista!\")\n\nsapa()"
-                quiz:
-                  question: Simbol apa yang digunakan untuk memasang Decorator pada sebuah fungsi?
-                  options:
-                    - '# (Hash)'
-                    - '& (Ampersand)'
-                    - '@ (At Symbol)'
-                    - '* (Asterisk)'
-                  correctAnswerIndex: 2
-              - id: ruff-linter
-                title: 'Instant Cleanup: Linting & Formatting dengan Ruff'
-                content: "**Tujuan Pembelajaran:** Mampu menjaga kerapian dan kebersihan kode secara otomatis menggunakan **Ruff**, standar linter industri terbaru tahun 2025.\n\nDulu, kita menggunakan banyak tool (seperti Flake8, Black, isort) yang lambat untuk merapikan kode. Di tahun 2025, semua itu digantikan oleh **Ruff**.\n\n**Kenapa Ruff?**\n1. **Kecepatan Cahaya:** Ditulis dalam Rust, ia 10-100x lebih cepat dari tool lama.\n2. **All-in-One:** Berfungsi sebagai linter (cek error) sekaligus formatter (rapikan spasi).\n3. **Smart:** Bisa otomatis memperbaiki kode yang salah hanya dalam satu perintah.\n\n**Cara Pakai (Terminal):**\n- Cek error: `uvx ruff check .`\n- Rapikan otomatis: `uvx ruff format .`"
-                codeExample: "# Jalankan di terminal proyekmu\n# uvx ruff check --fix\n\nprint(\"Ruff membuat kodemu bersih tanpa ribet!\")"
-                quiz:
-                  question: Apa keunggulan utama Ruff dibandingkan linter Python tradisional?
-                  options:
-                    - Harganya sangat mahal.
-                    - Ia ditulis dalam Rust dan sangat cepat.
-                    - Hanya bisa merapikan file teks (.txt).
-                    - Mewajibkan kita menggunakan Windows 95.
-                  correctAnswerIndex: 1
-              - id: package-management
-                title: 'Fast Package: Mengelola Library dengan uv'
-                content: "**Tujuan Pembelajaran:** Mampu menginstal, menghapus, dan mengunci versi library proyek menggunakan perintah modern `uv`.\n\nDalam proyek nyata, kamu pasti butuh library tambahan (seperti `requests` untuk internet atau `pandas` untuk data). Di tahun 2025, kita menggunakan **`uv add`**.\n\n**Kenapa ini Penting?**\n1. **uv lock**: `uv` otomatis membuat file kunci (`uv.lock`) yang memastikan semua teman timmu menggunakan versi library yang **EKSYAK** sama. Tidak ada lagi drama \"Di laptop saya jalan kok\".\n2. **Kecepatan:** Menginstal library terjadi hampir seketika karena sistem caching yang cerdas.\n\n**Perintah Utama:**\n- Tambah library: `uv add nama_library`\n- Hapus library: `uv remove nama_library`\n- Jalankan di lingkungan tersebut: `uv run python file.py`"
-                codeExample: "# Contoh menginstal library untuk HTTP\n# uv add requests\n\nimport requests\nprint(\"Library berhasil terinstal dan siap digunakan!\")"
-                quiz:
-                  question: Apa fungsi dari file 'uv.lock' yang dihasilkan oleh uv?
-                  options:
-                    - Untuk mengunci komputer agar tidak bisa dibuka.
-                    - Untuk mengunci versi library agar konsisten di semua komputer.
-                    - Untuk menghapus virus Python.
-                    - Hanya sebagai hiasan folder.
-                  correctAnswerIndex: 1
-              - id: static-typing
-                title: 'Strict Typing: Validasi Tipe Data dengan mypy'
-                content: "**Tujuan Pembelajaran:** Mampu melakukan audit tipe data pada seluruh proyek menggunakan `mypy` untuk menjamin keamanan kode.\n\nMeskipun kita sudah menggunakan **Type Hinting** (seperti `nama: str`), Python sendiri tidak akan error jika kamu memasukkan angka ke dalamnya saat runtime. Untuk mengecek kesalahan ini secara ketat, kita butuh **mypy**.\n\n**Cara Kerja mypy:**\nIa adalah \"Polisi Tipe Data\". Ia tidak menjalankan kodemu, tapi ia \"membaca\" seluruh kodemu dan memberi tahu: \"Hey, di baris 10 kamu bilang ini String, tapi kamu isi Angka!\".\n\n**Kenapa ini Penting?**\nMencegah bug konyol di proyek besar yang melibatkan ribuan baris kode."
-                codeExample: "# Simpan kode ini di file main.py\nnama: str = 123  # mypy akan mendeteksi ini sebagai error!\n\n# Cara cek di terminal:\n# uvx mypy main.py"
-                quiz:
-                  question: Kapan mypy mendeteksi kesalahan tipe data?
-                  options:
-                    - Saat program sudah dijalankan user.
-                    - Sebelum program dijalankan (Static Analysis).
-                    - Hanya saat komputer dimatikan.
-                    - Mypy tidak pernah mendeteksi kesalahan.
-                  correctAnswerIndex: 1
-              - id: environment-secrets
-                title: 'Secrets Locker: Mengelola .env untuk Keamanan'
-                content: "**Tujuan Pembelajaran:** Mampu menyimpan data sensitif (API Key, Password) ke dalam file `.env` dan membacanya di Python secara aman.\n\nKesalahan terbesar pemula adalah menulis Password atau API Key langsung di dalam kode. Jika kodemu diupload ke GitHub, orang lain bisa mencuri rahasiamu dalam sekejap.\n\n**Solusi: File `.env`**\nKita menyimpan rahasia di file terpisah bernama `.env` yang tidak akan pernah diupload ke server publik.\n\n**Cara Kerja:**\n1. Simpan di `.env`: `API_KEY=rahasia123`\n2. Baca di Python menggunakan library `python-dotenv`.\n\n**Analogi:**\nKode program adalah \"Surat Terbuka\". File `.env` adalah \"Brankas Pribadi\". Kamu tidak menaruh perhiasan di dalam surat, kamu menaruhnya di brankas dan hanya mengambilnya saat butuh."
-                codeExample: "# File .env:\n# DATABASE_URL=secret_link\n\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv() # Muat data dari .env\n\ndb_url = os.getenv(\"DATABASE_URL\")\nprint(f\"Menghubungkan ke: {db_url}\")"
-                quiz:
-                  question: Mengapa kita tidak boleh menulis API Key langsung di dalam kode program?
-                  options:
-                    - Karena akan membuat kode jadi lemot.
-                    - Karena API Key tersebut bisa dicuri orang jika kode dipublikasikan.
-                    - Karena Python tidak bisa membaca teks yang terlalu panjang.
-                    - Karena dilarang oleh pemerintah.
-                  correctAnswerIndex: 1
-          - id: advanced-concurrency
-            title: 5. Advanced & Concurrency
-            lessons:
-              - id: async-basics
-                title: 'The Waiting Room: Konsep Dasar async & await'
-                content: "**Tujuan Pembelajaran:** Memahami perbedaan antara eksekusi sinkron dan asinkron serta mampu menulis fungsi asinkron sederhana.\n\nBayangkan kamu sedang di restoran. \n- **Sinkron:** Pelayan berdiri diam di depan mejamu menunggu masakan matang sebelum bisa melayani meja lain. Sangat tidak efisien!\n- **Asinkron (Async):** Pelayan memesankan makananmu, lalu pergi melayani pelanggan lain. Begitu makananmu matang, ia kembali lagi padamu.\n\nDi Python modern, **Asynchronous Programming** memungkinkan program melakukan tugas lain (seperti menunggu data dari internet) tanpa harus menghentikan seluruh aplikasi.\n\n**Kata Kunci Utama:**\n1. **`async def`**: Mendefinisikan fungsi sebagai fungsi asinkron (Coroutines).\n2. **`await`**: Memberi tahu program: \"Tunggu proses ini selesai, tapi kamu boleh mengerjakan hal lain dulu ya!\"."
-                codeExample: "import asyncio\n\nasync def sapa_nanti():\n    print(\"Memulai proses...\")\n    await asyncio.sleep(1) # Simulasi menunggu data\n    print(\"Halo, saya muncul setelah 1 detik!\")\n\n# Menjalankan fungsi asinkron\n# asyncio.run(sapa_nanti())"
-                quiz:
-                  question: Apa analogi yang paling tepat untuk pemrograman asinkron (async)?
-                  options:
-                    - Pelayan restoran yang melayani banyak meja secara bergantian.
-                    - Mobil yang mogok di tengah jalan.
-                    - Orang yang berdiri diam menunggu antrean panjang.
-                    - Membaca buku dari halaman terakhir ke depan.
-                  correctAnswerIndex: 0
-              - id: async-mastery
-                title: 'Async Mastery: Menjalankan Banyak Tugas Sekaligus'
-                content: "**Tujuan Pembelajaran:** Mampu menjalankan banyak coroutine secara paralel menggunakan `asyncio.gather` untuk mempercepat eksekusi program.\n\nMenulis satu fungsi asinkron memang bagus, tapi kekuatan asli `asyncio` muncul saat kamu harus mengerjakan 10 tugas sekaligus (misal: mengambil data dari 10 website berbeda).\n\n**gather()**: Adalah perintah sakti untuk menjalankan banyak fungsi asinkron secara bersamaan. Alih-alih menunggu satu per satu selesai, program akan menjalankan semuanya sekaligus dan menunggu hasil kolektifnya.\n\n**Kenapa ini Penting?**\nSangat berguna dalam pembuatan Bot AI yang harus merespon banyak user, atau sistem scraper yang harus mengambil ribuan data dengan cepat."
-                codeExample: "import asyncio\n\nasync def download_data(id: int):\n    print(f\"Mendownload data ke-{id}...\")\n    await asyncio.sleep(1)\n    return f\"Data {id} Selesai\"\n\nasync def main():\n    # Menjalankan 3 download sekaligus (Hanya butuh 1 detik total!)\n    hasil = await asyncio.gather(download_data(1), download_data(2), download_data(3))\n    print(hasil)\n\n# asyncio.run(main())"
-                quiz:
-                  question: Fungsi apa yang digunakan untuk menjalankan banyak coroutine secara bersamaan di asyncio?
-                  options:
-                    - asyncio.run()
-                    - asyncio.gather()
-                    - asyncio.stop()
-                    - asyncio.wait_one()
-                  correctAnswerIndex: 1
-              - id: pydantic-validation
-                title: 'Data Contracts: Validasi Data dengan Pydantic'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan library Pydantic untuk membuat skema data yang tervalidasi secara otomatis guna mencegah data sampah masuk ke aplikasi.\n\nPydantic adalah library paling populer untuk validasi data di Python. Ia memastikan data yang kamu terima (misal dari form web) sudah sesuai aturan yang kamu buat.\n\n**Kenapa Pakai Pydantic?**\n1. **Type Safety:** Menjamin tipe data (str, int, dll) benar.\n2. **Auto-Parsing:** Jika kamu kirim string `\"123\"` tapi butuh `int`, Pydantic otomatis mengubahnya.\n3. **Pesan Error Jelas:** Memberi tahu user bagian mana yang salah input.\n\n**Analogi:**\nSeperti pintu gerbang bandara. Hanya orang dengan paspor valid (data yang sesuai aturan) yang boleh masuk ke dalam pesawat (aplikasi)."
-                codeExample: "from pydantic import BaseModel, EmailStr\n\nclass User(BaseModel):\n    id: int\n    nama: str\n    email: str\n\n# Data yang Benar\nuser_ok = User(id=1, nama=\"Mufid\", email=\"mufid@example.com\")\nprint(user_ok)\n\n# Data yang Salah (akan melempar error)\n# user_error = User(id=\"bukan_angka\", nama=\"Andi\", email=\"salah_email\")"
-                quiz:
-                  question: Apa fungsi utama dari library Pydantic dalam Python modern?
-                  options:
-                    - Untuk membuat desain grafis.
-                    - Untuk validasi dan penjaminan kualitas data input.
-                    - Untuk menghapus virus di laptop.
-                    - Hanya untuk mencetak teks berwarna-warni.
-                  correctAnswerIndex: 1
-              - id: magic-methods
-                title: 'Magic Methods: Mengenal Dunder Methods'
-                content: "**Tujuan Pembelajaran:** Memahami kegunaan metode khusus (Double Underscore) di Python untuk memodifikasi perilaku bawaan Class.\n\nPernahkah kamu bertanya kenapa kita bisa menjumlahkan dua angka dengan tanda `+`? Itu karena Python menggunakan **Magic Methods** (atau sering disebut **Dunder Methods**, singkatan dari *Double Underscore*).\n\n**Dunder Methods Populer:**\n1. **`__str__`**: Mengontrol apa yang muncul saat objek dicetak (`print(obj)`).\n2. **`__len__`**: Mengontrol apa yang dikembalikan saat kita memanggil `len(obj)`.\n3. **`__call__`**: Memungkinkan sebuah objek dipanggil layaknya sebuah fungsi!\n\n**Analogi:**\nIbarat tombol rahasia di remote TV. Tombol `+` biasanya untuk volume, tapi kamu bisa memprogram ulang agar tombol `+` tersebut mengganti channel (Overloading)."
-                codeExample: "class Buku:\n    def __init__(self, judul: str, hal: int):\n        self.judul = judul\n        self.hal = hal\n    \n    def __str__(self):\n        return f\"Buku: {self.judul} ({self.hal} hal)\"\n    \n    def __len__(self):\n        return self.hal\n\nbuku_python = Buku(\"Tutorial Python 2025\", 200)\nprint(buku_python) # Memanggil __str__\nprint(len(buku_python)) # Memanggil __len__"
-                quiz:
-                  question: Metode khusus mana yang digunakan untuk menentukan tampilan teks sebuah objek saat dicetak?
-                  options:
-                    - __init__
-                    - __len__
-                    - __str__
-                    - __call__
-                  correctAnswerIndex: 2
-              - id: pytest-basics
-                title: 'Bulletproof Code: Menulis Unit Test Pertama dengan pytest'
-                content: "**Tujuan Pembelajaran:** Mampu membuat skenario pengujian otomatis menggunakan `pytest` untuk memastikan fungsi berjalan sesuai harapan.\n\nBagaimana kamu tahu kodemu benar-benar jalan? Apakah kamu harus mencobanya manual satu per satu? Programmer malas (yang pintar) menggunakan **Unit Test**.\n\n**pytest** adalah standar industri untuk testing di Python. Cukup buat file dengan awalan `test_`, tulis fungsi yang melakukan cek (`assert`), dan biarkan komputer yang menguji kodenya untukmu.\n\n**Analogi:**\nIbarat tim QC (Quality Control) di pabrik mobil. Sebelum mobil dijual, ada mesin yang otomatis mengecek apakah rem berfungsi, apakah lampu menyala, dll."
-                codeExample: "# Simpan di file test_logika.py\ndef tambah(a, b): return a + b\n\ndef test_tambah():\n    assert tambah(2, 3) == 5\n    assert tambah(-1, 1) == 0\n\n# Jalankan di terminal:\n# uvx pytest test_logika.py"
-                quiz:
-                  question: Kata kunci apa yang digunakan di pytest untuk menyatakan bahwa sebuah hasil harus sesuai ekspektasi?
-                  options:
-                    - check
-                    - verify
-                    - assert
-                    - ensure
-                  correctAnswerIndex: 2
-              - id: mocking-testing
-                title: 'The Simulation: Menggunakan Mocking dalam Pengujian'
-                content: "**Tujuan Pembelajaran:** Memahami konsep Mocking untuk mensimulasikan komponen luar (seperti API atau Database) saat melakukan Unit Testing.\n\nBagaimana cara mengetes fungsi pengiriman email tanpa benar-benar mengirim email asli ke user setiap kali kita menjalankan test? Jawabannya adalah **Mocking**.\n\n**Mocking** adalah membuat objek \"palsu\" yang meniru perilaku objek asli. Kita bisa mengatur agar objek palsu ini memberikan jawaban tertentu (misal: sukses atau gagal) untuk melihat bagaimana kode kita meresponnya.\n\n**Analogi:**\nSeperti pilot yang berlatih menggunakan simulator penerbangan. Mereka tidak butuh pesawat asli yang mahal dan berisiko, cukup mesin simulasi yang perilakunya mirip pesawat asli."
-                codeExample: "from unittest.mock import Mock\n\n# Membuat objek palsu (Mock)\ndatabase_palsu = Mock()\n\n# Mengatur agar jika fungsi 'ambil_data' dipanggil, hasilnya adalah 100\ndatabase_palsu.ambil_data.return_value = 100\n\nprint(database_palsu.ambil_data()) # Output: 100"
-                quiz:
-                  question: Apa tujuan utama dari teknik Mocking dalam pengujian?
-                  options:
-                    - Untuk menghapus seluruh database asli.
-                    - Mensimulasikan komponen luar agar test bisa berjalan terisolasi dan cepat.
-                    - Membuat tampilan website jadi lebih cantik.
-                    - Hanya untuk mempercepat download library.
-                  correctAnswerIndex: 1
-              - id: fastapi-starter
-                title: 'API Starter: Membuat Endpoint Pertama dengan FastAPI'
-                content: "**Tujuan Pembelajaran:** Mampu membuat Web API sederhana menggunakan framework FastAPI dan menjalankannya secara lokal.\n\nFastAPI adalah framework web Python tercepat dan terpopuler saat ini. Ia sangat disukai karena otomatis membuat dokumentasi API (Swagger) dan sangat ringan.\n\n**Langkah Membuat API:**\n1. Instal: `uv add fastapi uvicorn`\n2. Buat file `main.py` dengan objek `FastAPI()`.\n3. Buat fungsi dengan decorator `@app.get(\"/\")`.\n4. Jalankan server: `uvicorn main:app --reload`.\n\n**Analogi:**\nIbarat membuka toko. FastAPI adalah gedungnya, dan `@app.get(\"/\")` adalah pintu depan toko tempat pelanggan meminta barang."
-                codeExample: "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef hello():\n    return {\"pesan\": \"Halo Dunia Python 2025!\"}\n\n# Jalankan dengan: uvicorn main:app --reload"
-                quiz:
-                  question: Tool apa yang digunakan untuk menjalankan server FastAPI?
-                  options:
-                    - FastAPI
-                    - Uvicorn
-                    - Python-Server
-                    - Web-Gopher
-                  correctAnswerIndex: 1
-          - id: ai-specialization
-            title: 6. Spesialisasi AI & Data (2025 Path)
-            lessons:
-              - id: polars-analytics
-                title: 'Fast Analytics: Analisis Data Kilat dengan Polars'
-                content: "**Tujuan Pembelajaran:** Mengenal library Polars sebagai alternatif Pandas yang jauh lebih cepat untuk mengolah jutaan baris data secara efisien.\n\nSelama satu dekade, Pandas menjadi penguasa analisis data di Python. Namun di tahun 2025, standar bergeser ke **Polars**. Polars ditulis dalam bahasa **Rust** dan dirancang untuk memanfaatkan semua inti (core) prosesor komputermu secara paralel.\n\n**Kenapa Polars?**\n1. **Kecepatan Ekstrem:** 10-100x lebih cepat dari Pandas pada dataset besar.\n2. **Lazy Evaluation:** Ia tidak langsung memproses data, tapi membuat rencana kerja yang paling efisien dulu.\n3. **Memori Efisien:** Menggunakan memori jauh lebih sedikit dibandingkan Pandas.\n\n**Analogi:**\nPandas seperti mobil keluarga yang nyaman tapi lambat. Polars seperti mobil balap F1 yang dirancang murni untuk kecepatan dan efisiensi mesin."
-                codeExample: "import polars as pl\n\n# Membuat DataFrame kilat\ndf = pl.DataFrame({\n    \"nama\": [\"Andi\", \"Budi\", \"Caca\"],\n    \"skor\": [90, 85, 95]\n})\n\n# Filter data dengan gaya Polars\nhasil = df.filter(pl.col(\"skor\") > 85)\nprint(hasil)"
-                quiz:
-                  question: Bahasa pemrograman apa yang digunakan untuk membangun inti (core) dari library Polars?
-                  options:
-                    - Java
-                    - C++
-                    - Rust
-                    - JavaScript
-                  correctAnswerIndex: 2
-              - id: numpy-vectors
-                title: 'Vector Power: Operasi Array dengan NumPy'
-                content: "**Tujuan Pembelajaran:** Memahami penggunaan NumPy untuk melakukan operasi matematika pada sekumpulan angka (vektor) secara sekaligus tanpa perulangan manual.\n\nDunia AI adalah dunia angka. Gambar bagi komputer adalah matriks angka. Untuk mengolah angka-angka ini dengan cepat, kita butuh **NumPy**.\n\n**Kehebatan NumPy: Vectorization**\nJika kamu ingin mengalikan 1 juta angka dengan 2, di Python biasa kamu butuh loop `for`. Di NumPy, kamu tinggal tulis `array * 2`. Proses ini ribuan kali lebih cepat karena dilakukan langsung di level hardware.\n\n**Analogi:**\nLoop `for` seperti menyapu lantai satu per satu menggunakan sapu lidi. NumPy seperti menggunakan mesin pembersih lantai otomatis yang besar: satu kali jalan, semua bersih."
-                codeExample: "import numpy as np\n\n# Membuat array (vektor)\nangka = np.array([1, 2, 3, 4, 5])\n\n# Operasi vektor (tanpa loop!)\nhasil = angka * 10\nprint(hasil) # Output: [10, 20, 30, 40, 50]\n\n# Statistik dasar\nprint(f\"Rata-rata: {np.mean(angka)}\")"
-                quiz:
-                  question: Apa istilah untuk teknik operasi matematika pada seluruh isi array tanpa menggunakan loop manual di NumPy?
-                  options:
-                    - Indentation
-                    - Vectorization
-                    - Formatting
-                    - Validation
-                  correctAnswerIndex: 1
-              - id: langchain-intro
-                title: 'AI Chain: Integrasi LLM dengan LangChain'
-                content: "**Tujuan Pembelajaran:** Mengenal kerangka kerja LangChain untuk membangun aplikasi cerdas yang ditenagai oleh Large Language Models (LLM).\n\nMembangun aplikasi AI di tahun 2025 tidak hanya sekadar tanya-jawab dengan ChatGPT. Kamu butuh menghubungkan AI dengan database, file, atau tool lainnya. **LangChain** adalah rantai penghubungnya.\n\n**Komponen LangChain:**\n1. **LLM Wrapper:** Menghubungkan ke berbagai model (Gemini, OpenAI, Anthropic) dengan kode yang sama.\n2. **Prompts:** Mengelola instruksi cerdas agar AI memberikan hasil maksimal.\n3. **Chains:** Menggabungkan beberapa proses AI menjadi satu alur kerja otomatis.\n\n**Analogi:**\nLLM (seperti Gemini) adalah otak jenius di dalam ruangan gelap. LangChain adalah kabel dan sensor yang menghubungkan otak tersebut dengan dunia luar agar ia bisa melihat, membaca file, dan bertindak."
-                codeExample: "# uv add langchain langchain-google-genai\nfrom langchain_google_genai import GoogleGenerativeAI\n\n# Menghubungkan ke otak AI\n# model = GoogleGenerativeAI(model=\"gemini-pro\", api_key=\"YOUR_KEY\")\n\n# response = model.invoke(\"Apa itu Python?\")\n# print(response)"
-                quiz:
-                  question: Apa kegunaan utama dari framework LangChain?
-                  options:
-                    - Untuk membuat game 3D.
-                    - Untuk merapikan spasi pada kode Python.
-                    - Untuk menghubungkan model AI (LLM) dengan data dan alat lainnya.
-                    - Untuk mempercepat booting Windows.
-                  correctAnswerIndex: 2
-              - id: data-pipelines
-                title: 'Data Pipeline: Dasar-dasar ETL (Extract, Transform, Load)'
-                content: "**Tujuan Pembelajaran:** Memahami alur kerja pemrosesan data profesional yang terdiri dari pengambilan, pembersihan, dan penyimpanan data.\n\nSeorang Data Engineer bertugas membangun \"Pipa\" yang mengalirkan data dari berbagai sumber ke tempat penyimpanan yang rapi. Alur kerja ini disebut **ETL**:\n\n1. **Extract (Ambil):** Mengambil data mentah dari API, Website, atau File CSV.\n2. **Transform (Ubah):** Membersihkan data yang kotor, membuang duplikat, dan mengubah format (misal: semua nama jadi huruf besar).\n3. **Load (Simpan):** Memasukkan data yang sudah bersih ke dalam Database atau Data Warehouse.\n\n**Analogi:**\nSeperti pabrik pengolahan air mineral. Air diambil dari mata air (Extract), disaring dan disterilkan (Transform), lalu dimasukkan ke dalam botol untuk dijual (Load)."
-                codeExample: "import polars as pl\n\n# 1. Extract\ndf = pl.read_csv(\"data_kotor.csv\")\n\n# 2. Transform\ndf_clean = df.drop_nulls().unique()\n\n# 3. Load\n# df_clean.write_csv(\"data_bersih.csv\")\nprint(\"Pipeline ETL Selesai!\")"
-                quiz:
-                  question: Apa kepanjangan dari singkatan ETL dalam dunia data?
-                  options:
-                    - Entry, Testing, Logging
-                    - Extract, Transform, Load
-                    - Execute, Terminal, Level
-                    - Error, Trace, List
-                  correctAnswerIndex: 1
-              - id: docker-python
-                title: 'Dockerize: Membungkus Aplikasi ke dalam Container'
-                content: "**Tujuan Pembelajaran:** Mampu menggunakan Docker untuk memastikan aplikasi Python berjalan dengan cara yang sama di laptopmu maupun di server produksi.\n\nPernahkah kamu mengirim kode ke teman lalu kodenya tidak jalan karena \"beda versi Python\"? **Docker** menyelesaikan masalah ini. Docker membungkus aplikasi, library, dan sistem operasi mini ke dalam satu \"kotak\" bernama **Container**.\n\n**Langkah Utama:**\n1. Buat file bernama `Dockerfile`.\n2. Tulis instruksi: `FROM python:3.12-slim`, `COPY . .`, `RUN pip install ...`.\n3. Bangun Image: `docker build -t app-python .`\n4. Jalankan: `docker run app-python`.\n\n**Analogi:**\nSeperti mengirim paket menggunakan kontainer kargo standar internasional. Kapal, pelabuhan, dan truk mana pun bisa membawanya tanpa perlu tahu apa isi di dalamnya."
-                codeExample: "# Contoh isi file Dockerfile\n# FROM python:3.12-slim\n# WORKDIR /app\n# COPY . .\n# RUN pip install -r requirements.txt\n# CMD [\"python\", \"main.py\"]"
-                quiz:
-                  question: Apa masalah utama yang diselesaikan oleh teknologi Docker?
-                  options:
-                    - Masalah koneksi internet yang lambat.
-                    - Masalah perbedaan lingkungan (environment) antar komputer.
-                    - Masalah keyboard yang rusak.
-                    - Masalah harga laptop yang mahal.
-                  correctAnswerIndex: 1
-              - id: github-actions-ci
-                title: 'Auto-Pilot: Testing Otomatis dengan GitHub Actions'
-                content: "**Tujuan Pembelajaran:** Mampu membuat alur kerja otomatis (CI/CD) agar setiap kali kamu mengupdate kode, program akan otomatis diuji dan diverifikasi kebersihannya.\n\nSebagai penutup perjalanan Python, kamu harus mengenal **GitHub Actions**. Ini adalah sistem yang menjalankan perintah otomatis setiap kali kamu melakukan \"Push\" kode ke GitHub.\n\n**Kenapa ini Penting?**\n1. **Verifikasi Otomatis:** Ia akan menjalankan `pytest` dan `ruff` secara otomatis. Jika ada error, ia akan memberimu \"Lampu Merah\".\n2. **Kualitas Terjaga:** Menjamin tidak ada kode rusak yang masuk ke server produksi.\n3. **Deployment Otomatis:** Bisa dikonfigurasi untuk langsung mendeploy aplikasi jika semua test berhasil.\n\n**Analogi:**\nSeperti sistem sabuk pengaman otomatis di mobil modern. Kamu tidak perlu ingat untuk memasangnya, sistem yang akan memastikan semuanya aman sebelum mobil meluncur."
-                codeExample: "# Contoh alur kerja .github/workflows/ci.yml\n# name: Python CI\n# on: [push]\n# jobs:\n#   test:\n#     runs-on: ubuntu-latest\n#     steps:\n#       - uses: actions/checkout@v4\n#       - name: Run Tests\n#         run: uv run pytest"
-                quiz:
-                  question: Apa manfaat utama dari penggunaan CI/CD seperti GitHub Actions?
-                  options:
-                    - Agar kita tidak perlu menulis kode lagi.
-                    - Menjalankan pengujian dan verifikasi kode secara otomatis setiap ada perubahan.
-                    - Menyembunyikan kode dari orang lain.
-                    - Hanya untuk mempercepat loading website.
-                  correctAnswerIndex: 1
-  - id: javascript-path
-    title: JavaScript Developer
-    description: Jalur lengkap dari dasar JavaScript hingga menjadi Full-Stack Web Developer.
-    icon: javascript
-    curriculums:
-      - id: js-basics
-        title: JavaScript Dasar
-        modules:
-          - id: js-intro
-            title: 1. Modern JS Foundations
-            lessons: []
-          - id: js-data-logic
-            title: 2. Data & Logic Mastery
-            lessons:
-              - id: js-classes
-                title: 'Modern Classes: Private Fields (#)'
-                content: JavaScript modern kini mendukung private fields menggunakan simbol `#`. Ini menjamin data di dalam Class tidak bisa diakses sembarangan dari luar.
-                codeExample: "class User {\n  #password = \"123\";\n  getPass() { return this.#password; }\n}"
-                quiz:
-                  question: Simbol apa yang digunakan untuk membuat property private di Class JS?
-                  options:
-                    - _
-                    - $
-                    - '#'
-                    - '@'
-                  correctAnswerIndex: 2
-              - id: js-iterators
-                title: 'Iterator Helpers: Map & Filter pada Iterator'
-                content: ES2024 memperkenalkan helper untuk iterator, memungkinkan kita melakukan manipulasi data pada stream data tanpa mengubahnya menjadi array dulu.
-                codeExample: // const doubled = myIterator.map(x => x * 2);
-                quiz:
-                  question: Iterator helpers membantu kita mengolah data tanpa harus...
-                  options:
-                    - Menyalakan komputer
-                    - Mengubahnya menjadi array terlebih dahulu
-                    - Menulis kode
-                    - Menggunakan CSS
-                  correctAnswerIndex: 1
-      - id: ts-foundations
-        title: TypeScript & Type Safety
-        modules:
-          - id: ts-basics
-            title: 3. TypeScript Foundations
-            lessons:
-              - id: ts-intro
-                title: Why Types? Setup TypeScript 2025
-                content: TypeScript adalah JavaScript dengan sistem tipe data. Ia membantu kita menangkap bug saat kita sedang mengetik kode, bukan saat website sudah online.
-                codeExample: 'let nama: string = "Mufid";'
-                quiz:
-                  question: Apa kelebihan utama TypeScript?
-                  options:
-                    - Mempercepat internet
-                    - Menangkap bug tipe data saat development
-                    - Membuat file jadi lebih kecil
-                    - Hanya bisa jalan di Windows
-                  correctAnswerIndex: 1
-              - id: ts-zod
-                title: 'Runtime Safety: Validasi dengan Zod'
-                content: TypeScript hanya mengecek tipe saat coding. Untuk mengecek data yang masuk dari user saat website jalan, kita butuh Zod.
-                codeExample: "import { z } from 'zod';\nconst UserSchema = z.string().min(3);"
-                quiz:
-                  question: Library apa yang populer untuk validasi schema di ekosistem TS?
-                  options:
-                    - Zod
-                    - Zelda
-                    - Zoom
-                    - Zip
-                  correctAnswerIndex: 0
-      - id: frontend-react
-        title: Frontend Frameworks (React 19)
-        modules:
-          - id: react-mastery
-            title: 4. React 19 Mastery
-            lessons:
-              - id: react-19-intro
-                title: 'React 19: The New Era'
-                content: React 19 memperkenalkan React Compiler yang otomatis mengoptimasi performa tanpa perlu useMemo/useCallback lagi.
-                codeExample: function App() { return <div>React 19 is here!</div> }
-                quiz:
-                  question: Apa fitur utama React 19 yang otomatis mengoptimasi performa?
-                  options:
-                    - React Server
-                    - React Compiler
-                    - React Player
-                    - React Audio
-                  correctAnswerIndex: 1
-              - id: react-action-hooks
-                title: 'Action Hooks: useActionState'
-                content: Mengelola form kini jauh lebih mudah dengan hook useActionState yang menangani loading, error, dan data secara otomatis.
-                codeExample: const [state, action, isPending] = useActionState(myAction, null);
-                quiz:
-                  question: Hook mana yang digunakan untuk mengelola state form di React 19?
-                  options:
-                    - useState
-                    - useEffect
-                    - useActionState
-                    - useRef
-                  correctAnswerIndex: 2
-      - id: backend-apis
-        title: Modern Backend & APIs
-        modules:
-          - id: js-backend
-            title: 5. Backend Runtimes & APIs
-            lessons:
-              - id: js-bun-hono
-                title: 'The Edge Server: API dengan Hono & Bun'
-                content: Hono adalah framework web tercepat untuk runtime modern seperti Bun. Sangat cocok untuk membangun API skala besar.
-                codeExample: "const app = new Hono();\napp.get('/', (c) => c.text('Halo!'));"
-                quiz:
-                  question: Framework apa yang sangat populer untuk Bun karena kecepatannya?
-                  options:
-                    - Express
-                    - Hono
-                    - Django
-                    - Laravel
-                  correctAnswerIndex: 1
-              - id: js-drizzle
-                title: 'The ORM: Drizzle for Type-Safe SQL'
-                content: Drizzle adalah ORM tertipis dan tercepat untuk TypeScript. Ia memberikan pengalaman menulis SQL murni tapi tetap type-safe.
-                codeExample: await db.select().from(users);
-                quiz:
-                  question: Drizzle ORM fokus pada apa?
-                  options:
-                    - Desain grafis
-                    - Type-safety dan performa SQL
-                    - Animasi CSS
-                    - Video editing
-                  correctAnswerIndex: 1
-      - id: ai-architecture
-        title: AI & Advanced Architecture
-        modules:
-          - id: js-ai
-            title: 6. AI & Architecture
-            lessons:
-              - id: js-ai-sdk
-                title: 'AI SDK: Integrasi LLM ke Aplikasi JS'
-                content: Vercel AI SDK memudahkan kita menghubungkan aplikasi React ke model AI seperti Gemini atau GPT hanya dalam beberapa baris kode.
-                codeExample: const { messages, input, handleSubmit } = useChat();
-                quiz:
-                  question: Library apa yang memudahkan integrasi LLM di ekosistem JS?
-                  options:
-                    - React AI
-                    - Vercel AI SDK
-                    - Gemini JS
-                    - Chat-Lib
-                  correctAnswerIndex: 1
-              - id: js-mcp
-                title: 'MCP Protocol: Menghubungkan App ke AI Agent'
-                content: Model Context Protocol (MCP) memungkinkan AI agent untuk mengakses data dan alat dari aplikasimu secara terstruktur.
-                codeExample: // Standardized communication between AI and tools
-                quiz:
-                  question: Apa singkatan dari MCP?
-                  options:
-                    - Model Context Protocol
-                    - Mobile Chat Plus
-                    - Master Code Program
-                    - Modern Cloud Page
-                  correctAnswerIndex: 0
-  - id: golang-path
-    title: Golang Developer
-    description: Jalur lengkap mempelajari Go untuk backend dan sistem terdistribusi.
-    icon: golang
-    curriculums:
-      - id: go-basics
-        title: Go Dasar
-        description: Mempelajari sintaks dasar dan concurrency di Go.
-        modules:
-          - id: go-intro
-            title: 1. Pengenalan Go
-            lessons:
-              - id: what-is-go
-                title: Apa itu Go?
-                content: Go adalah bahasa pemrograman buatan Google yang sangat cepat.
-                codeExample: fmt.Println("Halo Go!")
+- id: python-path
+  title: Python Developer
+  description: Jalur lengkap dari dasar Python hingga menjadi AI Engineer.
+  icon: python
+  curriculums:
+  - id: python
+    title: Python Dasar
+    description: Dasar-dasar pemrograman Python dari nol hingga mahir.
+    modules:
+    - id: python-intro
+      title: 1. Pengenalan Python
+      lessons:
+      - id: what-is-python
+        title: Apa itu Python? (Sebuah Pengantar)
+        content: "**Tujuan Pembelajaran:** Memahami sejarah, filosofi, dan kegunaan bahasa pemrograman Python di era modern 2025.\n\nPython diciptakan oleh **Guido van Rossum** pada tahun 1991 dengan satu filosofi utama: **\"Kode lebih sering dibaca daripada ditulis.\"** Oleh karena itu, sintaks Python dirancang agar sangat mirip dengan bahasa manusia (Bahasa Inggris), membuatnya sangat intuitif bagi pemula maupun profesional.\n\n**Mengapa Python Tetap Menjadi Raja di 2025?**\n1. **Keterbacaan Tinggi (Readability):** Python menggunakan indentasi (spasi) untuk menstrukturkan kode, sehingga memaksa programmer menulis kode yang rapi tanpa tanda kurung kurawal `{}` yang rumit.\n2. **Ekosistem AI Terbesar:** Python adalah standar absolut untuk Artificial Intelligence (AI) dan Machine Learning. Semua library AI populer (seperti PyTorch atau TensorFlow) berpusat di Python.\n3. **Tooling Modern:** Dengan hadirnya tool seperti **uv**, Python kini memiliki manajemen proyek yang sangat cepat dan efisien.\n\n**Analogi Sederhana:**\nMempelajari Python itu seperti belajar memasak menggunakan resep yang ditulis dengan bahasa sehari-hari. Kamu fokus pada \"apa yang ingin dimasak\", bukan \"bagaimana cara kerja kompornya\" secara teknis."
+        codeExample: "# Contoh kode Python yang simpel dan mudah dibaca\nnama = \"Mufid\"\nprint(f\"Halo {nama}, selamat datang di dunia Python!\")"
+        quiz:
+          question: Berdasarkan teks di atas, apa filosofi utama penciptaan Python?
+          options:
+          - Kode harus sulit dibaca agar terlihat canggih.
+          - Kode lebih sering dibaca daripada ditulis.
+          - Hanya boleh digunakan untuk membuat game.
+          - Harus selalu menggunakan tanda titik koma (;).
+          correctAnswerIndex: 1
+      - id: setup-modern
+        title: 'The Workshop: Setup uv & VS Code'
+        content: "**Tujuan Pembelajaran:** Menyiapkan lingkungan kerja Python modern menggunakan standar industri tahun 2025.\n\nUntuk menjadi programmer Python yang handal, kamu membutuhkan \"bengkel\" yang cepat dan bersih. Di tahun 2025, kita meninggalkan cara lama (pip) dan beralih ke **uv**.\n\n**Komponen Utama Bengkelmu:**\n1. **uv (The Swiss Army Knife):** Paket manajer yang ditulis dalam bahasa **Rust**. Kecepatannya 10-100x lipat lebih cepat dari pip tradisional dan bisa mengelola versi Python secara otomatis.\n2. **VS Code (Visual Studio Code):** Editor kode paling populer. Pastikan kamu menginstal ekstensi **Python** dan **Ruff** untuk auto-completion dan perbaikan kode otomatis.\n3. **Virtual Environment:** \"Laci terpisah\" untuk setiap proyekmu agar library yang kamu instal tidak saling bentrok. Dengan `uv`, membuat laci ini terjadi dalam hitungan milidetik.\n\n**Instruksi Instalasi (Windows):**\nBuka PowerShell dan jalankan perintah:\n`powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"`"
+        codeExample: "# Cara verifikasi instalasi uv di terminal\n# uv --version\n\n# Cara membuat virtual environment kilat\n# uv venv"
+        quiz:
+          question: Apa keunggulan utama 'uv' dibandingkan 'pip' yang disebutkan dalam teks?
+          options:
+          - uv hanya bisa dipakai di Mac.
+          - uv jauh lebih lambat namun gratis.
+          - uv sangat cepat karena ditulis dalam bahasa Rust.
+          - uv mewajibkan kita membayar lisensi.
+          correctAnswerIndex: 2
+      - id: hello-2025
+        title: 'Hello 2025: Magic with uv run'
+        content: "**Tujuan Pembelajaran:** Menjalankan script Python secara instan tanpa perlu pusing memikirkan aktivasi virtual environment secara manual.\n\nSalah satu fitur paling revolusioner di tahun 2025 adalah kemampuan untuk menjalankan script Python melalui **`uv run`**. Bayangkan kamu memiliki sebuah mesin yang secara otomatis menyiapkan bahan bakar dan oli setiap kali kamu ingin menyalakan mesinnya.\n\n**Kenapa `uv run` Sangat Penting?**\n- **Automatic Context**: Ia tahu persis di mana library-mu berada tanpa perlu perintah `activate`.\n- **Reproducible**: Menjamin script berjalan dengan versi library yang sama di komputer mana pun.\n- **Clean Terminal**: Menghilangkan tulisan `(.venv)` yang sering memenuhi terminalmu.\n\n**Guided Implementation:**\n1. Buat file `main.py` dengan kode: `print(\"Halo dari masa depan!\")`.\n2. Jalankan perintah di terminal: `uv run main.py`.\n3. Perhatikan betapa cepat dan bersih eksekusinya!"
+        codeExample: "# Jalankan tanpa aktivasi manual\n# uv run main.py\n\nprint(\"Halo Python 2025!\")"
+        quiz:
+          question: Berdasarkan materi, apa kelebihan utama menggunakan 'uv run'?
+          options:
+          - Ia menghapus semua folder di komputer.
+          - Ia secara otomatis mengelola environment tanpa perlu perintah 'activate'.
+          - Ia membuat internet menjadi lebih lambat.
+          - Ia hanya bisa digunakan untuk menonton video.
+          correctAnswerIndex: 1
+      - id: memory-box
+        title: 'Memory Box: Variabel & Dinamis'
+        content: "**Tujuan Pembelajaran:** Memahami cara menyimpan dan mengelola informasi di dalam memori komputer menggunakan variabel.\n\nBayangkan kamu memiliki lemari raksasa dengan jutaan laci kecil. Tanpa label, kamu akan bingung di mana menyimpan harga sepatu atau nama pelanggan. **Variabel** adalah \"label stiker\" yang kamu tempelkan di laci tersebut agar data mudah ditemukan kembali.\n\n**Keunikan Variabel di Python (Dynamic Typing):**\nDi bahasa lain, kamu harus bilang \"Laci ini hanya boleh untuk angka\". Di Python, kamu bebas. Hari ini laci berlabel `data` bisa berisi angka, besok bisa berisi teks. Python akan otomatis menebak tipe datanya untukmu.\n\n**Aturan Emas Penamaan (Snake Case):**\nGunakan huruf kecil dan pisahkan dengan garis bawah.\nContoh: `total_harga`, `nama_pengguna`, `status_aktif`."
+        codeExample: "# Memberi label 'pesan' untuk sebuah teks\npesan = \"Belajar Python itu asik\"\n\n# Memanggil kembali datanya melalui label\nprint(pesan)"
+        quiz:
+          question: Dalam analogi di atas, variabel diibaratkan sebagai apa?
+          options:
+          - Sebuah kompor gas.
+          - Label stiker pada laci memori.
+          - Kabel listrik yang rumit.
+          - Sebuah monitor komputer.
+          correctAnswerIndex: 1
+      - id: talking-types
+        title: 'Talking Types: Mengenal 4 Tipe Data Dasar'
+        content: "**Tujuan Pembelajaran:** Mampu membedakan dan menggunakan String, Integer, Float, dan Boolean dalam kode Python.\n\nDi dunia nyata, kita membedakan benda berdasarkan fungsinya: air untuk diminum, buku untuk dibaca. Di Python, komputer membedakan informasi berdasarkan **Tipe Data**.\n\n**4 Tipe Data Utama:**\n1. **String (Teks):** Selalu diapit tanda kutip. Contoh: `\"Mufid\"`, `\"Python 2025\"`.\n2. **Integer (Bilangan Bulat):** Angka tanpa desimal. Contoh: `10`, `-5`, `0`.\n3. **Float (Bilangan Desimal):** Angka dengan titik. Contoh: `3.14`, `99.9`.\n4. **Boolean (Logika):** Hanya ada dua nilai: `True` (Benar) atau `False` (Salah). Ini adalah saklar lampu digital.\n\n**Analogi:**\n- **String:** Seperti sebuah surat.\n- **Integer:** Seperti menghitung jumlah kelereng.\n- **Float:** Seperti mengukur berat badan atau suhu.\n- **Boolean:** Seperti saklar lampu (On/Off)."
+        codeExample: "nama = \"Gopher\"      # String\numur = 25            # Integer\ntinggi = 175.5       # Float\nis_happy = True      # Boolean\n\nprint(type(nama))    # Cek tipe datanya"
+        quiz:
+          question: Manakah di bawah ini yang merupakan contoh tipe data Float?
+          options:
+          - '"10"'
+          - '10'
+          - '10.5'
+          - 'True'
+          correctAnswerIndex: 2
+      - id: smart-labels
+        title: 'Smart Labels: Type Hinting Dasar'
+        content: "**Tujuan Pembelajaran:** Menerapkan Type Hinting untuk menulis kode yang lebih profesional dan minim error.\n\nDi tahun 2025, programmer profesional tidak lagi hanya menulis `nama = \"Mufid\"`. Mereka menggunakan **Type Hinting**. Ini adalah cara kita memberi tahu editor (VS Code) bahwa \"Eh, variabel ini isinya harus teks ya!\".\n\n**Kenapa Pakai Type Hinting?**\n- **Auto-complete Lebih Canggih:** VS Code akan memberikan saran yang lebih tepat.\n- **Minim Bug:** Kamu tidak akan sengaja menjumlahkan nama orang dengan angka.\n- **Self-Documenting:** Kode jadi lebih mudah dibaca orang lain tanpa perlu penjelasan tambahan.\n\n**Cara Penulisan:**\n`nama_variabel: tipe_data = nilai`"
+        codeExample: "# Standar Modern 2025\nnama: str = \"Mufid\"\numur: int = 20\ntinggi: float = 170.5\nis_admin: bool = False\n\nprint(f\"{nama} berumur {umur} tahun\")"
+        quiz:
+          question: Bagaimana cara penulisan Type Hinting yang benar untuk sebuah teks?
+          options:
+          - nama = str("Mufid")
+          - 'nama: str = "Mufid"'
+          - str nama = "Mufid"
+          - nama <str> "Mufid"
+          correctAnswerIndex: 1
+      - id: decision-point
+        title: 'Decision Point: Logika If, Elif, Else'
+        content: "**Tujuan Pembelajaran:** Membuat program yang bisa mengambil keputusan secara mandiri.\n\nProgram tanpa logika `if` ibarat mobil yang hanya bisa jalan lurus. Dengan **Percabangan (Conditionals)**, programmu bisa memilih jalur berbeda berdasarkan situasi.\n\n**Struktur Logika:**\n- **if (Jika):** Pintu pertama. Jika syarat terpenuhi, masuk ke sini.\n- **elif (Atau Jika):** Pintu alternatif jika pintu pertama tertutup.\n- **else (Selain Itu):** Jalur terakhir jika semua pintu di atas tertutup.\n\n**Penting:** Python menggunakan **Indentasi** (spasi menjorok) untuk menentukan kode mana yang masuk ke dalam blok `if`. Standarnya adalah 4 spasi."
+        codeExample: "nilai: int = 85\n\nif nilai >= 90:\n    print(\"Luar Biasa!\")\nelif nilai >= 75:\n    print(\"Bagus!\")\nelse:\n    print(\"Tetap Semangat!\")"
+        quiz:
+          question: Kapan blok 'else' akan dijalankan?
+          options:
+          - Kapan saja program mau.
+          - Saat semua kondisi 'if' dan 'elif' bernilai False.
+          - Hanya saat komputer baru dinyalakan.
+          - Saat kondisi 'if' bernilai True.
+          correctAnswerIndex: 1
+      - id: the-switch
+        title: 'The Switch: Match-Case (Modern Style)'
+        content: "**Tujuan Pembelajaran:** Menggunakan fitur 'match-case' (Python 3.10+) untuk menangani banyak kondisi dengan lebih rapi.\n\nDulu, jika kita punya banyak pilihan, kita harus menulis banyak sekali `elif`. Di Python modern (3.10 ke atas), kita punya senjata baru bernama **`match-case`**.\n\n**Kenapa Pakai Match-Case?**\n- **Lebih Rapi:** Menghindari tumpukan `if-elif` yang panjang.\n- **Pattern Matching:** Bukan cuma cek nilai, tapi bisa cek pola data yang kompleks.\n- **Default Case:** Menggunakan tanda `_` (underscore) sebagai pilihan jika tidak ada yang cocok.\n\n**Analogi:** Seperti menu restoran. Jika pelanggan pilih A, beri makanan A. Jika pilih B, beri makanan B. Jika pilih yang tidak ada di menu (`_`), beri tahu \"Maaf tidak ada\"."
+        codeExample: "status_code: int = 404\n\nmatch status_code:\n    case 200:\n        print(\"Berhasil!\")\n    case 404:\n        print(\"Halaman Hilang!\")\n    case 500:\n        print(\"Server Error!\")\n    case _:\n        print(\"Status Tidak Dikenal\")"
+        quiz:
+          question: Simbol apa yang digunakan di match-case sebagai jalur default (jika tidak ada pilihan yang cocok)?
+          options:
+          - '*'
+          - '?'
+          - '!'
+          - _ (Underscore)
+          correctAnswerIndex: 3
+      - id: looping-1
+        title: 'Looping (Part 1): For Loops'
+        content: "**Tujuan Pembelajaran:** Mengotomatisasi tugas yang berulang menggunakan perulangan 'for'.\n\nPrinsip utama programmer adalah **DRY (Don't Repeat Yourself)**. Jika kamu harus mencetak angka 1 sampai 100, jangan ketik manual! Gunakan perulangan (Looping).\n\n**For Loop** digunakan ketika kita ingin menelusuri isi dari sebuah koleksi (seperti daftar belanja atau urutan angka).\n\n**Range Magic:**\nFungsi `range(5)` akan menghasilkan urutan angka dari 0 sampai 4 (total 5 angka). Ini adalah teman setia `for loop`."
+        codeExample: "# Mencetak angka 0 sampai 4\nfor i in range(5):\n    print(f\"Urutan ke-{i}\")\n\n# Menelusuri list teks\nitems: list[str] = [\"Apel\", \"Jeruk\", \"Mangga\"]\nfor buah in items:\n    print(f\"Saya suka {buah}\")"
+        quiz:
+          question: Apa singkatan dari prinsip DRY dalam pemrograman?
+          options:
+          - Do Repeat Yourself
+          - Don't Repeat Yourself
+          - Digital Real Yield
+          - Do Really Yell
+          correctAnswerIndex: 1
+      - id: looping-2
+        title: 'Looping (Part 2): While Loops & Control'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan perulangan 'while' dan mengontrol alur loop menggunakan 'break' serta 'continue'.\n\nJika `for loop` digunakan untuk mengulang berdasarkan jumlah yang sudah pasti, **While Loop** digunakan untuk mengulang selama sebuah syarat masih terpenuhi (**True**).\n\n**Kontrol Alur Perulangan:**\n1. **break**: Tombol rem darurat. Gunakan ini untuk langsung keluar dari loop meskipun syaratnya masih terpenuhi.\n2. **continue**: Tombol \"lewati\". Gunakan ini untuk menghentikan putaran saat ini dan langsung loncat ke putaran berikutnya.\n\n**Analogi:**\n`while loop` itu seperti kamu disuruh lari keliling lapangan **selama** belum hujan. Begitu hujan turun (syarat jadi False), kamu berhenti."
+        codeExample: "# Mengulang selama angka kurang dari 3\nangka = 0\nwhile angka < 3:\n    print(f\"Putaran ke-{angka}\")\n    angka += 1\n\n# Contoh penggunaan break\nfor i in range(10):\n    if i == 3:\n        break # Berhenti di angka 3\n    print(i)"
+        quiz:
+          question: Kata kunci apa yang digunakan untuk menghentikan perulangan secara paksa?
+          options:
+          - stop
+          - finish
+          - break
+          - exit
+          correctAnswerIndex: 2
+    - id: data-logic
+      title: 2. Struktur Data & Logika
+      lessons:
+      - id: the-collection
+        title: 'The Collection: Membuat & Memanipulasi List'
+        content: "**Tujuan Pembelajaran:** Mampu membuat, menambah, dan menghapus item di dalam sebuah List (Daftar).\n\nBayangkan kamu sedang pergi ke pasar. Alih-alih membawa 10 kantong plastik kecil untuk 10 buah yang berbeda, kamu membawa satu **Keranjang Besar**. Di Python, keranjang ini disebut **List**.\n\n**Karakteristik List:**\n1. **Berurutan:** Setiap barang punya nomor urut (indeks), dimulai dari **0**.\n2. **Dinamis:** Kamu bisa menambah atau membuang isi keranjang kapan saja.\n3. **Campuran:** Satu list bisa berisi teks, angka, bahkan boolean sekaligus.\n\n**Operasi Dasar:**\n- `append()`: Menambah item di akhir keranjang.\n- `pop()`: Mengambil item terakhir dari keranjang.\n- `len()`: Menghitung berapa banyak isi keranjang."
+        codeExample: "# Membuat keranjang belanja\nbuah: list[str] = [\"Apel\", \"Jeruk\"]\n\n# Menambah buah baru\nbuah.append(\"Mangga\")\n\n# Mengakses item pertama (Indeks 0)\nprint(f\"Buah pertama: {buah[0]}\")\n\n# Cek jumlah isi\nprint(f\"Total ada {len(buah)} buah\")"
+        quiz:
+          question: Jika kita punya list 'data = [10, 20, 30]', berapa indeks untuk angka 10?
+          options:
+          - '1'
+          - '0'
+          - '-1'
+          - '10'
+          correctAnswerIndex: 1
+      - id: slicing-mastery
+        title: 'Slicing Mastery: Teknik Memotong List & String'
+        content: "**Tujuan Pembelajaran:** Menguasai teknik 'Slicing' untuk mengambil sebagian data dari List atau String secara efisien.\n\nTerkadang kamu tidak butuh seluruh isi keranjang, kamu hanya butuh \"3 buah pertama\" atau \"semua kecuali yang terakhir\". Di Python, teknik ini disebut **Slicing**.\n\n**Rumus Slicing:**\n`data[start : stop : step]`\n- **start**: Mulai dari indeks mana (inklusif).\n- **stop**: Berhenti sebelum indeks mana (eksklusif).\n- **step**: Langkah loncatan (defaultnya 1).\n\n**Contoh Kasus:**\n- `[:3]`: Ambil 3 item pertama.\n- `[2:]`: Ambil dari indeks ke-2 sampai akhir.\n- `[::-1]`: Trik dewa untuk membalikkan (reverse) urutan data."
+        codeExample: "teks: str = \"PYTHON\"\n\n# Ambil 2 huruf pertama\nprint(teks[:2])   # Output: PY\n\n# Balikkan teks\nprint(teks[::-1]) # Output: NOHTYP\n\n# Ambil sebagian list\nangka = [0, 1, 2, 3, 4, 5]\nprint(angka[1:4]) # Output: [1, 2, 3]"
+        quiz:
+          question: Apa hasil dari 'PYTHON'[1:3]?
+          options:
+          - PY
+          - YT
+          - YTH
+          - TH
+          correctAnswerIndex: 1
+      - id: the-dictionary
+        title: 'The Dictionary: Menyimpan Data dengan Key-Value'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan Dictionary untuk menyimpan informasi terstruktur menggunakan sistem Kunci (Key) dan Nilai (Value).\n\nJika List menggunakan angka (0, 1, 2) untuk mencari barang, **Dictionary** menggunakan kata kunci unik. Bayangkan sebuah buku telepon: kamu mencari berdasarkan **Nama** (Key) untuk mendapatkan **Nomor HP** (Value).\n\n**Struktur Dictionary:**\n`{ \"kunci\": \"nilai\" }`\n\n**Kelebihan Dictionary:**\n1. **Sangat Cepat:** Mencari data berdasarkan kunci jauh lebih cepat daripada mencari di dalam list panjang.\n2. **Deskriptif:** Kamu tahu persis data apa yang kamu ambil (misal: \"harga\", \"stok\").\n3. **Fleksibel:** Kunci bisa berupa teks atau angka."
+        codeExample: "# Membuat kamus data user\nuser: dict = {\n    \"nama\": \"Mufid\",\n    \"skill\": \"Python\",\n    \"level\": 2025\n}\n\n# Mengakses data berdasarkan kunci\nprint(user[\"nama\"])\n\n# Menambah kunci baru\nuser[\"status\"] = \"Aktif\"\nprint(user)"
+        quiz:
+          question: Simbol apa yang digunakan untuk mengapit data di dalam Dictionary?
+          options:
+          - '[] (Kurung Siku)'
+          - () (Kurung Biasa)
+          - '{} (Kurung Kurawal)'
+          - <> (Kurung Lancip)
+          correctAnswerIndex: 2
+      - id: unique-fixed
+        title: 'Unique & Fixed: Mengenal Sets & Tuples'
+        content: "**Tujuan Pembelajaran:** Memahami perbedaan fungsional antara Set (penjaga keunikan) dan Tuple (data permanen).\n\nSelain List dan Dictionary, Python memiliki dua \"wadah\" sakti lainnya:\n\n**1. Tuple (Data Permanen):**\nMirip seperti List, tapi isinya **tidak bisa diubah** setelah dibuat.\n- **Analogi:** Seperti koordinat GPS atau tanggal lahir. Sekali dicatat, tidak boleh berubah.\n- **Simbol:** `(item1, item2)`\n\n**2. Set (Penjaga Keunikan):**\nKumpulan item yang **tidak boleh ada duplikat** dan tidak berurutan.\n- **Analogi:** Seperti daftar absen kehadiran. Jika nama \"Budi\" ditulis 5x, Set hanya akan mencatatnya 1x.\n- **Simbol:** `{item1, item2}`"
+        codeExample: "# Tuple (Koordinat)\ntitik = (10, 20)\n# titik[0] = 15  # Ini akan ERROR!\n\n# Set (Hapus Duplikat otomatis)\nangka_unik = {1, 2, 2, 3, 3, 3}\nprint(angka_unik) # Output: {1, 2, 3}"
+        quiz:
+          question: Manakah struktur data yang secara otomatis menghapus item duplikat?
+          options:
+          - List
+          - Dictionary
+          - Tuple
+          - Set
+          correctAnswerIndex: 3
+      - id: list-comprehension
+        title: 'One-Line Magic: List Comprehensions yang Efisien'
+        content: "**Tujuan Pembelajaran:** Mampu menyederhanakan kode perulangan pembuatan List menjadi satu baris yang efisien.\n\nSeorang programmer Python profesional (Pythonista) tidak suka menulis kode yang panjang jika bisa disingkat dengan elegan. **List Comprehension** adalah cara \"sakti\" membuat list baru dari list yang sudah ada hanya dalam satu baris.\n\n**Perbandingan:**\n*Cara Biasa (4 baris):*\n```python\nbaru = []\nfor x in data:\n    baru.append(x * 2)\n```\n\n*Cara Pythonic (1 baris):*\n`baru = [x * 2 for x in data]`\n\n**Rumus:**\n`[ hasil for item in koleksi if kondisi ]`"
+        codeExample: "angka = [1, 2, 3, 4, 5]\n\n# Buat list angka kuadrat (pangkat 2)\nkuadrat = [x**2 for x in angka]\nprint(kuadrat) # Output: [1, 4, 9, 16, 25]\n\n# Ambil hanya angka genap\ngenap = [x for x in angka if x % 2 == 0]\nprint(genap)   # Output: [2, 4]"
+        quiz:
+          question: 'Apa output dari: [x for x in [1, 2, 3] if x > 1]?'
+          options:
+          - '[1, 2]'
+          - '[2, 3]'
+          - '[1, 3]'
+          - '[3]'
+          correctAnswerIndex: 1
+      - id: reusable-logic
+        title: 'Reusable Logic: Menulis Fungsi dengan def'
+        content: "**Tujuan Pembelajaran:** Mampu membungkus logika kode ke dalam fungsi agar bisa digunakan berulang kali.\n\nBayangkan kamu memiliki resep nasi goreng. Setiap kali ingin makan, kamu tidak menulis ulang resepnya, kamu tinggal memanggil namanya: \"Buat Nasi Goreng\". Di Python, resep ini disebut **Fungsi**.\n\n**Kenapa Pakai Fungsi?**\n1. **Modular:** Memecah masalah besar jadi bagian-bagian kecil.\n2. **Reusable:** Tulis sekali, panggil berkali-kali.\n3. **Clean:** Membuat kode utama jadi jauh lebih bersih.\n\n**Sintaks:**\n```python\ndef nama_fungsi(parameter):\n    # blok kode\n```"
+        codeExample: "# Membuat fungsi sapaan\ndef sapa(nama: str):\n    print(f\"Halo {nama}, selamat belajar!\")\n\n# Memanggil fungsi\nsapa(\"Mufid\")\nsapa(\"Andi\")"
+        quiz:
+          question: Kata kunci apa yang digunakan untuk mendefinisikan fungsi di Python?
+          options:
+          - function
+          - func
+          - def
+          - define
+          correctAnswerIndex: 2
+      - id: flexible-args
+        title: 'Flexible Arguments: Menggunakan *args & **kwargs'
+        content: "**Tujuan Pembelajaran:** Mampu membuat fungsi yang fleksibel dan bisa menerima banyak argumen sekaligus.\n\nTerkadang kamu ingin membuat fungsi yang bisa menerima \"berapapun\" jumlah datanya. Misalnya, fungsi untuk menghitung total belanja tanpa tahu berapa banyak barang yang dibeli.\n\n**1. *args (Arguments):**\nMenerima banyak nilai tanpa nama sebagai **Tuple**.\nContoh: `tambah(1, 2, 3, 4)`\n\n**2. **kwargs (Keyword Arguments):**\nMenerima banyak nilai berpasangan (kunci=nilai) sebagai **Dictionary**.\nContoh: `simpan_data(nama=\"Mufid\", umur=25)`"
+        codeExample: "# Fungsi dengan *args\ndef total_nilai(*angka):\n    return sum(angka)\n\nprint(total_nilai(10, 20, 30)) # 60\n\n# Fungsi dengan **kwargs\ndef profil(**data):\n    for kunci, nilai in data.items():\n        print(f\"{kunci}: {nilai}\")\n\nprofil(nama=\"Gopher\", status=\"Online\")"
+        quiz:
+          question: Apa tipe data yang digunakan Python untuk menampung *args?
+          options:
+          - List
+          - Tuple
+          - Dictionary
+          - Set
+          correctAnswerIndex: 1
+      - id: lambda-functions
+        title: 'Anonymous Power: Mengenal Lambda Functions'
+        content: "**Tujuan Pembelajaran:** Mampu menulis fungsi anonim (tanpa nama) untuk tugas-tugas logika sederhana.\n\nKadang kamu butuh fungsi \"sekali pakai\" yang sangat sederhana, sehingga memberi nama dengan `def` terasa terlalu berlebihan. Di situlah **Lambda** beraksi.\n\n**Karakteristik Lambda:**\n1. **Anonim:** Tidak memiliki nama.\n2. **Satu Baris:** Hanya boleh berisi satu ekspresi logika.\n3. **Cepat:** Biasa digunakan di dalam fungsi lain seperti `map()`, `filter()`, atau `sort()`.\n\n**Sintaks:**\n`lambda parameter : ekspresi`"
+        codeExample: "# Fungsi tambah biasa\ndef tambah(x, y): return x + y\n\n# Versi Lambda\ntambah_lambda = lambda x, y : x + y\nprint(tambah_lambda(5, 3)) # 8\n\n# Contoh penggunaan di sorting\ndata = [(\"Andi\", 20), (\"Budi\", 15)]\ndata.sort(key=lambda x: x[1]) # Sort berdasarkan umur\nprint(data)"
+        quiz:
+          question: Apa batasan utama dari fungsi Lambda?
+          options:
+          - Hanya bisa digunakan oleh admin.
+          - Tidak bisa menerima parameter.
+          - Hanya boleh berisi satu baris ekspresi logika.
+          - Harus ditulis di file terpisah.
+          correctAnswerIndex: 2
+      - id: self-documenting
+        title: 'Self-Documenting: Menulis Docstrings (PEP 257)'
+        content: "**Tujuan Pembelajaran:** Mampu mendokumentasikan fungsi menggunakan Docstrings agar kode mudah dipahami orang lain.\n\nKode yang bagus adalah kode yang bisa menjelaskan dirinya sendiri. Di Python, kita menggunakan **Docstrings** (Documentation Strings) untuk menjelaskan apa tujuan sebuah fungsi dan apa input yang dibutuhkannya.\n\n**Aturan Penulisan:**\n- Gunakan tanda kutip tiga (`\"\"\"`).\n- Tuliskan tepat di baris pertama setelah definisi fungsi.\n- Berisi penjelasan singkat, parameter, dan hasil kembalian.\n\n**Analogi:** Seperti label instruksi pada kemasan obat. Kamu ingin tahu apa gunanya dan bagaimana cara meminumnya tanpa harus membedah isi obatnya."
+        codeExample: "def hitung_pajak(harga: float) -> float:\n    \"\"\"\n    Menghitung pajak PPN 11% dari harga barang.\n    \n    Args:\n        harga (float): Harga barang sebelum pajak.\n    Returns:\n        float: Total harga setelah ditambah pajak.\n    \"\"\"\n    return harga * 1.11\n\n# Kamu bisa melihat dokumentasi dengan help()\n# help(hitung_pajak)"
+        quiz:
+          question: Simbol apa yang digunakan untuk menulis Docstrings?
+          options:
+          - '# (Hash)'
+          - "''' (Kutip satu tiga)"
+          - '""" (Kutip ganda tiga)'
+          - // (Slash)
+          correctAnswerIndex: 2
+    - id: oop
+      title: 3. Pemrograman Berorientasi Objek (OOP)
+      lessons:
+      - id: the-blueprint
+        title: 'The Blueprint: Membuat Class & Object Pertama'
+        content: "**Tujuan Pembelajaran:** Memahami perbedaan antara Class (cetakan) dan Object (hasil cetakan) serta mampu mengimplementasikannya dalam kode.\n\nHingga saat ini, kita menulis kode secara \"prosedural\" (urut dari atas ke bawah). Namun, untuk membangun sistem besar (seperti game atau aplikasi bank), kita butuh **OOP (Object-Oriented Programming)**.\n\n**Konsep Dasar:**\n1. **Class (Kelas):** Adalah \"Cetak Biru\" atau \"Resep\". Ia mendefinisikan apa yang dimiliki dan apa yang bisa dilakukan oleh sebuah objek.\n2. **Object (Objek):** Adalah hasil nyata dari cetakan tersebut. Jika Class-nya adalah \"Resep Kue\", maka Object-nya adalah \"Kue Nyata\" yang bisa kamu makan.\n\n**Analogi:**\nClass adalah desain mobil di atas kertas. Object adalah mobil nyata yang terparkir di garasimu."
+        codeExample: "# Membuat Cetakan (Class)\nclass Robot:\n    def sapa(self):\n        print(\"Halo, saya adalah robot pembantu!\")\n\n# Membuat Objek Nyata (Instance)\nbot_saya = Robot()\nbot_saya.sapa()"
+        quiz:
+          question: Apa perbedaan utama antara Class dan Object?
+          options:
+          - Class adalah hasil nyata, Object adalah desain.
+          - Class adalah desain/cetakan, Object adalah hasil nyatanya.
+          - Tidak ada perbedaan, keduanya sama saja.
+          - Object hanya bisa dibuat oleh ahli matematika.
+          correctAnswerIndex: 1
+      - id: self-reference
+        title: 'Self-Reference: Memahami Constructor & parameter self'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan method `__init__` untuk memberi data awal pada objek dan memahami kegunaan parameter `self`.\n\nKenapa di dalam Class kita sering melihat kata `self`? **`self`** adalah cara objek menunjuk ke dirinya sendiri. Ibaratnya, jika robot berkata \"Namaku adalah Budi\", maka `self` adalah kata \"Namaku\".\n\n**Method Khusus `__init__`:**\nIni adalah **Constructor**. Fungsi ini akan otomatis dijalankan saat kamu membuat objek baru. Gunanya untuk memberikan identitas awal (seperti nama atau warna) pada objek tersebut.\n\n**Penting:** Setiap fungsi (method) di dalam Class **wajib** memiliki `self` sebagai parameter pertama."
+        codeExample: "class Robot:\n    def __init__(self, nama: str):\n        # Menyimpan data ke dalam diri objek\n        self.nama = nama\n    \n    def kenalan(self):\n        print(f\"Halo, namaku {self.nama}\")\n\nbot1 = Robot(\"Budi\")\nbot1.kenalan()"
+        quiz:
+          question: Apa kegunaan utama dari method __init__ di Python?
+          options:
+          - Menghapus objek dari memori.
+          - Menginisialisasi data awal saat objek dibuat.
+          - Mengubah Python menjadi Java.
+          - Hanya untuk mencetak teks ke layar.
+          correctAnswerIndex: 1
+      - id: modern-data
+        title: 'Modern Data: Menggunakan @dataclass untuk Struktur Bersih'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan fitur `dataclass` untuk membuat objek penyimpan data secara ringkas tanpa menulis banyak kode boilerplate.\n\nDi Python modern, jika kita hanya butuh objek untuk \"menyimpan data\" (seperti info barang atau user), kita tidak lagi menulis `__init__` secara manual. Kita menggunakan **`@dataclass`**.\n\n**Keunggulan Dataclass:**\n1. **Ringkas:** Kamu cukup menulis nama variabel dan tipenya.\n2. **Otomatis:** Python akan membuatkan `__init__`, `__repr__` (tampilan teks), dan fungsi perbandingan otomatis.\n3. **Standar 2025:** Sangat disarankan oleh industri karena membuat kode jauh lebih mudah dibaca dan dirawat.\n\n**Syarat:** Kamu wajib menggunakan **Type Hinting** agar dataclass tahu tipe datanya."
+        codeExample: "from dataclasses import dataclass\n\n@dataclass\nclass Produk:\n    nama: str\n    harga: float\n    stok: int = 0\n\n# Sangat simpel, tidak butuh def __init__\nbarang1 = Produk(\"Kopi\", 15000.0, 10)\nprint(barang1)"
+        quiz:
+          question: Apa keuntungan utama menggunakan @dataclass dibandingkan class biasa untuk menyimpan data?
+          options:
+          - Program jadi bisa berjalan tanpa listrik.
+          - Tidak perlu menulis def __init__ secara manual ( boilerplate).
+          - Hanya bisa digunakan untuk menyimpan angka.
+          - Membuat file YAML jadi otomatis terisi.
+          correctAnswerIndex: 1
+      - id: inheritance
+        title: 'The Family Tree: Konsep Inheritance (Pewarisan)'
+        content: "**Tujuan Pembelajaran:** Memahami cara kerja pewarisan sifat antar Class untuk menciptakan hierarki kode yang efisien.\n\nDalam dunia nyata, seorang anak mewarisi sifat dari orang tuanya. Begitu juga dalam Python. **Inheritance** memungkinkan sebuah Class baru (Child) mengambil semua sifat dan kemampuan dari Class yang sudah ada (Parent).\n\n**Kegunaan:**\n1. **Reuse Code:** Kamu tidak perlu menulis ulang kemampuan dasar yang sudah ada.\n2. **Organized:** Kode jadi lebih terstruktur seperti silsilah keluarga.\n\n**Analogi:**\nClass Parent adalah \"Ponsel Dasar\" (bisa telepon & SMS). Class Child adalah \"Smartphone\" (mewarisi telepon & SMS, lalu ditambah fitur Kamera & Internet)."
+        codeExample: "class Ponsel:\n    def telepon(self):\n        print(\"Kring kring... tersambung!\")\n\n# Smartphone mewarisi Ponsel\nclass Smartphone(Ponsel):\n    def internet(self):\n        print(\"Membuka browser...\")\n\nhp_saya = Smartphone()\nhp_saya.telepon()  # Bisa telepon (warisan)\nhp_saya.internet() # Bisa internet (fitur baru)"
+        quiz:
+          question: Apa manfaat utama dari fitur Inheritance?
+          options:
+          - Menambah kecepatan internet.
+          - Menghapus data di database.
+          - Menggunakan kembali kode yang sudah ada (Reuse Code) tanpa menulis ulang.
+          - Mengubah warna teks di terminal.
+          correctAnswerIndex: 2
+      - id: composition
+        title: 'Composition: Menghubungkan Antar Object'
+        content: "**Tujuan Pembelajaran:** Memahami konsep Composition (memiliki) sebagai alternatif yang lebih fleksibel daripada Inheritance (merupakan).\n\nAda pepatah terkenal dalam desain kode: **\"Favor composition over inheritance\"**. Artinya, lebih baik membangun objek besar dengan menggabungkan objek-objek kecil daripada membuat silsilah keturunan yang terlalu panjang.\n\n**Perbedaan:**\n- **Inheritance:** Smartphone **adalah** Ponsel (Hubungan \"is-a\").\n- **Composition:** Mobil **memiliki** Mesin (Hubungan \"has-a\").\n\n**Analogi:**\nMembangun komputer dengan menggabungkan komponen: kamu ambil RAM, CPU, dan Motherboard lalu disatukan. Jika ingin ganti RAM, kamu tinggal ganti komponennya saja tanpa harus membongkar seluruh desain komputernya."
+        codeExample: "class Mesin:\n    def nyalakan(self):\n        print(\"Mesin menderu... Vroom!\")\n\nclass Mobil:\n    def __init__(self):\n        # Mobil MEMILIKI Mesin (Composition)\n        self.mesin = Mesin()\n    \n    def jalan(self):\n        self.mesin.nyalakan()\n        print(\"Mobil meluncur!\")\n\nmobil_saya = Mobil()\nmobil_saya.jalan()"
+        quiz:
+          question: Hubungan apa yang paling tepat mendeskripsikan konsep Composition?
+          options:
+          - Hubungan 'adalah' (is-a).
+          - Hubungan 'tidak kenal' (no-relation).
+          - Hubungan 'memiliki' (has-a).
+          - Hubungan 'permusuhan' (conflict).
+          correctAnswerIndex: 2
+      - id: error-handling
+        title: 'The Safety Net: Menangani Error dengan Try-Except'
+        content: "**Tujuan Pembelajaran:** Mampu mencegah program terhenti secara tiba-tiba (crash) dengan menangkap kesalahan menggunakan blok `try-except`.\n\nPernahkah kamu menggunakan aplikasi lalu tiba-tiba aplikasinya tertutup sendiri? Itu namanya **Crash**. Sebagai programmer, tugasmu adalah memasang \"Jaring Pengaman\" agar jika ada kesalahan, program tetap bisa berjalan atau memberikan pesan yang sopan.\n\n**Blok Logika:**\n1. **try:** Jalankan kode yang \"berisiko\" (misal: membagi angka dengan nol atau membaca file yang tidak ada).\n2. **except:** Jika terjadi error di dalam blok `try`, jalankan kode pengganti di sini.\n3. **finally:** Kode yang **pasti** dijalankan, baik terjadi error maupun tidak (misal: menutup koneksi database).\n\n**Analogi:**\nSeperti pemain sirkus yang berjalan di atas tali. `try` adalah aksinya, `except` adalah jaring pengaman di bawahnya agar ia tidak jatuh ke lantai."
+        codeExample: "try:\n    angka = int(input(\"Masukkan angka: \"))\n    hasil = 10 / angka\n    print(f\"Hasil: {hasil}\")\nexcept ZeroDivisionError:\n    print(\"Ups! Tidak bisa membagi dengan nol.\")\nexcept ValueError:\n    print(\"Waduh! Yang kamu masukkan bukan angka.\")\nfinally:\n    print(\"Proses selesai.\")"
+        quiz:
+          question: Apa fungsi dari blok 'finally' dalam penanganan error?
+          options:
+          - Hanya dijalankan jika program berhasil.
+          - Hanya dijalankan jika terjadi error.
+          - Pasti dijalankan terlepas dari ada error atau tidak.
+          - Untuk menghapus seluruh kode program.
+          correctAnswerIndex: 2
+      - id: custom-exceptions
+        title: 'Custom Alerts: Membuat Class Exception Sendiri'
+        content: "**Tujuan Pembelajaran:** Mampu membuat pesan error kustom yang spesifik untuk logika bisnis aplikasi Anda.\n\nTerkadang, error bawaan Python (seperti `ValueError`) kurang spesifik. Misal, kamu membuat aplikasi ATM dan saldo user tidak cukup. Kamu bisa membuat error sendiri bernama **`SaldoTidakCukupError`**.\n\n**Cara Membuat:**\nCukup buat Class baru yang mewarisi (`inheritance`) dari Class **`Exception`**.\n\n**Kenapa Penting?**\nAgar programmer lain yang membaca kodemu tahu persis apa yang salah tanpa harus menebak-nebak."
+        codeExample: "class SaldoTidakCukupError(Exception):\n    \"\"\"Error jika saldo ditarik melebihi sisa\"\"\"\n    pass\n\nsaldo = 1000\ntarik = 5000\n\ntry:\n    if tarik > saldo:\n        raise SaldoTidakCukupError(\"Saldo kamu cuma 1000 bos!\")\nexcept SaldoTidakCukupError as e:\n    print(f\"Gagal Tarik: {e}\")"
+        quiz:
+          question: Class apa yang wajib diwarisi (inherited) saat ingin membuat error kustom di Python?
+          options:
+          - Error
+          - Problem
+          - Exception
+          - Fault
+          correctAnswerIndex: 2
+    - id: ecosystem-modern
+      title: 4. Ekosistem Modern & Performa
+      lessons:
+      - id: context-masters
+        title: 'Context Masters: Menggunakan with Statement'
+        content: "**Tujuan Pembelajaran:** Mampu membaca dan menulis file secara aman menggunakan Context Manager (`with` statement) untuk mencegah kebocoran data.\n\nDi tahun 2025, cara lama membuka file (`f = open()`) sudah dianggap buruk karena seringkali programmer lupa menutup file (`f.close()`). Ini bisa membuat komputer lelet atau file rusak.\n\n**Solusi Modern: Context Manager**\nDengan menggunakan kata kunci **`with`**, Python akan otomatis menutup file untukmu, bahkan jika terjadi error di tengah proses.\n\n**Analogi:**\nSeperti masuk ke perpustakaan (membuka file). `with` adalah sistem pintu otomatis yang akan terkunci sendiri saat kamu keluar, memastikan buku tetap aman tanpa kamu perlu repot mengunci pintu manual."
+        codeExample: "# Menulis ke file secara aman\nwith open(\"pesan.txt\", \"w\") as f:\n    f.write(\"Halo, Python 2025!\")\n\n# Membaca file secara aman\nwith open(\"pesan.txt\", \"r\") as f:\n    isi = f.read()\n    print(isi)"
+        quiz:
+          question: Mengapa penggunaan 'with' sangat disarankan saat membuka file?
+          options:
+          - Agar file jadi berwarna.
+          - Agar Python otomatis menutup file saat selesai digunakan.
+          - Agar file tidak bisa dihapus orang lain.
+          - Hanya untuk mempercepat internet.
+          correctAnswerIndex: 1
+      - id: smart-generator
+        title: 'The Smart Generator: Menghemat Memori dengan yield'
+        content: "**Tujuan Pembelajaran:** Memahami konsep Generator untuk mengolah data dalam jumlah besar secara efisien menggunakan kata kunci `yield`.\n\nApa yang terjadi jika kamu ingin memproses 1 miliar baris data? Jika kamu menyimpannya dalam List, komputer kamu akan kehabisan RAM dan mati. **Generator** hadir sebagai solusinya.\n\n**Perbedaan Utama:**\n- **List:** Mengambil semua data dan menyimpannya di memori sekaligus.\n- **Generator:** Hanya mengambil data **satu per satu** saat dibutuhkan.\n\n**Analogi:**\nList itu seperti membeli 100 kaleng soda sekaligus dan menaruhnya di meja (meja penuh). Generator itu seperti mesin dispenser soda: ia hanya mengeluarkan satu gelas saat kamu menekan tombolnya."
+        codeExample: "# Generator sederhana\ndef hitung_mundur(n):\n    while n > 0:\n        yield n\n        n -= 1\n\n# Memanggil generator\nfor angka in hitung_mundur(3):\n    print(angka) # Output: 3, 2, 1"
+        quiz:
+          question: Apa fungsi utama dari kata kunci 'yield' di Python?
+          options:
+          - Menghapus data selamanya.
+          - Mengembalikan nilai satu per satu dan menjaga posisi fungsi (Generator).
+          - Mempercepat koneksi WiFi.
+          - Menutup aplikasi secara paksa.
+          correctAnswerIndex: 1
+      - id: decorators
+        title: 'Code Enhancers: Membuat Decorator Sederhana'
+        content: "**Tujuan Pembelajaran:** Memahami konsep Decorator untuk membungkus fungsi lain dengan logika tambahan secara bersih.\n\nBayangkan kamu memiliki sebuah fungsi dasar. Sekarang kamu ingin fungsi tersebut mencatat waktu eksekusi setiap kali dijalankan. Alih-alih menulis ulang kodenya, kamu bisa menggunakan **Decorator** (Pembungkus).\n\n**Kenapa Pakai Decorator?**\n1. **DRY (Don't Repeat Yourself):** Logika yang sama (seperti login check atau logging) bisa dipasang di banyak fungsi.\n2. **Clean Code:** Memisahkan logika utama dengan logika pendukung.\n\n**Simbol:** Menggunakan tanda **`@`** di atas definisi fungsi."
+        codeExample: "def salam_decorator(func):\n    def wrapper():\n        print(\"--- Persiapan ---\")\n        func()\n        print(\"--- Selesai ---\")\n    return wrapper\n\n@salam_decorator\ndef sapa():\n    print(\"Halo Pythonista!\")\n\nsapa()"
+        quiz:
+          question: Simbol apa yang digunakan untuk memasang Decorator pada sebuah fungsi?
+          options:
+          - '# (Hash)'
+          - '& (Ampersand)'
+          - '@ (At Symbol)'
+          - '* (Asterisk)'
+          correctAnswerIndex: 2
+      - id: ruff-linter
+        title: 'Instant Cleanup: Linting & Formatting dengan Ruff'
+        content: "**Tujuan Pembelajaran:** Mampu menjaga kerapian dan kebersihan kode secara otomatis menggunakan **Ruff**, standar linter industri terbaru tahun 2025.\n\nDulu, kita menggunakan banyak tool (seperti Flake8, Black, isort) yang lambat untuk merapikan kode. Di tahun 2025, semua itu digantikan oleh **Ruff**.\n\n**Kenapa Ruff?**\n1. **Kecepatan Cahaya:** Ditulis dalam Rust, ia 10-100x lebih cepat dari tool lama.\n2. **All-in-One:** Berfungsi sebagai linter (cek error) sekaligus formatter (rapikan spasi).\n3. **Smart:** Bisa otomatis memperbaiki kode yang salah hanya dalam satu perintah.\n\n**Cara Pakai (Terminal):**\n- Cek error: `uvx ruff check .`\n- Rapikan otomatis: `uvx ruff format .`"
+        codeExample: "# Jalankan di terminal proyekmu\n# uvx ruff check --fix\n\nprint(\"Ruff membuat kodemu bersih tanpa ribet!\")"
+        quiz:
+          question: Apa keunggulan utama Ruff dibandingkan linter Python tradisional?
+          options:
+          - Harganya sangat mahal.
+          - Ia ditulis dalam Rust dan sangat cepat.
+          - Hanya bisa merapikan file teks (.txt).
+          - Mewajibkan kita menggunakan Windows 95.
+          correctAnswerIndex: 1
+      - id: package-management
+        title: 'Fast Package: Mengelola Library dengan uv'
+        content: "**Tujuan Pembelajaran:** Mampu menginstal, menghapus, dan mengunci versi library proyek menggunakan perintah modern `uv`.\n\nDalam proyek nyata, kamu pasti butuh library tambahan (seperti `requests` untuk internet atau `pandas` untuk data). Di tahun 2025, kita menggunakan **`uv add`**.\n\n**Kenapa ini Penting?**\n1. **uv lock**: `uv` otomatis membuat file kunci (`uv.lock`) yang memastikan semua teman timmu menggunakan versi library yang **EKSYAK** sama. Tidak ada lagi drama \"Di laptop saya jalan kok\".\n2. **Kecepatan:** Menginstal library terjadi hampir seketika karena sistem caching yang cerdas.\n\n**Perintah Utama:**\n- Tambah library: `uv add nama_library`\n- Hapus library: `uv remove nama_library`\n- Jalankan di lingkungan tersebut: `uv run python file.py`"
+        codeExample: "# Contoh menginstal library untuk HTTP\n# uv add requests\n\nimport requests\nprint(\"Library berhasil terinstal dan siap digunakan!\")"
+        quiz:
+          question: Apa fungsi dari file 'uv.lock' yang dihasilkan oleh uv?
+          options:
+          - Untuk mengunci komputer agar tidak bisa dibuka.
+          - Untuk mengunci versi library agar konsisten di semua komputer.
+          - Untuk menghapus virus Python.
+          - Hanya sebagai hiasan folder.
+          correctAnswerIndex: 1
+      - id: static-typing
+        title: 'Strict Typing: Validasi Tipe Data dengan mypy'
+        content: "**Tujuan Pembelajaran:** Mampu melakukan audit tipe data pada seluruh proyek menggunakan `mypy` untuk menjamin keamanan kode.\n\nMeskipun kita sudah menggunakan **Type Hinting** (seperti `nama: str`), Python sendiri tidak akan error jika kamu memasukkan angka ke dalamnya saat runtime. Untuk mengecek kesalahan ini secara ketat, kita butuh **mypy**.\n\n**Cara Kerja mypy:**\nIa adalah \"Polisi Tipe Data\". Ia tidak menjalankan kodemu, tapi ia \"membaca\" seluruh kodemu dan memberi tahu: \"Hey, di baris 10 kamu bilang ini String, tapi kamu isi Angka!\".\n\n**Kenapa ini Penting?**\nMencegah bug konyol di proyek besar yang melibatkan ribuan baris kode."
+        codeExample: "# Simpan kode ini di file main.py\nnama: str = 123  # mypy akan mendeteksi ini sebagai error!\n\n# Cara cek di terminal:\n# uvx mypy main.py"
+        quiz:
+          question: Kapan mypy mendeteksi kesalahan tipe data?
+          options:
+          - Saat program sudah dijalankan user.
+          - Sebelum program dijalankan (Static Analysis).
+          - Hanya saat komputer dimatikan.
+          - Mypy tidak pernah mendeteksi kesalahan.
+          correctAnswerIndex: 1
+      - id: environment-secrets
+        title: 'Secrets Locker: Mengelola .env untuk Keamanan'
+        content: "**Tujuan Pembelajaran:** Mampu menyimpan data sensitif (API Key, Password) ke dalam file `.env` dan membacanya di Python secara aman.\n\nKesalahan terbesar pemula adalah menulis Password atau API Key langsung di dalam kode. Jika kodemu diupload ke GitHub, orang lain bisa mencuri rahasiamu dalam sekejap.\n\n**Solusi: File `.env`**\nKita menyimpan rahasia di file terpisah bernama `.env` yang tidak akan pernah diupload ke server publik.\n\n**Cara Kerja:**\n1. Simpan di `.env`: `API_KEY=rahasia123`\n2. Baca di Python menggunakan library `python-dotenv`.\n\n**Analogi:**\nKode program adalah \"Surat Terbuka\". File `.env` adalah \"Brankas Pribadi\". Kamu tidak menaruh perhiasan di dalam surat, kamu menaruhnya di brankas dan hanya mengambilnya saat butuh."
+        codeExample: "# File .env:\n# DATABASE_URL=secret_link\n\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv() # Muat data dari .env\n\ndb_url = os.getenv(\"DATABASE_URL\")\nprint(f\"Menghubungkan ke: {db_url}\")"
+        quiz:
+          question: Mengapa kita tidak boleh menulis API Key langsung di dalam kode program?
+          options:
+          - Karena akan membuat kode jadi lemot.
+          - Karena API Key tersebut bisa dicuri orang jika kode dipublikasikan.
+          - Karena Python tidak bisa membaca teks yang terlalu panjang.
+          - Karena dilarang oleh pemerintah.
+          correctAnswerIndex: 1
+    - id: advanced-concurrency
+      title: 5. Advanced & Concurrency
+      lessons:
+      - id: async-basics
+        title: 'The Waiting Room: Konsep Dasar async & await'
+        content: "**Tujuan Pembelajaran:** Memahami perbedaan antara eksekusi sinkron dan asinkron serta mampu menulis fungsi asinkron sederhana.\n\nBayangkan kamu sedang di restoran. \n- **Sinkron:** Pelayan berdiri diam di depan mejamu menunggu masakan matang sebelum bisa melayani meja lain. Sangat tidak efisien!\n- **Asinkron (Async):** Pelayan memesankan makananmu, lalu pergi melayani pelanggan lain. Begitu makananmu matang, ia kembali lagi padamu.\n\nDi Python modern, **Asynchronous Programming** memungkinkan program melakukan tugas lain (seperti menunggu data dari internet) tanpa harus menghentikan seluruh aplikasi.\n\n**Kata Kunci Utama:**\n1. **`async def`**: Mendefinisikan fungsi sebagai fungsi asinkron (Coroutines).\n2. **`await`**: Memberi tahu program: \"Tunggu proses ini selesai, tapi kamu boleh mengerjakan hal lain dulu ya!\"."
+        codeExample: "import asyncio\n\nasync def sapa_nanti():\n    print(\"Memulai proses...\")\n    await asyncio.sleep(1) # Simulasi menunggu data\n    print(\"Halo, saya muncul setelah 1 detik!\")\n\n# Menjalankan fungsi asinkron\n# asyncio.run(sapa_nanti())"
+        quiz:
+          question: Apa analogi yang paling tepat untuk pemrograman asinkron (async)?
+          options:
+          - Pelayan restoran yang melayani banyak meja secara bergantian.
+          - Mobil yang mogok di tengah jalan.
+          - Orang yang berdiri diam menunggu antrean panjang.
+          - Membaca buku dari halaman terakhir ke depan.
+          correctAnswerIndex: 0
+      - id: async-mastery
+        title: 'Async Mastery: Menjalankan Banyak Tugas Sekaligus'
+        content: "**Tujuan Pembelajaran:** Mampu menjalankan banyak coroutine secara paralel menggunakan `asyncio.gather` untuk mempercepat eksekusi program.\n\nMenulis satu fungsi asinkron memang bagus, tapi kekuatan asli `asyncio` muncul saat kamu harus mengerjakan 10 tugas sekaligus (misal: mengambil data dari 10 website berbeda).\n\n**gather()**: Adalah perintah sakti untuk menjalankan banyak fungsi asinkron secara bersamaan. Alih-alih menunggu satu per satu selesai, program akan menjalankan semuanya sekaligus dan menunggu hasil kolektifnya.\n\n**Kenapa ini Penting?**\nSangat berguna dalam pembuatan Bot AI yang harus merespon banyak user, atau sistem scraper yang harus mengambil ribuan data dengan cepat."
+        codeExample: "import asyncio\n\nasync def download_data(id: int):\n    print(f\"Mendownload data ke-{id}...\")\n    await asyncio.sleep(1)\n    return f\"Data {id} Selesai\"\n\nasync def main():\n    # Menjalankan 3 download sekaligus (Hanya butuh 1 detik total!)\n    hasil = await asyncio.gather(download_data(1), download_data(2), download_data(3))\n    print(hasil)\n\n# asyncio.run(main())"
+        quiz:
+          question: Fungsi apa yang digunakan untuk menjalankan banyak coroutine secara bersamaan di asyncio?
+          options:
+          - asyncio.run()
+          - asyncio.gather()
+          - asyncio.stop()
+          - asyncio.wait_one()
+          correctAnswerIndex: 1
+      - id: pydantic-validation
+        title: 'Data Contracts: Validasi Data dengan Pydantic'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan library Pydantic untuk membuat skema data yang tervalidasi secara otomatis guna mencegah data sampah masuk ke aplikasi.\n\nPydantic adalah library paling populer untuk validasi data di Python. Ia memastikan data yang kamu terima (misal dari form web) sudah sesuai aturan yang kamu buat.\n\n**Kenapa Pakai Pydantic?**\n1. **Type Safety:** Menjamin tipe data (str, int, dll) benar.\n2. **Auto-Parsing:** Jika kamu kirim string `\"123\"` tapi butuh `int`, Pydantic otomatis mengubahnya.\n3. **Pesan Error Jelas:** Memberi tahu user bagian mana yang salah input.\n\n**Analogi:**\nSeperti pintu gerbang bandara. Hanya orang dengan paspor valid (data yang sesuai aturan) yang boleh masuk ke dalam pesawat (aplikasi)."
+        codeExample: "from pydantic import BaseModel, EmailStr\n\nclass User(BaseModel):\n    id: int\n    nama: str\n    email: str\n\n# Data yang Benar\nuser_ok = User(id=1, nama=\"Mufid\", email=\"mufid@example.com\")\nprint(user_ok)\n\n# Data yang Salah (akan melempar error)\n# user_error = User(id=\"bukan_angka\", nama=\"Andi\", email=\"salah_email\")"
+        quiz:
+          question: Apa fungsi utama dari library Pydantic dalam Python modern?
+          options:
+          - Untuk membuat desain grafis.
+          - Untuk validasi dan penjaminan kualitas data input.
+          - Untuk menghapus virus di laptop.
+          - Hanya untuk mencetak teks berwarna-warni.
+          correctAnswerIndex: 1
+      - id: magic-methods
+        title: 'Magic Methods: Mengenal Dunder Methods'
+        content: "**Tujuan Pembelajaran:** Memahami kegunaan metode khusus (Double Underscore) di Python untuk memodifikasi perilaku bawaan Class.\n\nPernahkah kamu bertanya kenapa kita bisa menjumlahkan dua angka dengan tanda `+`? Itu karena Python menggunakan **Magic Methods** (atau sering disebut **Dunder Methods**, singkatan dari *Double Underscore*).\n\n**Dunder Methods Populer:**\n1. **`__str__`**: Mengontrol apa yang muncul saat objek dicetak (`print(obj)`).\n2. **`__len__`**: Mengontrol apa yang dikembalikan saat kita memanggil `len(obj)`.\n3. **`__call__`**: Memungkinkan sebuah objek dipanggil layaknya sebuah fungsi!\n\n**Analogi:**\nIbarat tombol rahasia di remote TV. Tombol `+` biasanya untuk volume, tapi kamu bisa memprogram ulang agar tombol `+` tersebut mengganti channel (Overloading)."
+        codeExample: "class Buku:\n    def __init__(self, judul: str, hal: int):\n        self.judul = judul\n        self.hal = hal\n    \n    def __str__(self):\n        return f\"Buku: {self.judul} ({self.hal} hal)\"\n    \n    def __len__(self):\n        return self.hal\n\nbuku_python = Buku(\"Tutorial Python 2025\", 200)\nprint(buku_python) # Memanggil __str__\nprint(len(buku_python)) # Memanggil __len__"
+        quiz:
+          question: Metode khusus mana yang digunakan untuk menentukan tampilan teks sebuah objek saat dicetak?
+          options:
+          - __init__
+          - __len__
+          - __str__
+          - __call__
+          correctAnswerIndex: 2
+      - id: pytest-basics
+        title: 'Bulletproof Code: Menulis Unit Test Pertama dengan pytest'
+        content: "**Tujuan Pembelajaran:** Mampu membuat skenario pengujian otomatis menggunakan `pytest` untuk memastikan fungsi berjalan sesuai harapan.\n\nBagaimana kamu tahu kodemu benar-benar jalan? Apakah kamu harus mencobanya manual satu per satu? Programmer malas (yang pintar) menggunakan **Unit Test**.\n\n**pytest** adalah standar industri untuk testing di Python. Cukup buat file dengan awalan `test_`, tulis fungsi yang melakukan cek (`assert`), dan biarkan komputer yang menguji kodenya untukmu.\n\n**Analogi:**\nIbarat tim QC (Quality Control) di pabrik mobil. Sebelum mobil dijual, ada mesin yang otomatis mengecek apakah rem berfungsi, apakah lampu menyala, dll."
+        codeExample: "# Simpan di file test_logika.py\ndef tambah(a, b): return a + b\n\ndef test_tambah():\n    assert tambah(2, 3) == 5\n    assert tambah(-1, 1) == 0\n\n# Jalankan di terminal:\n# uvx pytest test_logika.py"
+        quiz:
+          question: Kata kunci apa yang digunakan di pytest untuk menyatakan bahwa sebuah hasil harus sesuai ekspektasi?
+          options:
+          - check
+          - verify
+          - assert
+          - ensure
+          correctAnswerIndex: 2
+      - id: mocking-testing
+        title: 'The Simulation: Menggunakan Mocking dalam Pengujian'
+        content: "**Tujuan Pembelajaran:** Memahami konsep Mocking untuk mensimulasikan komponen luar (seperti API atau Database) saat melakukan Unit Testing.\n\nBagaimana cara mengetes fungsi pengiriman email tanpa benar-benar mengirim email asli ke user setiap kali kita menjalankan test? Jawabannya adalah **Mocking**.\n\n**Mocking** adalah membuat objek \"palsu\" yang meniru perilaku objek asli. Kita bisa mengatur agar objek palsu ini memberikan jawaban tertentu (misal: sukses atau gagal) untuk melihat bagaimana kode kita meresponnya.\n\n**Analogi:**\nSeperti pilot yang berlatih menggunakan simulator penerbangan. Mereka tidak butuh pesawat asli yang mahal dan berisiko, cukup mesin simulasi yang perilakunya mirip pesawat asli."
+        codeExample: "from unittest.mock import Mock\n\n# Membuat objek palsu (Mock)\ndatabase_palsu = Mock()\n\n# Mengatur agar jika fungsi 'ambil_data' dipanggil, hasilnya adalah 100\ndatabase_palsu.ambil_data.return_value = 100\n\nprint(database_palsu.ambil_data()) # Output: 100"
+        quiz:
+          question: Apa tujuan utama dari teknik Mocking dalam pengujian?
+          options:
+          - Untuk menghapus seluruh database asli.
+          - Mensimulasikan komponen luar agar test bisa berjalan terisolasi dan cepat.
+          - Membuat tampilan website jadi lebih cantik.
+          - Hanya untuk mempercepat download library.
+          correctAnswerIndex: 1
+      - id: fastapi-starter
+        title: 'API Starter: Membuat Endpoint Pertama dengan FastAPI'
+        content: "**Tujuan Pembelajaran:** Mampu membuat Web API sederhana menggunakan framework FastAPI dan menjalankannya secara lokal.\n\nFastAPI adalah framework web Python tercepat dan terpopuler saat ini. Ia sangat disukai karena otomatis membuat dokumentasi API (Swagger) dan sangat ringan.\n\n**Langkah Membuat API:**\n1. Instal: `uv add fastapi uvicorn`\n2. Buat file `main.py` dengan objek `FastAPI()`.\n3. Buat fungsi dengan decorator `@app.get(\"/\")`.\n4. Jalankan server: `uvicorn main:app --reload`.\n\n**Analogi:**\nIbarat membuka toko. FastAPI adalah gedungnya, dan `@app.get(\"/\")` adalah pintu depan toko tempat pelanggan meminta barang."
+        codeExample: "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef hello():\n    return {\"pesan\": \"Halo Dunia Python 2025!\"}\n\n# Jalankan dengan: uvicorn main:app --reload"
+        quiz:
+          question: Tool apa yang digunakan untuk menjalankan server FastAPI?
+          options:
+          - FastAPI
+          - Uvicorn
+          - Python-Server
+          - Web-Gopher
+          correctAnswerIndex: 1
+    - id: ai-specialization
+      title: 6. Spesialisasi AI & Data (2025 Path)
+      lessons:
+      - id: polars-analytics
+        title: 'Fast Analytics: Analisis Data Kilat dengan Polars'
+        content: "**Tujuan Pembelajaran:** Mengenal library Polars sebagai alternatif Pandas yang jauh lebih cepat untuk mengolah jutaan baris data secara efisien.\n\nSelama satu dekade, Pandas menjadi penguasa analisis data di Python. Namun di tahun 2025, standar bergeser ke **Polars**. Polars ditulis dalam bahasa **Rust** dan dirancang untuk memanfaatkan semua inti (core) prosesor komputermu secara paralel.\n\n**Kenapa Polars?**\n1. **Kecepatan Ekstrem:** 10-100x lebih cepat dari Pandas pada dataset besar.\n2. **Lazy Evaluation:** Ia tidak langsung memproses data, tapi membuat rencana kerja yang paling efisien dulu.\n3. **Memori Efisien:** Menggunakan memori jauh lebih sedikit dibandingkan Pandas.\n\n**Analogi:**\nPandas seperti mobil keluarga yang nyaman tapi lambat. Polars seperti mobil balap F1 yang dirancang murni untuk kecepatan dan efisiensi mesin."
+        codeExample: "import polars as pl\n\n# Membuat DataFrame kilat\ndf = pl.DataFrame({\n    \"nama\": [\"Andi\", \"Budi\", \"Caca\"],\n    \"skor\": [90, 85, 95]\n})\n\n# Filter data dengan gaya Polars\nhasil = df.filter(pl.col(\"skor\") > 85)\nprint(hasil)"
+        quiz:
+          question: Bahasa pemrograman apa yang digunakan untuk membangun inti (core) dari library Polars?
+          options:
+          - Java
+          - C++
+          - Rust
+          - JavaScript
+          correctAnswerIndex: 2
+      - id: numpy-vectors
+        title: 'Vector Power: Operasi Array dengan NumPy'
+        content: "**Tujuan Pembelajaran:** Memahami penggunaan NumPy untuk melakukan operasi matematika pada sekumpulan angka (vektor) secara sekaligus tanpa perulangan manual.\n\nDunia AI adalah dunia angka. Gambar bagi komputer adalah matriks angka. Untuk mengolah angka-angka ini dengan cepat, kita butuh **NumPy**.\n\n**Kehebatan NumPy: Vectorization**\nJika kamu ingin mengalikan 1 juta angka dengan 2, di Python biasa kamu butuh loop `for`. Di NumPy, kamu tinggal tulis `array * 2`. Proses ini ribuan kali lebih cepat karena dilakukan langsung di level hardware.\n\n**Analogi:**\nLoop `for` seperti menyapu lantai satu per satu menggunakan sapu lidi. NumPy seperti menggunakan mesin pembersih lantai otomatis yang besar: satu kali jalan, semua bersih."
+        codeExample: "import numpy as np\n\n# Membuat array (vektor)\nangka = np.array([1, 2, 3, 4, 5])\n\n# Operasi vektor (tanpa loop!)\nhasil = angka * 10\nprint(hasil) # Output: [10, 20, 30, 40, 50]\n\n# Statistik dasar\nprint(f\"Rata-rata: {np.mean(angka)}\")"
+        quiz:
+          question: Apa istilah untuk teknik operasi matematika pada seluruh isi array tanpa menggunakan loop manual di NumPy?
+          options:
+          - Indentation
+          - Vectorization
+          - Formatting
+          - Validation
+          correctAnswerIndex: 1
+      - id: langchain-intro
+        title: 'AI Chain: Integrasi LLM dengan LangChain'
+        content: "**Tujuan Pembelajaran:** Mengenal kerangka kerja LangChain untuk membangun aplikasi cerdas yang ditenagai oleh Large Language Models (LLM).\n\nMembangun aplikasi AI di tahun 2025 tidak hanya sekadar tanya-jawab dengan ChatGPT. Kamu butuh menghubungkan AI dengan database, file, atau tool lainnya. **LangChain** adalah rantai penghubungnya.\n\n**Komponen LangChain:**\n1. **LLM Wrapper:** Menghubungkan ke berbagai model (Gemini, OpenAI, Anthropic) dengan kode yang sama.\n2. **Prompts:** Mengelola instruksi cerdas agar AI memberikan hasil maksimal.\n3. **Chains:** Menggabungkan beberapa proses AI menjadi satu alur kerja otomatis.\n\n**Analogi:**\nLLM (seperti Gemini) adalah otak jenius di dalam ruangan gelap. LangChain adalah kabel dan sensor yang menghubungkan otak tersebut dengan dunia luar agar ia bisa melihat, membaca file, dan bertindak."
+        codeExample: "# uv add langchain langchain-google-genai\nfrom langchain_google_genai import GoogleGenerativeAI\n\n# Menghubungkan ke otak AI\n# model = GoogleGenerativeAI(model=\"gemini-pro\", api_key=\"YOUR_KEY\")\n\n# response = model.invoke(\"Apa itu Python?\")\n# print(response)"
+        quiz:
+          question: Apa kegunaan utama dari framework LangChain?
+          options:
+          - Untuk membuat game 3D.
+          - Untuk merapikan spasi pada kode Python.
+          - Untuk menghubungkan model AI (LLM) dengan data dan alat lainnya.
+          - Untuk mempercepat booting Windows.
+          correctAnswerIndex: 2
+      - id: data-pipelines
+        title: 'Data Pipeline: Dasar-dasar ETL (Extract, Transform, Load)'
+        content: "**Tujuan Pembelajaran:** Memahami alur kerja pemrosesan data profesional yang terdiri dari pengambilan, pembersihan, dan penyimpanan data.\n\nSeorang Data Engineer bertugas membangun \"Pipa\" yang mengalirkan data dari berbagai sumber ke tempat penyimpanan yang rapi. Alur kerja ini disebut **ETL**:\n\n1. **Extract (Ambil):** Mengambil data mentah dari API, Website, atau File CSV.\n2. **Transform (Ubah):** Membersihkan data yang kotor, membuang duplikat, dan mengubah format (misal: semua nama jadi huruf besar).\n3. **Load (Simpan):** Memasukkan data yang sudah bersih ke dalam Database atau Data Warehouse.\n\n**Analogi:**\nSeperti pabrik pengolahan air mineral. Air diambil dari mata air (Extract), disaring dan disterilkan (Transform), lalu dimasukkan ke dalam botol untuk dijual (Load)."
+        codeExample: "import polars as pl\n\n# 1. Extract\ndf = pl.read_csv(\"data_kotor.csv\")\n\n# 2. Transform\ndf_clean = df.drop_nulls().unique()\n\n# 3. Load\n# df_clean.write_csv(\"data_bersih.csv\")\nprint(\"Pipeline ETL Selesai!\")"
+        quiz:
+          question: Apa kepanjangan dari singkatan ETL dalam dunia data?
+          options:
+          - Entry, Testing, Logging
+          - Extract, Transform, Load
+          - Execute, Terminal, Level
+          - Error, Trace, List
+          correctAnswerIndex: 1
+      - id: docker-python
+        title: 'Dockerize: Membungkus Aplikasi ke dalam Container'
+        content: "**Tujuan Pembelajaran:** Mampu menggunakan Docker untuk memastikan aplikasi Python berjalan dengan cara yang sama di laptopmu maupun di server produksi.\n\nPernahkah kamu mengirim kode ke teman lalu kodenya tidak jalan karena \"beda versi Python\"? **Docker** menyelesaikan masalah ini. Docker membungkus aplikasi, library, dan sistem operasi mini ke dalam satu \"kotak\" bernama **Container**.\n\n**Langkah Utama:**\n1. Buat file bernama `Dockerfile`.\n2. Tulis instruksi: `FROM python:3.12-slim`, `COPY . .`, `RUN pip install ...`.\n3. Bangun Image: `docker build -t app-python .`\n4. Jalankan: `docker run app-python`.\n\n**Analogi:**\nSeperti mengirim paket menggunakan kontainer kargo standar internasional. Kapal, pelabuhan, dan truk mana pun bisa membawanya tanpa perlu tahu apa isi di dalamnya."
+        codeExample: "# Contoh isi file Dockerfile\n# FROM python:3.12-slim\n# WORKDIR /app\n# COPY . .\n# RUN pip install -r requirements.txt\n# CMD [\"python\", \"main.py\"]"
+        quiz:
+          question: Apa masalah utama yang diselesaikan oleh teknologi Docker?
+          options:
+          - Masalah koneksi internet yang lambat.
+          - Masalah perbedaan lingkungan (environment) antar komputer.
+          - Masalah keyboard yang rusak.
+          - Masalah harga laptop yang mahal.
+          correctAnswerIndex: 1
+      - id: github-actions-ci
+        title: 'Auto-Pilot: Testing Otomatis dengan GitHub Actions'
+        content: "**Tujuan Pembelajaran:** Mampu membuat alur kerja otomatis (CI/CD) agar setiap kali kamu mengupdate kode, program akan otomatis diuji dan diverifikasi kebersihannya.\n\nSebagai penutup perjalanan Python, kamu harus mengenal **GitHub Actions**. Ini adalah sistem yang menjalankan perintah otomatis setiap kali kamu melakukan \"Push\" kode ke GitHub.\n\n**Kenapa ini Penting?**\n1. **Verifikasi Otomatis:** Ia akan menjalankan `pytest` dan `ruff` secara otomatis. Jika ada error, ia akan memberimu \"Lampu Merah\".\n2. **Kualitas Terjaga:** Menjamin tidak ada kode rusak yang masuk ke server produksi.\n3. **Deployment Otomatis:** Bisa dikonfigurasi untuk langsung mendeploy aplikasi jika semua test berhasil.\n\n**Analogi:**\nSeperti sistem sabuk pengaman otomatis di mobil modern. Kamu tidak perlu ingat untuk memasangnya, sistem yang akan memastikan semuanya aman sebelum mobil meluncur."
+        codeExample: "# Contoh alur kerja .github/workflows/ci.yml\n# name: Python CI\n# on: [push]\n# jobs:\n#   test:\n#     runs-on: ubuntu-latest\n#     steps:\n#       - uses: actions/checkout@v4\n#       - name: Run Tests\n#         run: uv run pytest"
+        quiz:
+          question: Apa manfaat utama dari penggunaan CI/CD seperti GitHub Actions?
+          options:
+          - Agar kita tidak perlu menulis kode lagi.
+          - Menjalankan pengujian dan verifikasi kode secara otomatis setiap ada perubahan.
+          - Menyembunyikan kode dari orang lain.
+          - Hanya untuk mempercepat loading website.
+          correctAnswerIndex: 1
+- id: javascript-path
+  title: JavaScript Developer
+  description: Jalur lengkap dari dasar JavaScript hingga menjadi Full-Stack Web Developer.
+  icon: javascript
+  curriculums:
+  - id: js-basics
+    title: JavaScript Dasar
+    modules:
+    - id: js-intro
+      title: 1. Modern JS Foundations
+      lessons:
+      - id: js-engine
+        title: 'The Engine: Memahami Runtime (Node, Bun, Deno)'
+        content: JavaScript modern berjalan di berbagai runtime. Node.js adalah standar industri, Bun fokus pada kecepatan ekstrem, dan Deno fokus pada keamanan.
+        codeExample: console.log("JS is everywhere!");
+        quiz:
+          question: Runtime JS mana yang paling cepat di 2025?
+          options:
+          - Node.js
+          - Bun
+          - Deno
+          - Internet Explorer
+          correctAnswerIndex: 1
+      - id: js-strict-esm
+        title: Strict Mode & ES Modules
+        content: Gunakan 'import' dan 'export' untuk mengelola file secara modular dan bersih.
+        codeExample: import { data } from './modul.js';
+        quiz:
+          question: Sistem modul modern menggunakan kata kunci apa?
+          options:
+          - require
+          - include
+          - import
+          - fetch
+          correctAnswerIndex: 2
+      - id: js-const-let
+        title: 'Variable Scope: const vs let'
+        content: Selalu gunakan const kecuali nilainya memang perlu berubah (let). Hindari var.
+        codeExample: const API_URL = '...';
+        quiz:
+          question: Manakah yang harus jadi pilihan utama untuk variabel?
+          options:
+          - var
+          - let
+          - const
+          - global
+          correctAnswerIndex: 2
+      - id: js-string-magic
+        title: 'String Magic: Template Literals'
+        content: Gunakan backticks (`) untuk menggabungkan teks dan variabel secara elegan.
+        codeExample: const pesan = `Halo ${nama}`;
+        quiz:
+          question: Simbol apa yang digunakan Template Literals?
+          options:
+          - "' '"
+          - '" "'
+          - '` `'
+          - ( )
+          correctAnswerIndex: 2
+      - id: js-arrow-power
+        title: 'Arrow Power: Menulis Fungsi Ringkas'
+        content: Arrow functions (=>) membuat kode lebih pendek dan modular.
+        codeExample: const add = (a, b) => a + b;
+        quiz:
+          question: Simbol Arrow Function adalah...
+          options:
+          - ->
+          - =>
+          - '>>'
+          - '>'
+          correctAnswerIndex: 1
+      - id: js-destructuring
+        title: 'De-structuring: Bongkar Data Cepat'
+        content: Ambil data dari object/array langsung ke variabel.
+        codeExample: const { nama } = user;
+        quiz:
+          question: Nama teknik mengambil data dari object ke variabel?
+          options:
+          - Destructuring
+          - Parsing
+          - Splitting
+          - Cloning
+          correctAnswerIndex: 0
+      - id: js-spread-rest
+        title: 'Spread & Rest: Kekuatan (...)'
+        content: Gunakan tiga titik untuk gabung array atau ambil sisa data.
+        codeExample: const newArr = [...oldArr, 1];
+        quiz:
+          question: Simbol Spread/Rest adalah...
+          options:
+          - ..
+          - '...'
+          - '....'
+          - .*
+          correctAnswerIndex: 1
+      - id: js-waitlist
+        title: 'The Waitlist: Async & Await'
+        content: Tangani proses asinkron (API) tanpa membuat website hang.
+        codeExample: const data = await fetch(url);
+        quiz:
+          question: Kata kunci menunggu Promise selesai?
+          options:
+          - wait
+          - pause
+          - await
+          - stop
+          correctAnswerIndex: 2
+      - id: js-temporal
+        title: 'Date Overhaul: Temporal API'
+        content: Standar baru manipulasi waktu ES2025 yang jauh lebih baik dari objek Date.
+        codeExample: // Temporal.Now.plainDateISO();
+        quiz:
+          question: Pengganti modern objek Date adalah?
+          options:
+          - TimeAPI
+          - Moment
+          - Temporal API
+          - ClockJS
+          correctAnswerIndex: 2
+    - id: js-data-logic
+      title: 2. Data & Logic Mastery
+      lessons:
+      - id: js-immutable
+        title: 10. Immutable Arrays (toSorted)
+        content: Manipulasi data tanpa merubah array asli.
+        codeExample: const newArr = arr.toSorted();
+        quiz:
+          question: Metode array immutable untuk sorting?
+          options:
+          - .sort()
+          - .toSorted()
+          - .reverse()
+          - .push()
+          correctAnswerIndex: 1
+      - id: js-set-ops
+        title: '11. Smart Sets: Union & Intersection'
+        content: Operasi himpunan asli JavaScript ES2024.
+        codeExample: setA.intersection(setB);
+        quiz:
+          question: Fungsi untuk cari irisan data?
+          options:
+          - .union()
+          - .intersection()
+          - .diff()
+          - .add()
+          correctAnswerIndex: 1
+      - id: js-with-resolvers
+        title: '12. The Resolver: Promise.withResolvers()'
+        content: Kontrol Promise dari luar lingkup aslinya.
+        codeExample: const { promise, resolve } = Promise.withResolvers();
+        quiz:
+          question: Fitur ES2024 untuk kontrol Promise?
+          options:
+          - async/await
+          - then/catch
+          - withResolvers
+          - allSettled
+          correctAnswerIndex: 2
+      - id: js-private-fields
+        title: '13. Modern Classes: Private Fields (#)'
+        content: Keamanan data di dalam Class.
+        codeExample: 'class X { #pin = 123; }'
+        quiz:
+          question: Simbol private field?
+          options:
+          - _
+          - $
+          - '#'
+          - '@'
+          correctAnswerIndex: 2
+      - id: js-iterator-helpers
+        title: 14. Iterator Helpers
+        content: Map & Filter langsung pada iterators.
+        codeExample: iter.map(x => x * 2);
+        quiz:
+          question: Kegunaan Iterator Helpers?
+          options:
+          - Ubah jadi array
+          - Manipulasi stream data
+          - Hapus data
+          - Style CSS
+          correctAnswerIndex: 1
+      - id: js-pattern-matching
+        title: 15. Pattern Matching (Modern Logic)
+        content: Alternatif bersih untuk switch-case.
+        codeExample: // match (x) { ... }
+        quiz:
+          question: Fungsi Pattern Matching?
+          options:
+          - Ganti If/Else
+          - Ganti CSS
+          - Ganti Database
+          - Ganti Keyboard
+          correctAnswerIndex: 0
+      - id: js-import-attrs
+        title: 16. Import Attributes (JSON/CSS)
+        content: Cara aman import aset non-JS.
+        codeExample: "import data from './d.json' with { type: 'json' };"
+        quiz:
+          question: Keyword untuk import atribut?
+          options:
+          - as
+          - with
+          - from
+          - type
+          correctAnswerIndex: 1
+      - id: js-weakmap
+        title: 15. WeakMap & WeakSet
+        content: Struktur data unik yang tidak menghalangi Garbage Collection.
+        codeExample: const wm = new WeakMap();
+        quiz:
+          question: Kelebihan WeakMap?
+          options:
+          - Lebih besar
+          - Memory safe (Garbage collected)
+          - Lebih lambat
+          - Hanya untuk string
+          correctAnswerIndex: 1
+      - id: js-symbols
+        title: 16. Symbols & BigInt
+        content: Tipe data primitif unik dan angka super besar.
+        codeExample: const b = 100n;
+        quiz:
+          question: Simbol BigInt diakhiri huruf?
+          options:
+          - b
+          - n
+          - x
+          - L
+          correctAnswerIndex: 1
+      - id: js-intl-api
+        title: '17. Intl API: Internationalization'
+        content: Format angka dan mata uang sesuai lokasi negara.
+        codeExample: new Intl.NumberFormat('id-ID').format(1000);
+        quiz:
+          question: API untuk format mata uang?
+          options:
+          - Date
+          - Math
+          - Intl
+          - JSON
+          correctAnswerIndex: 2
+      - id: js-error-obj
+        title: 18. Error Object & Stack Trace
+        content: Membedah isi error untuk debugging lebih dalam.
+        codeExample: throw new Error('Waduh!');
+        quiz:
+          question: Properti untuk lihat riwayat error?
+          options:
+          - name
+          - message
+          - stack
+          - trace
+          correctAnswerIndex: 2
+      - id: js-proxy
+        title: 19. Proxy & Reflect
+        content: Intersepsi operasi objek secara cerdas.
+        codeExample: new Proxy(target, handler);
+        quiz:
+          question: Kegunaan Proxy?
+          options:
+          - Intersepsi objek
+          - Download file
+          - Main game
+          - Nonton TV
+          correctAnswerIndex: 0
+  - id: ts-foundations
+    title: TypeScript & Type Safety
+    modules:
+    - id: ts-basics
+      title: 3. TypeScript Foundations
+      lessons:
+      - id: ts-intro-2
+        title: 17. Why TypeScript? 2025 Vision
+        content: JavaScript dengan sistem tipe data untuk menangkap bug lebih awal.
+        codeExample: "const n: string = 'Mufid';"
+        quiz:
+          question: Apa itu TS?
+          options:
+          - Database
+          - JS dengan tipe data
+          - Browser baru
+          - OS
+          correctAnswerIndex: 1
+      - id: ts-basic-types
+        title: '18. Basic Types: String, Number, Boolean'
+        content: Mendefinisikan tipe data dasar di TS.
+        codeExample: 'let x: number = 10;'
+        quiz:
+          question: Tipe data untuk angka?
+          options:
+          - text
+          - int
+          - number
+          - float
+          correctAnswerIndex: 2
+      - id: ts-interface-type
+        title: 19. Interface vs Type Aliases
+        content: Kapan menggunakan interface dan kapan menggunakan type.
+        codeExample: 'interface User { id: number; }'
+        quiz:
+          question: Manakah yang bisa di-extend?
+          options:
+          - interface
+          - type
+          - const
+          - var
+          correctAnswerIndex: 0
+      - id: ts-unions
+        title: 20. Union & Intersection Types
+        content: Menggabungkan banyak tipe data menjadi satu.
+        codeExample: type ID = string | number;
+        quiz:
+          question: Simbol Union adalah...
+          options:
+          - '&'
+          - '|'
+          - +
+          - '*'
+          correctAnswerIndex: 1
+      - id: ts-generics
+        title: 21. Generic Functions
+        content: Membuat fungsi yang fleksibel untuk berbagai tipe data.
+        codeExample: 'function wrap<T>(item: T): T { return item; }'
+        quiz:
+          question: Simbol Generics?
+          options:
+          - ()
+          - '{}'
+          - '[]'
+          - <>
+          correctAnswerIndex: 3
+      - id: ts-utility-types
+        title: '22. Utility Types: Partial, Omit, Pick'
+        content: Memanipulasi tipe data yang sudah ada.
+        codeExample: type UserUpdate = Partial<User>;
+        quiz:
+          question: Utility untuk buat semua property optional?
+          options:
+          - Omit
+          - Partial
+          - Pick
+          - Readonly
+          correctAnswerIndex: 1
+      - id: ts-zod-runtime
+        title: 23. Runtime Safety with Zod
+        content: Validasi data dari luar (API) saat aplikasi berjalan.
+        codeExample: const schema = z.string().email();
+        quiz:
+          question: Fungsi Zod?
+          options:
+          - Validasi runtime
+          - Desain UI
+          - Koneksi DB
+          - Deploy app
+          correctAnswerIndex: 0
+  - id: frontend-react
+    title: Frontend Frameworks (React 19)
+    modules:
+    - id: react-mastery
+      title: 4. React 19 Mastery
+      lessons:
+      - id: react-19-intro
+        title: 'React 19: The New Era'
+        content: React 19 memperkenalkan React Compiler yang otomatis mengoptimasi performa tanpa perlu useMemo/useCallback lagi.
+        codeExample: function App() { return <div>React 19 is here!</div> }
+        quiz:
+          question: Apa fitur utama React 19 yang otomatis mengoptimasi performa?
+          options:
+          - React Server
+          - React Compiler
+          - React Player
+          - React Audio
+          correctAnswerIndex: 1
+      - id: react-action-hooks
+        title: 'Action Hooks: useActionState'
+        content: Mengelola form kini jauh lebih mudah dengan hook useActionState yang menangani loading, error, dan data secara otomatis.
+        codeExample: const [state, action, isPending] = useActionState(myAction, null);
+        quiz:
+          question: Hook mana yang digunakan untuk mengelola state form di React 19?
+          options:
+          - useState
+          - useEffect
+          - useActionState
+          - useRef
+          correctAnswerIndex: 2
+  - id: backend-apis
+    title: Modern Backend & APIs
+    modules:
+    - id: js-backend
+      title: 5. Backend Runtimes & APIs
+      lessons:
+      - id: js-runtime-race
+        title: '31. The Runtime Race: Node vs Bun vs Deno'
+        content: Memilih mesin yang tepat untuk backend modern.
+        codeExample: // bun index.ts
+        quiz:
+          question: Runtime yang paling cepat startup-nya?
+          options:
+          - Node
+          - Bun
+          - Java
+          - Python
+          correctAnswerIndex: 1
+      - id: js-hono-api
+        title: '32. The Edge Server: API with Hono'
+        content: Framework API tertipis dan tercepat untuk Cloudflare/Bun.
+        codeExample: "app.get('/api', (c) => c.json({ ok: true }));"
+        quiz:
+          question: Target utama Hono?
+          options:
+          - Edge/Serverless
+          - Desktop
+          - Video Games
+          - OS
+          correctAnswerIndex: 0
+      - id: js-fastify
+        title: 33. High Performance with Fastify
+        content: Framework Node.js tercepat untuk aplikasi monolitik.
+        codeExample: fastify.get('/', async () => { ... });
+        quiz:
+          question: Framework Node paling cepat?
+          options:
+          - Express
+          - Fastify
+          - Koa
+          - Sails
+          correctAnswerIndex: 1
+      - id: js-postgresql
+        title: '34. Database Lab: PostgreSQL'
+        content: Setup database relasional standar industri.
+        codeExample: SELECT * FROM users;
+        quiz:
+          question: SQL singkatan dari?
+          options:
+          - Simple Query
+          - Structured Query
+          - Static Query
+          - Standard Query
+          correctAnswerIndex: 1
+      - id: js-drizzle-orm
+        title: '35. The ORM: Drizzle for Type-Safe SQL'
+        content: Query database tanpa takut salah tulis kolom.
+        codeExample: db.insert(users).values({ ... });
+        quiz:
+          question: Kelebihan Drizzle?
+          options:
+          - Type-safe
+          - Lambat
+          - Berat
+          - Mahal
+          correctAnswerIndex: 0
+      - id: js-testing-vitest
+        title: 36. Fast Testing with Vitest
+        content: Framework testing secepat kilat berbasis Vite.
+        codeExample: expect(sum(1,2)).toBe(3);
+        quiz:
+          question: Vite-native testing tool?
+          options:
+          - Jest
+          - Vitest
+          - Mocha
+          - Jasmine
+          correctAnswerIndex: 1
+      - id: js-playwright
+        title: 37. E2E with Playwright
+        content: Simulasi interaksi user di browser sungguhan.
+        codeExample: await page.goto('https://...');
+        quiz:
+          question: Fungsi Playwright?
+          options:
+          - E2E Testing
+          - Unit Test
+          - Styling
+          - Database
+          correctAnswerIndex: 0
+  - id: ai-architecture
+    title: AI & Advanced Architecture
+    modules:
+    - id: js-ai
+      title: 6. AI & Architecture
+      lessons:
+      - id: js-turborepo
+        title: '38. The Monorepo: Turborepo for JS'
+        content: Mengelola banyak aplikasi dalam satu tempat secara efisien.
+        codeExample: // turbo.json
+        quiz:
+          question: Tool monorepo populer?
+          options:
+          - Turborepo
+          - SpeedRepo
+          - FastRepo
+          - QuickRepo
+          correctAnswerIndex: 0
+      - id: js-ai-sdk-v
+        title: '39. AI SDK: Integrasi LLM'
+        content: Hubungkan React ke Gemini/GPT dengan mudah.
+        codeExample: const { chat } = useChat();
+        quiz:
+          question: Library AI untuk React?
+          options:
+          - Vercel AI SDK
+          - GPT-JS
+          - Gemini-UI
+          - Chat-Bot
+          correctAnswerIndex: 0
+      - id: js-mcp-v
+        title: '40. MCP Protocol: Agent Integration'
+        content: Protokol standar untuk alat (tools) AI.
+        codeExample: // Model Context Protocol
+        quiz:
+          question: Singkatan MCP?
+          options:
+          - Model Context Protocol
+          - Master Code
+          - Main Control
+          - Modern Cloud
+          correctAnswerIndex: 0
+      - id: js-vector-db
+        title: 41. Vector DB with JavaScript
+        content: Menyimpan pengetahuan AI dalam database vektor.
+        codeExample: await index.upsert(vectors);
+        quiz:
+          question: Database untuk AI?
+          options:
+          - Vector DB
+          - Text DB
+          - Image DB
+          - Sound DB
+          correctAnswerIndex: 0
+      - id: js-serverless
+        title: 42. Serverless Architecture
+        content: Deploy kode tanpa mengelola server.
+        codeExample: // export default { fetch() { ... } }
+        quiz:
+          question: Nama konsep deploy tanpa server?
+          options:
+          - Serverless
+          - Cloudless
+          - Masterless
+          - Codeless
+          correctAnswerIndex: 0
+      - id: js-edge-functions
+        title: 43. Edge Functions
+        content: Menjalankan kode di lokasi terdekat dengan user.
+        codeExample: // Global distribution
+        quiz:
+          question: Keuntungan Edge?
+          options:
+          - Latensi rendah
+          - Harga mahal
+          - Lebih lambat
+          - Hanya di US
+          correctAnswerIndex: 0
+      - id: js-cloud-native
+        title: '44. Cloud Native: Railway & Vercel'
+        content: Platform deployment modern sekali klik.
+        codeExample: git push railway main
+        quiz:
+          question: Platform deploy otomatis?
+          options:
+          - Vercel
+          - Windows
+          - Excel
+          - Word
+          correctAnswerIndex: 0
+      - id: js-ci-cd-actions
+        title: 45. CI/CD with GitHub Actions
+        content: Otomatisasi lint, test, dan deploy.
+        codeExample: 'name: JS CI'
+        quiz:
+          question: Fungsi GitHub Actions?
+          options:
+          - Otomatisasi alur kerja
+          - Edit gambar
+          - Nonton video
+          - Main game
+          correctAnswerIndex: 0
+- id: golang-path
+  title: Golang Developer
+  description: Jalur lengkap mempelajari Go untuk backend dan sistem terdistribusi.
+  icon: golang
+  curriculums:
+  - id: go-basics
+    title: Go Dasar
+    description: Mempelajari sintaks dasar dan concurrency di Go.
+    modules:
+    - id: go-intro
+      title: 1. Pengenalan Go
+      lessons:
+      - id: what-is-go
+        title: Apa itu Go?
+        content: Go adalah bahasa pemrograman buatan Google yang sangat cepat.
+        codeExample: fmt.Println("Halo Go!")
 
-  - id: rust-path
-    title: Rust Developer
-    description: Jalur lengkap mempelajari Rust untuk sistem berkinerja tinggi dan aman.
-    icon: rust
-    curriculums:
-      - id: rust-basics
-        title: Rust Dasar
-        description: Mempelajari sintaks dasar, ownership, dan memori di Rust.
-        modules:
-          - id: rust-intro
-            title: 1. Pengenalan Rust
-            lessons:
-              - id: what-is-rust
-                title: Apa itu Rust?
-                content: Rust menjamin keamanan memori tanpa garbage collector.
-                codeExample: println!("Halo Rust!");
+- id: rust-path
+  title: Rust Developer
+  description: Jalur lengkap mempelajari Rust untuk sistem berkinerja tinggi dan aman.
+  icon: rust
+  curriculums:
+  - id: rust-basics
+    title: Rust Dasar
+    description: Mempelajari sintaks dasar, ownership, dan memori di Rust.
+    modules:
+    - id: rust-intro
+      title: 1. Pengenalan Rust
+      lessons:
+      - id: what-is-rust
+        title: Apa itu Rust?
+        content: Rust menjamin keamanan memori tanpa garbage collector.
+        codeExample: println!("Halo Rust!");
