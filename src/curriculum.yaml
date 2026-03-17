@@ -699,46 +699,46 @@
     - id: js-data-logic
       title: 2. Data & Logic Mastery
       lessons:
-      - id: js-immutable
-        title: 10. Immutable Arrays (toSorted)
-        content: Manipulasi data tanpa merubah array asli.
-        codeExample: const newArr = arr.toSorted();
+      - id: js-immutable-v
+        title: 10. Immutable Arrays (toSorted, toReversed)
+        content: Mampu memanipulasi data tanpa merubah array asli menggunakan fitur ES2023.
+        codeExample: const newArr = oldArr.toSorted();
         quiz:
-          question: Metode array immutable untuk sorting?
+          question: Metode mana yang menghasilkan array baru?
           options:
           - .sort()
           - .toSorted()
-          - .reverse()
           - .push()
+          - .pop()
           correctAnswerIndex: 1
-      - id: js-set-ops
-        title: '11. Smart Sets: Union & Intersection'
-        content: Operasi himpunan asli JavaScript ES2024.
+      - id: js-set-logic
+        title: '11. Smart Sets: Operasi Himpunan Modern'
+        content: Mengenal operasi Union, Intersection, dan Difference pada objek Set ES2024.
         codeExample: setA.intersection(setB);
         quiz:
-          question: Fungsi untuk cari irisan data?
+          question: Fungsi mencari irisan dua set?
           options:
           - .union()
           - .intersection()
           - .diff()
           - .add()
           correctAnswerIndex: 1
-      - id: js-with-resolvers
+      - id: js-promise-res
         title: '12. The Resolver: Promise.withResolvers()'
-        content: Kontrol Promise dari luar lingkup aslinya.
+        content: Mengontrol penyelesaian Promise dari luar lingkup aslinya.
         codeExample: const { promise, resolve } = Promise.withResolvers();
         quiz:
-          question: Fitur ES2024 untuk kontrol Promise?
+          question: Fitur ES2024 untuk Promise?
           options:
-          - async/await
-          - then/catch
+          - then
+          - catch
           - withResolvers
-          - allSettled
+          - finally
           correctAnswerIndex: 2
-      - id: js-private-fields
+      - id: js-private-f
         title: '13. Modern Classes: Private Fields (#)'
-        content: Keamanan data di dalam Class.
-        codeExample: 'class X { #pin = 123; }'
+        content: Menjamin keamanan data internal Class menggunakan simbol pagar (#).
+        codeExample: 'class X { #secret = 1; }'
         quiz:
           question: Simbol private field?
           options:
@@ -747,136 +747,76 @@
           - '#'
           - '@'
           correctAnswerIndex: 2
-      - id: js-iterator-helpers
-        title: 14. Iterator Helpers
-        content: Map & Filter langsung pada iterators.
+      - id: js-iter-help
+        title: '14. Iterator Helpers: Stream Processing'
+        content: Melakukan Map dan Filter langsung pada data iterator tanpa array.
         codeExample: iter.map(x => x * 2);
         quiz:
-          question: Kegunaan Iterator Helpers?
+          question: Iterator helpers berguna untuk...
           options:
           - Ubah jadi array
           - Manipulasi stream data
-          - Hapus data
-          - Style CSS
+          - Hapus file
+          - Styling
           correctAnswerIndex: 1
-      - id: js-pattern-matching
-        title: 15. Pattern Matching (Modern Logic)
-        content: Alternatif bersih untuk switch-case.
-        codeExample: // match (x) { ... }
-        quiz:
-          question: Fungsi Pattern Matching?
-          options:
-          - Ganti If/Else
-          - Ganti CSS
-          - Ganti Database
-          - Ganti Keyboard
-          correctAnswerIndex: 0
-      - id: js-import-attrs
-        title: 16. Import Attributes (JSON/CSS)
-        content: Cara aman import aset non-JS.
-        codeExample: "import data from './d.json' with { type: 'json' };"
-        quiz:
-          question: Keyword untuk import atribut?
-          options:
-          - as
-          - with
-          - from
-          - type
-          correctAnswerIndex: 1
-      - id: js-weakmap
-        title: 15. WeakMap & WeakSet
-        content: Struktur data unik yang tidak menghalangi Garbage Collection.
+      - id: js-weak-ds
+        title: 15. WeakMap & WeakSet (Memory Safe)
+        content: Struktur data yang mendukung Garbage Collection secara otomatis.
         codeExample: const wm = new WeakMap();
         quiz:
-          question: Kelebihan WeakMap?
+          question: Keunggulan WeakMap?
           options:
-          - Lebih besar
-          - Memory safe (Garbage collected)
           - Lebih lambat
-          - Hanya untuk string
+          - Mencegah Memory Leak
+          - Lebih besar
+          - Hanya untuk angka
           correctAnswerIndex: 1
-      - id: js-symbols
-        title: 16. Symbols & BigInt
-        content: Tipe data primitif unik dan angka super besar.
-        codeExample: const b = 100n;
+      - id: js-symbols-bigint
+        title: '16. Symbols & BigInt: Unique Types'
+        content: Mengenal tipe data primitif unik untuk kunci objek dan angka super besar.
+        codeExample: const b = 100n; const s = Symbol();
         quiz:
-          question: Simbol BigInt diakhiri huruf?
+          question: Simbol BigInt diakhiri huruf apa?
           options:
           - b
           - n
           - x
           - L
           correctAnswerIndex: 1
-      - id: js-intl-api
-        title: '17. Intl API: Internationalization'
-        content: Format angka dan mata uang sesuai lokasi negara.
-        codeExample: new Intl.NumberFormat('id-ID').format(1000);
-        quiz:
-          question: API untuk format mata uang?
-          options:
-          - Date
-          - Math
-          - Intl
-          - JSON
-          correctAnswerIndex: 2
-      - id: js-error-obj
-        title: 18. Error Object & Stack Trace
-        content: Membedah isi error untuk debugging lebih dalam.
-        codeExample: throw new Error('Waduh!');
-        quiz:
-          question: Properti untuk lihat riwayat error?
-          options:
-          - name
-          - message
-          - stack
-          - trace
-          correctAnswerIndex: 2
-      - id: js-proxy
-        title: 19. Proxy & Reflect
-        content: Intersepsi operasi objek secara cerdas.
-        codeExample: new Proxy(target, handler);
-        quiz:
-          question: Kegunaan Proxy?
-          options:
-          - Intersepsi objek
-          - Download file
-          - Main game
-          - Nonton TV
-          correctAnswerIndex: 0
   - id: ts-foundations
     title: TypeScript & Type Safety
     modules:
     - id: ts-basics
       title: 3. TypeScript Foundations
       lessons:
-      - id: ts-intro-2
-        title: 17. Why TypeScript? 2025 Vision
-        content: JavaScript dengan sistem tipe data untuk menangkap bug lebih awal.
-        codeExample: "const n: string = 'Mufid';"
+      - id: ts-vision
+        title: 17. Why TypeScript? The 2025 Vision
+        content: TypeScript adalah standar industri untuk membangun aplikasi skala besar yang bebas bug tipe data.
+        codeExample: "let nama: string = 'Mufid';"
         quiz:
-          question: Apa itu TS?
+          question: Apa fungsi utama TS?
           options:
-          - Database
-          - JS dengan tipe data
-          - Browser baru
-          - OS
+          - Edit gambar
+          - Menangkap bug tipe data
+          - Membuat browser
+          - Main game
           correctAnswerIndex: 1
-      - id: ts-basic-types
-        title: '18. Basic Types: String, Number, Boolean'
-        content: Mendefinisikan tipe data dasar di TS.
-        codeExample: 'let x: number = 10;'
+      - id: ts-primitives
+        title: 18. Basic Types & Type Inference
+        content: Mengenal tipe data String, Number, Boolean, dan kemampuan TS menebak tipe.
+        codeExample: let skor = 100; // TS tahu ini number
         quiz:
-          question: Tipe data untuk angka?
+          question: Tipe data untuk desimal?
           options:
-          - text
           - int
+          - text
           - number
-          - float
+          - bool
           correctAnswerIndex: 2
-      - id: ts-interface-type
-        title: 19. Interface vs Type Aliases
-        content: Kapan menggunakan interface dan kapan menggunakan type.
-        codeExample: 'interface User { id: number; }'
+      - id: ts-contracts
+        title: '19. Interfaces: Kontrak Struktur Data'
+        content: Mendefinisikan bentuk objek secara ketat agar tidak salah panggil properti.
+        codeExample: 'interface User { id: number; nama: string; }'
         quiz:
           question: Manakah yang bisa di-extend?
           options:
@@ -885,22 +825,22 @@
           - const
           - var
           correctAnswerIndex: 0
-      - id: ts-unions
+      - id: ts-flex-logic
         title: 20. Union & Intersection Types
-        content: Menggabungkan banyak tipe data menjadi satu.
+        content: Membuat variabel yang mendukung banyak jenis data secara fleksibel.
         codeExample: type ID = string | number;
         quiz:
-          question: Simbol Union adalah...
+          question: Simbol Union adalah?
           options:
           - '&'
           - '|'
           - +
           - '*'
           correctAnswerIndex: 1
-      - id: ts-generics
-        title: 21. Generic Functions
-        content: Membuat fungsi yang fleksibel untuk berbagai tipe data.
-        codeExample: 'function wrap<T>(item: T): T { return item; }'
+      - id: ts-generic-p
+        title: '21. Generic Power: Reusable Types'
+        content: Membuat fungsi atau class yang mendukung tipe data apa pun secara dinamis.
+        codeExample: 'function wrap<T>(v: T): T { return v; }'
         quiz:
           question: Simbol Generics?
           options:
@@ -909,29 +849,29 @@
           - '[]'
           - <>
           correctAnswerIndex: 3
-      - id: ts-utility-types
+      - id: ts-util-tools
         title: '22. Utility Types: Partial, Omit, Pick'
-        content: Memanipulasi tipe data yang sudah ada.
-        codeExample: type UserUpdate = Partial<User>;
+        content: Memanipulasi tipe data yang sudah ada menjadi lebih fleksibel.
+        codeExample: type UpdateUser = Partial<User>;
         quiz:
-          question: Utility untuk buat semua property optional?
+          question: Utility buat property optional?
           options:
           - Omit
           - Partial
           - Pick
           - Readonly
           correctAnswerIndex: 1
-      - id: ts-zod-runtime
+      - id: ts-zod-schema
         title: 23. Runtime Safety with Zod
-        content: Validasi data dari luar (API) saat aplikasi berjalan.
-        codeExample: const schema = z.string().email();
+        content: Validasi data input dari user secara ketat saat aplikasi berjalan.
+        codeExample: 'const UserSchema = z.object({ id: z.number() });'
         quiz:
           question: Fungsi Zod?
           options:
           - Validasi runtime
-          - Desain UI
-          - Koneksi DB
-          - Deploy app
+          - Edit CSS
+          - Deploy web
+          - Nonton film
           correctAnswerIndex: 0
   - id: frontend-react
     title: Frontend Frameworks (React 19)
@@ -940,63 +880,123 @@
       title: 4. React 19 Mastery
       lessons:
       - id: react-19-intro
-        title: 'React 19: The New Era'
-        content: React 19 memperkenalkan React Compiler yang otomatis mengoptimasi performa tanpa perlu useMemo/useCallback lagi.
-        codeExample: function App() { return <div>React 19 is here!</div> }
+        title: '24. React 19: The New Era'
+        content: "**Tujuan Pembelajaran:** Memahami perubahan paradigma di React 19, terutama pengenalan React Compiler.\n\nDi tahun 2025, React tidak lagi memaksa kita menulis `useMemo` atau `useCallback` secara manual. Dengan **React Compiler**, kodemu akan otomatis dioptimasi secepat kilat.\n\n**Fitur Unggulan:**\n1. **React Compiler:** Optimasi performa otomatis di balik layar.\n2. **Actions:** Menangani transisi data tanpa perlu state loading manual.\n3. **New Hooks:** Memperkenalkan hook `use` yang bisa membaca data secara langsung di dalam komponen."
+        codeExample: "function App() {\n  return <h1>React 19: Code less, do more.</h1>;\n}"
         quiz:
-          question: Apa fitur utama React 19 yang otomatis mengoptimasi performa?
+          question: Fitur baru apa di React 19 yang membuat kita tidak perlu lagi menulis useMemo secara manual?
           options:
-          - React Server
+          - React Engine
           - React Compiler
-          - React Player
-          - React Audio
+          - React Speed
+          - React Auto
           correctAnswerIndex: 1
-      - id: react-action-hooks
-        title: 'Action Hooks: useActionState'
-        content: Mengelola form kini jauh lebih mudah dengan hook useActionState yang menangani loading, error, dan data secara otomatis.
-        codeExample: const [state, action, isPending] = useActionState(myAction, null);
+      - id: react-jsx-mastery
+        title: '25. JSX Mastery: Komponen Modern'
+        content: "**Tujuan Pembelajaran:** Mampu menulis komponen React menggunakan standar modern 2025 dengan Props dan State yang efisien.\n\n**JSX** adalah cara kita menulis struktur UI (HTML) langsung di dalam JavaScript. Di tahun 2025, penulisan komponen sudah jauh lebih modular menggunakan pendekatan **Functional Components**.\n\n**Aturan Main:**\n- Komponen harus diawali dengan **Huruf Kapital**.\n- Gunakan **Props** untuk mengirim data ke komponen anak.\n- Manfaatkan **Fragment** (`<>`) agar tidak banyak div sampah."
+        codeExample: "const Card = ({ title }) => (\n  <div className=\"card\">\n    <h2>{title}</h2>\n  </div>\n);\n\nexport default function App() {\n  return <Card title=\"Belajar React 19\" />;\n}"
         quiz:
-          question: Hook mana yang digunakan untuk mengelola state form di React 19?
+          question: Mengapa nama komponen di React wajib diawali dengan huruf kapital?
           options:
-          - useState
-          - useEffect
-          - useActionState
-          - useRef
+          - Agar terlihat lebih rapi.
+          - Agar React bisa membedakannya dengan tag HTML biasa.
+          - Hanya sebuah tren desain.
+          - Wajib hukumnya di semua bahasa.
+          correctAnswerIndex: 1
+      - id: react-server-client
+        title: 26. Server Components vs Client Components
+        content: "**Tujuan Pembelajaran:** Memahami kapan harus menggunakan Server Components dan Client Components untuk performa website maksimal.\n\nReact 19 memperjelas pemisahan antara komponen yang jalan di Server dan di Browser.\n\n1. **Server Components:** Default di framework modern (Next.js). Tanpa JavaScript di browser, sangat cepat untuk SEO.\n2. **Client Components:** Ditandai dengan `'use client'`. Digunakan untuk interaksi user (klik, input, scroll).\n\n**Analogi:**\nServer Component seperti memesan makanan yang sudah matang dari dapur. Client Component seperti membawa kompor ke meja makan untuk memasak sendiri (butuh interaksi)."
+        codeExample: "'use client';\n\nimport { useState } from 'react';\n\nexport function Counter() {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n}"
+        quiz:
+          question: Direktif apa yang wajib ditulis di baris pertama jika sebuah komponen butuh interaksi user (seperti useState)?
+          options:
+          - "'use server'"
+          - "'use react'"
+          - "'use client'"
+          - "'use browser'"
           correctAnswerIndex: 2
+      - id: react-action-state-v2
+        title: '27. Action Hooks: useActionState'
+        content: "**Tujuan Pembelajaran:** Menguasai hook `useActionState` untuk menangani form submission secara asinkron tanpa ribet mengelola state loading.\n\nDulu kita harus membuat state `isLoading`, `error`, dan `data` secara terpisah. Sekarang, React 19 memberikan hook sakti yang menggabungkan ketiganya.\n\n**Kelebihan:**\n- Otomatis menangani status loading.\n- Terintegrasi langsung dengan Action di form HTML.\n- Kode jadi jauh lebih bersih."
+        codeExample: "const [state, formAction, isPending] = useActionState(async (prev, formData) => {\n  // Proses asinkron di sini\n  return \"Berhasil!\";\n}, null);"
+        quiz:
+          question: Apa kegunaan utama dari hook useActionState?
+          options:
+          - Untuk membuat animasi CSS.
+          - Untuk mengelola status dan data hasil dari sebuah action (seperti form submit).
+          - Untuk menghubungkan ke database secara langsung.
+          - Untuk mematikan komputer otomatis.
+          correctAnswerIndex: 1
+      - id: react-zustand-v
+        title: '28. Global State: Mengapa Zustand?'
+        content: "**Tujuan Pembelajaran:** Mampu mengelola data antar halaman secara global menggunakan Zustand tanpa perlu boilerplate Redux yang rumit.\n\nJika data harus berpindah-pindah antar komponen yang jauh, kita butuh **Global State**. Di tahun 2025, **Zustand** menjadi raja karena ukurannya yang super kecil dan penggunaannya yang sangat simpel.\n\n**Kenapa bukan Redux?**\nRedux terlalu berbelit-belit. Zustand bisa kamu setup hanya dalam 5 baris kode."
+        codeExample: "import { create } from 'zustand';\n\nconst useStore = create((set) => ({\n  poin: 0,\n  tambahPoin: () => set((state) => ({ poin: state.poin + 1 })),\n}));"
+        quiz:
+          question: Apa keunggulan utama Zustand dibandingkan Redux?
+          options:
+          - Harganya gratis.
+          - Jauh lebih simpel dan minim boilerplate.
+          - Hanya bisa dipakai di Windows.
+          - Warnanya lebih bagus.
+          correctAnswerIndex: 1
+      - id: react-signals-v
+        title: 29. Reactivity with Signals
+        content: "**Tujuan Pembelajaran:** Mengenal alternatif reaktivitas modern menggunakan Signals untuk performa yang lebih presisi daripada standar state.\n\n**Signals** adalah cara baru untuk memberi tahu komponen bahwa data berubah. Bedanya dengan `useState`, Signals hanya akan mengupdate bagian kecil UI yang benar-benar berubah, tanpa me-render ulang seluruh komponen.\n\nSangat populer digunakan di framework seperti Preact, Vue, dan kini mulai diadopsi luas oleh komunitas React."
+        codeExample: "const count = signal(0);\n\nfunction Counter() {\n  return <button onClick={() => count.value++}>{count.value}</button>;\n}"
+        quiz:
+          question: Apa perbedaan utama Signal dibandingkan State biasa?
+          options:
+          - Signal hanya bisa untuk angka.
+          - Signal melakukan update UI secara lebih presisi (fine-grained) tanpa render ulang seluruh komponen.
+          - Signal butuh internet kencang.
+          - Signal hanya berjalan di server.
+          correctAnswerIndex: 1
+      - id: react-tailwind-v4-v
+        title: 30. Styling secepat kilat dengan Tailwind v4
+        content: "**Tujuan Pembelajaran:** Menerapkan styling modern menggunakan Tailwind CSS v4 yang memiliki engine CSS baru yang lebih cepat dan efisien.\n\nDi tahun 2025, **Tailwind CSS v4** hadir dengan perubahan besar: tidak ada lagi file konfigurasi JavaScript yang rumit. Semuanya diatur melalui CSS.\n\n**Kelebihan v4:**\n1. **Zero Configuration:** Otomatis mendeteksi file proyekmu.\n2. **Lightning Engine:** Proses kompilasi jauh lebih cepat.\n3. **Container Queries:** Memudahkan pembuatan website responsif tingkat lanjut."
+        codeExample: "<button className=\"rounded-2xl bg-blue-600 px-6 py-3 text-white transition-all hover:scale-105 active:scale-95\">\n  Klik Saya\n</button>"
+        quiz:
+          question: Apa salah satu perubahan besar di Tailwind CSS v4 dibandingkan versi sebelumnya?
+          options:
+          - Menghapus semua warna biru.
+          - Menghilangkan ketergantungan pada file konfigurasi JavaScript yang rumit (config-first).
+          - Mewajibkan kita membayar biaya langganan.
+          - Hanya bisa digunakan untuk website satu halaman.
+          correctAnswerIndex: 1
   - id: backend-apis
     title: Modern Backend & APIs
     modules:
     - id: js-backend
       title: 5. Backend Runtimes & APIs
       lessons:
-      - id: js-runtime-race
+      - id: js-runtime-race-v
         title: '31. The Runtime Race: Node vs Bun vs Deno'
-        content: Memilih mesin yang tepat untuk backend modern.
-        codeExample: // bun index.ts
+        content: Di tahun 2025, performa runtime menjadi kunci. Bun menawarkan kecepatan startup ekstrem sementara Node.js tetap menjadi standar stabilitas enterprise.
+        codeExample: "console.log(process.version); // Node\nconsole.log(Bun.version);    // Bun"
         quiz:
-          question: Runtime yang paling cepat startup-nya?
+          question: Runtime yang menggunakan bahasa Zig untuk performa tinggi?
           options:
           - Node
           - Bun
           - Java
           - Python
           correctAnswerIndex: 1
-      - id: js-hono-api
+      - id: js-hono-api-v
         title: '32. The Edge Server: API with Hono'
-        content: Framework API tertipis dan tercepat untuk Cloudflare/Bun.
-        codeExample: "app.get('/api', (c) => c.json({ ok: true }));"
+        content: Membangun API secepat kilat yang siap dideploy di Cloudflare Workers atau Bun.
+        codeExample: "const app = new Hono(); app.get('/', (c) => c.json({ status: 'ok' }));"
         quiz:
-          question: Target utama Hono?
+          question: Keunggulan utama Hono?
           options:
-          - Edge/Serverless
-          - Desktop
-          - Video Games
-          - OS
-          correctAnswerIndex: 0
-      - id: js-fastify
-        title: 33. High Performance with Fastify
-        content: Framework Node.js tercepat untuk aplikasi monolitik.
-        codeExample: fastify.get('/', async () => { ... });
+          - Ukurannya besar
+          - Sangat ringan dan cepat di Edge
+          - Hanya untuk Windows
+          - Hanya untuk game
+          correctAnswerIndex: 1
+      - id: js-fastify-v
+        title: 33. High Performance Node with Fastify
+        content: Mengoptimalkan throughput backend Node.js menggunakan skema JSON otomatis dan efisiensi tinggi.
+        codeExample: const fastify = require('fastify')();
         quiz:
           question: Framework Node paling cepat?
           options:
@@ -1005,156 +1005,156 @@
           - Koa
           - Sails
           correctAnswerIndex: 1
-      - id: js-postgresql
-        title: '34. Database Lab: PostgreSQL'
-        content: Setup database relasional standar industri.
-        codeExample: SELECT * FROM users;
+      - id: js-postgres-v
+        title: '34. Database Mastery: PostgreSQL Lab'
+        content: Menghubungkan aplikasi JS ke database relasional paling handal di dunia.
+        codeExample: SELECT * FROM users ORDER BY created_at DESC;
         quiz:
-          question: SQL singkatan dari?
+          question: PostgreSQL termasuk jenis database?
           options:
-          - Simple Query
-          - Structured Query
-          - Static Query
-          - Standard Query
+          - NoSQL
+          - Relational (SQL)
+          - Graph
+          - Text file
           correctAnswerIndex: 1
-      - id: js-drizzle-orm
+      - id: js-drizzle-v
         title: '35. The ORM: Drizzle for Type-Safe SQL'
-        content: Query database tanpa takut salah tulis kolom.
-        codeExample: db.insert(users).values({ ... });
+        content: Menghilangkan bug SQL dengan validasi tipe data otomatis dari skema database.
+        codeExample: await db.select().from(users).where(eq(users.id, 1));
         quiz:
-          question: Kelebihan Drizzle?
+          question: Apa keunggulan Drizzle dibandingkan ORM lain?
           options:
-          - Type-safe
-          - Lambat
-          - Berat
-          - Mahal
-          correctAnswerIndex: 0
-      - id: js-testing-vitest
+          - Lebih lambat
+          - SQL-like experience dengan full type-safety
+          - Harganya mahal
+          - Susah dipelajari
+          correctAnswerIndex: 1
+      - id: js-testing-v
         title: 36. Fast Testing with Vitest
-        content: Framework testing secepat kilat berbasis Vite.
-        codeExample: expect(sum(1,2)).toBe(3);
+        content: Menjalankan ribuan test dalam hitungan detik menggunakan engine Vite.
+        codeExample: test('math', () => { expect(1+1).toBe(2); });
         quiz:
-          question: Vite-native testing tool?
+          question: Test runner modern untuk ekosistem Vite?
           options:
           - Jest
           - Vitest
           - Mocha
           - Jasmine
           correctAnswerIndex: 1
-      - id: js-playwright
-        title: 37. E2E with Playwright
-        content: Simulasi interaksi user di browser sungguhan.
-        codeExample: await page.goto('https://...');
+      - id: js-playwright-v
+        title: '37. E2E: Real Browser Testing with Playwright'
+        content: Simulasi alur pengguna (Login, Checkout) di browser Chrome, Firefox, dan Safari sungguhan.
+        codeExample: await page.click('button#submit');
         quiz:
-          question: Fungsi Playwright?
+          question: Playwright digunakan untuk?
           options:
-          - E2E Testing
           - Unit Test
-          - Styling
-          - Database
-          correctAnswerIndex: 0
+          - E2E Testing
+          - Desain Logo
+          - Edit Video
+          correctAnswerIndex: 1
   - id: ai-architecture
     title: AI & Advanced Architecture
     modules:
     - id: js-ai
       title: 6. AI & Architecture
       lessons:
-      - id: js-turborepo
-        title: '38. The Monorepo: Turborepo for JS'
-        content: Mengelola banyak aplikasi dalam satu tempat secara efisien.
-        codeExample: // turbo.json
+      - id: js-turborepo-v
+        title: '38. The Monorepo: Scalable Architecture'
+        content: Mengelola puluhan aplikasi dan paket dalam satu repositori tanpa pusing manajemen dependensi.
+        codeExample: npx turbo build
         quiz:
-          question: Tool monorepo populer?
+          question: Tool monorepo populer 2025?
           options:
           - Turborepo
-          - SpeedRepo
-          - FastRepo
-          - QuickRepo
+          - Git
+          - NPM
+          - VS Code
           correctAnswerIndex: 0
-      - id: js-ai-sdk-v
-        title: '39. AI SDK: Integrasi LLM'
-        content: Hubungkan React ke Gemini/GPT dengan mudah.
-        codeExample: const { chat } = useChat();
+      - id: js-ai-sdk-full
+        title: '39. Generative AI: Vercel AI SDK'
+        content: Integrasi model AI (Gemini, GPT) ke dalam UI React dengan streaming response secepat ChatGPT.
+        codeExample: const { messages } = useChat();
         quiz:
-          question: Library AI untuk React?
+          question: Fungsi streaming di AI SDK?
           options:
-          - Vercel AI SDK
-          - GPT-JS
-          - Gemini-UI
-          - Chat-Bot
-          correctAnswerIndex: 0
-      - id: js-mcp-v
-        title: '40. MCP Protocol: Agent Integration'
-        content: Protokol standar untuk alat (tools) AI.
-        codeExample: // Model Context Protocol
+          - Nonton film
+          - Menampilkan jawaban AI per kata secara real-time
+          - Dengerin musik
+          - Upload file
+          correctAnswerIndex: 1
+      - id: js-mcp-protocol
+        title: '40. MCP: Model Context Protocol'
+        content: Membangun jembatan komunikasi antara aplikasi bisnismu dengan model AI global.
+        codeExample: // Standardized AI-to-Tool communication
         quiz:
           question: Singkatan MCP?
           options:
           - Model Context Protocol
-          - Master Code
-          - Main Control
-          - Modern Cloud
+          - Master Chat Plus
+          - Modern Cloud Page
+          - Main Code Program
           correctAnswerIndex: 0
-      - id: js-vector-db
-        title: 41. Vector DB with JavaScript
-        content: Menyimpan pengetahuan AI dalam database vektor.
-        codeExample: await index.upsert(vectors);
+      - id: js-vector-mastery
+        title: '41. Vector DB: Pengetahuan Luar AI'
+        content: Menyimpan ribuan dokumen ke dalam Vector Database agar AI bisa melakukan RAG (Retrieval Augmented Generation).
+        codeExample: const vectors = await model.embed(text);
         quiz:
-          question: Database untuk AI?
+          question: Database untuk simpan embedding AI?
           options:
           - Vector DB
-          - Text DB
-          - Image DB
-          - Sound DB
-          correctAnswerIndex: 0
-      - id: js-serverless
-        title: 42. Serverless Architecture
-        content: Deploy kode tanpa mengelola server.
-        codeExample: // export default { fetch() { ... } }
-        quiz:
-          question: Nama konsep deploy tanpa server?
-          options:
-          - Serverless
-          - Cloudless
-          - Masterless
-          - Codeless
-          correctAnswerIndex: 0
-      - id: js-edge-functions
-        title: 43. Edge Functions
-        content: Menjalankan kode di lokasi terdekat dengan user.
-        codeExample: // Global distribution
-        quiz:
-          question: Keuntungan Edge?
-          options:
-          - Latensi rendah
-          - Harga mahal
-          - Lebih lambat
-          - Hanya di US
-          correctAnswerIndex: 0
-      - id: js-cloud-native
-        title: '44. Cloud Native: Railway & Vercel'
-        content: Platform deployment modern sekali klik.
-        codeExample: git push railway main
-        quiz:
-          question: Platform deploy otomatis?
-          options:
-          - Vercel
-          - Windows
+          - Redis
           - Excel
-          - Word
+          - SQLite
           correctAnswerIndex: 0
-      - id: js-ci-cd-actions
-        title: 45. CI/CD with GitHub Actions
-        content: Otomatisasi lint, test, dan deploy.
-        codeExample: 'name: JS CI'
+      - id: js-serverless-v
+        title: 42. Serverless & Edge Computing
+        content: Deploy kode tanpa mengelola server sama sekali. Kode jalan di lokasi terdekat dengan user.
+        codeExample: export default { fetch(request) { ... } };
         quiz:
-          question: Fungsi GitHub Actions?
+          question: Apa itu Serverless?
           options:
-          - Otomatisasi alur kerja
-          - Edit gambar
-          - Nonton video
+          - Gak pake internet
+          - Deploy tanpa urus infrastruktur server
+          - Servernya ilang
+          - Hanya untuk lokal
+          correctAnswerIndex: 1
+      - id: js-cloud-native-v
+        title: 43. Cloud Native Deployment
+        content: Menggunakan platform seperti Railway atau Vercel untuk deployment otomatis berbasis Git.
+        codeExample: git push origin main // Auto deploy
+        quiz:
+          question: Platform cloud native?
+          options:
+          - Railway
+          - Windows
+          - Office
+          - Paint
+          correctAnswerIndex: 0
+      - id: js-ci-cd-v
+        title: '44. CI/CD: Professional Workflow'
+        content: Otomatisasi pengujian dan deployment agar kualitas kode selalu terjaga.
+        codeExample: 'on: push, jobs: test'
+        quiz:
+          question: Fungsi CI/CD?
+          options:
+          - Otomatisasi kualitas & rilis
+          - Bikin desain
+          - Ngetik kode
           - Main game
           correctAnswerIndex: 0
+      - id: js-career-2025
+        title: '45. Career: Menjadi Senior JS Engineer 2025'
+        content: 'Langkah akhir: Membangun portofolio berbasis AI dan pemahaman arsitektur sistem terdistribusi.'
+        codeExample: console.log('Siap Kerja!');
+        quiz:
+          question: Fokus Senior Engineer di 2025?
+          options:
+          - Hafalin sintaks
+          - Arsitektur & AI Integration
+          - Ngetik cepet
+          - Ganti keyboard
+          correctAnswerIndex: 1
 - id: golang-path
   title: Golang Developer
   description: Jalur lengkap mempelajari Go untuk backend dan sistem terdistribusi.
