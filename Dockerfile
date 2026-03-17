@@ -1,20 +1,13 @@
-# Use Node.js LTS (Long Term Support) image
-FROM node:20-alpine
-
-# Set working directory
+# Build stage
+FROM node:20-alpine AS build
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
-
-# Copy the rest of the application
 COPY . .
+RUN npm run build
 
-# Expose the port used by Vite
-EXPOSE 3000
-
-# Start the application in dev mode
-CMD ["npm", "run", "dev"]
+# Production stage
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

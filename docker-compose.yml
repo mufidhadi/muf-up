@@ -1,14 +1,17 @@
 services:
-  app:
+  muf-up:
     build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    env_file:
-      - .env
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true # Useful for file watching inside Docker
+    container_name: muf-up
     restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.muf-up.rule=Host(`muf-up.masmuf.cloud`)"
+      - "traefik.http.routers.muf-up.entrypoints=websecure"
+      - "traefik.http.routers.muf-up.tls.certresolver=myresolver"
+      - "traefik.http.services.muf-up.loadbalancer.server.port=80"
+
+networks:
+  web:
+    external: true
